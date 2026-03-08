@@ -1,0 +1,23 @@
+# Environment / secrets
+.env
+.env.local
+
+# ELM build artifacts (generated from CQL by cql-to-elm-cli)
+elm/
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Java build artifacts
+*.class
+build/
+target/
+
+# OS files
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
