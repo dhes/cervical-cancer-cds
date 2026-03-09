@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerScreeningDecision",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision",
+  "version": "0.1.0",
+  "name": "CervicalCancerScreeningDecision",
+  "title": "Cervical Cancer Screening Decision Logic",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "content": [
+    {
+      "id": "ig-loader-CervicalCancerScreeningDecision.cql"
+    }
+  ]
+}

@@ -87,23 +87,35 @@ and check OpenMRS Talk / JIRA for any in-progress work on Procedure support.
 ```
 cervical-cancer-cds/
 ├── CLAUDE.md              # This file
-├── cql/                   # CQL logic libraries
-│   ├── CervicalCancerScreeningCommon.cql    # Shared definitions
-│   ├── CervicalCancerScreeningDecision.cql  # Screening eligibility & scheduling
-│   ├── CervicalCancerTriageDecision.cql     # Post-HPV+ triage logic
-│   ├── CervicalCancerTreatmentDecision.cql  # Treatment recommendations
-│   └── CervicalCancerIndicators.cql         # Population-level measures
-├── fhir/                  # FHIR conformance & knowledge artifacts
-│   ├── plan-definitions/  # PlanDefinition resources for each decision rule
-│   ├── value-sets/        # Terminology bindings (SNOMED, LOINC, ICD-10)
-│   ├── libraries/         # FHIR Library resources wrapping CQL
-│   └── profiles/          # Any needed FHIR profile constraints
-├── tests/                 # Synthetic test data
-│   ├── patients/          # Patient bundles for screening scenarios
-│   └── expected/          # Expected CDS outputs per scenario
-└── docs/                  # Design documents, guideline references
-    ├── who-guidelines.md  # Summary of WHO screening/treatment algorithms
-    └── concept-mapping.md # OpenMRS concept dictionary ↔ standard terminology
+├── sushi-config.yaml      # FHIR IG configuration
+├── ig.ini                 # IG Publisher settings
+├── _genonce.sh            # Build IG
+├── _updatePublisher.sh    # Download IG Publisher
+├── README.md              # GitHub repo README
+├── LICENSE                # Apache 2.0
+├── input/
+│   ├── cql/               # CQL logic libraries (source of truth)
+│   │   ├── CervicalCancerScreeningCommon.cql
+│   │   ├── CervicalCancerScreeningDecision.cql
+│   │   ├── CervicalCancerTriageDecision.cql
+│   │   ├── CervicalCancerTreatmentDecision.cql
+│   │   ├── CervicalCancerFollowUpDecision.cql
+│   │   ├── FHIRHelpers.cql
+│   │   └── cql-options.json
+│   ├── resources/
+│   │   ├── library/       # .unprocessed Library stubs (IG Publisher fills content)
+│   │   └── plandefinition/ # PlanDefinition ECA rules (4 files)
+│   └── pagecontent/       # IG documentation pages
+├── fhir/                  # Fully-authored FHIR resources (reference copies)
+│   ├── libraries/         # Complete Library resources with metadata
+│   └── plan-definitions/  # Complete PlanDefinition resources
+├── tests/                 # CQL test runner and synthetic patients
+│   ├── evaluate-cql.mjs
+│   ├── create-phase3-patients.mjs
+│   └── patients/README.md
+├── docs/                  # Design documents
+├── elm/                   # ELM build artifacts (.gitignored)
+└── .github/workflows/     # CI/CD for IG build + GitHub Pages
 ```
 
 ## Clinical Guidelines Being Implemented
@@ -216,27 +228,37 @@ Document all mapping decisions in `docs/concept-mapping.md`.
 
 ### Phase 2: Synthetic Data & First CQL
 
-- [ ] Create synthetic Patient bundles representing screening scenarios:
-  - Woman aged 35, never screened (eligible, should trigger screening reminder)
-  - Woman aged 35, HPV-positive 2 weeks ago (needs triage)
-  - Woman aged 35, HPV-positive + VIA-positive (needs treatment)
-  - Woman aged 35, treated 10 months ago (approaching follow-up window)
-  - Woman aged 35, WLHIV, never screened (different eligibility criteria)
-  - Woman aged 25, general population (not yet eligible)
-  - Woman aged 25, WLHIV (eligible under HIV-specific criteria)
-- [ ] POST synthetic data to OpenMRS FHIR endpoint
-- [ ] Write CervicalCancerScreeningCommon.cql with shared definitions
-- [ ] Write CervicalCancerScreeningDecision.cql for basic eligibility
-- [ ] Test CQL evaluation against OpenMRS FHIR endpoint
+- [x] Load Priority 1 CIEL concepts into OpenMRS (10 concepts via REST API)
+  - HPV DNA test (170145), treatments (166706, 162812, 165084), CIN diagnoses (145809/807/806)
+  - Screening concepts (151185, 170072, 165429)
+  - Added SNOMED/CIEL/LOINC mappings to Positive (703) and Negative (664)
+- [x] Create synthetic patients and POST to OpenMRS FHIR endpoint
+  - See `tests/patients/README.md` for full scenario details and UUIDs
+  - S1 Amara: age 35, never screened (eligible, due)
+  - S2 Blessing: age 35, HPV+ 2 weeks ago (needs triage)
+  - S3 Chioma: age 35, HPV+ VIA+ (needs treatment)
+  - S4 Deka: age 35, treated 10 months ago (follow-up approaching)
+  - S5 Esther: age 35, WLHIV, never screened (eligible under HIV criteria)
+  - S6 Fatima: age 25, general pop (not yet eligible, age < 30)
+  - S7 Grace: age 25, WLHIV (not yet eligible, age < 25)
+- [x] Write CervicalCancerScreeningCommon.cql with shared definitions
+- [x] Write CervicalCancerScreeningDecision.cql for basic eligibility
+- [x] Test CQL evaluation against OpenMRS FHIR endpoint
 
 ### Phase 3: Full Decision Logic
 
-- [ ] Implement triage decision logic
-- [ ] Implement treatment decision logic
-- [ ] Implement follow-up scheduling logic
-- [ ] Implement HIV-specific pathway variations
-- [ ] Create PlanDefinition resources for each decision rule
-- [ ] Build out comprehensive test cases (positive/negative per decision table row)
+- [x] Implement triage decision logic (CervicalCancerTriageDecision.cql)
+- [x] Implement treatment decision logic (CervicalCancerTreatmentDecision.cql)
+- [x] Implement follow-up scheduling logic (CervicalCancerFollowUpDecision.cql)
+- [x] Implement HIV-specific pathway variations (integrated into all libraries)
+- [x] Full test suite: 82/82 assertions across 4 libraries × 14 patients
+- [x] Build out comprehensive test cases (S8-S14: triage-negative, retest-due, routine-recall, WLHIV double follow-up, retest-positive re-entry, interval-elapsed re-screening)
+- [x] Create PlanDefinition resources for each decision rule
+  - 5 FHIR Library resources (Common, Screening, Triage, Treatment, FollowUp)
+  - 4 PlanDefinition resources (Screening, Triage, Treatment, FollowUp) as ECA rules
+  - CPG-on-FHIR pattern: named-event triggers, CQL conditions, dynamicValue actions
+  - Canonical URLs: https://hopenahealth.com/fhir/cervical-cancer-cds/
+  - All resources in fhir/libraries/ and fhir/plan-definitions/
 
 ### Phase 4: Packaging & Community Engagement
 

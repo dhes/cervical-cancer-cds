@@ -1,0 +1,206 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerScreeningCommon",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon",
+  "version": "0.1.0",
+  "name": "CervicalCancerScreeningCommon",
+  "title": "Cervical Cancer Screening Common Definitions",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library",
+        "display": "Logic Library"
+      }
+    ]
+  },
+  "date": "2026-03-08",
+  "publisher": "Hopena Health",
+  "contact": [
+    {
+      "name": "Dan Heslinga",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://hopenahealth.com"
+        }
+      ]
+    }
+  ],
+  "description": "Shared definitions for cervical cancer screening CDS, implementing WHO guideline for screening and treatment of cervical pre-cancer lesions (2nd edition, 2021). Provides value set definitions, patient demographics, HIV status determination, screening/triage/treatment history retrieval, and helper functions used by all decision libraries.",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "243877001",
+            "display": "Cancer cervix screening"
+          }
+        ]
+      }
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "purpose": "Shared clinical definitions for the cervical cancer screening CDS cascade. This library is included by all decision-specific libraries (Screening, Triage, Treatment, FollowUp) and should not be evaluated independently.",
+  "relatedArtifact": [
+    {
+      "type": "derived-from",
+      "label": "WHO Guideline",
+      "url": "https://www.who.int/publications/i/item/9789240030824",
+      "display": "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)"
+    },
+    {
+      "type": "depends-on",
+      "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+    }
+  ],
+  "parameter": [
+    {
+      "name": "Patient",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "type": "Patient"
+    },
+    {
+      "name": "Is Female",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Age In Years",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "integer"
+    },
+    {
+      "name": "Is WLHIV",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Has Ever Been Screened With HPV",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Most Recent HPV Test Is Positive",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Has Been Treated",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Months Since Treatment",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "integer"
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Patient",
+      "profile": ["http://hl7.org/fhir/StructureDefinition/Patient"]
+    },
+    {
+      "type": "Observation",
+      "profile": ["http://hl7.org/fhir/StructureDefinition/Observation"],
+      "codeFilter": [
+        {
+          "path": "code",
+          "code": [
+            {
+              "system": "https://cielterminology.org",
+              "code": "170145",
+              "display": "HPV DNA detection"
+            },
+            {
+              "system": "https://cielterminology.org",
+              "code": "151185",
+              "display": "Cervical screening (VIA)"
+            },
+            {
+              "system": "https://cielterminology.org",
+              "code": "166706",
+              "display": "Thermocauterization of cervix"
+            },
+            {
+              "system": "https://cielterminology.org",
+              "code": "162812",
+              "display": "Cryosurgery of cervix"
+            },
+            {
+              "system": "https://cielterminology.org",
+              "code": "165084",
+              "display": "LEEP of cervix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "profile": ["http://hl7.org/fhir/StructureDefinition/Condition"],
+      "codeFilter": [
+        {
+          "path": "code",
+          "code": [
+            {
+              "system": "https://cielterminology.org",
+              "code": "138405",
+              "display": "HIV disease"
+            },
+            {
+              "system": "https://cielterminology.org",
+              "code": "116023",
+              "display": "Malignant neoplasm of cervix uteri"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url": "cql/CervicalCancerScreeningCommon.cql"
+    },
+    {
+      "contentType": "application/elm+json",
+      "url": "elm/CervicalCancerScreeningCommon.json"
+    }
+  ]
+}

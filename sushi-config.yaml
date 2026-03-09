@@ -1,0 +1,69 @@
+id: hopena.cervical-cancer-cds
+canonical: https://hopenahealth.com/fhir/cervical-cancer-cds
+name: CervicalCancerCDS
+title: "Cervical Cancer Screening CDS for OpenMRS"
+description: >-
+  Clinical decision support implementing WHO cervical cancer screening
+  and treatment guidelines (Algorithm 5: HPV DNA + VIA triage) as
+  FHIR R4 PlanDefinition and CQL resources, targeting OpenMRS
+  deployments in low- and middle-income countries.
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+copyrightYear: 2026+
+releaseLabel: ci-build
+license: Apache-2.0
+publisher:
+  name: Hopena Health
+  url: https://hopenahealth.com
+contact:
+  - name: Dan Heslinga
+    telecom:
+      - system: url
+        value: https://hopenahealth.com
+jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001
+
+dependencies:
+  hl7.fhir.uv.cql:
+    id: cql
+    version: 1.0.0
+    reason: >-
+      This IG uses CQL profiles and capabilities provided by
+      the Using CQL With FHIR IG
+  hl7.fhir.uv.crmi:
+    id: crmi
+    version: 1.0.0
+    reason: >-
+      This IG uses content management profiles and capabilities
+      provided by the Canonical Resource Management Infrastructure IG
+
+pages:
+  index.md:
+    title: Home
+  algorithm.md:
+    title: Clinical Algorithm
+  architecture.md:
+    title: Architecture
+  deployment.md:
+    title: Deployment Guide
+  testing.md:
+    title: Testing
+  downloads.md:
+    title: Downloads
+  changes.md:
+    title: Change Log
+  license.md:
+    title: License
+
+menu:
+  Home: index.html
+  Clinical Algorithm: algorithm.html
+  Architecture: architecture.html
+  Deployment: deployment.html
+  Testing: testing.html
+  Downloads: downloads.html
+  Artifacts: artifacts.html
+  License: license.html
+
+parameters:
+  path-binary: input/cql

@@ -1,0 +1,133 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerTreatmentDecision",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision",
+  "version": "0.1.0",
+  "name": "CervicalCancerTreatmentDecision",
+  "title": "Cervical Cancer Treatment Decision Logic",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library",
+        "display": "Logic Library"
+      }
+    ]
+  },
+  "date": "2026-03-08",
+  "publisher": "Hopena Health",
+  "contact": [
+    {
+      "name": "Dan Heslinga",
+      "telecom": [{ "system": "url", "value": "https://hopenahealth.com" }]
+    }
+  ],
+  "description": "Treatment decision logic for cervical pre-cancer, implementing WHO ablation eligibility criteria and treatment modality selection. Determines whether treatment is indicated, presents the ablation eligibility checklist, recommends treatment modality, and tracks treatment history. Covers ablation vs excision decision criteria from all WHO algorithms.",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "243877001",
+            "display": "Cancer cervix screening"
+          }
+        ]
+      }
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "relatedArtifact": [
+    {
+      "type": "derived-from",
+      "label": "WHO Guideline",
+      "url": "https://www.who.int/publications/i/item/9789240030824"
+    },
+    {
+      "type": "depends-on",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon|0.1.0"
+    },
+    {
+      "type": "depends-on",
+      "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+    }
+  ],
+  "parameter": [
+    {
+      "name": "Patient",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "type": "Patient"
+    },
+    {
+      "name": "Treatment Is Indicated",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Has Known Contraindication To Ablation",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Treatment Recommendation",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    },
+    {
+      "name": "Ablation Eligibility Checklist",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    },
+    {
+      "name": "Was Treated With Ablation",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Treatment Status",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    }
+  ],
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url": "cql/CervicalCancerTreatmentDecision.cql"
+    },
+    {
+      "contentType": "application/elm+json",
+      "url": "elm/CervicalCancerTreatmentDecision.json"
+    }
+  ]
+}

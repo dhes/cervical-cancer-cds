@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerFollowUpDecision",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision",
+  "version": "0.1.0",
+  "name": "CervicalCancerFollowUpDecision",
+  "title": "Cervical Cancer Follow-Up Decision Logic",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "content": [
+    {
+      "id": "ig-loader-CervicalCancerFollowUpDecision.cql"
+    }
+  ]
+}

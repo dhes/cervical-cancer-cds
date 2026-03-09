@@ -98,7 +98,7 @@ trigger flags based on CQL logic. The CQL runs server-side within OpenMRS.
 Use `fqm-execution` / `cql-execution` to evaluate CQL against the OpenMRS FHIR
 endpoint. This gives the fastest iteration loop:
 
-1. Write CQL in `cql/` directory
+1. Write CQL in `input/cql/` directory
 2. Translate to ELM JSON using `cql-to-elm-cli` (already have the JAR)
 3. Run against OpenMRS FHIR endpoint using fqm-execution or a simple Node.js script
 4. Use `cql_runner` for interactive development/debugging
@@ -123,14 +123,14 @@ which Dan already has working for Hopena quality measures.
 ```
 ┌─────────────────────────────────────────────────────┐
 │  Author CQL                                         │
-│  cql/CervicalCancerScreeningDecision.cql            │
+│  input/cql/CervicalCancerScreeningDecision.cql       │
 └──────────────────────┬──────────────────────────────┘
                        │
                        ▼
 ┌─────────────────────────────────────────────────────┐
 │  Translate to ELM                                   │
 │  java -jar cql-to-elm-cli-3.26.0.jar                │
-│    --input cql/ --output elm/ --format JSON          │
+│    --input input/cql/ --output elm/ --format JSON          │
 └──────────────────────┬──────────────────────────────┘
                        │
                        ▼
@@ -159,7 +159,7 @@ which Dan already has working for Hopena quality measures.
 1. **Verify cql-to-elm-cli works**: Test translating a simple CQL file to ELM JSON
    ```
    java -jar ~/cql-to-elm-cli-3.26.0.jar \
-     --input cql/ --output elm/ --format JSON --model FHIR --fhir-version R4
+     --input input/cql/ --output elm/ --format JSON --model FHIR --fhir-version R4
    ```
 
 2. **Create a minimal Node.js evaluation script**: Use `cql-execution` and

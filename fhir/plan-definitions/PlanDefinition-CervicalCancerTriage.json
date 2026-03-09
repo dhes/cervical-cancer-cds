@@ -1,0 +1,242 @@
+{
+  "resourceType": "PlanDefinition",
+  "id": "CervicalCancerTriage",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage",
+  "version": "0.1.0",
+  "name": "CervicalCancerTriage",
+  "title": "Cervical Cancer Triage — HPV-Positive VIA Assessment",
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/plan-definition-type",
+        "code": "eca-rule",
+        "display": "ECA Rule"
+      }
+    ]
+  },
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-03-08",
+  "publisher": "Hopena Health",
+  "contact": [
+    {
+      "name": "Dan Heslinga",
+      "telecom": [{ "system": "url", "value": "https://hopenahealth.com" }]
+    }
+  ],
+  "description": "Clinical decision support rule for triage of HPV-positive women using VIA (visual inspection with acetic acid). Implements WHO Algorithm 5 triage pathway: HPV+ -> VIA triage -> route to treatment (VIA+), follow-up retest (VIA-), or oncology referral (suspicious for cancer). Applies to both general population and WLHIV with population-specific follow-up intervals.",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "35904009",
+            "display": "HPV DNA detection"
+          }
+        ]
+      }
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "purpose": "To guide clinical decision-making for women with positive HPV DNA test results, ensuring appropriate triage with VIA and correct routing to treatment, follow-up, or referral based on triage outcome.",
+  "copyright": "Copyright 2026 Hopena Health. License: Apache 2.0",
+  "relatedArtifact": [
+    {
+      "type": "derived-from",
+      "label": "WHO Guideline",
+      "url": "https://www.who.int/publications/i/item/9789240030824",
+      "display": "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)"
+    },
+    {
+      "type": "citation",
+      "label": "WHO Recommendations",
+      "display": "General population: Recs 3b, 11. WLHIV: Recs 22, 23, 31. Algorithm 5: HPV DNA + VIA Triage."
+    },
+    {
+      "type": "composed-of",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening|0.1.0",
+      "display": "Upstream: Screening determines cascade position and routes HPV+ patients to triage"
+    },
+    {
+      "type": "composed-of",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment|0.1.0",
+      "display": "Downstream: VIA+ patients are routed to treatment assessment"
+    }
+  ],
+  "library": [
+    "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision|0.1.0"
+  ],
+  "action": [
+    {
+      "title": "HPV-Positive Triage Assessment",
+      "description": "Evaluate triage status for women with positive HPV DNA test results",
+      "trigger": [
+        {
+          "type": "named-event",
+          "name": "patient-view"
+        }
+      ],
+      "condition": [
+        {
+          "kind": "applicability",
+          "expression": {
+            "language": "text/cql-identifier",
+            "expression": "Triage Is Indicated",
+            "reference": "Library/CervicalCancerTriageDecision"
+          }
+        }
+      ],
+      "action": [
+        {
+          "id": "perform-via",
+          "title": "Perform VIA Triage",
+          "description": "HPV DNA test is positive — perform VIA (visual inspection with acetic acid) to determine treatment pathway",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Triage Is Indicated",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ],
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Triage Recommended Action",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ]
+        },
+        {
+          "id": "via-positive-treat",
+          "title": "VIA Positive — Proceed to Treatment",
+          "description": "VIA triage is positive — assess ablation eligibility and treat",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Proceed To Treatment",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ],
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Triage Recommended Action",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ]
+        },
+        {
+          "id": "via-negative-followup",
+          "title": "VIA Negative — Schedule Follow-Up HPV Retest",
+          "description": "VIA triage is negative — schedule HPV DNA retest at 12 months (WLHIV) or 24 months (general population)",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Proceed To Follow Up Retest",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ],
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Triage Recommended Action",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ]
+        },
+        {
+          "id": "suspicious-refer",
+          "title": "Suspicious for Cancer — Refer to Oncology",
+          "description": "Findings are suspicious for invasive cancer — refer for definitive diagnosis and staging",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Needs Referral",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ],
+          "priority": "urgent",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Triage Recommended Action",
+                "reference": "Library/CervicalCancerTriageDecision"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

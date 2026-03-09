@@ -1,0 +1,251 @@
+{
+  "resourceType": "PlanDefinition",
+  "id": "CervicalCancerTreatment",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment",
+  "version": "0.1.0",
+  "name": "CervicalCancerTreatment",
+  "title": "Cervical Cancer Treatment — Ablation Eligibility and Modality Selection",
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/plan-definition-type",
+        "code": "eca-rule",
+        "display": "ECA Rule"
+      }
+    ]
+  },
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-03-08",
+  "publisher": "Hopena Health",
+  "contact": [
+    {
+      "name": "Dan Heslinga",
+      "telecom": [{ "system": "url", "value": "https://hopenahealth.com" }]
+    }
+  ],
+  "description": "Clinical decision support rule for treatment of cervical pre-cancer lesions. Implements WHO ablation eligibility criteria and treatment modality selection. Presents the clinician with a point-of-care ablation eligibility checklist (transformation zone type, lesion extent, suspicion of cancer) and recommends thermal ablation, cryotherapy, or excision (LEEP/LLETZ) based on eligibility and available data.",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "1287592000",
+            "display": "Thermocauterization of cervix"
+          }
+        ]
+      }
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "purpose": "To guide treatment modality selection for women with HPV-positive, VIA-positive cervical pre-cancer, ensuring appropriate assessment of ablation eligibility and selection of the most suitable treatment method for the clinical setting.",
+  "copyright": "Copyright 2026 Hopena Health. License: Apache 2.0",
+  "relatedArtifact": [
+    {
+      "type": "derived-from",
+      "label": "WHO Guideline",
+      "url": "https://www.who.int/publications/i/item/9789240030824",
+      "display": "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)"
+    },
+    {
+      "type": "citation",
+      "label": "WHO Guidance",
+      "display": "Ablation eligibility criteria: TZ type assessment, lesion extent, suspicion of cancer. Treatment preference: thermal ablation > cryotherapy > LEEP/LLETZ."
+    },
+    {
+      "type": "composed-of",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage|0.1.0",
+      "display": "Upstream: Triage routes VIA+ patients to treatment assessment"
+    },
+    {
+      "type": "composed-of",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp|0.1.0",
+      "display": "Downstream: Treated patients enter post-treatment follow-up"
+    }
+  ],
+  "library": [
+    "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision|0.1.0"
+  ],
+  "action": [
+    {
+      "title": "Treatment Assessment",
+      "description": "Evaluate treatment indication and determine appropriate modality for cervical pre-cancer",
+      "trigger": [
+        {
+          "type": "named-event",
+          "name": "patient-view"
+        }
+      ],
+      "condition": [
+        {
+          "kind": "applicability",
+          "expression": {
+            "language": "text/cql-identifier",
+            "expression": "Treatment Is Indicated",
+            "reference": "Library/CervicalCancerTreatmentDecision"
+          }
+        }
+      ],
+      "action": [
+        {
+          "id": "ablation-assessment",
+          "title": "Assess Ablation Eligibility",
+          "description": "Present ablation eligibility checklist for point-of-care clinical assessment. Ablation eligibility requires: (1) no suspicion of invasive/glandular disease, (2) TZ fully visible (Type 1 or 2), (3) lesion within probe reach.",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Treatment Is Indicated",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ],
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Ablation Eligibility Checklist",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            },
+            {
+              "path": "payload[1].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Treatment Recommendation",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ]
+        },
+        {
+          "id": "contraindication-alert",
+          "title": "Ablation Contraindicated",
+          "description": "Known contraindication to ablation — recommend excision (LEEP/LLETZ)",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Has Known Contraindication To Ablation",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ],
+          "priority": "urgent",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Treatment Recommendation",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cin2-consideration",
+          "title": "CIN2+ Diagnosed — Consider Excision",
+          "description": "Patient has CIN2 or higher diagnosis — excision may be preferred even if TZ is ablation-eligible",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Has CIN2 Or Higher Diagnosis",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ],
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Treatment Recommendation",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ]
+        },
+        {
+          "id": "refer-oncology",
+          "title": "Cervical Cancer — Refer to Oncology",
+          "description": "Patient has cervical cancer diagnosis — refer for oncology management, not screening pathway treatment",
+          "condition": [
+            {
+              "kind": "applicability",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Has Known Contraindication To Ablation",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ],
+          "priority": "urgent",
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/action-type",
+                "code": "create"
+              }
+            ]
+          },
+          "dynamicValue": [
+            {
+              "path": "payload[0].contentString",
+              "expression": {
+                "language": "text/cql-identifier",
+                "expression": "Treatment Recommendation",
+                "reference": "Library/CervicalCancerTreatmentDecision"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

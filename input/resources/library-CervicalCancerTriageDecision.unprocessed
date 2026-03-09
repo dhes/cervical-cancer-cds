@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerTriageDecision",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision",
+  "version": "0.1.0",
+  "name": "CervicalCancerTriageDecision",
+  "title": "Cervical Cancer Triage Decision Logic",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "content": [
+    {
+      "id": "ig-loader-CervicalCancerTriageDecision.cql"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerTriageDecision",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision",
+  "version": "0.1.0",
+  "name": "CervicalCancerTriageDecision",
+  "title": "Cervical Cancer Triage Decision Logic",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library",
+        "display": "Logic Library"
+      }
+    ]
+  },
+  "date": "2026-03-08",
+  "publisher": "Hopena Health",
+  "contact": [
+    {
+      "name": "Dan Heslinga",
+      "telecom": [{ "system": "url", "value": "https://hopenahealth.com" }]
+    }
+  ],
+  "description": "Triage pathway logic for HPV-positive women, implementing WHO Algorithm 5 (HPV DNA + VIA triage). Determines whether triage is indicated, interprets VIA results, and routes patients to treatment, follow-up retest, or oncology referral. Covers WHO Recommendations 3b, 11 (general) and 22, 23, 31 (WLHIV).",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "243877001",
+            "display": "Cancer cervix screening"
+          }
+        ]
+      }
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "relatedArtifact": [
+    {
+      "type": "derived-from",
+      "label": "WHO Guideline",
+      "url": "https://www.who.int/publications/i/item/9789240030824"
+    },
+    {
+      "type": "depends-on",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon|0.1.0"
+    },
+    {
+      "type": "depends-on",
+      "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+    }
+  ],
+  "parameter": [
+    {
+      "name": "Patient",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "type": "Patient"
+    },
+    {
+      "name": "Triage Is Indicated",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "VIA Triage Is Positive",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "VIA Triage Is Negative",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Proceed To Treatment",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Proceed To Follow Up Retest",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Triage Recommended Action",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    },
+    {
+      "name": "Triage Status",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    }
+  ],
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url": "cql/CervicalCancerTriageDecision.cql"
+    },
+    {
+      "contentType": "application/elm+json",
+      "url": "elm/CervicalCancerTriageDecision.json"
+    }
+  ]
+}

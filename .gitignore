@@ -9,6 +9,14 @@ elm/
 node_modules/
 package-lock.json
 
+# IG Publisher generated
+output/
+temp/
+template/
+fsh-generated/
+input-cache/
+Requirements-fromNarrative.json
+
 # Java build artifacts
 *.class
 build/

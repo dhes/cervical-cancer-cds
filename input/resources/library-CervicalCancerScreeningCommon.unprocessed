@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerScreeningCommon",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon",
+  "version": "0.1.0",
+  "name": "CervicalCancerScreeningCommon",
+  "title": "Cervical Cancer Screening Common Definitions",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "content": [
+    {
+      "id": "ig-loader-CervicalCancerScreeningCommon.cql"
+    }
+  ]
+}

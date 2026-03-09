@@ -1,0 +1,133 @@
+{
+  "resourceType": "Library",
+  "id": "CervicalCancerScreeningDecision",
+  "url": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision",
+  "version": "0.1.0",
+  "name": "CervicalCancerScreeningDecision",
+  "title": "Cervical Cancer Screening Decision Logic",
+  "status": "draft",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library",
+        "display": "Logic Library"
+      }
+    ]
+  },
+  "date": "2026-03-08",
+  "publisher": "Hopena Health",
+  "contact": [
+    {
+      "name": "Dan Heslinga",
+      "telecom": [{ "system": "url", "value": "https://hopenahealth.com" }]
+    }
+  ],
+  "description": "Screening eligibility, scheduling, and cascade routing logic for cervical cancer CDS. Determines whether a patient is eligible for screening, whether screening is currently due, and the patient's position in the WHO Algorithm 5 screening cascade. Covers WHO Recommendations 1, 2, 5-8, 14 (general) and 21, 22, 25-28, 34 (WLHIV).",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "243877001",
+            "display": "Cancer cervix screening"
+          }
+        ]
+      }
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "relatedArtifact": [
+    {
+      "type": "derived-from",
+      "label": "WHO Guideline",
+      "url": "https://www.who.int/publications/i/item/9789240030824"
+    },
+    {
+      "type": "depends-on",
+      "resource": "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon|0.1.0"
+    },
+    {
+      "type": "depends-on",
+      "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+    }
+  ],
+  "parameter": [
+    {
+      "name": "Patient",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "type": "Patient"
+    },
+    {
+      "name": "Is Eligible For Screening",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Is Due For Screening",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    },
+    {
+      "name": "Recommended Action",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    },
+    {
+      "name": "Cascade Status",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    },
+    {
+      "name": "Population Classification",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "string"
+    },
+    {
+      "name": "Needs Attention",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }
+  ],
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url": "cql/CervicalCancerScreeningDecision.cql"
+    },
+    {
+      "contentType": "application/elm+json",
+      "url": "elm/CervicalCancerScreeningDecision.json"
+    }
+  ]
+}

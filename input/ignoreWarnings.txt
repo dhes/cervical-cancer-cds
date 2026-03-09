@@ -1,0 +1,31 @@
+== Suppressed Messages ==
+
+# CIEL terminology system is not a registered FHIR code system
+A definition for CodeSystem 'https://cielterminology.org' could not be found, so the code cannot be validated
+
+# UN M49 region code system not available without terminology server
+A definition for CodeSystem 'http://unstats.un.org/unsd/methods/m49/m49.htm' could not be found, so the code cannot be validated
+
+# text/cql-identifier and text/cql are valid per CQL specification but not IANA-registered
+The code provided is not in the maximum value set http://www.rfc-editor.org/bcp/bcp13.txt
+
+# application/elm+json is valid per CQL specification but not IANA-registered
+The value provided ('application/elm+json') was not found in the value set 'MimeType'
+
+# WHO guideline URL is a publication, not a FHIR endpoint
+No definition could be found for URL value 'https://www.who.int/publications/i/item/9789240030824'
+
+# Library references in PlanDefinition expressions are relative references resolved via PlanDefinition.library
+No definition could be found for URL value 'Library/CervicalCancerFollowUpDecision'
+No definition could be found for URL value 'Library/CervicalCancerScreeningDecision'
+No definition could be found for URL value 'Library/CervicalCancerTriageDecision'
+No definition could be found for URL value 'Library/CervicalCancerTreatmentDecision'
+
+# Newer version available but we pin to tested version
+The ImplementationGuide uses package hl7.fhir.uv.cql
+
+# Value set URNs in CQL-generated Library relatedArtifact are not OIDs
+OIDs must be valid
+
+# Internal anchor reference from screening PlanDefinition
+The URL value '#screening-communication' is invalid because there is no matching target
