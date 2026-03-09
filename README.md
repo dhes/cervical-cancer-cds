@@ -35,7 +35,7 @@ npm install -g fsh-sushi
 
 ### Local
 
-Prerequisites: Java 17+, Node.js 18+, Jekyll, Python 3
+Prerequisites: Java 17+, Node.js 18+, Jekyll
 
 ```bash
 npm install -g fsh-sushi
