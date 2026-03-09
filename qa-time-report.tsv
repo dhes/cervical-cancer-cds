@@ -1,0 +1,24 @@
+Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
+/fsh-generated/resources/ImplementationGuide-hopena.cervical-cancer-cds.json	6312	-	0	0	0	0	1	0	13	97	0	0	0	0	0	0	0	1	0	0	95	88	0	0	0	5	0	1
+input/resources/PlanDefinition-CervicalCancerFollowUp.json	12311	20	1	0	2	0	0	0	2	54	0	0	0	0	0	0	0	0	0	0	30	31	0	0	0	1	0	0
+input/resources/PlanDefinition-CervicalCancerScreening.json	10218	19	0	0	0	0	0	0	1	26	0	0	0	0	0	0	0	0	0	0	25	20	0	0	0	1	0	0
+input/resources/PlanDefinition-CervicalCancerTreatment.json	8999	18	0	0	0	0	0	0	2	22	0	0	0	0	0	0	0	1	0	0	27	17	0	0	0	1	0	0
+input/resources/PlanDefinition-CervicalCancerTriage.json	8307	17	0	0	0	0	0	0	1	17	0	0	0	0	0	0	0	0	0	0	21	16	0	0	0	1	0	0
+input/resources/library-CervicalCancerFollowUpDecision.unprocessed	591	16	0	0	0	0	0	0	1	1770	0	0	0	0	0	0	0	0	0	0	328	64	0	0	0	11	0	0
+input/resources/library-CervicalCancerScreeningCommon.unprocessed	591	15	0	0	1	0	0	0	1	56	0	0	0	0	0	0	0	0	0	0	338	107	0	0	0	14	0	0
+input/resources/library-CervicalCancerScreeningDecision.unprocessed	595	16	0	0	0	0	0	0	1	80	0	0	0	0	0	0	0	0	0	0	159	61	0	0	0	6	0	0
+input/resources/library-CervicalCancerTreatmentDecision.unprocessed	595	16	0	0	0	0	0	0	1	19	0	0	0	0	0	0	0	0	0	0	255	63	0	0	0	9	0	0
+input/resources/library-CervicalCancerTriageDecision.unprocessed	580	15	0	0	0	0	0	0	0	17	0	0	0	0	0	0	0	0	0	0	102	30	0	0	0	3	0	0
+/fsh-generated/includes/menu.xml	1400	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/fsh-generated/includes/fsh-link-references.md	275	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/changes.md	417	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/license.md	593	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/index.md	2019	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/input/pagecontent/deployment.md	2560	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/downloads.md	360	-	-	-	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/architecture.md	2617	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/testing.md	2214	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/algorithm.md	2659	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config/_config.yml	140	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/temp/pages/_includes/artifacts.xml	5914	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	1	0	0	0	0	0	0

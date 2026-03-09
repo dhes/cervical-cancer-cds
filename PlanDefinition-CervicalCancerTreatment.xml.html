@@ -1,0 +1,500 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Treatment — Ablation Eligibility and Modality Selection - XML Representation - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"9.3"}
+    h3,h4,h5,h6{--heading-prefix:"9.3"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Treatment — Ablation Eligibility and Modality Selection</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div style="counter-reset: section 7" class="col-12">
+<!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li>
+    <a href="PlanDefinition-CervicalCancerTreatment.html">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li class="active">
+      <a href="#">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="PlanDefinition-CervicalCancerTreatment.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="PlanDefinition-CervicalCancerTreatment.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+
+<a name="root"> </a>
+
+
+<h2 id="root">: Cervical Cancer Treatment — Ablation Eligibility and Modality Selection - XML Representation</h2>
+
+  <table class="colsd">
+    <tr>
+
+      <td colspan="2">
+        
+          Draft
+          
+            as of 2026-03-08
+          
+        
+      </td>
+
+    </tr>
+  </table>
+
+
+<p><a href="PlanDefinition-CervicalCancerTreatment.xml" no-download="true">Raw xml</a> | <a href="PlanDefinition-CervicalCancerTreatment.xml" download>Download</a></p>
+
+  <!-- insert intro if present -->
+  
+
+
+
+  <pre class="xml" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-xml" style="white-space: pre; text-wrap: nowrap;">
+&lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition">PlanDefinition</a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.id">id</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;CervicalCancerTreatment&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.text">text</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;extensions&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p&gt;&lt;b style=&quot;color: maroon&quot;&gt;Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+  &lt;/<a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.text">text</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.url">url</a>
+       <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.version">version</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;0.1.0&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;CervicalCancerTreatment&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.title">title</a>
+         <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Cervical Cancer Treatment — Ablation Eligibility and Modality Selection&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.type">type</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>
+              <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://terminology.hl7.org/CodeSystem/plan-definition-type&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;eca-rule&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;ECA Rule&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.type">type</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;draft&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.experimental">experimental</a> <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">value</a>=&quot;true&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.date">date</a> <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">value</a>=&quot;2026-03-08&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">publisher</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Hopena Health&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Hopena Health&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;url&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;https://hopenahealth.com&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Dan Heslinga&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;url&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;https://hopenahealth.com&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.description">description</a>
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;Clinical decision support rule for treatment of cervical pre-cancer lesions. Implements WHO ablation eligibility criteria and treatment modality selection. Presents the clinician with a point-of-care ablation eligibility checklist (transformation zone type, lesion extent, suspicion of cancer) and recommends thermal ablation, cryotherapy, or excision (LEEP/LLETZ) based on eligibility and available data.&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.useContext">useContext</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.code">code</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>
+              <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://terminology.hl7.org/CodeSystem/usage-context-type&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;focus&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Clinical Focus&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.code">code</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.value_x_">valueCodeableConcept</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://snomed.info/sct&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;1287592000&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Thermocauterization of cervix&quot;/&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.value_x_">valueCodeableConcept</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.useContext">useContext</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.jurisdiction">jurisdiction</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://unstats.un.org/unsd/methods/m49/m49.htm&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;001&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.jurisdiction">jurisdiction</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.purpose">purpose</a>
+           <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;To guide treatment modality selection for women with HPV-positive, VIA-positive cervical pre-cancer, ensuring appropriate assessment of ablation eligibility and selection of the most suitable treatment method for the clinical setting.&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.copyright">copyright</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;Copyright 2026 Hopena Health. License: Apache 2.0&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;derived-from&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;WHO Guideline&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.url">url</a> <a href="http://hl7.org/fhir/R4/datatypes.html#url">value</a>=&quot;https://www.who.int/publications/i/item/9789240030824&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">document</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Attachment#Attachment.url">url</a> <a href="http://hl7.org/fhir/R4/datatypes.html#url">value</a>=&quot;https://www.who.int/publications/i/item/9789240030824&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">document</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;citation&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;WHO Guidance&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Ablation eligibility criteria: TZ type assessment, lesion extent, suspicion of cancer. Treatment preference: thermal ablation &amp;gt; cryotherapy &amp;gt; LEEP/LLETZ.&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.url">url</a> <a href="http://hl7.org/fhir/R4/datatypes.html#url">value</a>=&quot;https://www.who.int/publications/i/item/9789240030824&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">document</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Attachment#Attachment.url">url</a> <a href="http://hl7.org/fhir/R4/datatypes.html#url">value</a>=&quot;https://www.who.int/publications/i/item/9789240030824&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">document</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;composed-of&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Upstream: Triage routes VIA+ patients to treatment assessment&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.resource">resource</a>
+              <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">value</a>=&quot;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage|0.1.0&quot;/&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;composed-of&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Downstream: Treated patients enter post-treatment follow-up&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.resource">resource</a>
+              <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">value</a>=&quot;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp|0.1.0&quot;/&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.library">library</a>
+           <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">value</a>=&quot;https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision|0.1.0&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action">action</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Assessment&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>
+                 <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Evaluate treatment indication and determine appropriate modality for cervical pre-cancer&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.trigger">trigger</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#TriggerDefinition#TriggerDefinition.type">type</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;named-event&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#TriggerDefinition#TriggerDefinition.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;patient-view&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.trigger">trigger</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;applicability&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Is Indicated&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;ablation-assessment&quot;&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Assess Ablation Eligibility&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>
+                   <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Present ablation eligibility checklist for point-of-care clinical assessment. Ablation eligibility requires: (1) no suspicion of invasive/glandular disease, (2) TZ fully visible (Type 1 or 2), (3) lesion within probe reach.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;applicability&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Is Indicated&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://terminology.hl7.org/CodeSystem/action-type&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;create&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;payload[0].contentString&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Ablation Eligibility Checklist&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;payload[1].contentString&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Recommendation&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;contraindication-alert&quot;&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Ablation Contraindicated&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>
+                   <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Known contraindication to ablation — recommend excision (LEEP/LLETZ)&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.priority">priority</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;urgent&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;applicability&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Has Known Contraindication To Ablation&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://terminology.hl7.org/CodeSystem/action-type&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;create&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;payload[0].contentString&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Recommendation&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;cin2-consideration&quot;&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;CIN2+ Diagnosed — Consider Excision&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>
+                   <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Patient has CIN2 or higher diagnosis — excision may be preferred even if TZ is ablation-eligible&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;applicability&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Has CIN2 Or Higher Diagnosis&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://terminology.hl7.org/CodeSystem/action-type&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;create&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;payload[0].contentString&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Recommendation&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;refer-oncology&quot;&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Cervical Cancer — Refer to Oncology&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>
+                   <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Patient has cervical cancer diagnosis — refer for oncology management, not screening pathway treatment&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.priority">priority</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;urgent&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;applicability&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Has Known Contraindication To Ablation&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://terminology.hl7.org/CodeSystem/action-type&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;create&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;payload[0].contentString&quot;/&gt;
+        &lt;<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;text/cql-identifier&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Treatment Recommendation&quot;/&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;Library/CervicalCancerTreatmentDecision&quot;/&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action">action</a>&gt;
+&lt;/<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition">PlanDefinition</a>&gt;</code></pre>
+
+
+  <!-- insert notes if present -->
+  
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Mar 9, 2026 09:29+0000">2026-03-09</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

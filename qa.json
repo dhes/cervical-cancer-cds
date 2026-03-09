@@ -1,0 +1,19 @@
+{
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/ImplementationGuide/hopena.cervical-cancer-cds",
+  "name" : "CervicalCancerCDS",
+  "title" : "Cervical Cancer Screening CDS for OpenMRS",
+  "description" : "Clinical decision support implementing WHO cervical cancer screening and treatment guidelines (Algorithm 5: HPV DNA + VIA triage) as FHIR R4 PlanDefinition and CQL resources, targeting OpenMRS deployments in low- and middle-income countries.",
+  "status" : "draft",
+  "package-id" : "hopena.cervical-cancer-cds",
+  "ig-ver" : "0.1.0",
+  "date" : "Mon, 09 Mar, 2026 09:29:50 +0000",
+  "dateISO8601" : "2026-03-09T09:29:50+00:00",
+  "errs" : 13,
+  "warnings" : 31,
+  "hints" : 0,
+  "suppressed-hints" : 1,
+  "suppressed-warnings" : 55,
+  "version" : "4.0.1",
+  "tool" : "5.0.0 (3)",
+  "maxMemory" : 1514143744
+}
