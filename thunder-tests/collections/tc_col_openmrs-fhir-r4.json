@@ -1,0 +1,39 @@
+{
+    "_id": "ed8bb2dd-0128-45e0-9231-c897587033cb",
+    "colName": "OpenMRS FHIR R4",
+    "created": "2026-03-08T11:08:48.809Z",
+    "sortNum": 10000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e3e0aa87-9283-4e9a-a31a-d139ce83c5ba",
+            "colId": "ed8bb2dd-0128-45e0-9231-c897587033cb",
+            "containerId": "",
+            "name": "GET misc",
+            "url": "Patient",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2026-03-08T11:09:24.011Z",
+            "modified": "2026-03-08T11:09:24.011Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Content-Type",
+                "value": "application/fhir+json"
+            }
+        ],
+        "auth": {
+            "type": "basic",
+            "basic": {
+                "username": "admin",
+                "password": "Admin123"
+            }
+        },
+        "options": {
+            "baseUrl": "http://localhost/openmrs/ws/fhir2/R4/"
+        }
+    }
+}

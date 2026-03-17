@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHO Cervical Cancer Screening CDS — Clinical Demo</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --border: #e0e0e0;
+      --accent: #0077b6;
+      --accent-light: #e8f4f8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .header {
+      background: #023047;
+      color: white;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .header-meta {
+      font-size: 13px;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    .header-meta a { color: #8ecae6; }
+
+    .nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      gap: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav button {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav button:hover { color: var(--text); background: #f8f8f8; }
+    .nav button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .content { padding: 24px 32px; max-width: 960px; margin: 0 auto; }
+
+    .patient-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      margin-bottom: 24px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .patient-card.visible { display: block; }
+
+    .card-header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .patient-identity { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .patient-identity h2 { font-size: 20px; font-weight: 600; }
+    .patient-age { font-size: 14px; color: var(--text-secondary); }
+
+    .hiv-badge {
+      background: #ffb703;
+      color: #1a1a1a;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .cascade-badge {
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .cascade-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      gap: 0;
+      background: #fafafa;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.3;
+    }
+
+    .step.past { opacity: 0.6; }
+
+    .step.active {
+      opacity: 1;
+      --active-color: var(--accent);
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #ccc;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step.active .step-num { background: var(--active-color, var(--accent)); }
+    .step.past .step-num { background: #999; }
+
+    .step-label { font-size: 11px; color: var(--text-secondary); }
+    .step.active .step-label { font-weight: 600; color: var(--text); }
+
+    .step-connector {
+      width: 40px;
+      height: 2px;
+      background: #ddd;
+      margin: 0 4px;
+      margin-bottom: 18px;
+    }
+
+    .card-body { padding: 20px 24px; }
+
+    .narrative {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+    }
+
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .column h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .timeline { display: flex; flex-direction: column; gap: 8px; }
+
+    .timeline-event {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      padding: 6px 10px;
+      background: #f8f8f8;
+      border-radius: 6px;
+    }
+
+    .timeline-date {
+      font-family: 'SF Mono', SFMono-Regular, monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .timeline-label { flex: 1; }
+
+    .timeline-result {
+      font-weight: 600;
+      font-size: 12px;
+      padding: 1px 8px;
+      border-radius: 10px;
+    }
+
+    .result-positive { background: #fde8e8; color: #c62828; }
+    .result-negative { background: #e8f5e9; color: #2e7d32; }
+    .result-completed { background: #e3f2fd; color: #1565c0; }
+
+    .population-tag {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      padding: 6px 10px;
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+
+    .recommendation-box {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      background: #fff3e0;
+      border: 1px solid #ffe0b2;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .rec-icon { font-size: 20px; flex-shrink: 0; }
+    .rec-text { font-size: 14px; font-weight: 500; line-height: 1.5; }
+
+    .details-table {
+      width: 100%;
+      font-size: 13px;
+      border-collapse: collapse;
+    }
+
+    .details-table tr { border-bottom: 1px solid #f0f0f0; }
+    .details-table td { padding: 6px 0; }
+    .detail-label { color: var(--text-secondary); width: 55%; }
+    .detail-value { font-weight: 500; }
+
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .footer a { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .columns { grid-template-columns: 1fr; }
+      .header { flex-direction: column; gap: 8px; }
+      .nav { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>WHO Cervical Cancer Screening CDS</h1>
+      <div style="font-size: 13px; opacity: 0.7; margin-top: 4px;">Algorithm 5: HPV DNA + VIA Triage &mdash; Screen, Triage, and Treat</div>
+    </div>
+    <div class="header-meta">
+      FHIR R4 &middot; CQL &middot; CIEL/OpenMRS<br>
+      <a href="https://hopenahealth.com/fhir/cervical-cancer-cds/" target="_blank">Implementation Guide</a>
+    </div>
+  </div>
+
+  <div class="nav" id="nav">
+    <button data-index="0" class="active" onclick="showPatient(0)">S1 Amara</button>
+    <button data-index="1" class="" onclick="showPatient(1)">S2 Blessing</button>
+    <button data-index="2" class="" onclick="showPatient(2)">S3 Chioma</button>
+    <button data-index="3" class="" onclick="showPatient(3)">S4 Deka</button>
+    <button data-index="4" class="" onclick="showPatient(4)">S12 Lina</button>
+  </div>
+
+  <div class="content" id="content">
+    
+    <div class="patient-card" id="patient-S1">
+      <div class="card-header">
+        <div class="patient-identity">
+          <h2>S1. Amara Okafor</h2>
+          <span class="patient-age">34yo female</span>
+          
+        </div>
+        <div class="cascade-badge" style="background: #2196F3">Screen</div>
+      </div>
+
+      <div class="cascade-steps"><div class="step active" style="--active-color: #2196F3"><span class="step-num">1</span><span class="step-label">Screen</span></div><div class="step-connector"></div><div class="step" ><span class="step-num">2</span><span class="step-label">Triage</span></div><div class="step-connector"></div><div class="step" ><span class="step-num">3</span><span class="step-label">Treat</span></div><div class="step-connector"></div><div class="step" ><span class="step-num">4</span><span class="step-label">Follow-up</span></div></div>
+
+      <div class="card-body">
+        <div class="narrative">
+          <p>Amara is a 34-year-old woman visiting the health centre for the first time. She has never been screened for cervical cancer.</p>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h3>Clinical History</h3>
+            <div class="timeline"><div class="timeline-event"><span class="timeline-label">No prior screening history</span></div></div>
+            <div class="population-tag">General population — WHO Recommendations 1-14</div>
+          </div>
+          <div class="column">
+            <h3>CQL Decision Output</h3>
+            <div class="recommendation-box">
+              <div class="rec-icon">➤</div>
+              <div class="rec-text">Screen with HPV DNA test</div>
+            </div>
+            <table class="details-table"><tr><td class="detail-label">Requires double follow-up (WLHIV)</td><td class="detail-value">No</td></tr>
+<tr><td class="detail-label">Needs second retest</td><td class="detail-value">No</td></tr></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="patient-card" id="patient-S2">
+      <div class="card-header">
+        <div class="patient-identity">
+          <h2>S2. Blessing Mutua</h2>
+          <span class="patient-age">34yo female</span>
+          
+        </div>
+        <div class="cascade-badge" style="background: #FF9800">Triage</div>
+      </div>
+
+      <div class="cascade-steps"><div class="step past" ><span class="step-num">1</span><span class="step-label">Screen</span></div><div class="step-connector"></div><div class="step active" style="--active-color: #FF9800"><span class="step-num">2</span><span class="step-label">Triage</span></div><div class="step-connector"></div><div class="step" ><span class="step-num">3</span><span class="step-label">Treat</span></div><div class="step-connector"></div><div class="step" ><span class="step-num">4</span><span class="step-label">Follow-up</span></div></div>
+
+      <div class="card-body">
+        <div class="narrative">
+          <p>Blessing is 34 years old. She was screened with an HPV DNA test 2 weeks ago, and the result came back positive. She has returned to the clinic for follow-up.</p>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h3>Clinical History</h3>
+            <div class="timeline"><div class="timeline-event">
+          <span class="timeline-date">2026-03-03</span>
+          <span class="timeline-label">HPV DNA test</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div></div>
+            <div class="population-tag">General population — WHO Recommendations 1-14</div>
+          </div>
+          <div class="column">
+            <h3>CQL Decision Output</h3>
+            <div class="recommendation-box">
+              <div class="rec-icon">➤</div>
+              <div class="rec-text">Perform VIA triage assessment</div>
+            </div>
+            <table class="details-table"><tr><td class="detail-label">Triage status</td><td class="detail-value">awaiting-triage</td></tr>
+<tr><td class="detail-label">Requires double follow-up (WLHIV)</td><td class="detail-value">No</td></tr>
+<tr><td class="detail-label">Needs second retest</td><td class="detail-value">No</td></tr></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="patient-card" id="patient-S3">
+      <div class="card-header">
+        <div class="patient-identity">
+          <h2>S3. Chioma Ndege</h2>
+          <span class="patient-age">35yo female</span>
+          
+        </div>
+        <div class="cascade-badge" style="background: #f44336">Treat</div>
+      </div>
+
+      <div class="cascade-steps"><div class="step past" ><span class="step-num">1</span><span class="step-label">Screen</span></div><div class="step-connector"></div><div class="step past" ><span class="step-num">2</span><span class="step-label">Triage</span></div><div class="step-connector"></div><div class="step active" style="--active-color: #f44336"><span class="step-num">3</span><span class="step-label">Treat</span></div><div class="step-connector"></div><div class="step" ><span class="step-num">4</span><span class="step-label">Follow-up</span></div></div>
+
+      <div class="card-body">
+        <div class="narrative">
+          <p>Chioma is 35 years old. She tested HPV-positive and then underwent VIA triage, which was also positive. She needs treatment for precancerous lesions.</p>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h3>Clinical History</h3>
+            <div class="timeline"><div class="timeline-event">
+          <span class="timeline-date">2026-01-10</span>
+          <span class="timeline-label">HPV DNA test</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div>
+<div class="timeline-event">
+          <span class="timeline-date">2026-01-24</span>
+          <span class="timeline-label">VIA triage</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div></div>
+            <div class="population-tag">General population — WHO Recommendations 1-14</div>
+          </div>
+          <div class="column">
+            <h3>CQL Decision Output</h3>
+            <div class="recommendation-box">
+              <div class="rec-icon">➤</div>
+              <div class="rec-text">Assess transformation zone to determine ablation eligibility. If eligible: thermal ablation (preferred) or cryotherapy. If not eligible: excision (LEEP/LLETZ).</div>
+            </div>
+            <table class="details-table"><tr><td class="detail-label">Triage status</td><td class="detail-value">triage-positive</td></tr>
+<tr><td class="detail-label">Treatment status</td><td class="detail-value">treatment-indicated</td></tr>
+<tr><td class="detail-label">Requires double follow-up (WLHIV)</td><td class="detail-value">No</td></tr>
+<tr><td class="detail-label">Needs second retest</td><td class="detail-value">No</td></tr></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="patient-card" id="patient-S4">
+      <div class="card-header">
+        <div class="patient-identity">
+          <h2>S4. Deka Abdi</h2>
+          <span class="patient-age">35yo female</span>
+          
+        </div>
+        <div class="cascade-badge" style="background: #9C27B0">Follow-up</div>
+      </div>
+
+      <div class="cascade-steps"><div class="step past" ><span class="step-num">1</span><span class="step-label">Screen</span></div><div class="step-connector"></div><div class="step past" ><span class="step-num">2</span><span class="step-label">Triage</span></div><div class="step-connector"></div><div class="step past" ><span class="step-num">3</span><span class="step-label">Treat</span></div><div class="step-connector"></div><div class="step active" style="--active-color: #9C27B0"><span class="step-num">4</span><span class="step-label">Follow-up</span></div></div>
+
+      <div class="card-body">
+        <div class="narrative">
+          <p>Deka is 35 years old. She was treated with thermal ablation 10 months ago after a positive HPV and VIA result. She is in the post-treatment follow-up window and approaching her 12-month retest.</p>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h3>Clinical History</h3>
+            <div class="timeline"><div class="timeline-event">
+          <span class="timeline-date">2025-03-01</span>
+          <span class="timeline-label">HPV DNA test</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div>
+<div class="timeline-event">
+          <span class="timeline-date">2025-03-15</span>
+          <span class="timeline-label">VIA triage</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div>
+<div class="timeline-event">
+          <span class="timeline-date">2025-05-17</span>
+          <span class="timeline-label">Thermal ablation</span>
+          <span class="timeline-result result-completed">Completed</span>
+        </div></div>
+            <div class="population-tag">General population — WHO Recommendations 1-14</div>
+          </div>
+          <div class="column">
+            <h3>CQL Decision Output</h3>
+            <div class="recommendation-box">
+              <div class="rec-icon">➤</div>
+              <div class="rec-text">Post-treatment HPV DNA retest approaching — due in 2 months</div>
+            </div>
+            <table class="details-table"><tr><td class="detail-label">Triage status</td><td class="detail-value">triage-positive</td></tr>
+<tr><td class="detail-label">Treatment status</td><td class="detail-value">treated</td></tr>
+<tr><td class="detail-label">Follow-up status</td><td class="detail-value">post-treatment-retest-approaching</td></tr>
+<tr><td class="detail-label">Months since treatment</td><td class="detail-value">10</td></tr>
+<tr><td class="detail-label">Requires double follow-up (WLHIV)</td><td class="detail-value">No</td></tr>
+<tr><td class="detail-label">Needs second retest</td><td class="detail-value">No</td></tr></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="patient-card" id="patient-S12">
+      <div class="card-header">
+        <div class="patient-identity">
+          <h2>S12. Lina Osei</h2>
+          <span class="patient-age">35yo female</span>
+          <span class="hiv-badge">HIV+</span>
+        </div>
+        <div class="cascade-badge" style="background: #9C27B0">Follow-up</div>
+      </div>
+
+      <div class="cascade-steps"><div class="step past" ><span class="step-num">1</span><span class="step-label">Screen</span></div><div class="step-connector"></div><div class="step past" ><span class="step-num">2</span><span class="step-label">Triage</span></div><div class="step-connector"></div><div class="step past" ><span class="step-num">3</span><span class="step-label">Treat</span></div><div class="step-connector"></div><div class="step active" style="--active-color: #9C27B0"><span class="step-num">4</span><span class="step-label">Follow-up</span></div></div>
+
+      <div class="card-body">
+        <div class="narrative">
+          <p>Lina is a 35-year-old woman living with HIV. She was treated with thermal ablation over a year ago. Her first post-treatment HPV retest was negative, but because she is WLHIV, the WHO guideline requires a second retest before returning to routine screening.</p>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h3>Clinical History</h3>
+            <div class="timeline"><div class="timeline-event">
+          <span class="timeline-date">2024-06-01</span>
+          <span class="timeline-label">HPV DNA test</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div>
+<div class="timeline-event">
+          <span class="timeline-date">2024-07-01</span>
+          <span class="timeline-label">VIA triage</span>
+          <span class="timeline-result result-positive">Positive</span>
+        </div>
+<div class="timeline-event">
+          <span class="timeline-date">2024-08-08</span>
+          <span class="timeline-label">Thermal ablation</span>
+          <span class="timeline-result result-completed">Completed</span>
+        </div>
+<div class="timeline-event">
+          <span class="timeline-date">2025-08-08</span>
+          <span class="timeline-label">HPV DNA retest (12mo)</span>
+          <span class="timeline-result result-negative">Negative</span>
+        </div></div>
+            <div class="population-tag">Woman living with HIV (WLHIV) — WHO Recommendations 21-34</div>
+          </div>
+          <div class="column">
+            <h3>CQL Decision Output</h3>
+            <div class="recommendation-box">
+              <div class="rec-icon">➤</div>
+              <div class="rec-text">First post-treatment HPV retest was negative — schedule second retest in 5 months (WLHIV double follow-up)</div>
+            </div>
+            <table class="details-table"><tr><td class="detail-label">Treatment status</td><td class="detail-value">treated</td></tr>
+<tr><td class="detail-label">Follow-up status</td><td class="detail-value">wlhiv-awaiting-second-retest</td></tr>
+<tr><td class="detail-label">Months since treatment</td><td class="detail-value">19</td></tr>
+<tr><td class="detail-label">Requires double follow-up (WLHIV)</td><td class="detail-value">Yes</td></tr>
+<tr><td class="detail-label">Needs second retest</td><td class="detail-value">Yes</td></tr></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>
+      Hopena Health &middot; CQL evaluated client-side via
+      <a href="https://github.com/cqframework/cql-execution">cql-execution</a>
+      &middot; 14 test patients, 82 assertions passing
+    </p>
+    <p style="margin-top: 4px;">
+      Based on <em>WHO guideline for screening and treatment of cervical pre-cancer lesions</em>, 2nd ed. (2021)
+    </p>
+    <p style="margin-top: 8px; font-size: 11px; color: #bbb;">
+      Demo generated 2026-03-17 &middot; CQL evaluation date: Today()
+    </p>
+  </div>
+
+  <script>
+    function showPatient(index) {
+      document.querySelectorAll('.patient-card').forEach((c, i) => {
+        c.classList.toggle('visible', i === index);
+      });
+      document.querySelectorAll('.nav button').forEach((b, i) => {
+        b.classList.toggle('active', i === index);
+      });
+    }
+    // Show first patient on load
+    showPatient(0);
+  </script>
+</body>
+</html>
