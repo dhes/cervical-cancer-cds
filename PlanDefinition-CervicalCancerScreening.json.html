@@ -1,0 +1,601 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Screening Eligibility and Cascade Routing - JSON Representation - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"9.2"}
+    h3,h4,h5,h6{--heading-prefix:"9.2"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Screening Eligibility and Cascade Routing</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div style="counter-reset: section 8" class="col-12">
+<!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li>
+    <a href="PlanDefinition-CervicalCancerScreening.html">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="PlanDefinition-CervicalCancerScreening.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li class="active">
+      <a href="#">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="PlanDefinition-CervicalCancerScreening.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+
+<a name="root"> </a>
+
+
+<h2 id="root">: Cervical Cancer Screening Eligibility and Cascade Routing - JSON Representation</h2>
+
+  <table class="colsd">
+    <tr>
+
+      <td colspan="2">
+        
+          Draft
+          
+            as of 2026-03-08
+          
+        
+      </td>
+
+    </tr>
+  </table>
+
+
+<p><a href="PlanDefinition-CervicalCancerScreening.json" no-download="true">Raw json</a> | <a href="PlanDefinition-CervicalCancerScreening.json" download>Download</a></p>
+
+  <!-- insert intro if present -->
+  
+
+
+
+  <pre class="json" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-json" style="white-space: pre; text-wrap: nowrap;">{
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition">resourceType</a>" : "PlanDefinition",
+  "<a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.id">id</a>" : "CervicalCancerScreening",
+  "<a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.text">text</a>" : {
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a>" : "extensions",
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b style=\&quot;color: maroon\&quot;&gt;Exception generating Narrative: unexpected non-end of element null::a  at line 176 column 55&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;"
+  },
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.url">url</a>" : "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.version">version</a>" : "0.1.0",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.name">name</a>" : "CervicalCancerScreening",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.title">title</a>" : "Cervical Cancer Screening Eligibility and Cascade Routing",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.type">type</a>" : {
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+      {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/plan-definition-type",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "eca-rule",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "ECA Rule"
+      }
+    ]
+  },
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.status">status</a>" : "draft",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.experimental">experimental</a>" : true,
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.date">date</a>" : "2026-03-08",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">publisher</a>" : "Hopena Health",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "Hopena Health",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://hopenahealth.com"
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "Dan Heslinga",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://hopenahealth.com"
+        }
+      ]
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.description">description</a>" : "Clinical decision support rule for cervical cancer screening eligibility, scheduling, and cascade routing. Implements WHO Algorithm 5 (HPV DNA + VIA triage) screening entry point for both general population and women living with HIV (WLHIV). Evaluates patient demographics, HIV status, and screening history to determine eligibility, due status, and the patient's current position in the screening cascade.",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.useContext">useContext</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.code">code</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "focus",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Clinical Focus"
+      },
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.value_x_">valueCodeableConcept</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+          {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://snomed.info/sct",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "243877001",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Cancer cervix screening"
+          }
+        ]
+      }
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.code">code</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "gender",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Gender"
+      },
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.value_x_">valueCodeableConcept</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+          {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://hl7.org/fhir/administrative-gender",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "female",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Female"
+          }
+        ]
+      }
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.code">code</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "age",
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Age Range"
+      },
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.value_x_">valueRange</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Range#Range.low">low</a>" : {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">value</a>" : 25,
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">unit</a>" : "years"
+        },
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Range#Range.high">high</a>" : {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">value</a>" : 50,
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">unit</a>" : "years"
+        }
+      }
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.jurisdiction">jurisdiction</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "001"
+        }
+      ]
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.purpose">purpose</a>" : "To identify women eligible for cervical cancer screening and determine their current position in the WHO screening cascade, enabling timely initiation and continuity of screening services.",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.copyright">copyright</a>" : "Copyright 2026 Hopena Health. License: Apache 2.0",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">relatedArtifact</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a>" : "derived-from",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.label">label</a>" : "WHO Guideline",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>" : "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.url">url</a>" : "https://www.who.int/publications/i/item/9789240030824",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">document</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Attachment#Attachment.url">url</a>" : "https://www.who.int/publications/i/item/9789240030824"
+      }
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">type</a>" : "citation",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.label">label</a>" : "WHO Recommendations",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">display</a>" : "General population: Recs 1, 2, 5, 6, 7, 8, 14. WLHIV: Recs 21, 22, 25, 26, 27, 28, 34.",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.url">url</a>" : "https://www.who.int/publications/i/item/9789240030824",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">document</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Attachment#Attachment.url">url</a>" : "https://www.who.int/publications/i/item/9789240030824"
+      }
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.library">library</a>" : [
+    <a href="Library-CervicalCancerScreeningDecision.html" style="color: Maroon">&#x1F517;</a> "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision|0.1.0"
+  ],
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action">action</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Cervical Cancer Screening Assessment",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Evaluate screening eligibility and cascade position for women presenting for care",
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.trigger">trigger</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/metadatatypes.html#TriggerDefinition#TriggerDefinition.type">type</a>" : "named-event",
+          "<a href="http://hl7.org/fhir/R4/metadatatypes.html#TriggerDefinition#TriggerDefinition.name">name</a>" : "patient-view"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Is Eligible For Screening",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">action</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">id</a>" : "screening-due",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Screen with HPV DNA Test",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Patient is eligible and due for cervical cancer screening with HPV DNA test",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Is Due For Screening",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/action-type",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "create"
+              }
+            ]
+          },
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.definition_x_">definitionCanonical</a>" : "#screening-communication",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[0].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Recommended Action",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[1].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Population Classification",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            },
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[2].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Screening Interval Display",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ]
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">id</a>" : "needs-triage",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "HPV-Positive — Needs VIA Triage",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Patient has a positive HPV DNA test and needs VIA triage assessment",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Needs Triage After Positive HPV",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/action-type",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "create"
+              }
+            ]
+          },
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[0].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Recommended Action",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ]
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">id</a>" : "needs-treatment",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "HPV+ and VIA+ — Needs Treatment",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Patient has positive HPV DNA and positive VIA triage — treatment assessment needed",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Has Positive Triage Result",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/action-type",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "create"
+              }
+            ]
+          },
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[0].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Recommended Action",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ]
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">id</a>" : "post-treatment-followup",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Post-Treatment Follow-Up",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Patient has been treated and is in the post-treatment follow-up window",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Is In Post Treatment Follow Up",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/action-type",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "create"
+              }
+            ]
+          },
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[0].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Recommended Action",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ]
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">id</a>" : "routine-recall",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">title</a>" : "Routine Recall",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">description</a>" : "Patient's last HPV test was negative — next screening not yet due",
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">condition</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">kind</a>" : "applicability",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Most Recent HPV Test Is Negative",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ],
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">type</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/action-type",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "create"
+              }
+            ]
+          },
+          "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">dynamicValue</a>" : [
+            {
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">path</a>" : "payload[0].contentString",
+              "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">expression</a>" : {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">language</a>" : "text/cql-identifier",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">expression</a>" : "Recommended Action",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">reference</a>" : "Library/CervicalCancerScreeningDecision"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+
+  <!-- insert notes if present -->
+  
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 17, 2026 16:29+0000">2026-03-17</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

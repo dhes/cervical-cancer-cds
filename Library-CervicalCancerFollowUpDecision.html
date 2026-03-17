@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Follow-Up Decision Logic - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"9.5"}
+    h3,h4,h5,h6{--heading-prefix:"9.5"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Follow-Up Decision Logic</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li class="active">
+    <a href="#">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerFollowUpDecision.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerFollowUpDecision.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerFollowUpDecision.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+  <a name="root"> </a>
+
+  <h2 id="root">Library: Cervical Cancer Follow-Up Decision Logic
+(Experimental)
+  </h2>
+
+  <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision<button title="Click to copy URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision|0.1.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="4">
+        
+          Draft
+          
+            as of 2026-03-17
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">CervicalCancerFollowUpDecision</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+  <!-- insert intro if present -->
+  
+
+
+
+<!--  <p>
+  Formats: <a href="Library-CervicalCancerFollowUpDecision.xml.html">XML</a>, <a href="Library-CervicalCancerFollowUpDecision.json.html">JSON</a>, <a href="Library-CervicalCancerFollowUpDecision.ttl.html">Turtle</a>
+  </p>-->
+
+  
+
+
+  <div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Cervical Cancer Follow-Up Decision Logic</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">CervicalCancerFollowUpDecision</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">0.1.0</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="Library-CervicalCancerFollowUpDecision.html">Cervical Cancer Follow-Up Decision Logic</a></td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>logic-library</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-03-17 16:29:43+0000</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">Hopena Health</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">001</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                  
+                    <li><a href="Library-CervicalCancerScreeningCommon.html">Cervical Cancer Screening Common Definitionsversion: null0.1.0)</a></li>
+                  
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Parameters: </b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Min</b></th><th><b>Max</b></th><th><b>In/Out</b></th></tr>
+              
+                <tr><th>Patient</th><th>Patient</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is In Post Treatment Follow Up Window</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Months Since Treatment</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has HPV Test After Treatment</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Treatment Retest Is Due</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Treatment Retest Is Approaching</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Treatment Retest Is Negative</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Treatment Retest Is Positive</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Requires Double Follow Up</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>HPV Tests Since Treatment Count</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>WLHIV Needs Second Follow Up Test</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>WLHIV Second Follow Up Test Is Due</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>WLHIV Double Follow Up Complete</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is Post Triage Negative</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Months Since Triage Negative VIA</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Triage Negative Retest Is Due</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Triage Negative Retest Is Approaching</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Can Return To Routine Screening</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Follow Up Recommended Action</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Follow Up Status</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Active Follow Up</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><a id="cql-content"><b>Content: </b></a> text/cql</th></tr>
+              <tr><td><pre><code class="language-cql">/*
+ * CervicalCancerFollowUpDecision
+ *
+ * Follow-up scheduling logic for cervical cancer screening CDS,
+ * implementing WHO guideline post-treatment and post-triage-negative
+ * follow-up intervals.
+ *
+ * This library determines:
+ *   - Post-treatment follow-up timing (12 months for both populations)
+ *   - Post-triage-negative follow-up timing (12 months WLHIV, 24 months general)
+ *   - WLHIV double follow-up tracking (second retest at 12 months after first)
+ *   - Return-to-routine-screening criteria
+ *   - Re-entry to triage/treatment if follow-up HPV test is positive
+ *
+ * Follow-up Cascades:
+ *
+ *   Post-Treatment (both populations):
+ *     Treated → 12 months → HPV retest
+ *       ├── Negative (general) → return to routine screening (5-10 years)
+ *       ├── Negative (WLHIV) → second retest at 12 months
+ *       │     ├── Negative → return to routine screening (3-5 years)
+ *       │     └── Positive → re-enter triage/treatment
+ *       └── Positive → re-enter triage/treatment
+ *
+ *   Post-Triage-Negative:
+ *     HPV+ but VIA- → retest at 12 months (WLHIV) or 24 months (general)
+ *       ├── Negative → return to routine screening
+ *       └── Positive → re-enter triage
+ *
+ * WHO Recommendations covered:
+ *   General: 11 (post-triage-negative retest at 24mo), 12 (post-colp-normal), 13 (post-treatment 12mo)
+ *   WLHIV: 31 (post-triage-negative retest at 12mo), 32 (post-colp-normal), 33 (post-treatment double)
+ *
+ * @author  Dan Heslinga / Hopena Health
+ * @version 0.1.0
+ * @date    2026-03-08
+ */
+
+library CervicalCancerFollowUpDecision version '0.1.0'
+
+using FHIR version '4.0.1'
+
+include FHIRHelpers version '4.0.1'
+include CervicalCancerScreeningCommon version '0.1.0' called Common
+
+context Patient
+
+/*
+ * =============================================================================
+ * POST-TREATMENT FOLLOW-UP
+ * =============================================================================
+ *
+ * @guidance WHO Rec 13/33: Retest with HPV DNA at 12 months post-treatment
+ *           WLHIV Rec 33: If negative, retest again at 12 months (double follow-up)
+ */
+
+/*
+ * @output Boolean — true if patient has been treated and is in the follow-up window
+ * @pseudocode Treated within the last 24 months (covers both single and double follow-up)
+ */
+define &quot;Is In Post Treatment Follow Up Window&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and Common.&quot;Months Since Treatment&quot; is not null
+    and Common.&quot;Months Since Treatment&quot; &lt; 24
+
+/*
+ * @output Integer — months since most recent treatment
+ */
+define &quot;Months Since Treatment&quot;:
+  Common.&quot;Months Since Treatment&quot;
+
+/*
+ * @output Boolean — true if the 12-month post-treatment HPV retest is due
+ * @pseudocode Treated AND &gt;= 12 months elapsed AND no HPV test after treatment
+ */
+define &quot;Post Treatment Retest Is Due&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and Common.&quot;Months Since Treatment&quot; &gt;= Common.&quot;Post Treatment Retest Months&quot;
+    and not &quot;Has HPV Test After Treatment&quot;
+
+/*
+ * @output Boolean — true if the 12-month retest is approaching (within 2 months)
+ * @pseudocode Treated AND 10-12 months elapsed AND no HPV test after treatment
+ * @guidance Use this for early reminders to schedule the follow-up visit
+ */
+define &quot;Post Treatment Retest Is Approaching&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and Common.&quot;Months Since Treatment&quot; &gt;= (Common.&quot;Post Treatment Retest Months&quot; - 2)
+    and Common.&quot;Months Since Treatment&quot; &lt; Common.&quot;Post Treatment Retest Months&quot;
+    and not &quot;Has HPV Test After Treatment&quot;
+
+/*
+ * @output Boolean — true if an HPV DNA test was performed after the most recent treatment
+ */
+define &quot;Has HPV Test After Treatment&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and Common.&quot;Has Ever Been Screened With HPV&quot;
+    and Common.&quot;Date Of Most Recent HPV Test&quot; after Common.&quot;Date Of Most Recent Treatment&quot;
+
+/*
+ * @output Boolean — true if the post-treatment HPV retest was negative
+ */
+define &quot;Post Treatment Retest Is Negative&quot;:
+  &quot;Has HPV Test After Treatment&quot;
+    and not Common.&quot;Most Recent HPV Test Is Positive&quot;
+
+/*
+ * @output Boolean — true if the post-treatment HPV retest was positive
+ * @guidance Positive → re-enter triage/treatment pathway
+ */
+define &quot;Post Treatment Retest Is Positive&quot;:
+  &quot;Has HPV Test After Treatment&quot;
+    and Common.&quot;Most Recent HPV Test Is Positive&quot;
+
+/*
+ * =============================================================================
+ * WLHIV DOUBLE FOLLOW-UP
+ * =============================================================================
+ *
+ * @guidance WHO Rec 33: WLHIV should have TWO consecutive negative HPV tests
+ *           at 12-month intervals after treatment before returning to routine
+ *           screening. This is because WLHIV have higher rates of persistent
+ *           HPV infection and recurrence.
+ *
+ * Logic:
+ *   Treatment → 12mo → HPV retest #1
+ *     ├── Negative → 12 more months → HPV retest #2
+ *     │     ├── Negative → return to routine (3-5 year interval)
+ *     │     └── Positive → re-enter triage/treatment
+ *     └── Positive → re-enter triage/treatment
+ */
+
+/*
+ * @output Boolean — true if patient is WLHIV requiring double follow-up
+ */
+define &quot;Requires Double Follow Up&quot;:
+  Common.&quot;Is WLHIV&quot;
+    and Common.&quot;Has Been Treated&quot;
+
+/*
+ * @output Integer — how many HPV tests have been done since the most recent treatment
+ * @pseudocode Count of HPV DNA tests with effectiveDateTime after treatment date
+ */
+define &quot;HPV Tests Since Treatment Count&quot;:
+  if not Common.&quot;Has Been Treated&quot;
+  then 0
+  else Count(
+    Common.&quot;HPV DNA Test Results&quot; O
+      where (O.effective as FHIR.dateTime).value after Common.&quot;Date Of Most Recent Treatment&quot;
+  )
+
+/*
+ * @output Boolean — true if WLHIV has had first post-treatment negative test
+ *         but second test is not yet done
+ * @pseudocode WLHIV AND treated AND exactly 1 post-treatment HPV test AND it was negative
+ */
+define &quot;WLHIV Needs Second Follow Up Test&quot;:
+  &quot;Requires Double Follow Up&quot;
+    and &quot;HPV Tests Since Treatment Count&quot; = 1
+    and not Common.&quot;Most Recent HPV Test Is Positive&quot;
+
+/*
+ * @output Boolean — true if WLHIV second follow-up test is due (12 months after first post-tx test)
+ * @pseudocode WLHIV AND needs second test AND &gt;= 12 months since the first post-treatment test
+ */
+define &quot;WLHIV Second Follow Up Test Is Due&quot;:
+  &quot;WLHIV Needs Second Follow Up Test&quot;
+    and months between Common.&quot;Date Of Most Recent HPV Test&quot; and Today() &gt;= 12
+
+/*
+ * @output Boolean — true if WLHIV has completed both follow-up tests with negative results
+ * @pseudocode WLHIV AND treated AND &gt;= 2 post-treatment HPV tests AND most recent is negative
+ */
+define &quot;WLHIV Double Follow Up Complete&quot;:
+  &quot;Requires Double Follow Up&quot;
+    and &quot;HPV Tests Since Treatment Count&quot; &gt;= 2
+    and not Common.&quot;Most Recent HPV Test Is Positive&quot;
+
+/*
+ * =============================================================================
+ * POST-TRIAGE-NEGATIVE FOLLOW-UP
+ * =============================================================================
+ *
+ * @guidance WHO Rec 11 (general): HPV+/VIA- → retest at 24 months
+ *           WHO Rec 31 (WLHIV): HPV+/VIA- → retest at 12 months
+ */
+
+/*
+ * @output Boolean — true if patient is in post-triage-negative follow-up
+ * @pseudocode HPV+ AND VIA- AND VIA was after HPV test
+ */
+define &quot;Is Post Triage Negative&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and not Common.&quot;Most Recent VIA Is Positive&quot;
+    and exists(Common.&quot;VIA Screening Results&quot;)
+    and Common.&quot;Date Of Most Recent VIA&quot; on or after Common.&quot;Date Of Most Recent HPV Test&quot;
+    and not Common.&quot;Has Been Treated&quot;
+
+/*
+ * @output Integer — months since the triage-negative VIA result
+ */
+define &quot;Months Since Triage Negative VIA&quot;:
+  if &quot;Is Post Triage Negative&quot;
+  then months between Common.&quot;Date Of Most Recent VIA&quot; and Today()
+  else null
+
+/*
+ * @output Boolean — true if the post-triage-negative HPV retest is due
+ * @pseudocode Triage-negative AND months elapsed &gt;= retest interval (12 or 24)
+ */
+define &quot;Post Triage Negative Retest Is Due&quot;:
+  &quot;Is Post Triage Negative&quot;
+    and &quot;Months Since Triage Negative VIA&quot; &gt;= Common.&quot;Post Triage Negative Retest Months&quot;
+
+/*
+ * @output Boolean — true if the post-triage-negative retest is approaching (within 2 months)
+ */
+define &quot;Post Triage Negative Retest Is Approaching&quot;:
+  &quot;Is Post Triage Negative&quot;
+    and &quot;Months Since Triage Negative VIA&quot; &gt;= (Common.&quot;Post Triage Negative Retest Months&quot; - 2)
+    and &quot;Months Since Triage Negative VIA&quot; &lt; Common.&quot;Post Triage Negative Retest Months&quot;
+
+/*
+ * =============================================================================
+ * RETURN TO ROUTINE SCREENING
+ * =============================================================================
+ *
+ * @guidance Patients can return to routine screening interval when:
+ *   General: post-treatment HPV retest negative → 5-10 year interval
+ *   WLHIV: two consecutive negative post-treatment HPV retests → 3-5 year interval
+ *   Both: post-triage-negative HPV retest negative → routine interval
+ */
+
+/*
+ * @output Boolean — true if patient can return to routine screening
+ * @pseudocode
+ *   (Post-treatment, general pop, retest negative) OR
+ *   (Post-treatment, WLHIV, double follow-up complete) OR
+ *   (Post-triage-negative retest was done and was negative)
+ */
+define &quot;Can Return To Routine Screening&quot;:
+  // General population: single negative post-treatment test
+  (Common.&quot;Has Been Treated&quot;
+    and not Common.&quot;Is WLHIV&quot;
+    and &quot;Post Treatment Retest Is Negative&quot;)
+  or
+  // WLHIV: double follow-up complete
+  &quot;WLHIV Double Follow Up Complete&quot;
+
+/*
+ * =============================================================================
+ * RECOMMENDED ACTION — Follow-up-specific guidance
+ * =============================================================================
+ */
+
+/*
+ * @output String — the recommended follow-up action
+ */
+define &quot;Follow Up Recommended Action&quot;:
+  case
+    // Post-treatment: retest was positive → re-enter screening cascade
+    when &quot;Post Treatment Retest Is Positive&quot;
+      then 'Post-treatment HPV retest is POSITIVE — re-enter triage/treatment pathway'
+
+    // WLHIV: double follow-up complete → return to routine
+    when &quot;WLHIV Double Follow Up Complete&quot;
+      then 'Two consecutive negative HPV tests after treatment — return to routine screening every '
+           + ToString(Common.&quot;Screening Interval Years&quot;) + ' years'
+
+    // General pop: post-treatment retest negative → return to routine
+    when &quot;Post Treatment Retest Is Negative&quot; and not Common.&quot;Is WLHIV&quot;
+      then 'Post-treatment HPV retest is negative — return to routine screening every '
+           + ToString(Common.&quot;Screening Interval Years&quot;) + ' years'
+
+    // WLHIV: first post-treatment test negative, second test due
+    when &quot;WLHIV Second Follow Up Test Is Due&quot;
+      then 'First post-treatment HPV retest was negative — second retest now due (WLHIV double follow-up)'
+
+    // WLHIV: first post-treatment test negative, waiting for second
+    when &quot;WLHIV Needs Second Follow Up Test&quot;
+      then 'First post-treatment HPV retest was negative — schedule second retest in '
+           + ToString(12 - (months between Common.&quot;Date Of Most Recent HPV Test&quot; and Today()))
+           + ' months (WLHIV double follow-up)'
+
+    // Post-treatment: retest is due
+    when &quot;Post Treatment Retest Is Due&quot;
+      then 'Post-treatment HPV DNA retest is due (12 months post-treatment)'
+
+    // Post-treatment: retest approaching
+    when &quot;Post Treatment Retest Is Approaching&quot;
+      then 'Post-treatment HPV DNA retest approaching — due in '
+           + ToString(Common.&quot;Post Treatment Retest Months&quot; - Common.&quot;Months Since Treatment&quot;)
+           + ' months'
+
+    // Post-treatment: waiting for retest interval
+    when &quot;Is In Post Treatment Follow Up Window&quot; and not &quot;Has HPV Test After Treatment&quot;
+      then 'Post-treatment — HPV DNA retest scheduled at 12 months. '
+           + ToString(Common.&quot;Post Treatment Retest Months&quot; - Common.&quot;Months Since Treatment&quot;)
+           + ' months remaining'
+
+    // Post-triage-negative: retest due
+    when &quot;Post Triage Negative Retest Is Due&quot;
+      then 'Post-triage-negative HPV DNA retest is due'
+
+    // Post-triage-negative: retest approaching
+    when &quot;Post Triage Negative Retest Is Approaching&quot;
+      then 'Post-triage-negative HPV DNA retest approaching — due in '
+           + ToString(Common.&quot;Post Triage Negative Retest Months&quot; - &quot;Months Since Triage Negative VIA&quot;)
+           + ' months'
+
+    // Post-triage-negative: waiting
+    when &quot;Is Post Triage Negative&quot;
+      then 'HPV-positive but VIA-negative — HPV DNA retest in '
+           + ToString(Common.&quot;Post Triage Negative Retest Months&quot; - &quot;Months Since Triage Negative VIA&quot;)
+           + ' months'
+
+    else 'No follow-up action indicated'
+  end
+
+/*
+ * @output String — coded follow-up status for integration
+ */
+define &quot;Follow Up Status&quot;:
+  case
+    when &quot;Post Treatment Retest Is Positive&quot; then 'retest-positive-reenter'
+    when &quot;Can Return To Routine Screening&quot; then 'return-to-routine'
+    when &quot;WLHIV Second Follow Up Test Is Due&quot; then 'wlhiv-second-retest-due'
+    when &quot;WLHIV Needs Second Follow Up Test&quot; then 'wlhiv-awaiting-second-retest'
+    when &quot;Post Treatment Retest Is Due&quot; then 'post-treatment-retest-due'
+    when &quot;Post Treatment Retest Is Approaching&quot; then 'post-treatment-retest-approaching'
+    when &quot;Is In Post Treatment Follow Up Window&quot; then 'post-treatment-waiting'
+    when &quot;Post Triage Negative Retest Is Due&quot; then 'post-triage-negative-retest-due'
+    when &quot;Post Triage Negative Retest Is Approaching&quot; then 'post-triage-negative-retest-approaching'
+    when &quot;Is Post Triage Negative&quot; then 'post-triage-negative-waiting'
+    else 'no-follow-up'
+  end
+
+/*
+ * @output Boolean — overall flag: does this patient have an active follow-up action?
+ */
+define &quot;Has Active Follow Up&quot;:
+  &quot;Is In Post Treatment Follow Up Window&quot;
+    or &quot;Is Post Triage Negative&quot;
+    or &quot;WLHIV Needs Second Follow Up Test&quot;
+</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><b>Content: </b> application/elm+json</th></tr>
+              <tr><td><pre><code>Encoded data (96008 characters)</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+    </table>
+</div>
+</div>
+
+  <!-- insert notes if present -->
+  
+
+
+
+  
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 17, 2026 16:29+0000">2026-03-17</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

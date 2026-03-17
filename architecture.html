@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Architecture - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3"}
+    h3,h4,h5,h6{--heading-prefix:"3"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Architecture</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Architecture</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#cql-library-architecture" id="markdown-toc-cql-library-architecture">CQL Library Architecture</a></li>
+  <li><a href="#fhir-resource-dependencies" id="markdown-toc-fhir-resource-dependencies">FHIR Resource Dependencies</a></li>
+  <li><a href="#data-requirements" id="markdown-toc-data-requirements">Data Requirements</a></li>
+  <li><a href="#openmrs-fhir2-constraints" id="markdown-toc-openmrs-fhir2-constraints">OpenMRS FHIR2 Constraints</a></li>
+  <li><a href="#terminology-approach" id="markdown-toc-terminology-approach">Terminology Approach</a></li>
+  <li><a href="#cql-evaluation" id="markdown-toc-cql-evaluation">CQL Evaluation</a></li>
+</ul>
+
+</div>
+<h3 id="cql-library-architecture">CQL Library Architecture</h3>
+
+<p>All decision libraries include a shared Common library that provides patient
+demographics, HIV status, and clinical history retrieval.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CervicalCancerScreeningCommon (shared definitions)
+  |
+  +-- CervicalCancerScreeningDecision (eligibility, cascade routing)
+  +-- CervicalCancerTriageDecision (HPV+ VIA triage)
+  +-- CervicalCancerTreatmentDecision (ablation eligibility, modality)
+  +-- CervicalCancerFollowUpDecision (retest scheduling, WLHIV double follow-up)
+</code></pre></div></div>
+
+<h3 id="fhir-resource-dependencies">FHIR Resource Dependencies</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PlanDefinition (ECA rule)
+  --&gt; Library (CQL wrapper)
+        --&gt; CQL source (text/cql)
+        --&gt; ELM compiled (application/elm+json)
+</code></pre></div></div>
+
+<p>Each PlanDefinition references its Library via the <code class="language-plaintext highlighter-rouge">library</code> element.
+Library resources contain base64-encoded CQL and ELM in their <code class="language-plaintext highlighter-rouge">content</code> array,
+populated by the IG Publisher during build.</p>
+
+<h3 id="data-requirements">Data Requirements</h3>
+
+<p>The CQL retrieves three FHIR resource types from the patient record:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Purpose</th>
+      <th>Key Codes (CIEL)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Patient</td>
+      <td>Age, sex</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>Observation</td>
+      <td>HPV tests, VIA results, treatments</td>
+      <td>170145, 151185, 166706, 162812, 165084</td>
+    </tr>
+    <tr>
+      <td>Condition</td>
+      <td>HIV status, cervical cancer, CIN diagnoses</td>
+      <td>138405, 116023, 145809, 145807, 145806</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="openmrs-fhir2-constraints">OpenMRS FHIR2 Constraints</h3>
+
+<p>This IG targets the OpenMRS FHIR2 module, which has specific constraints:</p>
+
+<ul>
+  <li><strong>No Procedure resource</strong>: Treatments (thermal ablation, cryotherapy, LEEP) are
+recorded as Observations with treatment concept codes and value = Positive (CIEL 703)</li>
+  <li><strong>SNOMED URI</strong>: OpenMRS uses <code class="language-plaintext highlighter-rouge">http://snomed.info/sct/</code> (with trailing slash)
+rather than the standard <code class="language-plaintext highlighter-rouge">http://snomed.info/sct</code></li>
+  <li><strong>ServiceRequest</strong>: Read-only in OpenMRS FHIR2</li>
+</ul>
+
+<h3 id="terminology-approach">Terminology Approach</h3>
+
+<p>The CQL uses <a href="https://openconceptlab.org/orgs/CIEL/">CIEL</a> concept IDs as the
+primary code system (<code class="language-plaintext highlighter-rouge">https://cielterminology.org</code>), matching the OpenMRS concept
+dictionary. CIEL concepts are mapped to SNOMED CT, LOINC, and ICD-10 in the
+OpenMRS concept dictionary.</p>
+
+<p>The CQL retrieves observations using <code class="language-plaintext highlighter-rouge">.code.coding.code contains '&lt;CIEL code&gt;'</code>
+patterns and checks result values using CIEL Positive (703) and Negative (664).</p>
+
+<h3 id="cql-evaluation">CQL Evaluation</h3>
+
+<p>The CQL is designed for client-side evaluation using the JavaScript
+<a href="https://github.com/cqframework/cql-execution">cql-execution</a> engine against
+the OpenMRS FHIR R4 endpoint. This architecture follows the approach validated
+by Bacher et al. in "FHIRing up OpenMRS" (AMIA 2024, PMC11141833).</p>
+
+<p>Production deployment target: OpenMRS O3 microfrontend running cql-execution
+in the browser, with FHIR data fetched from the local OpenMRS instance.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 17, 2026 16:29+0000">2026-03-17</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

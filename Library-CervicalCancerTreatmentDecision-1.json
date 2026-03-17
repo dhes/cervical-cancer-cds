@@ -1,0 +1,2023 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "translatorOptions" : "EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "None",
+         "type" : "CqlToElmInfo"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "CervicalCancerTreatmentDecision",
+         "system" : "https://hopenahealth.com/fhir/cervical-cancer-cds",
+         "version" : "0.1.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1",
+            "version" : "1.0.0",
+            "annotation" : [ ]
+         }, {
+            "locator" : "32:1-32:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "locator" : "34:1-34:35",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://hl7.org/fhir/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         }, {
+            "locator" : "35:1-35:67",
+            "localIdentifier" : "Common",
+            "path" : "https://hopenahealth.com/fhir/cervical-cancer-cds/CervicalCancerScreeningCommon",
+            "version" : "0.1.0",
+            "annotation" : [ ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "locator" : "53:1-53:48",
+            "name" : "CIEL",
+            "id" : "https://cielterminology.org",
+            "accessLevel" : "Public",
+            "annotation" : [ ]
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "locator" : "56:1-56:90",
+            "name" : "Thermal Ablation Code",
+            "id" : "166706",
+            "display" : "Thermocauterization of cervix",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "codeSystem" : {
+               "locator" : "56:45-56:50",
+               "name" : "CIEL",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "57:1-57:87",
+            "name" : "Cryotherapy Code",
+            "id" : "162812",
+            "display" : "Cryosurgery of lesion of cervix",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "codeSystem" : {
+               "locator" : "57:40-57:45",
+               "name" : "CIEL",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "58:1-58:63",
+            "name" : "LEEP Code",
+            "id" : "165084",
+            "display" : "LEEP of cervix",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "codeSystem" : {
+               "locator" : "58:33-58:38",
+               "name" : "CIEL",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "59:1-59:96",
+            "name" : "LEEP Generic Code",
+            "id" : "162810",
+            "display" : "Loop electrosurgical excision procedure",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "codeSystem" : {
+               "locator" : "59:41-59:46",
+               "name" : "CIEL",
+               "annotation" : [ ]
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "locator" : "61:1-61:15",
+            "name" : "Patient",
+            "annotation" : [ ]
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "61:1-61:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "annotation" : [ ],
+            "expression" : {
+               "type" : "SingletonFrom",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : {
+                  "locator" : "61:1-61:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "annotation" : [ ],
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "locator" : "80:1-85:37",
+            "name" : "Treatment Is Indicated",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "81:3-85:37",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "81:3-84:50",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "81:3-83:90",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "81:3-82:44",
+                        "type" : "And",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "81:3-81:43",
+                           "name" : "Most Recent HPV Test Is Positive",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "82:9-82:44",
+                           "name" : "Most Recent VIA Is Positive",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        } ]
+                     }, {
+                        "locator" : "83:9-83:90",
+                        "type" : "SameOrAfter",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "83:9-83:40",
+                           "name" : "Date Of Most Recent VIA",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "83:54-83:90",
+                           "name" : "Date Of Most Recent HPV Test",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        } ]
+                     } ]
+                  }, {
+                     "locator" : "84:9-84:50",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "84:13-84:50",
+                        "name" : "Has Cervical Cancer Diagnosis",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  } ]
+               }, {
+                  "locator" : "85:9-85:37",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "85:13-85:37",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "91:1-97:5",
+            "name" : "Treatment Episode Active",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "92:3-97:5",
+               "type" : "Or",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "92:3-92:26",
+                  "name" : "Treatment Is Indicated",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "93:8-97:5",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "94:7-95:53",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "94:7-94:31",
+                        "name" : "Has Been Treated",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "95:11-95:53",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "95:11-95:53",
+                           "type" : "IsNull",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "95:11-95:41",
+                              "name" : "Months Since Treatment",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        }
+                     } ]
+                  }, {
+                     "locator" : "96:11-96:46",
+                     "type" : "Less",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "96:11-96:41",
+                        "name" : "Months Since Treatment",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "96:45-96:46",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "24",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "129:1-130:40",
+            "name" : "Has Known Contraindication To Ablation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "130:3-130:40",
+               "name" : "Has Cervical Cancer Diagnosis",
+               "libraryName" : "Common",
+               "type" : "ExpressionRef",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "138:1-144:3",
+            "name" : "Has CIN2 Or Higher Diagnosis",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "139:3-144:3",
+               "type" : "Exists",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : {
+                  "locator" : "139:9-144:3",
+                  "type" : "Query",
+                  "annotation" : [ ],
+                  "source" : [ {
+                     "locator" : "140:5-140:17",
+                     "alias" : "C",
+                     "annotation" : [ ],
+                     "expression" : {
+                        "locator" : "140:5-140:15",
+                        "dataType" : "{http://hl7.org/fhir}Condition",
+                        "templateId" : "http://hl7.org/fhir/StructureDefinition/Condition",
+                        "type" : "Retrieve",
+                        "annotation" : [ ],
+                        "include" : [ ],
+                        "codeFilter" : [ ],
+                        "dateFilter" : [ ],
+                        "otherFilter" : [ ]
+                     }
+                  } ],
+                  "let" : [ ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "locator" : "141:7-143:58",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "141:13-142:53",
+                        "type" : "Or",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "141:14-141:49",
+                           "type" : "Contains",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : [ {
+                              "type" : "Query",
+                              "annotation" : [ ],
+                              "source" : [ {
+                                 "alias" : "X",
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "locator" : "141:14-141:31",
+                                    "type" : "Query",
+                                    "annotation" : [ ],
+                                    "source" : [ {
+                                       "alias" : "$this",
+                                       "annotation" : [ ],
+                                       "expression" : {
+                                          "locator" : "141:14-141:26",
+                                          "path" : "coding",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "locator" : "141:14-141:19",
+                                             "path" : "code",
+                                             "scope" : "C",
+                                             "type" : "Property",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    } ],
+                                    "let" : [ ],
+                                    "relationship" : [ ],
+                                    "where" : {
+                                       "type" : "Not",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "type" : "IsNull",
+                                          "annotation" : [ ],
+                                          "signature" : [ ],
+                                          "operand" : {
+                                             "path" : "code",
+                                             "type" : "Property",
+                                             "annotation" : [ ],
+                                             "source" : {
+                                                "name" : "$this",
+                                                "type" : "AliasRef",
+                                                "annotation" : [ ]
+                                             }
+                                          }
+                                       }
+                                    },
+                                    "return" : {
+                                       "distinct" : false,
+                                       "annotation" : [ ],
+                                       "expression" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "let" : [ ],
+                              "relationship" : [ ],
+                              "return" : {
+                                 "distinct" : false,
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "name" : "ToString",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : [ {
+                                       "name" : "X",
+                                       "type" : "AliasRef",
+                                       "annotation" : [ ]
+                                    } ]
+                                 }
+                              }
+                           }, {
+                              "locator" : "141:42-141:49",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "145807",
+                              "type" : "Literal",
+                              "annotation" : [ ]
+                           } ]
+                        }, {
+                           "locator" : "142:17-142:52",
+                           "type" : "Contains",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : [ {
+                              "type" : "Query",
+                              "annotation" : [ ],
+                              "source" : [ {
+                                 "alias" : "X",
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "locator" : "142:17-142:34",
+                                    "type" : "Query",
+                                    "annotation" : [ ],
+                                    "source" : [ {
+                                       "alias" : "$this",
+                                       "annotation" : [ ],
+                                       "expression" : {
+                                          "locator" : "142:17-142:29",
+                                          "path" : "coding",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "locator" : "142:17-142:22",
+                                             "path" : "code",
+                                             "scope" : "C",
+                                             "type" : "Property",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    } ],
+                                    "let" : [ ],
+                                    "relationship" : [ ],
+                                    "where" : {
+                                       "type" : "Not",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "type" : "IsNull",
+                                          "annotation" : [ ],
+                                          "signature" : [ ],
+                                          "operand" : {
+                                             "path" : "code",
+                                             "type" : "Property",
+                                             "annotation" : [ ],
+                                             "source" : {
+                                                "name" : "$this",
+                                                "type" : "AliasRef",
+                                                "annotation" : [ ]
+                                             }
+                                          }
+                                       }
+                                    },
+                                    "return" : {
+                                       "distinct" : false,
+                                       "annotation" : [ ],
+                                       "expression" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "let" : [ ],
+                              "relationship" : [ ],
+                              "return" : {
+                                 "distinct" : false,
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "name" : "ToString",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : [ {
+                                       "name" : "X",
+                                       "type" : "AliasRef",
+                                       "annotation" : [ ]
+                                    } ]
+                                 }
+                              }
+                           }, {
+                              "locator" : "142:45-142:52",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "145806",
+                              "type" : "Literal",
+                              "annotation" : [ ]
+                           } ]
+                        } ]
+                     }, {
+                        "locator" : "143:13-143:58",
+                        "type" : "Contains",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "type" : "Query",
+                           "annotation" : [ ],
+                           "source" : [ {
+                              "alias" : "X",
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "locator" : "143:13-143:40",
+                                 "type" : "Query",
+                                 "annotation" : [ ],
+                                 "source" : [ {
+                                    "alias" : "$this",
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "locator" : "143:13-143:35",
+                                       "path" : "coding",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "143:13-143:28",
+                                          "path" : "clinicalStatus",
+                                          "scope" : "C",
+                                          "type" : "Property",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 } ],
+                                 "let" : [ ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Not",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "type" : "IsNull",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 },
+                                 "return" : {
+                                    "distinct" : false,
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              }
+                           } ],
+                           "let" : [ ],
+                           "relationship" : [ ],
+                           "return" : {
+                              "distinct" : false,
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : [ {
+                                    "name" : "X",
+                                    "type" : "AliasRef",
+                                    "annotation" : [ ]
+                                 } ]
+                              }
+                           }
+                        }, {
+                           "locator" : "143:51-143:58",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "active",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "locator" : "151:1-159:11",
+            "name" : "Ablation Eligibility Checklist",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "152:3-159:11",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "152:6-152:29",
+                  "name" : "Treatment Is Indicated",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               },
+               "then" : {
+                  "locator" : "153:8-158:59",
+                  "type" : "Concatenate",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "153:8-157:66",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "153:8-156:79",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "153:8-155:64",
+                           "type" : "Concatenate",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : [ {
+                              "locator" : "153:8-154:59",
+                              "type" : "Concatenate",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "153:8-153:56",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "Assess ablation eligibility — ALL must be true:",
+                                 "type" : "Literal",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "154:8-154:59",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "\n1. No suspicion of invasive or glandular disease",
+                                 "type" : "Literal",
+                                 "annotation" : [ ]
+                              } ]
+                           }, {
+                              "locator" : "155:8-155:64",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "\n2. Transformation zone fully visible (TZ Type 1 or 2)",
+                              "type" : "Literal",
+                              "annotation" : [ ]
+                           } ]
+                        }, {
+                           "locator" : "156:8-156:79",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "\n3. Lesion does not extend into endocervical canal beyond probe reach",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     }, {
+                        "locator" : "157:8-157:66",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "\n\nIf ALL criteria met → Thermal ablation or cryotherapy",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }, {
+                     "locator" : "158:8-158:59",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "\nIf ANY criterion NOT met → Excision (LEEP/LLETZ)",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  } ]
+               },
+               "else" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}String",
+                  "type" : "As",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "159:8-159:11",
+                     "type" : "Null",
+                     "annotation" : [ ]
+                  }
+               }
+            }
+         }, {
+            "locator" : "179:1-204:5",
+            "name" : "Treatment Recommendation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "180:3-204:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "181:5-182:58",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "181:10-181:47",
+                     "name" : "Has Cervical Cancer Diagnosis",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "182:12-182:58",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Refer to oncology — cervical cancer diagnosed",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "184:5-185:49",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "184:10-184:72",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "184:10-184:37",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "184:14-184:37",
+                           "name" : "Treatment Is Indicated",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     }, {
+                        "locator" : "184:43-184:72",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "184:47-184:72",
+                           "name" : "Treatment Episode Active",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "185:12-185:49",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Treatment not indicated at this time",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "187:5-188:81",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "187:10-187:34",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "188:12-188:81",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Treatment already performed — see FollowUpDecision for retest timing",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "190:5-191:71",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "190:10-190:49",
+                     "name" : "Has Known Contraindication To Ablation",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "191:12-191:71",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Ablation contraindicated — recommend excision (LEEP/LLETZ)",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "193:5-196:46",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "193:10-193:39",
+                     "name" : "Has CIN2 Or Higher Diagnosis",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "194:12-196:46",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "194:12-195:80",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "194:12-194:63",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "CIN2+ diagnosed — consider excision (LEEP/LLETZ). ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "195:12-195:80",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Ablation may be acceptable if transformation zone is fully visible ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     }, {
+                        "locator" : "196:12-196:46",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "and lesion is within probe reach.",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "198:5-201:52",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "198:10-198:33",
+                     "name" : "Treatment Is Indicated",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "199:12-201:52",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "199:12-200:71",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "199:12-199:75",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Assess transformation zone to determine ablation eligibility. ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "200:12-200:71",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "If eligible: thermal ablation (preferred) or cryotherapy. ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     }, {
+                        "locator" : "201:12-201:52",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "If not eligible: excision (LEEP/LLETZ).",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "203:10-203:55",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Unable to determine treatment recommendation",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "215:1-229:7",
+            "name" : "Most Recent Treatment Type",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "216:3-229:7",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "216:6-216:34",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "216:10-216:34",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               },
+               "then" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}String",
+                  "type" : "As",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "217:8-217:11",
+                     "type" : "Null",
+                     "annotation" : [ ]
+                  }
+               },
+               "else" : {
+                  "locator" : "219:5-229:7",
+                  "type" : "Case",
+                  "annotation" : [ ],
+                  "caseItem" : [ {
+                     "locator" : "220:7-221:53",
+                     "annotation" : [ ],
+                     "when" : {
+                        "locator" : "220:12-220:76",
+                        "type" : "Contains",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "type" : "Query",
+                           "annotation" : [ ],
+                           "source" : [ {
+                              "alias" : "X",
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "locator" : "220:12-220:58",
+                                 "type" : "Query",
+                                 "annotation" : [ ],
+                                 "source" : [ {
+                                    "alias" : "$this",
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "locator" : "220:12-220:53",
+                                       "path" : "coding",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "220:12-220:46",
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "locator" : "220:12-220:41",
+                                             "name" : "Most Recent Treatment",
+                                             "libraryName" : "Common",
+                                             "type" : "ExpressionRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 } ],
+                                 "let" : [ ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Not",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "type" : "IsNull",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 },
+                                 "return" : {
+                                    "distinct" : false,
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              }
+                           } ],
+                           "let" : [ ],
+                           "relationship" : [ ],
+                           "return" : {
+                              "distinct" : false,
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : [ {
+                                    "name" : "X",
+                                    "type" : "AliasRef",
+                                    "annotation" : [ ]
+                                 } ]
+                              }
+                           }
+                        }, {
+                           "locator" : "220:69-220:76",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "166706",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     },
+                     "then" : {
+                        "locator" : "221:14-221:53",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Thermal ablation (thermocauterization)",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     }
+                  }, {
+                     "locator" : "222:7-223:26",
+                     "annotation" : [ ],
+                     "when" : {
+                        "locator" : "222:12-222:76",
+                        "type" : "Contains",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "type" : "Query",
+                           "annotation" : [ ],
+                           "source" : [ {
+                              "alias" : "X",
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "locator" : "222:12-222:58",
+                                 "type" : "Query",
+                                 "annotation" : [ ],
+                                 "source" : [ {
+                                    "alias" : "$this",
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "locator" : "222:12-222:53",
+                                       "path" : "coding",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "222:12-222:46",
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "locator" : "222:12-222:41",
+                                             "name" : "Most Recent Treatment",
+                                             "libraryName" : "Common",
+                                             "type" : "ExpressionRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 } ],
+                                 "let" : [ ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Not",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "type" : "IsNull",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 },
+                                 "return" : {
+                                    "distinct" : false,
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              }
+                           } ],
+                           "let" : [ ],
+                           "relationship" : [ ],
+                           "return" : {
+                              "distinct" : false,
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : [ {
+                                    "name" : "X",
+                                    "type" : "AliasRef",
+                                    "annotation" : [ ]
+                                 } ]
+                              }
+                           }
+                        }, {
+                           "locator" : "222:69-222:76",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "162812",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     },
+                     "then" : {
+                        "locator" : "223:14-223:26",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Cryotherapy",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     }
+                  }, {
+                     "locator" : "224:7-225:61",
+                     "annotation" : [ ],
+                     "when" : {
+                        "locator" : "224:12-224:76",
+                        "type" : "Contains",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "type" : "Query",
+                           "annotation" : [ ],
+                           "source" : [ {
+                              "alias" : "X",
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "locator" : "224:12-224:58",
+                                 "type" : "Query",
+                                 "annotation" : [ ],
+                                 "source" : [ {
+                                    "alias" : "$this",
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "locator" : "224:12-224:53",
+                                       "path" : "coding",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "224:12-224:46",
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "locator" : "224:12-224:41",
+                                             "name" : "Most Recent Treatment",
+                                             "libraryName" : "Common",
+                                             "type" : "ExpressionRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 } ],
+                                 "let" : [ ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Not",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "type" : "IsNull",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 },
+                                 "return" : {
+                                    "distinct" : false,
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              }
+                           } ],
+                           "let" : [ ],
+                           "relationship" : [ ],
+                           "return" : {
+                              "distinct" : false,
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : [ {
+                                    "name" : "X",
+                                    "type" : "AliasRef",
+                                    "annotation" : [ ]
+                                 } ]
+                              }
+                           }
+                        }, {
+                           "locator" : "224:69-224:76",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "165084",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     },
+                     "then" : {
+                        "locator" : "225:14-225:61",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "LEEP (loop electrosurgical excision procedure)",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     }
+                  }, {
+                     "locator" : "226:7-227:38",
+                     "annotation" : [ ],
+                     "when" : {
+                        "locator" : "226:12-226:76",
+                        "type" : "Contains",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "type" : "Query",
+                           "annotation" : [ ],
+                           "source" : [ {
+                              "alias" : "X",
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "locator" : "226:12-226:58",
+                                 "type" : "Query",
+                                 "annotation" : [ ],
+                                 "source" : [ {
+                                    "alias" : "$this",
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "locator" : "226:12-226:53",
+                                       "path" : "coding",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "226:12-226:46",
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "locator" : "226:12-226:41",
+                                             "name" : "Most Recent Treatment",
+                                             "libraryName" : "Common",
+                                             "type" : "ExpressionRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 } ],
+                                 "let" : [ ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Not",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "type" : "IsNull",
+                                       "annotation" : [ ],
+                                       "signature" : [ ],
+                                       "operand" : {
+                                          "path" : "code",
+                                          "type" : "Property",
+                                          "annotation" : [ ],
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef",
+                                             "annotation" : [ ]
+                                          }
+                                       }
+                                    }
+                                 },
+                                 "return" : {
+                                    "distinct" : false,
+                                    "annotation" : [ ],
+                                    "expression" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              }
+                           } ],
+                           "let" : [ ],
+                           "relationship" : [ ],
+                           "return" : {
+                              "distinct" : false,
+                              "annotation" : [ ],
+                              "expression" : {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : [ {
+                                    "name" : "X",
+                                    "type" : "AliasRef",
+                                    "annotation" : [ ]
+                                 } ]
+                              }
+                           }
+                        }, {
+                           "locator" : "226:69-226:76",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "162810",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     },
+                     "then" : {
+                        "locator" : "227:14-227:38",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Loop excision procedure",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     }
+                  } ],
+                  "else" : {
+                     "locator" : "228:12-228:35",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Unknown treatment type",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }
+            }
+         }, {
+            "locator" : "234:1-239:5",
+            "name" : "Was Treated With Ablation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "235:3-239:5",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "235:3-235:27",
+                  "name" : "Has Been Treated",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "236:9-239:5",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "237:7-237:71",
+                     "type" : "Contains",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "type" : "Query",
+                        "annotation" : [ ],
+                        "source" : [ {
+                           "alias" : "X",
+                           "annotation" : [ ],
+                           "expression" : {
+                              "locator" : "237:7-237:53",
+                              "type" : "Query",
+                              "annotation" : [ ],
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "locator" : "237:7-237:48",
+                                    "path" : "coding",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "locator" : "237:7-237:41",
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "237:7-237:36",
+                                          "name" : "Most Recent Treatment",
+                                          "libraryName" : "Common",
+                                          "type" : "ExpressionRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "let" : [ ],
+                              "relationship" : [ ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "distinct" : false,
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "path" : "code",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef",
+                                       "annotation" : [ ]
+                                    }
+                                 }
+                              }
+                           }
+                        } ],
+                        "let" : [ ],
+                        "relationship" : [ ],
+                        "return" : {
+                           "distinct" : false,
+                           "annotation" : [ ],
+                           "expression" : {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "name" : "X",
+                                 "type" : "AliasRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        }
+                     }, {
+                        "locator" : "237:64-237:71",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "166706",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }, {
+                     "locator" : "238:10-238:74",
+                     "type" : "Contains",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "type" : "Query",
+                        "annotation" : [ ],
+                        "source" : [ {
+                           "alias" : "X",
+                           "annotation" : [ ],
+                           "expression" : {
+                              "locator" : "238:10-238:56",
+                              "type" : "Query",
+                              "annotation" : [ ],
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "locator" : "238:10-238:51",
+                                    "path" : "coding",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "locator" : "238:10-238:44",
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "238:10-238:39",
+                                          "name" : "Most Recent Treatment",
+                                          "libraryName" : "Common",
+                                          "type" : "ExpressionRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "let" : [ ],
+                              "relationship" : [ ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "distinct" : false,
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "path" : "code",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef",
+                                       "annotation" : [ ]
+                                    }
+                                 }
+                              }
+                           }
+                        } ],
+                        "let" : [ ],
+                        "relationship" : [ ],
+                        "return" : {
+                           "distinct" : false,
+                           "annotation" : [ ],
+                           "expression" : {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "name" : "X",
+                                 "type" : "AliasRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        }
+                     }, {
+                        "locator" : "238:67-238:74",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "162812",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "244:1-249:5",
+            "name" : "Was Treated With Excision",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "245:3-249:5",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "245:3-245:27",
+                  "name" : "Has Been Treated",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "246:9-249:5",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "247:7-247:71",
+                     "type" : "Contains",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "type" : "Query",
+                        "annotation" : [ ],
+                        "source" : [ {
+                           "alias" : "X",
+                           "annotation" : [ ],
+                           "expression" : {
+                              "locator" : "247:7-247:53",
+                              "type" : "Query",
+                              "annotation" : [ ],
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "locator" : "247:7-247:48",
+                                    "path" : "coding",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "locator" : "247:7-247:41",
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "247:7-247:36",
+                                          "name" : "Most Recent Treatment",
+                                          "libraryName" : "Common",
+                                          "type" : "ExpressionRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "let" : [ ],
+                              "relationship" : [ ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "distinct" : false,
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "path" : "code",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef",
+                                       "annotation" : [ ]
+                                    }
+                                 }
+                              }
+                           }
+                        } ],
+                        "let" : [ ],
+                        "relationship" : [ ],
+                        "return" : {
+                           "distinct" : false,
+                           "annotation" : [ ],
+                           "expression" : {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "name" : "X",
+                                 "type" : "AliasRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        }
+                     }, {
+                        "locator" : "247:64-247:71",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "165084",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }, {
+                     "locator" : "248:10-248:74",
+                     "type" : "Contains",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "type" : "Query",
+                        "annotation" : [ ],
+                        "source" : [ {
+                           "alias" : "X",
+                           "annotation" : [ ],
+                           "expression" : {
+                              "locator" : "248:10-248:56",
+                              "type" : "Query",
+                              "annotation" : [ ],
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "locator" : "248:10-248:51",
+                                    "path" : "coding",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "locator" : "248:10-248:44",
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "locator" : "248:10-248:39",
+                                          "name" : "Most Recent Treatment",
+                                          "libraryName" : "Common",
+                                          "type" : "ExpressionRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "let" : [ ],
+                              "relationship" : [ ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "annotation" : [ ],
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "path" : "code",
+                                       "type" : "Property",
+                                       "annotation" : [ ],
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef",
+                                          "annotation" : [ ]
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "distinct" : false,
+                                 "annotation" : [ ],
+                                 "expression" : {
+                                    "path" : "code",
+                                    "type" : "Property",
+                                    "annotation" : [ ],
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef",
+                                       "annotation" : [ ]
+                                    }
+                                 }
+                              }
+                           }
+                        } ],
+                        "let" : [ ],
+                        "relationship" : [ ],
+                        "return" : {
+                           "distinct" : false,
+                           "annotation" : [ ],
+                           "expression" : {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "name" : "X",
+                                 "type" : "AliasRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        }
+                     }, {
+                        "locator" : "248:67-248:74",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "162810",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "260:1-266:5",
+            "name" : "Treatment Status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "261:3-266:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "262:5-262:69",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "262:10-262:47",
+                     "name" : "Has Cervical Cancer Diagnosis",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "262:54-262:69",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "refer-oncology",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "263:5-263:49",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "263:10-263:34",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "263:41-263:49",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "treated",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "264:5-264:60",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "264:10-264:33",
+                     "name" : "Treatment Is Indicated",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "264:40-264:60",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "treatment-indicated",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "265:10-265:24",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "not-indicated",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         } ]
+      }
+   }
+}

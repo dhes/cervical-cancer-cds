@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Treatment Decision Logic - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"9.8"}
+    h3,h4,h5,h6{--heading-prefix:"9.8"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Treatment Decision Logic</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li class="active">
+    <a href="#">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerTreatmentDecision.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerTreatmentDecision.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerTreatmentDecision.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+  <a name="root"> </a>
+
+  <h2 id="root">Library: Cervical Cancer Treatment Decision Logic
+(Experimental)
+  </h2>
+
+  <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision<button title="Click to copy URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision|0.1.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="4">
+        
+          Draft
+          
+            as of 2026-03-17
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">CervicalCancerTreatmentDecision</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+  <!-- insert intro if present -->
+  
+
+
+
+<!--  <p>
+  Formats: <a href="Library-CervicalCancerTreatmentDecision.xml.html">XML</a>, <a href="Library-CervicalCancerTreatmentDecision.json.html">JSON</a>, <a href="Library-CervicalCancerTreatmentDecision.ttl.html">Turtle</a>
+  </p>-->
+
+  
+
+
+  <div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Cervical Cancer Treatment Decision Logic</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">CervicalCancerTreatmentDecision</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">0.1.0</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="Library-CervicalCancerTreatmentDecision.html">Cervical Cancer Treatment Decision Logic</a></td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>logic-library</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-03-17 16:29:43+0000</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">Hopena Health</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">001</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                  
+                    <li><a href="Library-CervicalCancerScreeningCommon.html">Cervical Cancer Screening Common Definitionsversion: null0.1.0)</a></li>
+                  
+                    <li><code>https://cielterminology.org</code></li>
+                  
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Parameters: </b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Min</b></th><th><b>Max</b></th><th><b>In/Out</b></th></tr>
+              
+                <tr><th>Patient</th><th>Patient</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Treatment Is Indicated</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Treatment Episode Active</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Known Contraindication To Ablation</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has CIN2 Or Higher Diagnosis</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Ablation Eligibility Checklist</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Treatment Recommendation</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent Treatment Type</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Was Treated With Ablation</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Was Treated With Excision</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Treatment Status</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Data Requirements:</b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Type</b></th><th><b>Profile</b></th><th><b>MS</b></th><th><b>Code Filter</b></th></tr>
+              
+                <tr>
+                  <th>Condition</th>
+                  <th>http://hl7.org/fhir/StructureDefinition/Condition</th>
+                  <th/>
+                  <th>
+                    
+                  </th>
+                </tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><a id="cql-content"><b>Content: </b></a> text/cql</th></tr>
+              <tr><td><pre><code class="language-cql">/*
+ * CervicalCancerTreatmentDecision
+ *
+ * Treatment decision logic for cervical pre-cancer, implementing
+ * WHO guideline ablation eligibility criteria and treatment modality selection.
+ *
+ * This library determines:
+ *   - Whether treatment is indicated
+ *   - Ablation eligibility (based on transformation zone assessment)
+ *   - Recommended treatment modality
+ *   - Need for excisional treatment or referral
+ *
+ * Treatment Decision Cascade:
+ *   VIA positive (from TriageDecision) → Assess ablation eligibility
+ *     ├── Eligible → Thermal ablation (preferred) or cryotherapy
+ *     └── Not eligible → Excision (LEEP/LLETZ)
+ *   Suspicious for cancer → Refer (bypasses treatment entirely)
+ *
+ * Key WHO guidance:
+ *   - Ablation (thermal or cryo) is preferred when eligible: simpler, portable,
+ *     no anesthesia, suitable for LMIC settings
+ *   - LEEP/LLETZ when ablation is not eligible or available
+ *   - Cold knife conization when LEEP is unavailable
+ *
+ * @author  Dan Heslinga / Hopena Health
+ * @version 0.1.0
+ * @date    2026-03-08
+ */
+
+library CervicalCancerTreatmentDecision version '0.1.0'
+
+using FHIR version '4.0.1'
+
+include FHIRHelpers version '4.0.1'
+include CervicalCancerScreeningCommon version '0.1.0' called Common
+
+/*
+ * =============================================================================
+ * ADDITIONAL CODE DEFINITIONS — Treatment-specific concepts
+ * =============================================================================
+ *
+ * Transformation zone assessment concepts are not yet loaded in OpenMRS.
+ * When loaded, uncomment and use these codes.
+ *
+ * Potential CIEL concepts needed:
+ *   - TZ Type 1 (fully ectocervical, visible)
+ *   - TZ Type 2 (partially endocervical, fully visible, probe-reachable)
+ *   - TZ Type 3 (extends into endocervical canal beyond view)
+ *   - Suspicious for invasive/glandular disease
+ *   - Lesion extends beyond probe reach
+ */
+
+codesystem &quot;CIEL&quot;: 'https://cielterminology.org'
+
+// Treatment codes (from Common, redeclared for direct use)
+code &quot;Thermal Ablation Code&quot;: '166706' from &quot;CIEL&quot; display 'Thermocauterization of cervix'
+code &quot;Cryotherapy Code&quot;: '162812' from &quot;CIEL&quot; display 'Cryosurgery of lesion of cervix'
+code &quot;LEEP Code&quot;: '165084' from &quot;CIEL&quot; display 'LEEP of cervix'
+code &quot;LEEP Generic Code&quot;: '162810' from &quot;CIEL&quot; display 'Loop electrosurgical excision procedure'
+
+context Patient
+
+/*
+ * =============================================================================
+ * TREATMENT INDICATION
+ * =============================================================================
+ *
+ * @guidance Treatment is indicated when:
+ *   - Algorithm 5: HPV+ AND VIA+ (triage positive)
+ *   - Algorithm 2 (screen-and-treat): HPV+ (all HPV+ treated)
+ *   - Algorithms 4,6,7: HPV+ AND triage-specific positive result
+ *
+ * Currently implementing Algorithm 5 only.
+ */
+
+/*
+ * @output Boolean — true if treatment is indicated based on screening/triage results
+ * @pseudocode HPV+ AND VIA+ AND no existing cervical cancer diagnosis
+ */
+define &quot;Treatment Is Indicated&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and Common.&quot;Most Recent VIA Is Positive&quot;
+    and Common.&quot;Date Of Most Recent VIA&quot; on or after Common.&quot;Date Of Most Recent HPV Test&quot;
+    and not Common.&quot;Has Cervical Cancer Diagnosis&quot;
+    and not Common.&quot;Has Been Treated&quot;
+
+/*
+ * @output Boolean — true if treatment is indicated OR patient has already been treated
+ *         for this episode (useful for tracking the full cascade)
+ */
+define &quot;Treatment Episode Active&quot;:
+  &quot;Treatment Is Indicated&quot;
+    or (
+      Common.&quot;Has Been Treated&quot;
+      and Common.&quot;Months Since Treatment&quot; is not null
+      and Common.&quot;Months Since Treatment&quot; &lt; 24
+    )
+
+/*
+ * =============================================================================
+ * ABLATION ELIGIBILITY
+ * =============================================================================
+ *
+ * WHO criteria for ablation eligibility require a VIA assessment of the
+ * transformation zone. This is a clinical judgment that cannot be fully
+ * automated — the clinician must assess TZ type and lesion extent at the
+ * point of care.
+ *
+ * What CQL CAN do:
+ *   - Check for contraindications in the record (suspicion of cancer)
+ *   - Present the eligibility criteria as a checklist to the clinician
+ *   - Record and retrieve the ablation eligibility determination
+ *
+ * What CQL CANNOT do:
+ *   - Determine TZ type (requires direct visualization)
+ *   - Assess probe reach (requires physical examination)
+ *   - Judge suspicion of invasive disease (requires clinical expertise)
+ *
+ * We model ablation eligibility as a point-of-care decision support
+ * checklist rather than a computable determination.
+ */
+
+/*
+ * @output Boolean — true if there are known contraindications to ablation
+ * @pseudocode Patient has cervical cancer or CIN diagnosed
+ * @guidance This catches documented contraindications. The clinician must
+ *           still assess TZ type and lesion extent at the point of care.
+ */
+define &quot;Has Known Contraindication To Ablation&quot;:
+  Common.&quot;Has Cervical Cancer Diagnosis&quot;
+
+/*
+ * @output Boolean — true if patient has a CIN2+ diagnosis (may influence
+ *         treatment modality preference toward excision)
+ * @guidance CIN2+ lesions may be better managed with excision in some
+ *           clinical contexts, even if TZ is ablation-eligible
+ */
+define &quot;Has CIN2 Or Higher Diagnosis&quot;:
+  exists(
+    [Condition] C
+      where (C.code.coding.code contains '145807'    // CIN2
+             or C.code.coding.code contains '145806') // CIN3
+        and C.clinicalStatus.coding.code contains 'active'
+  )
+
+/*
+ * @output String — ablation eligibility checklist for clinician display
+ * @guidance This is NOT a computable determination. It presents the WHO
+ *           criteria for the clinician to assess at the point of care.
+ */
+define &quot;Ablation Eligibility Checklist&quot;:
+  if &quot;Treatment Is Indicated&quot;
+  then 'Assess ablation eligibility — ALL must be true:' +
+       '\n1. No suspicion of invasive or glandular disease' +
+       '\n2. Transformation zone fully visible (TZ Type 1 or 2)' +
+       '\n3. Lesion does not extend into endocervical canal beyond probe reach' +
+       '\n\nIf ALL criteria met → Thermal ablation or cryotherapy' +
+       '\nIf ANY criterion NOT met → Excision (LEEP/LLETZ)'
+  else null
+
+/*
+ * =============================================================================
+ * TREATMENT MODALITY RECOMMENDATION
+ * =============================================================================
+ *
+ * @guidance WHO preference order for ablation-eligible lesions:
+ *   1. Thermal ablation (simpler, portable, battery-operated available)
+ *   2. Cryotherapy (requires gas supply — CO2 or N2O)
+ *
+ * For ablation-ineligible lesions:
+ *   1. LEEP/LLETZ (preferred excisional method)
+ *   2. Cold knife conization (when LEEP unavailable)
+ */
+
+/*
+ * @output String — recommended treatment modality based on available data
+ * @pseudocode Decision tree incorporating known contraindications
+ */
+define &quot;Treatment Recommendation&quot;:
+  case
+    when Common.&quot;Has Cervical Cancer Diagnosis&quot;
+      then 'Refer to oncology — cervical cancer diagnosed'
+
+    when not &quot;Treatment Is Indicated&quot; and not &quot;Treatment Episode Active&quot;
+      then 'Treatment not indicated at this time'
+
+    when Common.&quot;Has Been Treated&quot;
+      then 'Treatment already performed — see FollowUpDecision for retest timing'
+
+    when &quot;Has Known Contraindication To Ablation&quot;
+      then 'Ablation contraindicated — recommend excision (LEEP/LLETZ)'
+
+    when &quot;Has CIN2 Or Higher Diagnosis&quot;
+      then 'CIN2+ diagnosed — consider excision (LEEP/LLETZ). ' +
+           'Ablation may be acceptable if transformation zone is fully visible ' +
+           'and lesion is within probe reach.'
+
+    when &quot;Treatment Is Indicated&quot;
+      then 'Assess transformation zone to determine ablation eligibility. ' +
+           'If eligible: thermal ablation (preferred) or cryotherapy. ' +
+           'If not eligible: excision (LEEP/LLETZ).'
+
+    else 'Unable to determine treatment recommendation'
+  end
+
+/*
+ * =============================================================================
+ * TREATMENT HISTORY — What treatment was performed?
+ * =============================================================================
+ */
+
+/*
+ * @output String — the type of treatment that was most recently performed
+ */
+define &quot;Most Recent Treatment Type&quot;:
+  if not Common.&quot;Has Been Treated&quot;
+  then null
+  else
+    case
+      when Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '166706'
+        then 'Thermal ablation (thermocauterization)'
+      when Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '162812'
+        then 'Cryotherapy'
+      when Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '165084'
+        then 'LEEP (loop electrosurgical excision procedure)'
+      when Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '162810'
+        then 'Loop excision procedure'
+      else 'Unknown treatment type'
+    end
+
+/*
+ * @output Boolean — true if an ablative method was used (thermal ablation or cryo)
+ */
+define &quot;Was Treated With Ablation&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and (
+      Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '166706'
+      or Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '162812'
+    )
+
+/*
+ * @output Boolean — true if an excisional method was used (LEEP)
+ */
+define &quot;Was Treated With Excision&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and (
+      Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '165084'
+      or Common.&quot;Most Recent Treatment&quot;.code.coding.code contains '162810'
+    )
+
+/*
+ * =============================================================================
+ * TREATMENT STATUS — For downstream integration
+ * =============================================================================
+ */
+
+/*
+ * @output String — coded treatment status for integration
+ */
+define &quot;Treatment Status&quot;:
+  case
+    when Common.&quot;Has Cervical Cancer Diagnosis&quot; then 'refer-oncology'
+    when Common.&quot;Has Been Treated&quot; then 'treated'
+    when &quot;Treatment Is Indicated&quot; then 'treatment-indicated'
+    else 'not-indicated'
+  end
+</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><b>Content: </b> application/elm+json</th></tr>
+              <tr><td><pre><code>Encoded data (129176 characters)</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+    </table>
+</div>
+</div>
+
+  <!-- insert notes if present -->
+  
+
+
+
+  
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 17, 2026 16:29+0000">2026-03-17</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

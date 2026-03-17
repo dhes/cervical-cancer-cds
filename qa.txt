@@ -1,0 +1,73 @@
+CervicalCancerCDS : Validation Results
+=========================================
+
+err = 13, warn = 31, info = 0
+IG Publisher Version: 2.1.2
+Generated Tue Mar 17 16:31:05 UTC 2026. FHIR version 4.0.1 for hopena.cervical-cancer-cds#0.1.0 (canonical = https://hopenahealth.com/fhir/cervical-cancer-cds)
+ Build Errors : 0 / 5 / 0
+ /github/workspace/fsh-generated/resources/ImplementationGuide-hopena.cervical-cancer-cds : 4 / 0 / 1
+ /github/workspace/input/resources/PlanDefinition-CervicalCancerFollowUp : 1 / 18 / 1
+ /github/workspace/input/resources/PlanDefinition-CervicalCancerScreening : 2 / 16 / 1
+ /github/workspace/input/resources/PlanDefinition-CervicalCancerTreatment : 0 / 13 / 1
+ /github/workspace/input/resources/PlanDefinition-CervicalCancerTriage : 0 / 12 / 1
+ /github/workspace/input/resources/library-CervicalCancerFollowUpDecision : 0 / 5 / 1
+ /github/workspace/input/resources/library-CervicalCancerScreeningCommon : 6 / 31 / 1
+ /github/workspace/input/resources/library-CervicalCancerScreeningDecision : 0 / 5 / 1
+ /github/workspace/input/resources/library-CervicalCancerTreatmentDecision : 0 / 17 / 1
+ /github/workspace/input/resources/library-CervicalCancerTriageDecision : 0 / 5 / 1
+</table>
+== n/a ==
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Library/CervicalCancerFollowUpDecision.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Library/CervicalCancerScreeningCommon.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Library/CervicalCancerScreeningDecision.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Library/CervicalCancerTreatmentDecision.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Library/CervicalCancerTriageDecision.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+== fsh-generated/resources/ImplementationGuide-hopena.cervical-cancer-cds.json ==
+ERROR: ImplementationGuide/hopena.cervical-cancer-cds: ImplementationGuide.dependsOn[0]: The packageId hl7.terminology.r4 points to the canonical https://packages2.fhir.org/web/hl7.terminology.r4b-6.0.2.tgz which is inconsistent with the stated canonical of http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+ERROR: ImplementationGuide/hopena.cervical-cancer-cds: ImplementationGuide.dependsOn[1]: The packageId hl7.fhir.uv.extensions.r4 points to the canonical https://packages2.fhir.org/web/hl7.fhir.uv.extensions.r4b-5.3.0-ballot-tc.tgz which is inconsistent with the stated canonical of http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
+ERROR: ImplementationGuide/hopena.cervical-cancer-cds: ImplementationGuide.dependsOn[2]: The packageId hl7.fhir.uv.cql points to the canonical https://packages2.fhir.org/web/hl7.fhir.uv.cql-2.0.0.tgz which is inconsistent with the stated canonical of http://hl7.org/fhir/uv/cql/ImplementationGuide/hl7.fhir.uv.cql
+ERROR: ImplementationGuide/hopena.cervical-cancer-cds: ImplementationGuide.dependsOn[3]: The packageId hl7.fhir.uv.crmi points to the canonical https://packages2.fhir.org/web/hl7.fhir.uv.crmi-2.0.0-ballot.tgz which is inconsistent with the stated canonical of http://hl7.org/fhir/uv/crmi/ImplementationGuide/hl7.fhir.uv.crmi
+== input/resources/PlanDefinition-CervicalCancerFollowUp.json ==
+WARNING: /github/workspace/input/resources/PlanDefinition-CervicalCancerFollowUp.json: Artifact library could not be found so no data requirements were inferred.
+ERROR: PlanDefinition/CervicalCancerFollowUp: PlanDefinition.useContext[0].value.ofType(CodeableConcept).coding[0].display: Wrong Display Name 'Cancer cervix screening' for http://snomed.info/sct#243877001. Valid display is one of 4 choices: 'Ca cervix screening status' (en), 'Ca cervix screening status (finding)' (en), 'Cancer cervix screening status (finding)' (en) or 'Cancer cervix screening status' (en) (for the language(s) 'en-US')
+== input/resources/PlanDefinition-CervicalCancerScreening.json ==
+WARNING: /github/workspace/input/resources/PlanDefinition-CervicalCancerScreening.json: Artifact library could not be found so no data requirements were inferred.
+ERROR: PlanDefinition/CervicalCancerScreening: PlanDefinition.useContext[0].value.ofType(CodeableConcept).coding[0].display: Wrong Display Name 'Cancer cervix screening' for http://snomed.info/sct#243877001. Valid display is one of 4 choices: 'Ca cervix screening status' (en), 'Ca cervix screening status (finding)' (en), 'Cancer cervix screening status (finding)' (en) or 'Cancer cervix screening status' (en) (for the language(s) 'en-US')
+ERROR: PlanDefinition/CervicalCancerScreening: PlanDefinition.action[0].action[0].definition.ofType(canonical): The URL value '#screening-communication' is invalid because there is no matching target
+== input/resources/PlanDefinition-CervicalCancerTreatment.json ==
+WARNING: /github/workspace/input/resources/PlanDefinition-CervicalCancerTreatment.json: Artifact library could not be found so no data requirements were inferred.
+== input/resources/PlanDefinition-CervicalCancerTriage.json ==
+WARNING: /github/workspace/input/resources/PlanDefinition-CervicalCancerTriage.json: Artifact library could not be found so no data requirements were inferred.
+== input/resources/library-CervicalCancerFollowUpDecision.unprocessed ==
+WARNING: /github/workspace/input/cql/CervicalCancerFollowUpDecision.cql: An operand identifier reference is hiding another identifier of the same name.
+WARNING: /github/workspace/input/cql/CervicalCancerFollowUpDecision.cql: The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
+== input/resources/library-CervicalCancerScreeningCommon.unprocessed ==
+WARNING: /github/workspace/input/cql/CervicalCancerScreeningCommon.cql: An operand identifier reference is hiding another identifier of the same name.
+WARNING: /github/workspace/input/cql/CervicalCancerScreeningCommon.cql: The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
+WARNING: /github/workspace/input/cql/CervicalCancerScreeningCommon.cql: The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
+WARNING: CervicalCancerScreeningCommon: String literal 'active' matches the identifier active. Consider whether the identifier was intended instead.
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[0].resource: A definition could not be found for Canonical URL 'https://cielterminology.org'
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[1].resource: A definition could not be found for Canonical URL 'http://snomed.info/sct/'
+ERROR: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[4].resource: OIDs must be valid (cervical-cds:vs:hpv-dna-test)
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[4].resource: A definition could not be found for Canonical URL 'urn:oid:cervical-cds:vs:hpv-dna-test'
+ERROR: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[5].resource: OIDs must be valid (cervical-cds:vs:via-test)
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[5].resource: A definition could not be found for Canonical URL 'urn:oid:cervical-cds:vs:via-test'
+ERROR: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[6].resource: OIDs must be valid (cervical-cds:vs:hiv-diagnosis)
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[6].resource: A definition could not be found for Canonical URL 'urn:oid:cervical-cds:vs:hiv-diagnosis'
+ERROR: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[7].resource: OIDs must be valid (cervical-cds:vs:cin-diagnosis)
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[7].resource: A definition could not be found for Canonical URL 'urn:oid:cervical-cds:vs:cin-diagnosis'
+ERROR: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[8].resource: OIDs must be valid (cervical-cds:vs:cervical-cancer)
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[8].resource: A definition could not be found for Canonical URL 'urn:oid:cervical-cds:vs:cervical-cancer'
+ERROR: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[9].resource: OIDs must be valid (cervical-cds:vs:cervical-treatment)
+WARNING: Library/CervicalCancerScreeningCommon: Library.relatedArtifact[9].resource: A definition could not be found for Canonical URL 'urn:oid:cervical-cds:vs:cervical-treatment'
+== input/resources/library-CervicalCancerScreeningDecision.unprocessed ==
+WARNING: /github/workspace/input/cql/CervicalCancerScreeningDecision.cql: An operand identifier reference is hiding another identifier of the same name.
+WARNING: /github/workspace/input/cql/CervicalCancerScreeningDecision.cql: The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
+== input/resources/library-CervicalCancerTreatmentDecision.unprocessed ==
+WARNING: /github/workspace/input/cql/CervicalCancerTreatmentDecision.cql: An operand identifier reference is hiding another identifier of the same name.
+WARNING: /github/workspace/input/cql/CervicalCancerTreatmentDecision.cql: The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
+WARNING: /github/workspace/input/cql/CervicalCancerTreatmentDecision.cql: The function FHIRHelpers.ToString has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
+WARNING: Library/CervicalCancerTreatmentDecision: Library.relatedArtifact[1].resource: A definition could not be found for Canonical URL 'https://cielterminology.org'
+== input/resources/library-CervicalCancerTriageDecision.unprocessed ==
+WARNING: /github/workspace/input/cql/CervicalCancerTriageDecision.cql: An operand identifier reference is hiding another identifier of the same name.
+WARNING: /github/workspace/input/cql/CervicalCancerTriageDecision.cql: The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.
