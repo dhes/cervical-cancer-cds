@@ -216,7 +216,7 @@ define "Minimum Screening Age":
  * @guidance WHO Recommendation 6/26: stop after age 50 with 2 consecutive negatives
  */
 define "Maximum Screening Age":
-  50
+  49
 
 /*
  * @guidance WHO Recommendation 8 (general): every 5-10 years

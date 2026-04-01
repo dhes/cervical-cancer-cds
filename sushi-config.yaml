@@ -42,6 +42,12 @@ pages:
     title: Home
   algorithm.md:
     title: Clinical Algorithm
+  methodology.md:
+    title: Decision Modeling
+  decision-tables.md:
+    title: Decision Tables
+  interpretation-register.md:
+    title: Interpretation Register
   architecture.md:
     title: Architecture
   deployment.md:
@@ -58,6 +64,10 @@ pages:
 menu:
   Home: index.html
   Clinical Algorithm: algorithm.html
+  Decision Modeling:
+    Methodology: methodology.html
+    Decision Tables: decision-tables.html
+    Interpretation Register: interpretation-register.html
   Architecture: architecture.html
   Deployment: deployment.html
   Testing: testing.html

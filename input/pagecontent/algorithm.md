@@ -20,7 +20,8 @@ HPV DNA test (self- or clinician-collected)
 | Parameter | General Population | WLHIV |
 |---|---|---|
 | Start screening age | 30 | 25 |
-| Stop screening age | 50 (after 2 consecutive negatives) | 50 (after 2 consecutive negatives) |
+| Priority age range | 30--49 | 25--49 |
+| Cessation | After age 50 with 2 consecutive negatives | After age 50 with 2 consecutive negatives |
 | Screening interval (HPV DNA) | 5-10 years | 3-5 years |
 | Post-triage-negative retest | 24 months | 12 months |
 | Post-treatment retest | 12 months | 12 months, then 12 months again |
@@ -63,3 +64,9 @@ Women living with HIV require two consecutive negative HPV retests at 12-month
 intervals after treatment before returning to routine screening. The Follow-Up
 Decision library tracks the count of post-treatment HPV tests to manage this
 requirement.
+
+### Decision Modeling
+
+For a formal analysis of how the CQL implementation relates to the WHO guideline
+text, including every interpretive decision made during implementation, see
+the [Decision Modeling](methodology.html) section.

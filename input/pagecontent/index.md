@@ -41,6 +41,20 @@ The CDS follows [WHO SMART Guidelines L3](https://smart.who.int/) conventions:
 one CQL library per decision table, shared definitions in a common library,
 PlanDefinition resources for each decision rule.
 
+### Decision Modeling and Traceability
+
+This IG includes formal [OMG DMN](https://www.omg.org/spec/DMN/) decision model
+artifacts that document the relationship between the WHO guideline text and
+the CQL implementation. Two L2 decision models are provided:
+
+- A **textualist** model that mirrors the WHO guideline language without interpretation
+- A **purposive** model that reflects the CQL's concrete, operationalized choices
+
+An [Interpretation Register](interpretation-register.html) documents every
+divergence between the two, categorized as Specification, Disambiguation,
+Inference, or Correction. See the [Decision Modeling](methodology.html)
+page for the full methodology.
+
 ### Dependencies
 
 {% include dependency-table-short.xhtml %}
