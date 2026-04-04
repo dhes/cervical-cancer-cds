@@ -85,7 +85,12 @@ highlighted and cross-referenced to the register.
 
 ### DMN Files
 
-Both DMN files are available for download on the [Downloads](downloads.html) page.
-They can be viewed in any DMN-compatible tool, including
+Both DMN files are available for download on the [Downloads](downloads.html) page,
+along with rendered HTML views of the decision tables and DRD:
+
+- [Textualist L2 rendered view](images/algorithm-5-hpv-via-textualist.html)
+- [Purposive L2 rendered view](images/algorithm-5-hpv-via-purposive.html)
+
+The DMN files can also be opened in any DMN-compatible tool, including
 [Camunda Modeler](https://camunda.com/download/modeler/) (view only -- do not
 save from Modeler, as it may overwrite FEEL expressions).

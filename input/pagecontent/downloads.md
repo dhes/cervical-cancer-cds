@@ -17,8 +17,8 @@ The following OMG DMN 1.3 files document the decision logic for Algorithm 5.
 See [Decision Modeling](methodology.html) for methodology and
 [Interpretation Register](interpretation-register.html) for divergence analysis.
 
-- [Textualist L2](assets/algorithm-5-hpv-via-textualist.dmn) -- mirrors WHO guideline language
-- [Purposive L2](assets/algorithm-5-hpv-via-purposive.dmn) -- reflects CQL implementation choices
+- [Textualist L2](images/algorithm-5-hpv-via-textualist.dmn) -- mirrors WHO guideline language ([rendered view](images/algorithm-5-hpv-via-textualist.html))
+- [Purposive L2](images/algorithm-5-hpv-via-purposive.dmn) -- reflects CQL implementation choices ([rendered view](images/algorithm-5-hpv-via-purposive.html))
 
 ### Definitions
 
