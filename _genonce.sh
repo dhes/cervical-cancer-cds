@@ -5,7 +5,7 @@
 # Docker build (requires Docker):
 #   ./_genonce.sh docker
 #
-# Local build (requires Java 17+, Jekyll):
+# Local build (requires Java 17+, Jekyll, Python 3):
 #   ./_genonce.sh
 #
 
@@ -41,7 +41,7 @@ if [ "$1" = "docker" ]; then
 		-v "$HOME/.fhir/packages:/root/.fhir/packages" \
 		-w /ig \
 		hl7fhir/ig-publisher-base:latest \
-		-c "java -Xmx4g -jar input-cache/publisher.jar -ig . $txoption"
+		-c "apt-get update -qq > /dev/null 2>&1 && apt-get install -y -qq python3 > /dev/null 2>&1 && ln -sf \$(which python3) /usr/local/bin/python && java -Xmx4g -jar input-cache/publisher.jar -ig . $txoption"
 else
 	export JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dfile.encoding=UTF-8"
 

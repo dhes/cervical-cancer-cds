@@ -54,10 +54,11 @@ jobs:
           entrypoint: /bin/sh
           args: -c "mkdir -p ./fhir-package-cache && chown 1001:127 ./fhir-package-cache"
 
-      - name: Run IG Publisher
+      - name: Install Python in Docker and run IG Publisher
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          args: java -Xmx6g -jar ./input-cache/publisher.jar publisher -ig . -auto-ig-build -repo https://github.com/${{github.repository}}/tree/${{github.ref_name}} -package-cache-folder ./fhir-package-cache
+          entrypoint: /bin/sh
+          args: -c "apt-get update -qq && apt-get install -y -qq python3 > /dev/null 2>&1 && ln -sf $(which python3) /usr/local/bin/python && java -Xmx6g -jar ./input-cache/publisher.jar publisher -ig . -auto-ig-build -repo https://github.com/${{github.repository}}/tree/${{github.ref_name}} -package-cache-folder ./fhir-package-cache"
 
       - name: Upload qa.json artifact
         if: success()
