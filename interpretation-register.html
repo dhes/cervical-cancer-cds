@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Interpretation Register - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"5"}
+    h3,h4,h5,h6{--heading-prefix:"5"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Interpretation Register</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Interpretation Register</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h3 id="interpretation-register">Interpretation Register</h3>
+
+<p>This register documents every interpretive decision where the purposive L2 artifact (reflecting the CQL implementation) diverges from the textualist L2 artifact (reflecting the WHO guideline language). Each entry is categorized and traceable to the source CQL definition and WHO recommendation.</p>
+
+<h4 id="categories">Categories</h4>
+
+<ul>
+  <li><strong>Specification</strong>: The WHO guideline gives a range, general instruction, or boundary language. The CQL resolves it to a specific computable value.</li>
+  <li><strong>Disambiguation</strong>: The WHO guideline uses a term that could be interpreted multiple ways. The CQL selects one interpretation.</li>
+  <li><strong>Inference</strong>: The CQL adds logic not explicitly stated in the WHO guideline, derived from clinical reasoning or implementation necessity.</li>
+  <li><strong>Correction/Workaround</strong>: The CQL acknowledges the guideline's intent but works around a data model or terminology limitation.</li>
+</ul>
+
+<hr />
+
+<h4 id="screening-decision">Screening Decision</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Textualist</th>
+      <th>Purposive</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Interval: "every 5 to 10 years" (text)</td>
+      <td>Interval: 5 years (number, lower bound)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Screening Interval Years"</code></td>
+      <td>Rec 8</td>
+      <td>CQL resolves the range to its lower bound for "due" calculation. Comment: "most conservative." Ensures no patient waits longer than the minimum recommended interval.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Input: <code class="language-plaintext highlighter-rouge">Client Is Woman</code> (boolean)</td>
+      <td>Input: <code class="language-plaintext highlighter-rouge">IsFemale</code> (<code class="language-plaintext highlighter-rouge">Patient.gender = 'female'</code>)</td>
+      <td>Disambiguation</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Is Female"</code></td>
+      <td>§3.1 p.21</td>
+      <td>WHO uses "women." CQL maps this to administrative gender in the EHR. Clinical intent is "has cervix" — transgender men and non-binary people with cervixes may be excluded.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>WLHIV interval: "every 3 to 5 years" (text)</td>
+      <td>Interval: 3 years (number, lower bound)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Screening Interval Years"</code></td>
+      <td>Rec 28</td>
+      <td>Same rationale as #1. Lower bound selected for conservative scheduling.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Age range: [30..49]</td>
+      <td>Age range: [30..49]</td>
+      <td>—</td>
+      <td><code class="language-plaintext highlighter-rouge">"Is Within Screening Age Range"</code>: <code class="language-plaintext highlighter-rouge">&lt; 50</code> (i.e., ≤49)</td>
+      <td>Rec 6/7/26/27</td>
+      <td>Both artifacts agree: 49 is the last eligible year. WHO Rec 7 says "aged 30–49 years." CQL corrected in v0.2.0 (was <code class="language-plaintext highlighter-rouge">&lt;= 50</code>, now <code class="language-plaintext highlighter-rouge">&lt; 50</code> with <code class="language-plaintext highlighter-rouge">Maximum Screening Age</code> = 49).</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>WLHIV age range: [25..49]</td>
+      <td>WLHIV age range: [25..49]</td>
+      <td>—</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Minimum Screening Age"</code> = 25</td>
+      <td>Rec 25/27</td>
+      <td>Same as #4. Both artifacts agree.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>No cancer exclusion input</td>
+      <td>Adds <code class="language-plaintext highlighter-rouge">HasCervicalCancer</code> input — excludes from screening</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Is Eligible For Screening"</code>: <code class="language-plaintext highlighter-rouge">not Common."Has Cervical Cancer Diagnosis"</code></td>
+      <td>Not in Algorithm 5 diagram</td>
+      <td>CQL infers that patients with diagnosed cervical cancer should be managed through oncology, not the screening pathway. Clinically obvious but not stated in the algorithm diagram.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>No HIV status determination mechanism specified</td>
+      <td>HIV status = active Condition with CIEL code 138405</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Is WLHIV"</code>: <code class="language-plaintext highlighter-rouge">exists("Active HIV Conditions")</code></td>
+      <td>Recs 21–34</td>
+      <td>WHO assumes WLHIV status is known. CQL specifies the EHR query: active Condition with HIV diagnosis code. Does not capture undiagnosed HIV.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="due-for-screening">Due for Screening</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Textualist</th>
+      <th>Purposive</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8</td>
+      <td>Screening window: 5–10 years (3 states: not yet due, within window, past window)</td>
+      <td>Single threshold: due when years since last test &gt;= interval (2 states: due, not yet due)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Screening Interval Has Elapsed"</code>: <code class="language-plaintext highlighter-rouge">&gt;= Common."Screening Interval Years"</code></td>
+      <td>Rec 8/28</td>
+      <td>Textualist preserves the WHO range as a window. CQL collapses it to a single threshold at the lower bound. There is no "past window" concept — a patient at 11 years is simply "due," same as at 5 years.</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Threshold operator: ambiguous ("every 5 to 10 years")</td>
+      <td>Threshold operator: &gt;= (inclusive)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Screening Interval Has Elapsed"</code></td>
+      <td>Rec 8</td>
+      <td>A patient screened exactly 5 years ago today is due. Alternative: due only after 5 full years (&gt;). CQL chooses inclusive.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Input: <code class="language-plaintext highlighter-rouge">YearsSinceLastScreen</code> (null if never screened)</td>
+      <td>Separate inputs: <code class="language-plaintext highlighter-rouge">HasEverBeenScreened</code> (boolean) + <code class="language-plaintext highlighter-rouge">YearsSinceLastHPVTest</code> (number)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Has Never Been Screened"</code>, <code class="language-plaintext highlighter-rouge">"Years Since Last HPV Test"</code></td>
+      <td>—</td>
+      <td>CQL separates "never screened" from "screened N years ago" into distinct boolean + numeric inputs rather than using null to encode "never screened."</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="triage-decision">Triage Decision</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Textualist</th>
+      <th>Purposive</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>11</td>
+      <td>VIA result: 3 values (positive, negative, suspected cancer)</td>
+      <td>VIA positive = coded value CIEL 703; negative = not 703 (binary)</td>
+      <td>Disambiguation</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Most Recent VIA Is Positive"</code>: <code class="language-plaintext highlighter-rouge">.code contains '703'</code></td>
+      <td>Algorithm 5</td>
+      <td>WHO shows 3 VIA outcomes. CQL implements a binary check: code 703 = positive, anything else = negative. No code for "indeterminate."</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>"Suspected cancer" is a VIA finding</td>
+      <td>"Suspicious for cancer" = cervical cancer diagnosis (proxy)</td>
+      <td>Correction</td>
+      <td><code class="language-plaintext highlighter-rouge">"Suspicious For Cancer"</code>: <code class="language-plaintext highlighter-rouge">Common."Has Cervical Cancer Diagnosis"</code></td>
+      <td>Algorithm 5</td>
+      <td>The proper CIEL concept for "suspicious for cancer" VIA finding is not loaded in OpenMRS. CQL uses an active cervical cancer Condition as a proxy. Acknowledged as temporary workaround.</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>No temporal sequencing requirement</td>
+      <td>VIA must occur on or after HPV test date</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Triage Has Been Performed"</code>: <code class="language-plaintext highlighter-rouge">Date Of Most Recent VIA on or after Date Of Most Recent HPV Test</code></td>
+      <td>Algorithm 5</td>
+      <td>WHO diagram shows HPV+ → VIA as a sequence but does not explicitly require temporal ordering in data. CQL enforces it: a VIA done before the HPV test does not count as triage for this episode.</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>VIA negative: "repeat HPV test in 2 years" (text)</td>
+      <td>VIA negative: retest in 24 months (number)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Post Triage Negative Retest Months"</code> = 24</td>
+      <td>Rec 11</td>
+      <td>Resolved from "2 years" to 24 months.</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>VIA negative WLHIV: "repeat HPV test in 1 year" (text)</td>
+      <td>VIA negative WLHIV: retest in 12 months (number)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Post Triage Negative Retest Months"</code> = 12</td>
+      <td>Rec 31</td>
+      <td>Resolved from "1 year" to 12 months.</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>No "awaiting triage" state</td>
+      <td>Adds "awaiting VIA triage" when HPV+ but no VIA yet</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Triage Is Indicated"</code></td>
+      <td>Algorithm 5</td>
+      <td>WHO diagram assumes instantaneous flow from HPV+ to VIA. CQL models the real-world state where VIA has not yet been performed after a positive HPV result.</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Algorithm not specified (implicit Algorithm 5)</td>
+      <td>Algorithm hardcoded to Algorithm 5</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Active Triage Algorithm"</code> = <code class="language-plaintext highlighter-rouge">'Algorithm 5'</code></td>
+      <td>—</td>
+      <td>WHO provides 7 algorithms. CQL hardcodes Algorithm 5 with stubs for future multi-algorithm support.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="ablation-eligibility">Ablation Eligibility</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Textualist</th>
+      <th>Purposive</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>18</td>
+      <td>Inputs: Suspicion of Cancer (boolean), TZ Type (string)</td>
+      <td>Inputs: Has Cervical Cancer (boolean), Has CIN2+ (boolean)</td>
+      <td>Correction</td>
+      <td><code class="language-plaintext highlighter-rouge">"Has Known Contraindication To Ablation"</code>, <code class="language-plaintext highlighter-rouge">"Has CIN2 Or Higher Diagnosis"</code></td>
+      <td>Algorithm 5 footnotes</td>
+      <td>Textualist models the full WHO criteria (TZ Type 1/2/3). CQL can only check what is in the EHR — cancer diagnosis and CIN grade. TZ assessment is deferred to a clinician checklist.</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Output: <code class="language-plaintext highlighter-rouge">AblationEligible</code> (boolean)</td>
+      <td>Output: <code class="language-plaintext highlighter-rouge">ModalityRecommendation</code> (string checklist)</td>
+      <td>Correction</td>
+      <td><code class="language-plaintext highlighter-rouge">"Ablation Eligibility Checklist"</code></td>
+      <td>Algorithm 5 footnotes</td>
+      <td>Textualist computes eligibility. CQL correctly recognizes that TZ assessment cannot be automated from EHR data alone and presents a clinician checklist instead. This is a meta-decision about the appropriate role of CDS.</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>No CIN2+ input</td>
+      <td>CIN2+ shifts modality preference toward excision</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Has CIN2 Or Higher Diagnosis"</code></td>
+      <td>Not in Algorithm 5</td>
+      <td>CQL infers that higher-grade lesions may warrant excision even if TZ is ablation-eligible. Clinically reasonable but not explicitly stated in WHO Algorithm 5.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="treatment-decision">Treatment Decision</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Textualist</th>
+      <th>Purposive</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>21</td>
+      <td>No "already treated" guard</td>
+      <td>Adds <code class="language-plaintext highlighter-rouge">HasBeenTreated</code> — prevents re-treatment</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Treatment Is Indicated"</code>: <code class="language-plaintext highlighter-rouge">not Common."Has Been Treated"</code></td>
+      <td>Not in Algorithm 5</td>
+      <td>WHO diagram shows a one-directional flow. CQL adds a guard to prevent recommending treatment for patients who have already been treated in this episode.</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Treatment modality from ablation eligibility (boolean)</td>
+      <td>Treatment modality from clinician checklist (string)</td>
+      <td>Correction</td>
+      <td><code class="language-plaintext highlighter-rouge">"Treatment Recommendation"</code></td>
+      <td>Algorithm 5</td>
+      <td>Follows from #18–19. Since ablation eligibility is a checklist, treatment modality is also a clinician-guided decision rather than a computed output.</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Ablation = cryotherapy or thermal ablation (equal)</td>
+      <td>Thermal ablation preferred over cryotherapy</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Treatment Recommendation"</code>: "thermal ablation (preferred) or cryotherapy"</td>
+      <td>Algorithm 5 footnote a</td>
+      <td>WHO footnote lists both. CQL states preference for thermal ablation (simpler, portable, battery-operated).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="follow-up-decision">Follow-up Decision</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Textualist</th>
+      <th>Purposive</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>24</td>
+      <td>Post-treatment: "follow-up after 1 year" (text)</td>
+      <td>Post-treatment: retest at 12 months; window &lt; 24 months</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">Common."Post Treatment Retest Months"</code> = 12, <code class="language-plaintext highlighter-rouge">"Is In Post Treatment Follow Up Window"</code>: <code class="language-plaintext highlighter-rouge">&lt; 24</code></td>
+      <td>Rec 13/33</td>
+      <td>"1 year" resolved to 12 months. Follow-up window extended to 24 months to accommodate both single follow-up (general) and first interval of WLHIV double follow-up.</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>No "approaching" scheduling concept</td>
+      <td>Adds 2-month advance scheduling window (10–12 months)</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Post Treatment Retest Is Approaching"</code>: <code class="language-plaintext highlighter-rouge">&gt;= (Retest Months - 2)</code></td>
+      <td>Not in WHO</td>
+      <td>CQL introduces a scheduling convenience: alert clinicians 2 months before the retest is due. Operationally useful but not WHO guidance.</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>No WLHIV double follow-up</td>
+      <td>WLHIV: two consecutive negative HPV tests at 12-month intervals</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Requires Double Follow Up"</code>, <code class="language-plaintext highlighter-rouge">"WLHIV Needs Second Follow Up Test"</code>, <code class="language-plaintext highlighter-rouge">"WLHIV Double Follow Up Complete"</code></td>
+      <td>Rec 33</td>
+      <td>Textualist Follow-up Decision does not distinguish WLHIV double follow-up (it outputs generic "post-treatment follow-up after 1 year"). Purposive fully models the two-test requirement.</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>No test counting logic</td>
+      <td>Counts post-treatment HPV tests (= 1, &gt;= 2)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"HPV Tests Since Treatment Count"</code></td>
+      <td>Rec 33</td>
+      <td>CQL counts tests to determine WLHIV double follow-up progress. Note: counts tests but does not verify 12-month interval timing between tests.</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>No post-triage-negative "approaching" concept</td>
+      <td>Adds 2-month advance window for post-triage-negative retest</td>
+      <td>Inference</td>
+      <td><code class="language-plaintext highlighter-rouge">"Post Triage Negative Retest Is Approaching"</code></td>
+      <td>Not in WHO</td>
+      <td>Same scheduling convenience as #25, applied to the post-triage-negative pathway.</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>HPV test "after treatment" implicit</td>
+      <td>HPV test must occur strictly after treatment date</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Has HPV Test After Treatment"</code>: <code class="language-plaintext highlighter-rouge">Date Of Most Recent HPV Test after Date Of Most Recent Treatment</code></td>
+      <td>Rec 13/33</td>
+      <td>CQL requires the HPV test date to be strictly after the treatment date. An HPV test on the same day as treatment does not count.</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Histology result determines follow-up</td>
+      <td>No histology input — follow-up based on HPV retest result</td>
+      <td>Disambiguation</td>
+      <td><code class="language-plaintext highlighter-rouge">"Post Treatment Retest Is Negative"</code>, <code class="language-plaintext highlighter-rouge">"Post Treatment Retest Is Positive"</code></td>
+      <td>Rec 13/33</td>
+      <td>Textualist includes histology (CIN3 or less vs cancer) per the Algorithm 5 diagram. CQL implementation does not use histology — follow-up is driven by HPV retest results. The histology pathway (cancer → further management) is handled by the cervical cancer diagnosis exclusion.</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Return to routine: after CIN3-or-less histology</td>
+      <td>Return to routine: post-treatment HPV negative (general) or double follow-up complete (WLHIV)</td>
+      <td>Specification</td>
+      <td><code class="language-plaintext highlighter-rouge">"Can Return To Routine Screening"</code></td>
+      <td>Rec 13/33</td>
+      <td>CQL defines return-to-routine based on HPV retest results, not histology.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="known-gaps">Known Gaps</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>CQL Reference</th>
+      <th>WHO Reference</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>32</td>
+      <td>General population post-triage-negative retest negative: should return to routine screening, but <code class="language-plaintext highlighter-rouge">"Can Return To Routine Screening"</code> does not cover this path</td>
+      <td>Gap</td>
+      <td><code class="language-plaintext highlighter-rouge">"Can Return To Routine Screening"</code></td>
+      <td>Rec 11</td>
+      <td>Documented; not fixed in this release</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>"Suspicious for cancer" uses cervical cancer diagnosis as proxy; proper CIEL concept not yet loaded</td>
+      <td>Correction</td>
+      <td><code class="language-plaintext highlighter-rouge">"Suspicious For Cancer"</code></td>
+      <td>Algorithm 5</td>
+      <td>Acknowledged in CQL comments; will be updated when concept is available</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>WLHIV double follow-up counts tests but does not verify 12-month interval timing between the first and second post-treatment tests</td>
+      <td>Gap</td>
+      <td><code class="language-plaintext highlighter-rouge">"HPV Tests Since Treatment Count"</code></td>
+      <td>Rec 33</td>
+      <td>Documented; timing between tests not enforced</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p><strong>Summary</strong>: 34 entries total — 15 Specifications, 7 Inferences, 5 Disambiguations, 3 Corrections/Workarounds, 2 Gaps, 2 Resolved (artifacts now agree).</p>
+
+
+
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm 5: Textualist L2 — DMN Viewer</title>
+  <style>
+    :root {
+      --blue: #2c5aa0;
+      --blue-light: #e8f0fe;
+      --green: #1a7742;
+      --green-light: #e6f4ea;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-500: #adb5bd;
+      --gray-700: #495057;
+      --gray-900: #212529;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      color: var(--gray-900);
+      background: white;
+      line-height: 1.5;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    /* DRD SVG */
+    .drd-container {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .drd-container svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Decision Table */
+    .decision-table-container {
+      margin-bottom: 2.5rem;
+    }
+
+    .table-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .table-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .hit-policy {
+      font-size: 0.8rem;
+      color: var(--gray-700);
+      background: var(--gray-200);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .decision-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .decision-table th {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      padding: 8px 12px;
+      text-align: left;
+      vertical-align: bottom;
+    }
+
+    .decision-table td {
+      border: 1px solid var(--gray-300);
+      padding: 6px 12px;
+      vertical-align: top;
+    }
+
+    .decision-table .rule-num {
+      width: 36px;
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.8rem;
+    }
+
+    .col-label {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .col-type {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      font-family: var(--mono);
+    }
+
+    .input-col {
+      border-bottom: 3px solid var(--blue);
+    }
+
+    .output-col {
+      border-bottom: 3px solid var(--green);
+    }
+
+    .annotation-col {
+      border-bottom: 3px solid var(--gray-500);
+      font-style: italic;
+    }
+
+    .input-cell {
+      background: white;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .output-cell {
+      background: var(--green-light);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .annotation-cell {
+      font-size: 0.8rem;
+      color: var(--gray-700);
+      font-style: italic;
+    }
+
+    .any-value {
+      color: var(--gray-500);
+      text-align: center;
+    }
+
+    .null-value {
+      color: var(--gray-500);
+      font-style: italic;
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--gray-700);
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-100);
+      border-radius: 6px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 24px;
+      height: 3px;
+      display: inline-block;
+    }
+
+    .legend-swatch.solid { background: #333; }
+    .legend-swatch.dashed {
+      background: repeating-linear-gradient(
+        90deg, #555 0px, #555 8px, transparent 8px, transparent 12px
+      );
+    }
+    .legend-swatch.dotted {
+      background: repeating-linear-gradient(
+        90deg, #888 0px, #888 3px, transparent 3px, transparent 6px
+      );
+    }
+
+    .no-table {
+      color: var(--gray-500);
+      font-style: italic;
+      padding: 1rem;
+      background: var(--gray-100);
+      border-radius: 6px;
+    }
+
+    /* Print styles */
+    @media print {
+      body { padding: 0.5rem; }
+      .drd-container { break-inside: avoid; }
+      .decision-table-container { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Algorithm 5: Textualist L2</h1>
+  <div class="subtitle">Rendered from algorithm-5-hpv-via-textualist.dmn</div>
+
+  <h2>Decision Requirements Diagram</h2>
+  <div class="drd-container">
+    <svg viewBox="60.0 38.0 825.0 1182.0" width="100%" style="max-width:825px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-info" viewBox="0 0 10 10" refX="10" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+    <marker id="arrow-auth" viewBox="0 0 10 10" refX="10" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#333" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <polyline points="280.0,123.0 410.0,220.0 410.0,240.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="455.0,123.0 455.0,220.0 455.0,240.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="630.0,123.0 500.0,220.0 500.0,240.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="670.0,281.0 545.0,282.0" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+  <polyline points="240.0,281.0 365.0,280.0" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="8,4" marker-end="url(#arrow-auth)"/>
+  <polyline points="350.0,637.0 425.0,560.0 425.0,540.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="590.0,637.0 485.0,560.0 485.0,540.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="455.0,320.0 455.0,440.0 455.0,460.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="163.0,800.0 245.0,780.0 245.0,780.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="630.0,123.0 335.0,700.0 335.0,700.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="633.0,800.0 655.0,780.0 655.0,780.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="783.0,800.0 735.0,780.0 735.0,780.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="290.0,780.0 410.0,900.0 410.0,900.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="690.0,780.0 500.0,900.0 500.0,900.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="455.0,980.0 455.0,1100.0 455.0,1100.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <polyline points="633.0,1095.0 545.0,1130.0 545.0,1130.0" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow-info)"/>
+  <rect x="365.0" y="240.0" width="180.0" height="80.0" rx="2" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+  <rect x="365.0" y="240.0" width="180.0" height="4" fill="#2c5aa0" rx="2"/>
+  <text x="455.0" y="280.0" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Eligible For Screening</text>
+  <rect x="217.0" y="78.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="279.5" y="100.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Client Is Woman</text>
+  <rect x="392.0" y="78.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="454.5" y="100.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Age In Years</text>
+  <rect x="567.0" y="78.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="629.5" y="100.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Living With HIV</text>
+  <line x1="670.0" y1="260.0" x2="670.0" y2="340.0" stroke="#888" stroke-width="1.5"/>
+  <line x1="670.0" y1="260.0" x2="678.0" y2="260.0" stroke="#888" stroke-width="1.5"/>
+  <line x1="670.0" y1="340.0" x2="678.0" y2="340.0" stroke="#888" stroke-width="1.5"/>
+  <text x="682.0" y="268.0" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#666" text-anchor="start" dominant-baseline="hanging">L2 textualist representation.</text>
+  <text x="682.0" y="281.0" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#666" text-anchor="start" dominant-baseline="hanging">Interpretive decisions documented</text>
+  <text x="682.0" y="294.0" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#666" text-anchor="start" dominant-baseline="hanging">in Interpretation Register and</text>
+  <text x="682.0" y="307.0" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#666" text-anchor="start" dominant-baseline="hanging">resolved at L3.</text>
+  <path d="M140.0,249.0 L240.0,249.0 L240.0,304.0 Q215.0,316.0 190.0,304.0 Q165.0,292.0 140.0,304.0 Z" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="190.0" y="252.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">WHO Cervical</text>
+  <text x="190.0" y="267.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Cancer</text>
+  <text x="190.0" y="282.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Screening</text>
+  <text x="190.0" y="297.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Guidelines,</text>
+  <text x="190.0" y="312.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">July 2021</text>
+  <rect x="287.0" y="637.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="349.5" y="652.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Years Since</text>
+  <text x="349.5" y="667.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Last Screen</text>
+  <rect x="527.0" y="637.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="589.5" y="652.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Prior Screen</text>
+  <text x="589.5" y="667.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Result</text>
+  <rect x="365.0" y="460.0" width="180.0" height="80.0" rx="2" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+  <rect x="365.0" y="460.0" width="180.0" height="4" fill="#2c5aa0" rx="2"/>
+  <text x="455.0" y="500.0" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Due for Screening</text>
+  <rect x="100.0" y="800.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="162.5" y="822.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">VIA Result</text>
+  <rect x="200.0" y="700.0" width="180.0" height="80.0" rx="2" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+  <rect x="200.0" y="700.0" width="180.0" height="4" fill="#2c5aa0" rx="2"/>
+  <text x="290.0" y="740.0" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Triage Decision</text>
+  <rect x="570.0" y="800.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="632.5" y="815.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Suspicion of</text>
+  <text x="632.5" y="830.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Cancer</text>
+  <rect x="720.0" y="800.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="782.5" y="822.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">TZ Type</text>
+  <rect x="600.0" y="700.0" width="180.0" height="80.0" rx="2" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+  <rect x="600.0" y="700.0" width="180.0" height="4" fill="#2c5aa0" rx="2"/>
+  <text x="690.0" y="740.0" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Ablation Eligibility</text>
+  <rect x="365.0" y="900.0" width="180.0" height="80.0" rx="2" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+  <rect x="365.0" y="900.0" width="180.0" height="4" fill="#2c5aa0" rx="2"/>
+  <text x="455.0" y="940.0" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Treatment Decision</text>
+  <rect x="570.0" y="1050.0" width="125.0" height="45.0" rx="22.5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="632.5" y="1065.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Histology</text>
+  <text x="632.5" y="1080.5" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Result</text>
+  <rect x="365.0" y="1100.0" width="180.0" height="80.0" rx="2" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+  <rect x="365.0" y="1100.0" width="180.0" height="4" fill="#2c5aa0" rx="2"/>
+  <text x="455.0" y="1140.0" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">Follow-up Decision</text>
+</svg>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch solid"></span> Information Requirement</div>
+    <div class="legend-item"><span class="legend-swatch dashed"></span> Authority Requirement</div>
+    <div class="legend-item"><span class="legend-swatch dotted"></span> Association</div>
+  </div>
+
+  <h2>Decision Tables</h2>
+  <div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Eligible For Screening</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Client Is Woman</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Age In Years</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Living With HIV</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Eligible for Screening</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Screening Interval</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">[30,49]</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">true</td>
+        <td class="output-cell ">every 5 to 10 years</td>
+        <td class="annotation-cell">Rec 1; GPS 7 prioritizes age 30–49</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&lt;30</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Below general population screening age</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&gt;49</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Above screening age range (both populations)</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">[25,49]</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">true</td>
+        <td class="output-cell ">every 3 to 5 years</td>
+        <td class="annotation-cell">Rec 21; WLHIV screening starts at age 25</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&lt;25</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Below WLHIV screening age</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Per L1 terminology; see Interpretation Register</td>
+      </tr>
+      <tr>
+        <td class="rule-num">7</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Catch-all: woman with null age</td>
+      </tr>
+      <tr>
+        <td class="rule-num">8</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">not(null)</td>
+        <td class="input-cell any-value">—</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Catch-all: woman with valid age but null HIV status</td>
+      </tr>
+      <tr>
+        <td class="rule-num">9</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Catch-all: null Client Is Woman</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Due for Screening</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Eligible For Screening</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Screening Interval</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Years Since Last Screen</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Prior Result</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Screening Status</div>
+          <div class="col-type">string</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">never screened — screen now</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">every 5 to 10 years</td>
+        <td class="input-cell ">&lt;5</td>
+        <td class="input-cell ">negative</td>
+        <td class="output-cell ">not yet due</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">every 5 to 10 years</td>
+        <td class="input-cell ">[5,10]</td>
+        <td class="input-cell ">negative</td>
+        <td class="output-cell ">within screening window</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">every 5 to 10 years</td>
+        <td class="input-cell ">&gt;10</td>
+        <td class="input-cell ">negative</td>
+        <td class="output-cell ">past screening window</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">every 3 to 5 years</td>
+        <td class="input-cell ">&lt;3</td>
+        <td class="input-cell ">negative</td>
+        <td class="output-cell ">not yet due</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">every 3 to 5 years</td>
+        <td class="input-cell ">[3,5]</td>
+        <td class="input-cell ">negative</td>
+        <td class="output-cell ">within screening window</td>
+      </tr>
+      <tr>
+        <td class="rule-num">7</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">every 3 to 5 years</td>
+        <td class="input-cell ">&gt;5</td>
+        <td class="input-cell ">negative</td>
+        <td class="output-cell ">past screening window</td>
+      </tr>
+      <tr>
+        <td class="rule-num">8</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">positive</td>
+        <td class="output-cell ">prior positive — enter triage pathway</td>
+      </tr>
+      <tr>
+        <td class="rule-num">9</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">not eligible</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Triage Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">VIA Result</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Living With HIV</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Triage Status</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">positive</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">VIA positive — eligible for treatment</td>
+        <td class="annotation-cell">VIA positive — proceed to treatment eligibility assessment</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">negative</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">VIA negative — repeat HPV test in 2 years</td>
+        <td class="annotation-cell">VIA negative, general population — repeat HPV in 2 years</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">negative</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">VIA negative — repeat HPV test in 1 year</td>
+        <td class="annotation-cell">VIA negative, WLHIV — repeat HPV in 1 year</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">suspected cancer</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">suspected cancer — refer for evaluation and biopsy</td>
+        <td class="annotation-cell">Suspected cancer — refer for evaluation and biopsy</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">unknown VIA result</td>
+        <td class="annotation-cell">Catch-all: unrecognized VIA result</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Ablation Eligibility</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Suspicion of Cancer</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">TZ Type</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Ablation Eligible</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="annotation-cell">Suspected cancer — not eligible for ablation</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">Type 1</td>
+        <td class="output-cell ">true</td>
+        <td class="annotation-cell">TZ Type 1 — eligible for ablation</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">Type 2</td>
+        <td class="output-cell ">true</td>
+        <td class="annotation-cell">TZ Type 2 — eligible for ablation</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">Type 3</td>
+        <td class="output-cell ">false</td>
+        <td class="annotation-cell">TZ Type 3 — not eligible for ablation, requires excision</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="annotation-cell">Catch-all: null suspicion of cancer</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">—</td>
+        <td class="output-cell ">false</td>
+        <td class="annotation-cell">Catch-all: null TZ type</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Treatment Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Triage Status</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Ablation Eligible</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Treatment Plan</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">VIA positive — eligible for treatment</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">ablative treatment</td>
+        <td class="annotation-cell">VIA positive, eligible for ablation — ablative treatment</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">VIA positive — eligible for treatment</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">LLETZ</td>
+        <td class="annotation-cell">VIA positive, not eligible for ablation — LLETZ</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">VIA negative — repeat HPV test in 2 years</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">no treatment — repeat HPV in 2 years</td>
+        <td class="annotation-cell">VIA negative, general population — no treatment, repeat HPV</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">VIA negative — repeat HPV test in 1 year</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">no treatment — repeat HPV in 1 year</td>
+        <td class="annotation-cell">VIA negative, WLHIV — no treatment, repeat HPV</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell ">suspected cancer — refer for evaluation and biopsy</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">refer for evaluation, biopsy and further management</td>
+        <td class="annotation-cell">Suspected cancer — refer for evaluation</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">unknown triage status</td>
+        <td class="annotation-cell">Catch-all: unrecognized triage status</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Follow-up Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Treatment Plan</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Histology Result</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Follow-up Plan</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">ablative treatment</td>
+        <td class="input-cell ">CIN3 or less</td>
+        <td class="output-cell ">post-treatment follow-up after 1 year</td>
+        <td class="annotation-cell">Ablative treatment, histology CIN3 or less — follow-up after 1 year</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">ablative treatment</td>
+        <td class="input-cell ">cancer</td>
+        <td class="output-cell ">cancer — further management</td>
+        <td class="annotation-cell">Ablative treatment, histology shows cancer</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">LLETZ</td>
+        <td class="input-cell ">CIN3 or less</td>
+        <td class="output-cell ">post-treatment follow-up after 1 year</td>
+        <td class="annotation-cell">LLETZ, histology CIN3 or less — follow-up after 1 year</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">LLETZ</td>
+        <td class="input-cell ">cancer</td>
+        <td class="output-cell ">cancer — further management</td>
+        <td class="annotation-cell">LLETZ, histology shows cancer</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell ">no treatment — repeat HPV in 2 years</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">repeat HPV test after 2 years</td>
+        <td class="annotation-cell">No treatment, repeat HPV in 2 years (general population)</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell ">no treatment — repeat HPV in 1 year</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">repeat HPV test after 1 year</td>
+        <td class="annotation-cell">No treatment, repeat HPV in 1 year (WLHIV)</td>
+      </tr>
+      <tr>
+        <td class="rule-num">7</td>
+        <td class="input-cell ">refer for evaluation, biopsy and further management</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">evaluation, biopsy and further management</td>
+        <td class="annotation-cell">Referred for evaluation — follow management pathway</td>
+      </tr>
+      <tr>
+        <td class="rule-num">8</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">unknown treatment plan</td>
+        <td class="annotation-cell">Catch-all: unrecognized treatment plan</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

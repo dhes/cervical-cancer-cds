@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Screening Decision Logic - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"12.7"}
+    h3,h4,h5,h6{--heading-prefix:"12.7"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Screening Decision Logic</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li class="active">
+    <a href="#">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerScreeningDecision.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerScreeningDecision.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerScreeningDecision.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+  <a name="root"> </a>
+
+  <h2 id="root">Library: Cervical Cancer Screening Decision Logic
+(Experimental)
+  </h2>
+
+  <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision<button title="Click to copy URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision|0.1.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="4">
+        
+          Draft
+          
+            as of 2026-04-21
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">CervicalCancerScreeningDecision</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+  <!-- insert intro if present -->
+  
+
+
+
+<!--  <p>
+  Formats: <a href="Library-CervicalCancerScreeningDecision.xml.html">XML</a>, <a href="Library-CervicalCancerScreeningDecision.json.html">JSON</a>, <a href="Library-CervicalCancerScreeningDecision.ttl.html">Turtle</a>
+  </p>-->
+
+  
+
+
+  <div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Cervical Cancer Screening Decision Logic</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">CervicalCancerScreeningDecision</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">0.1.0</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="Library-CervicalCancerScreeningDecision.html">Cervical Cancer Screening Decision Logic</a></td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>logic-library</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-04-21 19:55:49+0000</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">Hopena Health</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">001</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                  
+                    <li><a href="Library-CervicalCancerScreeningCommon.html">Cervical Cancer Screening Common Definitions</a> version: 0.1.0</li>
+                  
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Parameters: </b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Min</b></th><th><b>Max</b></th><th><b>In/Out</b></th></tr>
+              
+                <tr><th>Patient</th><th>Patient</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Meets Age Criteria</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is Within Screening Age Range</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is Eligible For Screening</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Years Since Last HPV Test</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Never Been Screened</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Screening Interval Has Elapsed</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is Due For Screening</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent HPV Test Is Negative</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Needs Triage After Positive HPV</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Positive Triage Result</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Triage Was Negative</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is In Post Treatment Follow Up</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Recommended Action</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Cascade Status</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Screening Interval Display</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Population Classification</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Needs Attention</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><a id="cql-content"><b>Content: </b></a> text/cql</th></tr>
+              <tr><td><pre><code class="language-cql">/*
+ * CervicalCancerScreeningDecision
+ *
+ * Screening eligibility and scheduling logic for cervical cancer CDS,
+ * implementing WHO guideline Algorithm 5 (HPV DNA + VIA triage).
+ *
+ * This library determines:
+ *   - Whether a patient is eligible for cervical cancer screening
+ *   - Whether screening is currently due
+ *   - The patient's current position in the screening cascade
+ *   - The recommended next action
+ *
+ * WHO Recommendations covered:
+ *   General population: 1, 2, 5, 6, 7, 8, 14
+ *   WLHIV: 21, 22, 25, 26, 27, 28, 34
+ *
+ * @author  Dan Heslinga / Hopena Health
+ * @version 0.1.0
+ * @date    2026-03-08
+ */
+
+library CervicalCancerScreeningDecision version '0.1.0'
+
+using FHIR version '4.0.1'
+
+include FHIRHelpers version '4.0.1'
+include CervicalCancerScreeningCommon version '0.1.0' called Common
+
+/*
+ * =============================================================================
+ * SCREENING ELIGIBILITY
+ * =============================================================================
+ *
+ * @guidance WHO Rec 5 (general): Start at age 30
+ *           WHO Rec 25 (WLHIV): Start at age 25
+ *           WHO Rec 6/26: Stop after age 50 with adequate prior screening
+ *           WHO Rec 7/27: Prioritize ages 30-49 (general) / 25-49 (WLHIV)
+ */
+
+context Patient
+
+/*
+ * @output Boolean — true if patient meets basic demographic criteria
+ * @pseudocode Patient is female AND age &gt;= minimum screening age
+ */
+define &quot;Meets Age Criteria&quot;:
+  Common.&quot;Is Female&quot;
+    and Common.&quot;Age In Years&quot; &gt;= Common.&quot;Minimum Screening Age&quot;
+
+/*
+ * @output Boolean — true if patient is within the target screening age range
+ * @pseudocode Patient age &lt;= maximum screening age (50)
+ */
+define &quot;Is Within Screening Age Range&quot;:
+  Common.&quot;Age In Years&quot; &lt;= Common.&quot;Maximum Screening Age&quot;
+
+/*
+ * @output Boolean — true if patient is eligible for cervical cancer screening
+ * @pseudocode Patient is female, meets age criteria, no cervical cancer diagnosis
+ * @guidance Patients with known cervical cancer should be managed through
+ *           oncology, not the screening pathway.
+ */
+define &quot;Is Eligible For Screening&quot;:
+  &quot;Meets Age Criteria&quot;
+    and not Common.&quot;Has Cervical Cancer Diagnosis&quot;
+
+/*
+ * =============================================================================
+ * SCREENING DUE DETERMINATION
+ * =============================================================================
+ *
+ * @guidance WHO Rec 8 (general): Every 5-10 years with HPV DNA
+ *           WHO Rec 28 (WLHIV): Every 3-5 years with HPV DNA
+ *           Using lower bound (most conservative) for &quot;due&quot; calculation
+ */
+
+/*
+ * @output Integer — years since most recent HPV DNA test, or null if never screened
+ */
+define &quot;Years Since Last HPV Test&quot;:
+  if Common.&quot;Has Ever Been Screened With HPV&quot;
+  then years between Common.&quot;Date Of Most Recent HPV Test&quot; and Today()
+  else null
+
+/*
+ * @output Boolean — true if patient has never been screened with HPV DNA
+ */
+define &quot;Has Never Been Screened&quot;:
+  not Common.&quot;Has Ever Been Screened With HPV&quot;
+
+/*
+ * @output Boolean — true if screening interval has elapsed since last HPV test
+ * @pseudocode Years since last test &gt;= screening interval for this population
+ */
+define &quot;Screening Interval Has Elapsed&quot;:
+  Common.&quot;Has Ever Been Screened With HPV&quot;
+    and &quot;Years Since Last HPV Test&quot; &gt;= Common.&quot;Screening Interval Years&quot;
+
+/*
+ * @output Boolean — true if patient is due for routine screening
+ * @pseudocode Patient is eligible AND (never screened OR interval elapsed)
+ */
+define &quot;Is Due For Screening&quot;:
+  &quot;Is Eligible For Screening&quot;
+    and (&quot;Has Never Been Screened&quot; or &quot;Screening Interval Has Elapsed&quot;)
+
+/*
+ * =============================================================================
+ * CASCADE POSITION — Where is the patient in the screening pathway?
+ * =============================================================================
+ *
+ * Algorithm 5 cascade:
+ *   1. Not yet screened → Screen
+ *   2. HPV negative, interval not elapsed → Routine recall
+ *   3. HPV negative, interval elapsed → Re-screen
+ *   4. HPV positive, no VIA yet → Needs VIA triage
+ *   5. HPV positive, VIA negative → Follow-up retest (12/24 months)
+ *   6. HPV positive, VIA positive → Needs treatment
+ *   7. Treated → Post-treatment follow-up
+ *   8. Cervical cancer → Refer to oncology
+ *
+ * This library determines cascade position; downstream libraries
+ * (TriageDecision, TreatmentDecision, FollowUpDecision) handle
+ * the detailed logic for positions 4-7.
+ */
+
+/*
+ * @output Boolean — true if most recent HPV test was negative
+ */
+define &quot;Most Recent HPV Test Is Negative&quot;:
+  Common.&quot;Has Ever Been Screened With HPV&quot;
+    and not Common.&quot;Most Recent HPV Test Is Positive&quot;
+
+/*
+ * @output Boolean — true if patient has a positive HPV result that
+ *         has not yet been followed up with VIA triage
+ * @pseudocode HPV+ AND (no VIA result OR most recent VIA is before the HPV test)
+ */
+define &quot;Needs Triage After Positive HPV&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and (
+      not exists(Common.&quot;VIA Screening Results&quot;)
+      or Common.&quot;Date Of Most Recent VIA&quot; before Common.&quot;Date Of Most Recent HPV Test&quot;
+    )
+
+/*
+ * @output Boolean — true if HPV+ and VIA triage was positive (needs treatment)
+ * @pseudocode HPV+ AND VIA+ AND VIA was after HPV test
+ */
+define &quot;Has Positive Triage Result&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and Common.&quot;Most Recent VIA Is Positive&quot;
+    and Common.&quot;Date Of Most Recent VIA&quot; on or after Common.&quot;Date Of Most Recent HPV Test&quot;
+
+/*
+ * @output Boolean — true if HPV+ but VIA triage was negative (needs follow-up retest)
+ * @pseudocode HPV+ AND VIA- AND VIA was after HPV test
+ */
+define &quot;Triage Was Negative&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and not Common.&quot;Most Recent VIA Is Positive&quot;
+    and Common.&quot;Date Of Most Recent VIA&quot; on or after Common.&quot;Date Of Most Recent HPV Test&quot;
+
+/*
+ * @output Boolean — true if patient is in post-treatment follow-up window
+ * @pseudocode Patient has been treated AND months since treatment &lt; 24
+ *             (covers both 12-month and 12+12-month WLHIV windows)
+ */
+define &quot;Is In Post Treatment Follow Up&quot;:
+  Common.&quot;Has Been Treated&quot;
+    and Common.&quot;Months Since Treatment&quot; is not null
+    and Common.&quot;Months Since Treatment&quot; &lt; 24
+
+/*
+ * =============================================================================
+ * RECOMMENDED ACTION — Clinician-facing guidance
+ * =============================================================================
+ *
+ * @guidance These are the primary outputs consumed by CDS hooks / alerts.
+ *           Each returns a human-readable recommendation string.
+ */
+
+/*
+ * @output String — the recommended next action for this patient
+ * @pseudocode Decision tree based on cascade position
+ */
+define &quot;Recommended Action&quot;:
+  case
+    // Exclusion: cervical cancer diagnosed
+    when Common.&quot;Has Cervical Cancer Diagnosis&quot;
+      then 'Refer to oncology for cervical cancer management'
+
+    // Not eligible (wrong sex or too young)
+    when not &quot;Meets Age Criteria&quot;
+      then 'Not yet eligible for cervical cancer screening'
+
+    // Post-treatment follow-up in progress
+    when &quot;Is In Post Treatment Follow Up&quot;
+      then 'Post-treatment follow-up: retest with HPV DNA at 12 months post-treatment'
+
+    // HPV+ needs VIA triage
+    when &quot;Needs Triage After Positive HPV&quot;
+      then 'HPV test is positive — perform VIA triage'
+
+    // HPV+ VIA+ needs treatment
+    when &quot;Has Positive Triage Result&quot;
+      then 'HPV-positive and VIA-positive — assess ablation eligibility and treat'
+
+    // HPV+ VIA- needs follow-up retest
+    when &quot;Triage Was Negative&quot;
+      then 'HPV-positive but VIA-negative — retest with HPV DNA in '
+           + ToString(Common.&quot;Post Triage Negative Retest Months&quot;)
+           + ' months'
+
+    // Never screened and eligible
+    when &quot;Has Never Been Screened&quot; and &quot;Is Eligible For Screening&quot;
+      then 'Screen with HPV DNA test'
+
+    // Interval elapsed and eligible
+    when &quot;Screening Interval Has Elapsed&quot; and &quot;Is Eligible For Screening&quot;
+      then 'Routine re-screening due — screen with HPV DNA test'
+
+    // HPV negative, not yet due
+    when &quot;Most Recent HPV Test Is Negative&quot; and not &quot;Screening Interval Has Elapsed&quot;
+      then 'Last HPV test was negative — next screening due in '
+           + ToString(Common.&quot;Screening Interval Years&quot; - &quot;Years Since Last HPV Test&quot;)
+           + ' years'
+
+    // Over age 50 — evaluate for cessation
+    when Common.&quot;Age In Years&quot; &gt; Common.&quot;Maximum Screening Age&quot;
+      then 'Age over 50 — assess for screening cessation (requires 2 consecutive negative HPV tests)'
+
+    else 'Unable to determine recommendation — review patient data'
+  end
+
+/*
+ * @output String — coded cascade position for downstream logic
+ * @pseudocode Returns a machine-readable status for integration
+ */
+define &quot;Cascade Status&quot;:
+  case
+    when Common.&quot;Has Cervical Cancer Diagnosis&quot; then 'cervical-cancer'
+    when not &quot;Meets Age Criteria&quot; then 'not-eligible'
+    when &quot;Is In Post Treatment Follow Up&quot; then 'post-treatment-follow-up'
+    when &quot;Needs Triage After Positive HPV&quot; then 'needs-triage'
+    when &quot;Has Positive Triage Result&quot; then 'needs-treatment'
+    when &quot;Triage Was Negative&quot; then 'triage-negative-follow-up'
+    when &quot;Has Never Been Screened&quot; and &quot;Is Eligible For Screening&quot; then 'due-for-screening'
+    when &quot;Screening Interval Has Elapsed&quot; and &quot;Is Eligible For Screening&quot; then 'due-for-screening'
+    when &quot;Most Recent HPV Test Is Negative&quot; then 'routine-recall'
+    when Common.&quot;Age In Years&quot; &gt; Common.&quot;Maximum Screening Age&quot; then 'assess-cessation'
+    else 'unknown'
+  end
+
+/*
+ * =============================================================================
+ * SCREENING INTERVAL DISPLAY — For clinician-facing display
+ * =============================================================================
+ */
+
+/*
+ * @output String — human-readable screening interval for this patient
+ */
+define &quot;Screening Interval Display&quot;:
+  if Common.&quot;Is WLHIV&quot;
+  then '3-5 years (WLHIV)'
+  else '5-10 years (general population)'
+
+/*
+ * @output String — human-readable population classification
+ */
+define &quot;Population Classification&quot;:
+  if Common.&quot;Is WLHIV&quot;
+  then 'Woman living with HIV (WLHIV) — WHO Recommendations 21-34'
+  else 'General population — WHO Recommendations 1-14'
+
+/*
+ * =============================================================================
+ * SUMMARY OUTPUTS — Structured data for CDS integration
+ * =============================================================================
+ */
+
+/*
+ * @output Boolean — overall flag: does this patient need clinical attention?
+ * @pseudocode True if any action is recommended (screening, triage, treatment, follow-up)
+ */
+define &quot;Needs Attention&quot;:
+  &quot;Is Due For Screening&quot;
+    or &quot;Needs Triage After Positive HPV&quot;
+    or &quot;Has Positive Triage Result&quot;
+    or &quot;Is In Post Treatment Follow Up&quot;
+    or Common.&quot;Has Cervical Cancer Diagnosis&quot;
+</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><b>Content: </b> application/elm+json</th></tr>
+              <tr><td><pre><code>Encoded data (66632 characters)</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+    </table>
+</div>
+</div>
+
+  <!-- insert notes if present -->
+  
+
+
+
+  
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_purposive" name="Algorithm 5 — Purposive L2" namespace="http://camunda.org/schema/1.0/dmn">
+  <!--
+    Purposive L2 representation of WHO Algorithm 5 (HPV DNA + VIA Triage).
+    Reflects the concrete, operationalized choices made in the CQL implementation
+    at https://dhes.github.io/cervical-cancer-cds/
+
+    Compare with the textualist L2 (algorithm-5-hpv-via-textualist.dmn) which
+    faithfully mirrors the WHO guideline language without interpretation.
+
+    Divergences between the two artifacts are documented in the Interpretation Register.
+  -->
+  <decision id="Decision_screening_p" name="Screening Decision">
+    <variable id="Variable_screening_p" name="ScreeningDecision" typeRef="Any" />
+    <informationRequirement id="IR_screening_female">
+      <requiredInput href="#InputData_female" />
+    </informationRequirement>
+    <informationRequirement id="IR_screening_age">
+      <requiredInput href="#InputData_age" />
+    </informationRequirement>
+    <informationRequirement id="IR_screening_hiv">
+      <requiredInput href="#InputData_hiv" />
+    </informationRequirement>
+    <informationRequirement id="IR_screening_cancer">
+      <requiredInput href="#InputData_cancer" />
+    </informationRequirement>
+    <decisionTable id="DT_screening_p" hitPolicy="UNIQUE">
+      <input id="IC_screening_female" label="Is Female">
+        <inputExpression id="LE_screening_female" typeRef="boolean">
+          <text>IsFemale</text>
+        </inputExpression>
+      </input>
+      <input id="IC_screening_age" label="Age In Years">
+        <inputExpression id="LE_screening_age" typeRef="number">
+          <text>AgeInYears</text>
+        </inputExpression>
+      </input>
+      <input id="IC_screening_hiv" label="Is WLHIV">
+        <inputExpression id="LE_screening_hiv" typeRef="boolean">
+          <text>IsWLHIV</text>
+        </inputExpression>
+      </input>
+      <input id="IC_screening_cancer" label="Has Cervical Cancer">
+        <inputExpression id="LE_screening_cancer" typeRef="boolean">
+          <text>HasCervicalCancer</text>
+        </inputExpression>
+      </input>
+      <output id="OC_screening_eligible" label="Eligible For Screening" name="EligibleForScreening" typeRef="boolean" />
+      <output id="OC_screening_interval" label="Screening Interval Years" name="ScreeningIntervalYears" typeRef="number" />
+      <!-- Rule 1: General population, age 30-50, no cancer -->
+      <rule id="DR_screening_gen">
+        <description>CQL: Common."Is Female", Common."Minimum Screening Age" = 30, Common."Maximum Screening Age" = 49, Common."Screening Interval Years" = 5. WHO Rec 5/6/7/8. Interval resolved to lower bound (most conservative).</description>
+        <inputEntry id="UT_sg1"><text>true</text></inputEntry>
+        <inputEntry id="UT_sg2"><text>[30..49]</text></inputEntry>
+        <inputEntry id="UT_sg3"><text>false</text></inputEntry>
+        <inputEntry id="UT_sg4"><text>false</text></inputEntry>
+        <outputEntry id="LE_sg1"><text>true</text></outputEntry>
+        <outputEntry id="LE_sg2"><text>5</text></outputEntry>
+      </rule>
+      <!-- Rule 2: WLHIV, age 25-50, no cancer -->
+      <rule id="DR_screening_hiv">
+        <description>CQL: Common."Minimum Screening Age" = 25 for WLHIV, Common."Screening Interval Years" = 3. WHO Rec 25/26/28. Interval resolved to lower bound.</description>
+        <inputEntry id="UT_sh1"><text>true</text></inputEntry>
+        <inputEntry id="UT_sh2"><text>[25..49]</text></inputEntry>
+        <inputEntry id="UT_sh3"><text>true</text></inputEntry>
+        <inputEntry id="UT_sh4"><text>false</text></inputEntry>
+        <outputEntry id="LE_sh1"><text>true</text></outputEntry>
+        <outputEntry id="LE_sh2"><text>3</text></outputEntry>
+      </rule>
+      <!-- Rule 3: Below general screening age -->
+      <rule id="DR_screening_gen_under">
+        <description>CQL: AgeInYears &lt; 30 for non-WLHIV</description>
+        <inputEntry id="UT_sgu1"><text>true</text></inputEntry>
+        <inputEntry id="UT_sgu2"><text>&lt;30</text></inputEntry>
+        <inputEntry id="UT_sgu3"><text>false</text></inputEntry>
+        <inputEntry id="UT_sgu4"><text>false</text></inputEntry>
+        <outputEntry id="LE_sgu1"><text>false</text></outputEntry>
+        <outputEntry id="LE_sgu2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Rule 4: Below WLHIV screening age -->
+      <rule id="DR_screening_hiv_under">
+        <description>CQL: AgeInYears &lt; 25 for WLHIV</description>
+        <inputEntry id="UT_shu1"><text>true</text></inputEntry>
+        <inputEntry id="UT_shu2"><text>&lt;25</text></inputEntry>
+        <inputEntry id="UT_shu3"><text>true</text></inputEntry>
+        <inputEntry id="UT_shu4"><text>false</text></inputEntry>
+        <outputEntry id="LE_shu1"><text>false</text></outputEntry>
+        <outputEntry id="LE_shu2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Rule 5: Above screening age (both populations) -->
+      <rule id="DR_screening_over">
+        <description>CQL: AgeInYears &gt; Common."Maximum Screening Age" (49). WHO Rec 6/7/26/27.</description>
+        <inputEntry id="UT_so1"><text>true</text></inputEntry>
+        <inputEntry id="UT_so2"><text>&gt;49</text></inputEntry>
+        <inputEntry id="UT_so3"><text>-</text></inputEntry>
+        <inputEntry id="UT_so4"><text>false</text></inputEntry>
+        <outputEntry id="LE_so1"><text>false</text></outputEntry>
+        <outputEntry id="LE_so2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Rule 6: Has cervical cancer — refer to oncology -->
+      <rule id="DR_screening_cancer">
+        <description>CQL: Common."Has Cervical Cancer Diagnosis". Not in textualist (which has no cancer input). Purposive adds exclusion.</description>
+        <inputEntry id="UT_sc1"><text>true</text></inputEntry>
+        <inputEntry id="UT_sc2"><text>-</text></inputEntry>
+        <inputEntry id="UT_sc3"><text>-</text></inputEntry>
+        <inputEntry id="UT_sc4"><text>true</text></inputEntry>
+        <outputEntry id="LE_sc1"><text>false</text></outputEntry>
+        <outputEntry id="LE_sc2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Rule 7: Not female -->
+      <rule id="DR_screening_notfemale">
+        <description>CQL: Patient.gender = 'female'. Textualist uses "Client Is Woman". See Interpretation Register #2.</description>
+        <inputEntry id="UT_snf1"><text>false</text></inputEntry>
+        <inputEntry id="UT_snf2"><text>-</text></inputEntry>
+        <inputEntry id="UT_snf3"><text>-</text></inputEntry>
+        <inputEntry id="UT_snf4"><text>-</text></inputEntry>
+        <outputEntry id="LE_snf1"><text>false</text></outputEntry>
+        <outputEntry id="LE_snf2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Catch-all -->
+      <rule id="DR_screening_ca">
+        <description>Catch-all for null inputs</description>
+        <inputEntry id="UT_sca1"><text>null</text></inputEntry>
+        <inputEntry id="UT_sca2"><text>-</text></inputEntry>
+        <inputEntry id="UT_sca3"><text>-</text></inputEntry>
+        <inputEntry id="UT_sca4"><text>-</text></inputEntry>
+        <outputEntry id="LE_sca1"><text>false</text></outputEntry>
+        <outputEntry id="LE_sca2"><text>null</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_due_p" name="Due for Screening">
+    <informationRequirement id="IR_due_screening">
+      <requiredDecision href="#Decision_screening_p" />
+    </informationRequirement>
+    <informationRequirement id="IR_due_years">
+      <requiredInput href="#InputData_years" />
+    </informationRequirement>
+    <informationRequirement id="IR_due_ever">
+      <requiredInput href="#InputData_ever" />
+    </informationRequirement>
+    <decisionTable id="DT_due_p" hitPolicy="UNIQUE">
+      <input id="IC_due_eligible" label="Eligible For Screening">
+        <inputExpression id="LE_due_eligible" typeRef="boolean">
+          <text>ScreeningDecision.EligibleForScreening</text>
+        </inputExpression>
+      </input>
+      <input id="IC_due_interval" label="Screening Interval Years">
+        <inputExpression id="LE_due_interval" typeRef="number">
+          <text>ScreeningDecision.ScreeningIntervalYears</text>
+        </inputExpression>
+      </input>
+      <input id="IC_due_years" label="Years Since Last HPV Test">
+        <inputExpression id="LE_due_years" typeRef="number">
+          <text>YearsSinceLastHPVTest</text>
+        </inputExpression>
+      </input>
+      <input id="IC_due_ever" label="Has Ever Been Screened">
+        <inputExpression id="LE_due_ever" typeRef="boolean">
+          <text>HasEverBeenScreened</text>
+        </inputExpression>
+      </input>
+      <output id="OC_due_status" label="Screening Status" name="ScreeningStatus" typeRef="string" />
+      <!-- Rule 1: Never screened -->
+      <rule id="DR_due_never">
+        <description>CQL: "Has Never Been Screened" and "Is Eligible For Screening". Same as textualist.</description>
+        <inputEntry id="UT_dn1"><text>true</text></inputEntry>
+        <inputEntry id="UT_dn2"><text>-</text></inputEntry>
+        <inputEntry id="UT_dn3"><text>-</text></inputEntry>
+        <inputEntry id="UT_dn4"><text>false</text></inputEntry>
+        <outputEntry id="LE_dn"><text>"due for screening"</text></outputEntry>
+      </rule>
+      <!-- Rule 2: Interval elapsed — due (single threshold, not window) -->
+      <rule id="DR_due_elapsed">
+        <description>CQL: "Years Since Last HPV Test" &gt;= Common."Screening Interval Years". Textualist uses a window (5-10 or 3-5); purposive uses single lower-bound threshold. See Interpretation Register #3.</description>
+        <inputEntry id="UT_de1"><text>true</text></inputEntry>
+        <inputEntry id="UT_de2"><text>not(null)</text></inputEntry>
+        <inputEntry id="UT_de3"><text>-</text></inputEntry>
+        <inputEntry id="UT_de4"><text>true</text></inputEntry>
+        <outputEntry id="LE_de"><text>"due for screening"</text></outputEntry>
+      </rule>
+      <!-- Rule 3: Not yet due (interval not elapsed) -->
+      <rule id="DR_due_notyet">
+        <description>CQL: not "Screening Interval Has Elapsed". Single threshold: &lt; interval.</description>
+        <inputEntry id="UT_dny1"><text>true</text></inputEntry>
+        <inputEntry id="UT_dny2"><text>not(null)</text></inputEntry>
+        <inputEntry id="UT_dny3"><text>-</text></inputEntry>
+        <inputEntry id="UT_dny4"><text>true</text></inputEntry>
+        <outputEntry id="LE_dny"><text>"not yet due"</text></outputEntry>
+      </rule>
+      <!-- Rule 4: Not eligible -->
+      <rule id="DR_due_ineligible">
+        <description>Same as textualist.</description>
+        <inputEntry id="UT_di1"><text>false</text></inputEntry>
+        <inputEntry id="UT_di2"><text>-</text></inputEntry>
+        <inputEntry id="UT_di3"><text>-</text></inputEntry>
+        <inputEntry id="UT_di4"><text>-</text></inputEntry>
+        <outputEntry id="LE_di"><text>"not eligible"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_triage_p" name="Triage Decision">
+    <variable id="Variable_triage_p" name="TriageDecision" typeRef="Any" />
+    <informationRequirement id="IR_triage_via">
+      <requiredInput href="#InputData_via" />
+    </informationRequirement>
+    <informationRequirement id="IR_triage_hiv">
+      <requiredInput href="#InputData_hiv" />
+    </informationRequirement>
+    <informationRequirement id="IR_triage_seq">
+      <requiredInput href="#InputData_via_after_hpv" />
+    </informationRequirement>
+    <informationRequirement id="IR_triage_cancer">
+      <requiredInput href="#InputData_cancer" />
+    </informationRequirement>
+    <decisionTable id="DT_triage_p" hitPolicy="UNIQUE">
+      <input id="IC_triage_via" label="VIA Result">
+        <inputExpression id="LE_triage_via" typeRef="string">
+          <text>VIAResult</text>
+        </inputExpression>
+      </input>
+      <input id="IC_triage_hiv" label="Is WLHIV">
+        <inputExpression id="LE_triage_hiv" typeRef="boolean">
+          <text>IsWLHIV</text>
+        </inputExpression>
+      </input>
+      <input id="IC_triage_seq" label="VIA After HPV">
+        <inputExpression id="LE_triage_seq" typeRef="boolean">
+          <text>VIAAfterHPV</text>
+        </inputExpression>
+      </input>
+      <input id="IC_triage_cancer" label="Has Cervical Cancer">
+        <inputExpression id="LE_triage_cancer" typeRef="boolean">
+          <text>HasCervicalCancer</text>
+        </inputExpression>
+      </input>
+      <output id="OC_triage_status" label="Triage Status" name="TriageStatus" typeRef="string" />
+      <output id="OC_triage_retest" label="Retest Months" name="RetestMonths" typeRef="number" />
+      <!-- Rule 1: Cervical cancer — refer (proxy for "suspicious for cancer") -->
+      <rule id="DR_triage_cancer">
+        <description>CQL: "Suspicious For Cancer" uses Common."Has Cervical Cancer Diagnosis" as proxy. See Interpretation Register #19. Not in textualist (which uses "suspected cancer" VIA finding).</description>
+        <inputEntry id="UT_tc1"><text>-</text></inputEntry>
+        <inputEntry id="UT_tc2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tc3"><text>-</text></inputEntry>
+        <inputEntry id="UT_tc4"><text>true</text></inputEntry>
+        <outputEntry id="LE_tc1"><text>"refer to oncology"</text></outputEntry>
+        <outputEntry id="LE_tc2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Rule 2: VIA positive, VIA performed after HPV, no cancer -->
+      <rule id="DR_triage_pos">
+        <description>CQL: "VIA Triage Is Positive" requires VIA on or after HPV test date. See Interpretation Register #14.</description>
+        <inputEntry id="UT_tp1"><text>"positive"</text></inputEntry>
+        <inputEntry id="UT_tp2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tp3"><text>true</text></inputEntry>
+        <inputEntry id="UT_tp4"><text>false</text></inputEntry>
+        <outputEntry id="LE_tp1"><text>"VIA positive — proceed to treatment"</text></outputEntry>
+        <outputEntry id="LE_tp2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Rule 3: VIA negative, general pop -->
+      <rule id="DR_triage_neg_gen">
+        <description>CQL: Common."Post Triage Negative Retest Months" = 24 for non-WLHIV. WHO Rec 11. Resolved from "2 years" to 24 months.</description>
+        <inputEntry id="UT_tng1"><text>"negative"</text></inputEntry>
+        <inputEntry id="UT_tng2"><text>false</text></inputEntry>
+        <inputEntry id="UT_tng3"><text>true</text></inputEntry>
+        <inputEntry id="UT_tng4"><text>false</text></inputEntry>
+        <outputEntry id="LE_tng1"><text>"VIA negative — repeat HPV test in 24 months"</text></outputEntry>
+        <outputEntry id="LE_tng2"><text>24</text></outputEntry>
+      </rule>
+      <!-- Rule 4: VIA negative, WLHIV -->
+      <rule id="DR_triage_neg_hiv">
+        <description>CQL: Common."Post Triage Negative Retest Months" = 12 for WLHIV. WHO Rec 31. Resolved from "1 year" to 12 months.</description>
+        <inputEntry id="UT_tnh1"><text>"negative"</text></inputEntry>
+        <inputEntry id="UT_tnh2"><text>true</text></inputEntry>
+        <inputEntry id="UT_tnh3"><text>true</text></inputEntry>
+        <inputEntry id="UT_tnh4"><text>false</text></inputEntry>
+        <outputEntry id="LE_tnh1"><text>"VIA negative — repeat HPV test in 12 months"</text></outputEntry>
+        <outputEntry id="LE_tnh2"><text>12</text></outputEntry>
+      </rule>
+      <!-- Rule 5: VIA not yet performed after HPV (awaiting triage) -->
+      <rule id="DR_triage_awaiting">
+        <description>CQL: "Triage Is Indicated" — HPV+ but no VIA after HPV test. Not in textualist (which assumes VIA has been performed).</description>
+        <inputEntry id="UT_ta1"><text>-</text></inputEntry>
+        <inputEntry id="UT_ta2"><text>-</text></inputEntry>
+        <inputEntry id="UT_ta3"><text>false</text></inputEntry>
+        <inputEntry id="UT_ta4"><text>false</text></inputEntry>
+        <outputEntry id="LE_ta1"><text>"awaiting VIA triage"</text></outputEntry>
+        <outputEntry id="LE_ta2"><text>null</text></outputEntry>
+      </rule>
+      <!-- Catch-all -->
+      <rule id="DR_triage_ca">
+        <description>Catch-all for null VIA result</description>
+        <inputEntry id="UT_tca1"><text>null</text></inputEntry>
+        <inputEntry id="UT_tca2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tca3"><text>-</text></inputEntry>
+        <inputEntry id="UT_tca4"><text>-</text></inputEntry>
+        <outputEntry id="LE_tca1"><text>"unknown VIA result"</text></outputEntry>
+        <outputEntry id="LE_tca2"><text>null</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_ablation_p" name="Ablation Eligibility">
+    <variable id="Variable_ablation_p" name="AblationDecision" typeRef="Any" />
+    <informationRequirement id="IR_ablation_cancer">
+      <requiredInput href="#InputData_cancer" />
+    </informationRequirement>
+    <informationRequirement id="IR_ablation_cin2">
+      <requiredInput href="#InputData_cin2plus" />
+    </informationRequirement>
+    <decisionTable id="DT_ablation_p" hitPolicy="UNIQUE">
+      <input id="IC_ablation_cancer" label="Has Cervical Cancer">
+        <inputExpression id="LE_ablation_cancer" typeRef="boolean">
+          <text>HasCervicalCancer</text>
+        </inputExpression>
+      </input>
+      <input id="IC_ablation_cin2" label="Has CIN2+">
+        <inputExpression id="LE_ablation_cin2" typeRef="boolean">
+          <text>HasCIN2Plus</text>
+        </inputExpression>
+      </input>
+      <output id="OC_ablation_eligible" label="Known Contraindication" name="HasKnownContraindication" typeRef="boolean" />
+      <output id="OC_ablation_recommendation" label="Modality Recommendation" name="ModalityRecommendation" typeRef="string" />
+      <!-- Rule 1: Cervical cancer — ablation contraindicated -->
+      <rule id="DR_ablation_cancer">
+        <description>CQL: "Has Known Contraindication To Ablation" = Common."Has Cervical Cancer Diagnosis". Only checks cancer; TZ assessment deferred to clinician. See Interpretation Register #24.</description>
+        <inputEntry id="UT_ac1"><text>true</text></inputEntry>
+        <inputEntry id="UT_ac2"><text>-</text></inputEntry>
+        <outputEntry id="LE_ac1"><text>true</text></outputEntry>
+        <outputEntry id="LE_ac2"><text>"excision (LEEP/LLETZ) — ablation contraindicated"</text></outputEntry>
+      </rule>
+      <!-- Rule 2: CIN2+ — consider excision -->
+      <rule id="DR_ablation_cin2">
+        <description>CQL: "Has CIN2 Or Higher Diagnosis" — CQL infers excision preference for higher-grade lesions. Not in WHO Algorithm 5 diagram. See Interpretation Register #22.</description>
+        <inputEntry id="UT_acin1"><text>false</text></inputEntry>
+        <inputEntry id="UT_acin2"><text>true</text></inputEntry>
+        <outputEntry id="LE_acin1"><text>false</text></outputEntry>
+        <outputEntry id="LE_acin2"><text>"consider excision — CIN2+ diagnosed; ablation may be acceptable if TZ fully visible"</text></outputEntry>
+      </rule>
+      <!-- Rule 3: No contraindications known — clinician checklist -->
+      <rule id="DR_ablation_checklist">
+        <description>CQL: "Ablation Eligibility Checklist" — presents criteria for point-of-care assessment rather than automating. TZ Type 1/2 eligible, Type 3 not. See Interpretation Register #23.</description>
+        <inputEntry id="UT_ach1"><text>false</text></inputEntry>
+        <inputEntry id="UT_ach2"><text>false</text></inputEntry>
+        <outputEntry id="LE_ach1"><text>false</text></outputEntry>
+        <outputEntry id="LE_ach2"><text>"assess TZ at point of care — if TZ Type 1 or 2: ablation; if Type 3: excision"</text></outputEntry>
+      </rule>
+      <!-- Catch-all -->
+      <rule id="DR_ablation_ca">
+        <description>Catch-all for null inputs</description>
+        <inputEntry id="UT_aca1"><text>null</text></inputEntry>
+        <inputEntry id="UT_aca2"><text>-</text></inputEntry>
+        <outputEntry id="LE_aca1"><text>false</text></outputEntry>
+        <outputEntry id="LE_aca2"><text>"insufficient data for ablation assessment"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_treatment_p" name="Treatment Decision">
+    <variable id="Variable_treatment_p" name="TreatmentDecision" typeRef="Any" />
+    <informationRequirement id="IR_treatment_triage">
+      <requiredDecision href="#Decision_triage_p" />
+    </informationRequirement>
+    <informationRequirement id="IR_treatment_ablation">
+      <requiredDecision href="#Decision_ablation_p" />
+    </informationRequirement>
+    <informationRequirement id="IR_treatment_treated">
+      <requiredInput href="#InputData_treated" />
+    </informationRequirement>
+    <decisionTable id="DT_treatment_p" hitPolicy="UNIQUE">
+      <input id="IC_treatment_triage" label="Triage Status">
+        <inputExpression id="LE_treatment_triage" typeRef="string">
+          <text>TriageDecision.TriageStatus</text>
+        </inputExpression>
+      </input>
+      <input id="IC_treatment_modality" label="Modality Recommendation">
+        <inputExpression id="LE_treatment_modality" typeRef="string">
+          <text>AblationDecision.ModalityRecommendation</text>
+        </inputExpression>
+      </input>
+      <input id="IC_treatment_treated" label="Has Been Treated">
+        <inputExpression id="LE_treatment_treated" typeRef="boolean">
+          <text>HasBeenTreated</text>
+        </inputExpression>
+      </input>
+      <output id="OC_treatment_plan" label="Treatment Plan" name="TreatmentPlan" typeRef="string" />
+      <!-- Rule 1: Already treated — defer to follow-up -->
+      <rule id="DR_treatment_already">
+        <description>CQL: "Treatment Is Indicated" requires not Common."Has Been Treated". Not in textualist. See Interpretation Register #21.</description>
+        <inputEntry id="UT_ta_1"><text>-</text></inputEntry>
+        <inputEntry id="UT_ta_2"><text>-</text></inputEntry>
+        <inputEntry id="UT_ta_3"><text>true</text></inputEntry>
+        <outputEntry id="LE_ta_1"><text>"already treated — see follow-up"</text></outputEntry>
+      </rule>
+      <!-- Rule 2: Refer to oncology -->
+      <rule id="DR_treatment_refer">
+        <description>CQL: cancer exclusion handled by Triage Decision routing to oncology.</description>
+        <inputEntry id="UT_tr1"><text>"refer to oncology"</text></inputEntry>
+        <inputEntry id="UT_tr2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tr3"><text>false</text></inputEntry>
+        <outputEntry id="LE_tr1"><text>"refer to oncology"</text></outputEntry>
+      </rule>
+      <!-- Rule 3: VIA positive, ablation recommended -->
+      <rule id="DR_treatment_ablation">
+        <description>CQL: ablation-eligible → "thermal ablation (preferred) or cryotherapy". WHO preference: thermal ablation over cryotherapy.</description>
+        <inputEntry id="UT_tab1"><text>"VIA positive — proceed to treatment"</text></inputEntry>
+        <inputEntry id="UT_tab2"><text>"assess TZ at point of care — if TZ Type 1 or 2: ablation; if Type 3: excision"</text></inputEntry>
+        <inputEntry id="UT_tab3"><text>false</text></inputEntry>
+        <outputEntry id="LE_tab1"><text>"assess TZ — ablation (thermal preferred) or excision per eligibility"</text></outputEntry>
+      </rule>
+      <!-- Rule 4: VIA positive, CIN2+ — consider excision -->
+      <rule id="DR_treatment_cin2">
+        <description>CQL: "Has CIN2 Or Higher Diagnosis" shifts preference toward excision.</description>
+        <inputEntry id="UT_tcin1"><text>"VIA positive — proceed to treatment"</text></inputEntry>
+        <inputEntry id="UT_tcin2"><text>"consider excision — CIN2+ diagnosed; ablation may be acceptable if TZ fully visible"</text></inputEntry>
+        <inputEntry id="UT_tcin3"><text>false</text></inputEntry>
+        <outputEntry id="LE_tcin1"><text>"consider excision (LEEP/LLETZ) — CIN2+ diagnosed"</text></outputEntry>
+      </rule>
+      <!-- Rule 5: VIA positive, ablation contraindicated -->
+      <rule id="DR_treatment_excision">
+        <description>CQL: Known contraindication → excision (LEEP/LLETZ).</description>
+        <inputEntry id="UT_tex1"><text>"VIA positive — proceed to treatment"</text></inputEntry>
+        <inputEntry id="UT_tex2"><text>"excision (LEEP/LLETZ) — ablation contraindicated"</text></inputEntry>
+        <inputEntry id="UT_tex3"><text>false</text></inputEntry>
+        <outputEntry id="LE_tex1"><text>"excision (LEEP/LLETZ)"</text></outputEntry>
+      </rule>
+      <!-- Rule 6: VIA negative — no treatment -->
+      <rule id="DR_treatment_neg_gen">
+        <description>CQL: "Proceed To Follow Up Retest". VIA negative routes to follow-up, not treatment.</description>
+        <inputEntry id="UT_tng_1"><text>"VIA negative — repeat HPV test in 24 months"</text></inputEntry>
+        <inputEntry id="UT_tng_2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tng_3"><text>false</text></inputEntry>
+        <outputEntry id="LE_tng_1"><text>"no treatment — repeat HPV in 24 months"</text></outputEntry>
+      </rule>
+      <rule id="DR_treatment_neg_hiv">
+        <description>CQL: VIA negative WLHIV path.</description>
+        <inputEntry id="UT_tnh_1"><text>"VIA negative — repeat HPV test in 12 months"</text></inputEntry>
+        <inputEntry id="UT_tnh_2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tnh_3"><text>false</text></inputEntry>
+        <outputEntry id="LE_tnh_1"><text>"no treatment — repeat HPV in 12 months"</text></outputEntry>
+      </rule>
+      <!-- Rule 7: Awaiting triage -->
+      <rule id="DR_treatment_awaiting">
+        <description>VIA not yet performed — no treatment decision.</description>
+        <inputEntry id="UT_taw1"><text>"awaiting VIA triage"</text></inputEntry>
+        <inputEntry id="UT_taw2"><text>-</text></inputEntry>
+        <inputEntry id="UT_taw3"><text>false</text></inputEntry>
+        <outputEntry id="LE_taw1"><text>"awaiting VIA triage — no treatment decision"</text></outputEntry>
+      </rule>
+      <!-- Catch-all -->
+      <rule id="DR_treatment_ca">
+        <description>Catch-all</description>
+        <inputEntry id="UT_tca_1"><text>null</text></inputEntry>
+        <inputEntry id="UT_tca_2"><text>-</text></inputEntry>
+        <inputEntry id="UT_tca_3"><text>-</text></inputEntry>
+        <outputEntry id="LE_tca_1"><text>"unknown triage status"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_followup_p" name="Follow-up Decision">
+    <variable id="Variable_followup_p" name="FollowUpDecision" typeRef="Any" />
+    <informationRequirement id="IR_followup_treatment">
+      <requiredDecision href="#Decision_treatment_p" />
+    </informationRequirement>
+    <informationRequirement id="IR_followup_hiv">
+      <requiredInput href="#InputData_hiv" />
+    </informationRequirement>
+    <informationRequirement id="IR_followup_months_tx">
+      <requiredInput href="#InputData_months_since_tx" />
+    </informationRequirement>
+    <informationRequirement id="IR_followup_hpv_after_tx">
+      <requiredInput href="#InputData_hpv_after_tx" />
+    </informationRequirement>
+    <informationRequirement id="IR_followup_hpv_count">
+      <requiredInput href="#InputData_hpv_count_since_tx" />
+    </informationRequirement>
+    <informationRequirement id="IR_followup_retest_pos">
+      <requiredInput href="#InputData_retest_positive" />
+    </informationRequirement>
+    <decisionTable id="DT_followup_p" hitPolicy="UNIQUE">
+      <input id="IC_followup_plan" label="Treatment Plan">
+        <inputExpression id="LE_followup_plan" typeRef="string">
+          <text>TreatmentDecision.TreatmentPlan</text>
+        </inputExpression>
+      </input>
+      <input id="IC_followup_hiv" label="Is WLHIV">
+        <inputExpression id="LE_followup_hiv" typeRef="boolean">
+          <text>IsWLHIV</text>
+        </inputExpression>
+      </input>
+      <input id="IC_followup_months" label="Months Since Treatment">
+        <inputExpression id="LE_followup_months" typeRef="number">
+          <text>MonthsSinceTreatment</text>
+        </inputExpression>
+      </input>
+      <input id="IC_followup_hpvdone" label="HPV Test After Treatment">
+        <inputExpression id="LE_followup_hpvdone" typeRef="boolean">
+          <text>HasHPVTestAfterTreatment</text>
+        </inputExpression>
+      </input>
+      <input id="IC_followup_count" label="HPV Tests Since Treatment">
+        <inputExpression id="LE_followup_count" typeRef="number">
+          <text>HPVTestsSinceTreatmentCount</text>
+        </inputExpression>
+      </input>
+      <input id="IC_followup_retest" label="Retest Positive">
+        <inputExpression id="LE_followup_retest" typeRef="boolean">
+          <text>RetestPositive</text>
+        </inputExpression>
+      </input>
+      <output id="OC_followup_plan" label="Follow-up Plan" name="FollowUpPlan" typeRef="string" />
+      <output id="OC_followup_status" label="Follow-up Status" name="FollowUpStatus" typeRef="string" />
+      <!-- Rule 1: Post-treatment retest positive — re-enter triage -->
+      <rule id="DR_followup_retest_pos">
+        <description>CQL: "Post Treatment Retest Is Positive". WHO Rec 13/33.</description>
+        <inputEntry id="UT_frp1"><text>-</text></inputEntry>
+        <inputEntry id="UT_frp2"><text>-</text></inputEntry>
+        <inputEntry id="UT_frp3"><text>-</text></inputEntry>
+        <inputEntry id="UT_frp4"><text>true</text></inputEntry>
+        <inputEntry id="UT_frp5"><text>-</text></inputEntry>
+        <inputEntry id="UT_frp6"><text>true</text></inputEntry>
+        <outputEntry id="LE_frp1"><text>"re-enter triage/treatment pathway"</text></outputEntry>
+        <outputEntry id="LE_frp2"><text>"retest-positive-reenter"</text></outputEntry>
+      </rule>
+      <!-- Rule 2: WLHIV double follow-up complete — return to routine -->
+      <rule id="DR_followup_wlhiv_done">
+        <description>CQL: "WLHIV Double Follow Up Complete" — 2+ post-treatment tests, most recent negative. WHO Rec 33.</description>
+        <inputEntry id="UT_fwd1"><text>-</text></inputEntry>
+        <inputEntry id="UT_fwd2"><text>true</text></inputEntry>
+        <inputEntry id="UT_fwd3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fwd4"><text>true</text></inputEntry>
+        <inputEntry id="UT_fwd5"><text>&gt;=2</text></inputEntry>
+        <inputEntry id="UT_fwd6"><text>false</text></inputEntry>
+        <outputEntry id="LE_fwd1"><text>"return to routine screening every 3-5 years"</text></outputEntry>
+        <outputEntry id="LE_fwd2"><text>"return-to-routine"</text></outputEntry>
+      </rule>
+      <!-- Rule 3: General pop, post-treatment retest negative — return to routine -->
+      <rule id="DR_followup_gen_done">
+        <description>CQL: "Post Treatment Retest Is Negative" and not "Is WLHIV". WHO Rec 13.</description>
+        <inputEntry id="UT_fgd1"><text>-</text></inputEntry>
+        <inputEntry id="UT_fgd2"><text>false</text></inputEntry>
+        <inputEntry id="UT_fgd3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fgd4"><text>true</text></inputEntry>
+        <inputEntry id="UT_fgd5"><text>&gt;=1</text></inputEntry>
+        <inputEntry id="UT_fgd6"><text>false</text></inputEntry>
+        <outputEntry id="LE_fgd1"><text>"return to routine screening every 5-10 years"</text></outputEntry>
+        <outputEntry id="LE_fgd2"><text>"return-to-routine"</text></outputEntry>
+      </rule>
+      <!-- Rule 4: WLHIV needs second follow-up test -->
+      <rule id="DR_followup_wlhiv_2nd">
+        <description>CQL: "WLHIV Needs Second Follow Up Test" — 1 post-treatment test, negative. WHO Rec 33. Not in textualist.</description>
+        <inputEntry id="UT_fw2_1"><text>-</text></inputEntry>
+        <inputEntry id="UT_fw2_2"><text>true</text></inputEntry>
+        <inputEntry id="UT_fw2_3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fw2_4"><text>true</text></inputEntry>
+        <inputEntry id="UT_fw2_5"><text>1</text></inputEntry>
+        <inputEntry id="UT_fw2_6"><text>false</text></inputEntry>
+        <outputEntry id="LE_fw2_1"><text>"WLHIV double follow-up — second HPV retest at 12 months after first"</text></outputEntry>
+        <outputEntry id="LE_fw2_2"><text>"wlhiv-awaiting-second-retest"</text></outputEntry>
+      </rule>
+      <!-- Rule 5: Post-treatment retest due (12 months) -->
+      <rule id="DR_followup_tx_due">
+        <description>CQL: "Post Treatment Retest Is Due" — Months Since Treatment &gt;= 12. WHO Rec 13/33.</description>
+        <inputEntry id="UT_ftd1"><text>-</text></inputEntry>
+        <inputEntry id="UT_ftd2"><text>-</text></inputEntry>
+        <inputEntry id="UT_ftd3"><text>&gt;=12</text></inputEntry>
+        <inputEntry id="UT_ftd4"><text>false</text></inputEntry>
+        <inputEntry id="UT_ftd5"><text>0</text></inputEntry>
+        <inputEntry id="UT_ftd6"><text>-</text></inputEntry>
+        <outputEntry id="LE_ftd1"><text>"post-treatment HPV retest due (12 months)"</text></outputEntry>
+        <outputEntry id="LE_ftd2"><text>"post-treatment-retest-due"</text></outputEntry>
+      </rule>
+      <!-- Rule 6: Post-treatment retest approaching (10-12 months) -->
+      <rule id="DR_followup_tx_approach">
+        <description>CQL: "Post Treatment Retest Is Approaching" — 10-12 months. 2-month advance window is CQL addition. See Interpretation Register #26.</description>
+        <inputEntry id="UT_fta1"><text>-</text></inputEntry>
+        <inputEntry id="UT_fta2"><text>-</text></inputEntry>
+        <inputEntry id="UT_fta3"><text>[10..12)</text></inputEntry>
+        <inputEntry id="UT_fta4"><text>false</text></inputEntry>
+        <inputEntry id="UT_fta5"><text>0</text></inputEntry>
+        <inputEntry id="UT_fta6"><text>-</text></inputEntry>
+        <outputEntry id="LE_fta1"><text>"post-treatment HPV retest approaching"</text></outputEntry>
+        <outputEntry id="LE_fta2"><text>"post-treatment-retest-approaching"</text></outputEntry>
+      </rule>
+      <!-- Rule 7: Post-treatment waiting (<10 months) -->
+      <rule id="DR_followup_tx_wait">
+        <description>CQL: "Is In Post Treatment Follow Up Window" and not "Has HPV Test After Treatment".</description>
+        <inputEntry id="UT_ftw1"><text>-</text></inputEntry>
+        <inputEntry id="UT_ftw2"><text>-</text></inputEntry>
+        <inputEntry id="UT_ftw3"><text>[0..10)</text></inputEntry>
+        <inputEntry id="UT_ftw4"><text>false</text></inputEntry>
+        <inputEntry id="UT_ftw5"><text>0</text></inputEntry>
+        <inputEntry id="UT_ftw6"><text>-</text></inputEntry>
+        <outputEntry id="LE_ftw1"><text>"post-treatment — HPV retest at 12 months"</text></outputEntry>
+        <outputEntry id="LE_ftw2"><text>"post-treatment-waiting"</text></outputEntry>
+      </rule>
+      <!-- Rule 8: VIA negative follow-up — no treatment path (general pop) -->
+      <rule id="DR_followup_via_neg_gen">
+        <description>CQL: "Is Post Triage Negative". WHO Rec 11.</description>
+        <inputEntry id="UT_fvng1"><text>"no treatment — repeat HPV in 24 months"</text></inputEntry>
+        <inputEntry id="UT_fvng2"><text>false</text></inputEntry>
+        <inputEntry id="UT_fvng3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fvng4"><text>-</text></inputEntry>
+        <inputEntry id="UT_fvng5"><text>-</text></inputEntry>
+        <inputEntry id="UT_fvng6"><text>-</text></inputEntry>
+        <outputEntry id="LE_fvng1"><text>"repeat HPV test after 24 months"</text></outputEntry>
+        <outputEntry id="LE_fvng2"><text>"post-triage-negative-waiting"</text></outputEntry>
+      </rule>
+      <!-- Rule 9: VIA negative follow-up — no treatment path (WLHIV) -->
+      <rule id="DR_followup_via_neg_hiv">
+        <description>CQL: "Is Post Triage Negative" WLHIV. WHO Rec 31.</description>
+        <inputEntry id="UT_fvnh1"><text>"no treatment — repeat HPV in 12 months"</text></inputEntry>
+        <inputEntry id="UT_fvnh2"><text>true</text></inputEntry>
+        <inputEntry id="UT_fvnh3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fvnh4"><text>-</text></inputEntry>
+        <inputEntry id="UT_fvnh5"><text>-</text></inputEntry>
+        <inputEntry id="UT_fvnh6"><text>-</text></inputEntry>
+        <outputEntry id="LE_fvnh1"><text>"repeat HPV test after 12 months"</text></outputEntry>
+        <outputEntry id="LE_fvnh2"><text>"post-triage-negative-waiting"</text></outputEntry>
+      </rule>
+      <!-- Rule 10: Referred to oncology -->
+      <rule id="DR_followup_oncology">
+        <description>CQL: Cervical cancer diagnosis → oncology management.</description>
+        <inputEntry id="UT_fo1"><text>"refer to oncology"</text></inputEntry>
+        <inputEntry id="UT_fo2"><text>-</text></inputEntry>
+        <inputEntry id="UT_fo3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fo4"><text>-</text></inputEntry>
+        <inputEntry id="UT_fo5"><text>-</text></inputEntry>
+        <inputEntry id="UT_fo6"><text>-</text></inputEntry>
+        <outputEntry id="LE_fo1"><text>"oncology management"</text></outputEntry>
+        <outputEntry id="LE_fo2"><text>"refer-oncology"</text></outputEntry>
+      </rule>
+      <!-- Catch-all -->
+      <rule id="DR_followup_ca">
+        <description>Catch-all</description>
+        <inputEntry id="UT_fca1"><text>null</text></inputEntry>
+        <inputEntry id="UT_fca2"><text>-</text></inputEntry>
+        <inputEntry id="UT_fca3"><text>-</text></inputEntry>
+        <inputEntry id="UT_fca4"><text>-</text></inputEntry>
+        <inputEntry id="UT_fca5"><text>-</text></inputEntry>
+        <inputEntry id="UT_fca6"><text>-</text></inputEntry>
+        <outputEntry id="LE_fca1"><text>"no follow-up action indicated"</text></outputEntry>
+        <outputEntry id="LE_fca2"><text>"no-follow-up"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <!-- Input Data nodes -->
+  <inputData id="InputData_female" name="Is Female" />
+  <inputData id="InputData_age" name="Age In Years" />
+  <inputData id="InputData_hiv" name="Is WLHIV" />
+  <inputData id="InputData_cancer" name="Has Cervical Cancer" />
+  <inputData id="InputData_years" name="Years Since Last HPV Test" />
+  <inputData id="InputData_ever" name="Has Ever Been Screened" />
+  <inputData id="InputData_via" name="VIA Result" />
+  <inputData id="InputData_via_after_hpv" name="VIA After HPV" />
+  <inputData id="InputData_cin2plus" name="Has CIN2+" />
+  <inputData id="InputData_treated" name="Has Been Treated" />
+  <inputData id="InputData_months_since_tx" name="Months Since Treatment" />
+  <inputData id="InputData_hpv_after_tx" name="HPV Test After Treatment" />
+  <inputData id="InputData_hpv_count_since_tx" name="HPV Tests Since Treatment" />
+  <inputData id="InputData_retest_positive" name="Retest Positive" />
+  <knowledgeSource id="KS_who" name="WHO Cervical Cancer Screening Guidelines, July 2021" />
+  <knowledgeSource id="KS_cql" name="CQL Implementation: cervical-cancer-cds IG v0.1.0" />
+</definitions>

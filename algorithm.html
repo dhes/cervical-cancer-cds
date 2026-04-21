@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Clinical Algorithm - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"2"}
+    h3,h4,h5,h6{--heading-prefix:"2"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Clinical Algorithm</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Clinical Algorithm</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#who-algorithm-5-hpv-dna--via-triage" id="markdown-toc-who-algorithm-5-hpv-dna--via-triage">WHO Algorithm 5: HPV DNA + VIA Triage</a></li>
+  <li><a href="#screening-cascade" id="markdown-toc-screening-cascade">Screening Cascade</a></li>
+  <li><a href="#population-parameters" id="markdown-toc-population-parameters">Population Parameters</a></li>
+  <li><a href="#cql-library-mapping" id="markdown-toc-cql-library-mapping">CQL Library Mapping</a></li>
+  <li><a href="#who-recommendations-covered" id="markdown-toc-who-recommendations-covered">WHO Recommendations Covered</a></li>
+  <li><a href="#cascade-statuses" id="markdown-toc-cascade-statuses">Cascade Statuses</a></li>
+  <li><a href="#wlhiv-double-follow-up-who-rec-33" id="markdown-toc-wlhiv-double-follow-up-who-rec-33">WLHIV Double Follow-Up (WHO Rec 33)</a></li>
+  <li><a href="#decision-modeling" id="markdown-toc-decision-modeling">Decision Modeling</a></li>
+</ul>
+
+</div>
+<h3 id="who-algorithm-5-hpv-dna--via-triage">WHO Algorithm 5: HPV DNA + VIA Triage</h3>
+
+<p>This IG implements Algorithm 5 from the WHO cervical cancer screening guideline.
+It applies to both the general population and women living with HIV (WLHIV),
+with population-specific parameters at each decision point.</p>
+
+<h3 id="screening-cascade">Screening Cascade</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HPV DNA test (self- or clinician-collected)
++-- HPV negative --&gt; Return to routine screening
++-- HPV positive --&gt; VIA triage
+    +-- VIA positive --&gt; Assess ablation eligibility --&gt; Treat
+    +-- VIA negative --&gt; Schedule follow-up HPV retest
+    +-- Suspicious for cancer --&gt; Refer to oncology
+</code></pre></div></div>
+
+<h3 id="population-parameters">Population Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>General Population</th>
+      <th>WLHIV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Start screening age</td>
+      <td>30</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Priority age range</td>
+      <td>30–49</td>
+      <td>25–49</td>
+    </tr>
+    <tr>
+      <td>Cessation</td>
+      <td>After age 50 with 2 consecutive negatives</td>
+      <td>After age 50 with 2 consecutive negatives</td>
+    </tr>
+    <tr>
+      <td>Screening interval (HPV DNA)</td>
+      <td>5-10 years</td>
+      <td>3-5 years</td>
+    </tr>
+    <tr>
+      <td>Post-triage-negative retest</td>
+      <td>24 months</td>
+      <td>12 months</td>
+    </tr>
+    <tr>
+      <td>Post-treatment retest</td>
+      <td>12 months</td>
+      <td>12 months, then 12 months again</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="cql-library-mapping">CQL Library Mapping</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Decision Point</th>
+      <th>CQL Library</th>
+      <th>PlanDefinition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Screening eligibility and scheduling</td>
+      <td>CervicalCancerScreeningDecision</td>
+      <td>CervicalCancerScreening</td>
+    </tr>
+    <tr>
+      <td>HPV-positive triage</td>
+      <td>CervicalCancerTriageDecision</td>
+      <td>CervicalCancerTriage</td>
+    </tr>
+    <tr>
+      <td>Treatment modality selection</td>
+      <td>CervicalCancerTreatmentDecision</td>
+      <td>CervicalCancerTreatment</td>
+    </tr>
+    <tr>
+      <td>Follow-up scheduling</td>
+      <td>CervicalCancerFollowUpDecision</td>
+      <td>CervicalCancerFollowUp</td>
+    </tr>
+    <tr>
+      <td>Shared definitions</td>
+      <td>CervicalCancerScreeningCommon</td>
+      <td>(included by all)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="who-recommendations-covered">WHO Recommendations Covered</h3>
+
+<p><strong>General population</strong>: Recs 1, 2, 3b, 5, 6, 7, 8, 11, 13, 14</p>
+
+<p><strong>WLHIV</strong>: Recs 21, 22, 23, 25, 26, 27, 28, 31, 33, 34</p>
+
+<h3 id="cascade-statuses">Cascade Statuses</h3>
+
+<p>The Screening Decision library assigns each patient a machine-readable
+<code class="language-plaintext highlighter-rouge">Cascade Status</code> value indicating their current position:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">not-eligible</code></td>
+      <td>Does not meet age/sex criteria for screening</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">due-for-screening</code></td>
+      <td>Eligible and screening is currently due</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">needs-triage</code></td>
+      <td>HPV-positive, awaiting VIA triage</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">needs-treatment</code></td>
+      <td>HPV+ and VIA+, treatment indicated</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">triage-negative-follow-up</code></td>
+      <td>HPV+ VIA-, in follow-up retest window</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">post-treatment-follow-up</code></td>
+      <td>Treated, in post-treatment retest window</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">routine-recall</code></td>
+      <td>Last HPV negative, next screening not yet due</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">assess-cessation</code></td>
+      <td>Age 50+ with 2 consecutive negatives</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="wlhiv-double-follow-up-who-rec-33">WLHIV Double Follow-Up (WHO Rec 33)</h3>
+
+<p>Women living with HIV require two consecutive negative HPV retests at 12-month
+intervals after treatment before returning to routine screening. The Follow-Up
+Decision library tracks the count of post-treatment HPV tests to manage this
+requirement.</p>
+
+<h3 id="decision-modeling">Decision Modeling</h3>
+
+<p>For a formal analysis of how the CQL implementation relates to the WHO guideline
+text, including every interpretive decision made during implementation, see
+the <a href="methodology.html">Decision Modeling</a> section.</p>
+
+
+
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

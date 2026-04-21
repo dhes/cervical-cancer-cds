@@ -1,0 +1,611 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "translatorOptions" : "EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "None",
+         "type" : "CqlToElmInfo"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "CervicalCancerTriageDecision",
+         "system" : "https://hopenahealth.com/fhir/cervical-cancer-cds",
+         "version" : "0.1.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1",
+            "version" : "1.0.0",
+            "annotation" : [ ]
+         }, {
+            "locator" : "31:1-31:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "locator" : "33:1-33:35",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://hl7.org/fhir/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         }, {
+            "locator" : "34:1-34:67",
+            "localIdentifier" : "Common",
+            "path" : "https://hopenahealth.com/fhir/cervical-cancer-cds/CervicalCancerScreeningCommon",
+            "version" : "0.1.0",
+            "annotation" : [ ]
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "locator" : "36:1-36:15",
+            "name" : "Patient",
+            "annotation" : [ ]
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "36:1-36:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "annotation" : [ ],
+            "expression" : {
+               "type" : "SingletonFrom",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : {
+                  "locator" : "36:1-36:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "annotation" : [ ],
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "locator" : "53:1-58:5",
+            "name" : "Triage Is Indicated",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "54:3-58:5",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "54:3-54:43",
+                  "name" : "Most Recent HPV Test Is Positive",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "55:9-58:5",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "56:7-56:48",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "56:11-56:48",
+                        "type" : "Exists",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "56:17-56:48",
+                           "name" : "VIA Screening Results",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     }
+                  }, {
+                     "locator" : "57:10-57:86",
+                     "type" : "Before",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "57:10-57:41",
+                        "name" : "Date Of Most Recent VIA",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "57:50-57:86",
+                        "name" : "Date Of Most Recent HPV Test",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "63:1-66:90",
+            "name" : "Triage Has Been Performed",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "64:3-66:90",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "64:3-65:46",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "64:3-64:43",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "65:9-65:46",
+                     "type" : "Exists",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "65:15-65:46",
+                        "name" : "VIA Screening Results",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  } ]
+               }, {
+                  "locator" : "66:9-66:90",
+                  "type" : "SameOrAfter",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "66:9-66:40",
+                     "name" : "Date Of Most Recent VIA",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "66:54-66:90",
+                     "name" : "Date Of Most Recent HPV Test",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "78:1-80:44",
+            "name" : "VIA Triage Is Positive",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "79:3-80:44",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "79:3-79:29",
+                  "name" : "Triage Has Been Performed",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "80:9-80:44",
+                  "name" : "Most Recent VIA Is Positive",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         }, {
+            "locator" : "88:1-90:48",
+            "name" : "VIA Triage Is Negative",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "89:3-90:48",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "89:3-89:29",
+                  "name" : "Triage Has Been Performed",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "90:9-90:48",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "90:13-90:48",
+                     "name" : "Most Recent VIA Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "119:1-120:40",
+            "name" : "Suspicious For Cancer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "120:3-120:40",
+               "name" : "Has Cervical Cancer Diagnosis",
+               "libraryName" : "Common",
+               "type" : "ExpressionRef",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "132:1-134:35",
+            "name" : "Proceed To Treatment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "133:3-134:35",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "133:3-133:26",
+                  "name" : "VIA Triage Is Positive",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "134:9-134:35",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "134:13-134:35",
+                     "name" : "Suspicious For Cancer",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "140:1-142:35",
+            "name" : "Proceed To Follow Up Retest",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "141:3-142:35",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "141:3-141:26",
+                  "name" : "VIA Triage Is Negative",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "142:9-142:35",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "142:13-142:35",
+                     "name" : "Suspicious For Cancer",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "147:1-148:25",
+            "name" : "Needs Referral",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "148:3-148:25",
+               "name" : "Suspicious For Cancer",
+               "type" : "ExpressionRef",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "159:1-179:5",
+            "name" : "Triage Recommended Action",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "160:3-179:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "161:5-162:86",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "161:10-161:32",
+                     "name" : "Suspicious For Cancer",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "162:12-162:86",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Findings suspicious for invasive cancer — refer for diagnosis and staging",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "164:5-165:42",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "164:10-164:30",
+                     "name" : "Triage Is Indicated",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "165:12-165:42",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Perform VIA triage assessment",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "167:5-168:95",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "167:10-167:31",
+                     "name" : "Proceed To Treatment",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "168:12-168:95",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "VIA positive — proceed to treatment eligibility assessment (see TreatmentDecision)",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "170:5-173:22",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "170:10-170:38",
+                     "name" : "Proceed To Follow Up Retest",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "171:12-173:22",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "171:12-172:66",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "171:12-171:55",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "VIA negative — schedule HPV DNA retest in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "172:14-172:66",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "172:23-172:65",
+                              "name" : "Post Triage Negative Retest Months",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "173:14-173:22",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "175:5-176:59",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "175:10-175:54",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "175:14-175:54",
+                        "name" : "Most Recent HPV Test Is Positive",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  },
+                  "then" : {
+                     "locator" : "176:12-176:59",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "No triage indicated — HPV test is not positive",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "178:10-178:52",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Unable to determine triage recommendation",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "184:1-192:5",
+            "name" : "Triage Status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "185:3-192:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "186:5-186:54",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "186:10-186:32",
+                     "name" : "Suspicious For Cancer",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "186:39-186:54",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "refer-oncology",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "187:5-187:53",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "187:10-187:30",
+                     "name" : "Triage Is Indicated",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "187:37-187:53",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "awaiting-triage",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "188:5-188:54",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "188:10-188:31",
+                     "name" : "Proceed To Treatment",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "188:38-188:54",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "triage-positive",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "189:5-189:61",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "189:10-189:38",
+                     "name" : "Proceed To Follow Up Retest",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "189:45-189:61",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "triage-negative",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "190:5-190:75",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "190:10-190:54",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "190:14-190:54",
+                        "name" : "Most Recent HPV Test Is Positive",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  },
+                  "then" : {
+                     "locator" : "190:61-190:75",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "not-indicated",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "191:10-191:18",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "unknown",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "220:1-221:38",
+            "name" : "Active Triage Algorithm",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "221:3-221:38",
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "Algorithm 5 — HPV DNA + VIA Triage",
+               "type" : "Literal",
+               "annotation" : [ ]
+            }
+         } ]
+      }
+   }
+}

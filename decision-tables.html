@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Decision Tables - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"4"}
+    h3,h4,h5,h6{--heading-prefix:"4"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Decision Tables</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Decision Tables</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#decision-table-comparison" id="markdown-toc-decision-table-comparison">Decision Table Comparison</a></li>
+  <li><a href="#1-screening-decision" id="markdown-toc-1-screening-decision">1. Screening Decision</a></li>
+  <li><a href="#2-due-for-screening" id="markdown-toc-2-due-for-screening">2. Due for Screening</a></li>
+  <li><a href="#3-triage-decision" id="markdown-toc-3-triage-decision">3. Triage Decision</a></li>
+  <li><a href="#4-ablation-eligibility" id="markdown-toc-4-ablation-eligibility">4. Ablation Eligibility</a></li>
+  <li><a href="#5-treatment-decision" id="markdown-toc-5-treatment-decision">5. Treatment Decision</a></li>
+  <li><a href="#6-follow-up-decision" id="markdown-toc-6-follow-up-decision">6. Follow-up Decision</a></li>
+</ul>
+
+</div>
+<h3 id="decision-table-comparison">Decision Table Comparison</h3>
+
+<p>This page presents the textualist and purposive decision tables side by side
+for each of the six decisions in Algorithm 5. Divergences are noted with
+references to the <a href="interpretation-register.html">Interpretation Register</a>.</p>
+
+<hr />
+
+<h3 id="1-screening-decision">1. Screening Decision</h3>
+
+<p>Determines whether a patient is eligible for cervical cancer screening and
+the recommended screening interval.</p>
+
+<p><strong>Textualist</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client Is Woman</th>
+      <th>Age In Years</th>
+      <th>Living With HIV</th>
+      <th>Eligible</th>
+      <th>Screening Interval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>true</td>
+      <td>[30..49]</td>
+      <td>false</td>
+      <td>true</td>
+      <td>"every 5 to 10 years"</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>[25..49]</td>
+      <td>true</td>
+      <td>true</td>
+      <td>"every 3 to 5 years"</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>&lt;30</td>
+      <td>false</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>&lt;25</td>
+      <td>true</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>&gt;49</td>
+      <td>–</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>–</td>
+      <td>–</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Purposive</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Is Female</th>
+      <th>Age In Years</th>
+      <th>Is WLHIV</th>
+      <th>Has Cervical Cancer</th>
+      <th>Eligible</th>
+      <th>Interval (years)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>true</td>
+      <td>[30..49]</td>
+      <td>false</td>
+      <td>false</td>
+      <td>true</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>[25..49]</td>
+      <td>true</td>
+      <td>false</td>
+      <td>true</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>&lt;30</td>
+      <td>false</td>
+      <td>false</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>&lt;25</td>
+      <td>true</td>
+      <td>false</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>&gt;49</td>
+      <td>–</td>
+      <td>false</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>–</td>
+      <td>–</td>
+      <td>true</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>false</td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key divergences:</strong></p>
+<ul>
+  <li>Interval resolved from text range to numeric lower bound (Register #1, #3)</li>
+  <li><code class="language-plaintext highlighter-rouge">Client Is Woman</code> vs <code class="language-plaintext highlighter-rouge">Patient.gender = 'female'</code> (Register #2)</li>
+  <li>Cervical cancer exclusion added as input (Register #6)</li>
+  <li>HIV status determined from EHR Condition resource (Register #7)</li>
+</ul>
+
+<hr />
+
+<h3 id="2-due-for-screening">2. Due for Screening</h3>
+
+<p>Determines whether screening is currently needed based on eligibility and
+screening history.</p>
+
+<p><strong>Textualist</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Eligible</th>
+      <th>Interval</th>
+      <th>Years Since Last Screen</th>
+      <th>Prior Result</th>
+      <th>Screening Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>true</td>
+      <td>–</td>
+      <td>null</td>
+      <td>–</td>
+      <td>never screened – screen now</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>"every 5 to 10 years"</td>
+      <td>&lt;5</td>
+      <td>negative</td>
+      <td>not yet due</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>"every 5 to 10 years"</td>
+      <td>[5..10]</td>
+      <td>negative</td>
+      <td>within screening window</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>"every 5 to 10 years"</td>
+      <td>&gt;10</td>
+      <td>negative</td>
+      <td>past screening window</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>"every 3 to 5 years"</td>
+      <td>&lt;3</td>
+      <td>negative</td>
+      <td>not yet due</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>"every 3 to 5 years"</td>
+      <td>[3..5]</td>
+      <td>negative</td>
+      <td>within screening window</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>"every 3 to 5 years"</td>
+      <td>&gt;5</td>
+      <td>negative</td>
+      <td>past screening window</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>–</td>
+      <td>–</td>
+      <td>positive</td>
+      <td>prior positive – enter triage pathway</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>not eligible</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Purposive</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Eligible</th>
+      <th>Interval (years)</th>
+      <th>Years Since Last HPV Test</th>
+      <th>Has Ever Been Screened</th>
+      <th>Screening Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>true</td>
+      <td>–</td>
+      <td>–</td>
+      <td>false</td>
+      <td>due for screening</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>not null</td>
+      <td>&gt;= interval</td>
+      <td>true</td>
+      <td>due for screening</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>not null</td>
+      <td>&lt; interval</td>
+      <td>true</td>
+      <td>not yet due</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>not eligible</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key divergences:</strong></p>
+<ul>
+  <li>Textualist has 3 states (not yet due, within window, past window); purposive has 2 (due, not yet due) (Register #8)</li>
+  <li>Single threshold at lower bound vs. screening window range (Register #8, #9)</li>
+  <li>Separate <code class="language-plaintext highlighter-rouge">HasEverBeenScreened</code> input vs. null encoding (Register #10)</li>
+  <li>No "prior positive" routing in purposive Due for Screening – handled by Triage Decision instead</li>
+</ul>
+
+<hr />
+
+<h3 id="3-triage-decision">3. Triage Decision</h3>
+
+<p>Routes HPV-positive patients based on VIA triage results.</p>
+
+<p><strong>Textualist</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>VIA Result</th>
+      <th>Living With HIV</th>
+      <th>Triage Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>positive</td>
+      <td>–</td>
+      <td>VIA positive – eligible for treatment</td>
+    </tr>
+    <tr>
+      <td>negative</td>
+      <td>false</td>
+      <td>VIA negative – repeat HPV test in 2 years</td>
+    </tr>
+    <tr>
+      <td>negative</td>
+      <td>true</td>
+      <td>VIA negative – repeat HPV test in 1 year</td>
+    </tr>
+    <tr>
+      <td>suspected cancer</td>
+      <td>–</td>
+      <td>suspected cancer – refer for evaluation and biopsy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Purposive</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>VIA Result</th>
+      <th>Is WLHIV</th>
+      <th>VIA After HPV</th>
+      <th>Has Cervical Cancer</th>
+      <th>Triage Status</th>
+      <th>Retest Months</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>true</td>
+      <td>refer to oncology</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>positive</td>
+      <td>–</td>
+      <td>true</td>
+      <td>false</td>
+      <td>VIA positive – proceed to treatment</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>negative</td>
+      <td>false</td>
+      <td>true</td>
+      <td>false</td>
+      <td>VIA negative – repeat HPV test in 24 months</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>negative</td>
+      <td>true</td>
+      <td>true</td>
+      <td>false</td>
+      <td>VIA negative – repeat HPV test in 12 months</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>false</td>
+      <td>false</td>
+      <td>awaiting VIA triage</td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key divergences:</strong></p>
+<ul>
+  <li>VIA positive = CIEL code 703; binary interpretation (Register #11)</li>
+  <li>"Suspected cancer" replaced with cervical cancer diagnosis proxy (Register #12)</li>
+  <li>VIA must occur after HPV test (temporal sequencing) (Register #13)</li>
+  <li>Follow-up intervals resolved to exact months (Register #14, #15)</li>
+  <li>"Awaiting triage" state added for real-world workflow (Register #16)</li>
+</ul>
+
+<hr />
+
+<h3 id="4-ablation-eligibility">4. Ablation Eligibility</h3>
+
+<p>Determines whether ablative treatment is appropriate.</p>
+
+<p><strong>Textualist</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Suspicion of Cancer</th>
+      <th>TZ Type</th>
+      <th>Ablation Eligible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>true</td>
+      <td>–</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>Type 1</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>Type 2</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>Type 3</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Purposive</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Has Cervical Cancer</th>
+      <th>Has CIN2+</th>
+      <th>Known Contraindication</th>
+      <th>Modality Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>true</td>
+      <td>–</td>
+      <td>true</td>
+      <td>excision – ablation contraindicated</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>true</td>
+      <td>false</td>
+      <td>consider excision – CIN2+ diagnosed</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>false</td>
+      <td>false</td>
+      <td>assess TZ at point of care</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key divergences:</strong></p>
+<ul>
+  <li>Textualist computes eligibility from TZ type; purposive defers TZ to clinician (Register #18, #19)</li>
+  <li>CIN2+ modality preference added (Register #20)</li>
+  <li>Output is a recommendation string, not a boolean (Register #19)</li>
+</ul>
+
+<hr />
+
+<h3 id="5-treatment-decision">5. Treatment Decision</h3>
+
+<p>Selects treatment modality based on triage and ablation eligibility.</p>
+
+<p><strong>Textualist</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Triage Status</th>
+      <th>Ablation Eligible</th>
+      <th>Treatment Plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VIA positive</td>
+      <td>true</td>
+      <td>ablative treatment</td>
+    </tr>
+    <tr>
+      <td>VIA positive</td>
+      <td>false</td>
+      <td>LLETZ</td>
+    </tr>
+    <tr>
+      <td>VIA negative (gen)</td>
+      <td>–</td>
+      <td>no treatment – repeat HPV in 2 years</td>
+    </tr>
+    <tr>
+      <td>VIA negative (WLHIV)</td>
+      <td>–</td>
+      <td>no treatment – repeat HPV in 1 year</td>
+    </tr>
+    <tr>
+      <td>suspected cancer</td>
+      <td>–</td>
+      <td>refer for evaluation and biopsy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Purposive</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Triage Status</th>
+      <th>Modality Recommendation</th>
+      <th>Has Been Treated</th>
+      <th>Treatment Plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>true</td>
+      <td>already treated – see follow-up</td>
+    </tr>
+    <tr>
+      <td>refer to oncology</td>
+      <td>–</td>
+      <td>false</td>
+      <td>refer to oncology</td>
+    </tr>
+    <tr>
+      <td>VIA positive</td>
+      <td>assess TZ at point of care</td>
+      <td>false</td>
+      <td>assess TZ – ablation or excision</td>
+    </tr>
+    <tr>
+      <td>VIA positive</td>
+      <td>consider excision (CIN2+)</td>
+      <td>false</td>
+      <td>consider excision (LEEP/LLETZ)</td>
+    </tr>
+    <tr>
+      <td>VIA positive</td>
+      <td>ablation contraindicated</td>
+      <td>false</td>
+      <td>excision (LEEP/LLETZ)</td>
+    </tr>
+    <tr>
+      <td>VIA negative (24 months)</td>
+      <td>–</td>
+      <td>false</td>
+      <td>no treatment – repeat HPV in 24 months</td>
+    </tr>
+    <tr>
+      <td>VIA negative (12 months)</td>
+      <td>–</td>
+      <td>false</td>
+      <td>no treatment – repeat HPV in 12 months</td>
+    </tr>
+    <tr>
+      <td>awaiting VIA triage</td>
+      <td>–</td>
+      <td>false</td>
+      <td>no treatment decision</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key divergences:</strong></p>
+<ul>
+  <li>"Already treated" guard prevents re-treatment (Register #21)</li>
+  <li>Treatment modality is clinician-guided, not computed (Register #22)</li>
+  <li>Thermal ablation preferred over cryotherapy (Register #23)</li>
+</ul>
+
+<hr />
+
+<h3 id="6-follow-up-decision">6. Follow-up Decision</h3>
+
+<p>Determines post-treatment and post-triage-negative follow-up scheduling.</p>
+
+<p><strong>Textualist</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Treatment Plan</th>
+      <th>Histology Result</th>
+      <th>Follow-up Plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ablative treatment</td>
+      <td>CIN3 or less</td>
+      <td>post-treatment follow-up after 1 year</td>
+    </tr>
+    <tr>
+      <td>ablative treatment</td>
+      <td>cancer</td>
+      <td>cancer – further management</td>
+    </tr>
+    <tr>
+      <td>LLETZ</td>
+      <td>CIN3 or less</td>
+      <td>post-treatment follow-up after 1 year</td>
+    </tr>
+    <tr>
+      <td>LLETZ</td>
+      <td>cancer</td>
+      <td>cancer – further management</td>
+    </tr>
+    <tr>
+      <td>no treatment (gen)</td>
+      <td>–</td>
+      <td>repeat HPV test after 2 years</td>
+    </tr>
+    <tr>
+      <td>no treatment (WLHIV)</td>
+      <td>–</td>
+      <td>repeat HPV test after 1 year</td>
+    </tr>
+    <tr>
+      <td>refer for evaluation</td>
+      <td>–</td>
+      <td>evaluation, biopsy and further management</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Purposive</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Treatment Plan</th>
+      <th>Is WLHIV</th>
+      <th>Months Since Tx</th>
+      <th>HPV After Tx</th>
+      <th>Tests Since Tx</th>
+      <th>Retest Positive</th>
+      <th>Follow-up Plan</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>true</td>
+      <td>–</td>
+      <td>true</td>
+      <td>re-enter triage/treatment</td>
+      <td>retest-positive-reenter</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>true</td>
+      <td>–</td>
+      <td>true</td>
+      <td>&gt;=2</td>
+      <td>false</td>
+      <td>return to routine (3-5 years)</td>
+      <td>return-to-routine</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>false</td>
+      <td>–</td>
+      <td>true</td>
+      <td>&gt;=1</td>
+      <td>false</td>
+      <td>return to routine (5-10 years)</td>
+      <td>return-to-routine</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>true</td>
+      <td>–</td>
+      <td>true</td>
+      <td>1</td>
+      <td>false</td>
+      <td>WLHIV second retest at 12 months</td>
+      <td>wlhiv-awaiting-second-retest</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>&gt;=12</td>
+      <td>false</td>
+      <td>0</td>
+      <td>–</td>
+      <td>post-treatment HPV retest due</td>
+      <td>post-treatment-retest-due</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>[10..12)</td>
+      <td>false</td>
+      <td>0</td>
+      <td>–</td>
+      <td>retest approaching</td>
+      <td>post-treatment-retest-approaching</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>–</td>
+      <td>[0..10)</td>
+      <td>false</td>
+      <td>0</td>
+      <td>–</td>
+      <td>retest at 12 months</td>
+      <td>post-treatment-waiting</td>
+    </tr>
+    <tr>
+      <td>no treatment (gen)</td>
+      <td>false</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>repeat HPV after 24 months</td>
+      <td>post-triage-negative-waiting</td>
+    </tr>
+    <tr>
+      <td>no treatment (WLHIV)</td>
+      <td>true</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>repeat HPV after 12 months</td>
+      <td>post-triage-negative-waiting</td>
+    </tr>
+    <tr>
+      <td>refer to oncology</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>–</td>
+      <td>oncology management</td>
+      <td>refer-oncology</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key divergences:</strong></p>
+<ul>
+  <li>No histology input; follow-up driven by HPV retest results (Register #30)</li>
+  <li>WLHIV double follow-up fully modeled (Register #26, #27)</li>
+  <li>2-month "approaching" scheduling window (Register #25, #28)</li>
+  <li>Post-treatment HPV test must be strictly after treatment date (Register #29)</li>
+  <li>Return-to-routine criteria based on retest results, not histology (Register #31)</li>
+  <li>Known gap: general pop post-triage-negative return to routine not covered (Register #32)</li>
+</ul>
+
+
+
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Screening Common Definitions - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"12.6"}
+    h3,h4,h5,h6{--heading-prefix:"12.6"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Screening Common Definitions</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li class="active">
+    <a href="#">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerScreeningCommon.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerScreeningCommon.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerScreeningCommon.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+  <a name="root"> </a>
+
+  <h2 id="root">Library: Cervical Cancer Screening Common Definitions
+(Experimental)
+  </h2>
+
+  <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon<button title="Click to copy URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon|0.1.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="4">
+        
+          Draft
+          
+            as of 2026-04-21
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">CervicalCancerScreeningCommon</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+  <!-- insert intro if present -->
+  
+
+
+
+<!--  <p>
+  Formats: <a href="Library-CervicalCancerScreeningCommon.xml.html">XML</a>, <a href="Library-CervicalCancerScreeningCommon.json.html">JSON</a>, <a href="Library-CervicalCancerScreeningCommon.ttl.html">Turtle</a>
+  </p>-->
+
+  
+
+
+  <div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Cervical Cancer Screening Common Definitions</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">CervicalCancerScreeningCommon</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">0.1.0</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="Library-CervicalCancerScreeningCommon.html">Cervical Cancer Screening Common Definitions</a></td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>logic-library</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-04-21 19:55:49+0000</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">Hopena Health</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">001</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                  
+                    <li><code>https://cielterminology.org</code></li>
+                  
+                    <li><code>http://snomed.info/sct/</code></li>
+                  
+                    <li><a href="http://terminology.hl7.org/5.5.0/CodeSystem-v3-loinc.html">Logical Observation Identifiers, Names and Codes (LOINC)</a></li>
+                  
+                    <li><a href="http://terminology.hl7.org/7.1.0/CodeSystem-condition-clinical.html">Condition Clinical Status Codes</a></li>
+                  
+                    <li><code>urn:oid:cervical-cds:vs:hpv-dna-test</code></li>
+                  
+                    <li><code>urn:oid:cervical-cds:vs:via-test</code></li>
+                  
+                    <li><code>urn:oid:cervical-cds:vs:hiv-diagnosis</code></li>
+                  
+                    <li><code>urn:oid:cervical-cds:vs:cin-diagnosis</code></li>
+                  
+                    <li><code>urn:oid:cervical-cds:vs:cervical-cancer</code></li>
+                  
+                    <li><code>urn:oid:cervical-cds:vs:cervical-treatment</code></li>
+                  
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Parameters: </b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Min</b></th><th><b>Max</b></th><th><b>In/Out</b></th></tr>
+              
+                <tr><th>Patient</th><th>Patient</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Is Female</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Age In Years</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Active HIV Conditions</th><th>Condition</th><th>0</th><th>*</th><th>Out</th></tr>
+              
+                <tr><th>Is WLHIV</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Minimum Screening Age</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Maximum Screening Age</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Screening Interval Years</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Triage Negative Retest Months</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Post Treatment Retest Months</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>HPV DNA Test Results</th><th>Observation</th><th>0</th><th>*</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent HPV DNA Test</th><th>Observation</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent HPV Test Is Positive</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Date Of Most Recent HPV Test</th><th>date</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Ever Been Screened With HPV</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>VIA Screening Results</th><th>Observation</th><th>0</th><th>*</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent VIA Result</th><th>Observation</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent VIA Is Positive</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Date Of Most Recent VIA</th><th>date</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Cervical Treatments</th><th>Observation</th><th>0</th><th>*</th><th>Out</th></tr>
+              
+                <tr><th>Most Recent Treatment</th><th>Observation</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Been Treated</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Date Of Most Recent Treatment</th><th>date</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Months Since Treatment</th><th>integer</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Has Cervical Cancer Diagnosis</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Data Requirements:</b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Type</b></th><th><b>Profile</b></th><th><b>MS</b></th><th><b>Code Filter</b></th></tr>
+              
+                <tr>
+                  <th>Condition</th>
+                  <th>http://hl7.org/fhir/StructureDefinition/Condition</th>
+                  <th/>
+                  <th>
+                    
+                  </th>
+                </tr>
+              
+                <tr>
+                  <th>Observation</th>
+                  <th>http://hl7.org/fhir/StructureDefinition/Observation</th>
+                  <th/>
+                  <th>
+                    
+                  </th>
+                </tr>
+              
+                <tr>
+                  <th>Observation</th>
+                  <th>http://hl7.org/fhir/StructureDefinition/Observation</th>
+                  <th/>
+                  <th>
+                    
+                  </th>
+                </tr>
+              
+                <tr>
+                  <th>Observation</th>
+                  <th>http://hl7.org/fhir/StructureDefinition/Observation</th>
+                  <th/>
+                  <th>
+                    
+                  </th>
+                </tr>
+              
+                <tr>
+                  <th>Condition</th>
+                  <th>http://hl7.org/fhir/StructureDefinition/Condition</th>
+                  <th/>
+                  <th>
+                    
+                  </th>
+                </tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><a id="cql-content"><b>Content: </b></a> text/cql</th></tr>
+              <tr><td><pre><code class="language-cql">/*
+ * CervicalCancerScreeningCommon
+ *
+ * Shared definitions for cervical cancer screening CDS, implementing
+ * WHO guideline for screening and treatment of cervical pre-cancer lesions
+ * for cervical cancer prevention, 2nd edition (2021).
+ *
+ * This library provides:
+ *   - Value set definitions (inline, using CIEL terminology)
+ *   - Patient demographic expressions
+ *   - HIV status determination
+ *   - Screening history retrieval
+ *   - Treatment history retrieval
+ *   - Shared helper functions
+ *
+ * @author  Dan Heslinga / Hopena Health
+ * @version 0.1.0
+ * @date    2026-03-08
+ *
+ * Code system note:
+ *   OpenMRS FHIR2 emits SNOMED CT with a trailing slash (http://snomed.info/sct/)
+ *   which is non-standard. We use CIEL (https://cielterminology.org) as the
+ *   primary code system for value sets, since every OpenMRS concept has a CIEL
+ *   mapping and the URI is consistent.
+ */
+
+library CervicalCancerScreeningCommon version '0.1.0'
+
+using FHIR version '4.0.1'
+
+include FHIRHelpers version '4.0.1'
+
+/*
+ * =============================================================================
+ * CODE SYSTEMS
+ * =============================================================================
+ */
+
+codesystem &quot;CIEL&quot;: 'https://cielterminology.org'
+codesystem &quot;SNOMED&quot;: 'http://snomed.info/sct/'   // Note trailing slash (OpenMRS quirk)
+codesystem &quot;LOINC&quot;: 'http://loinc.org'
+codesystem &quot;ConditionClinicalStatusCodes&quot;: 'http://terminology.hl7.org/CodeSystem/condition-clinical'
+
+/*
+ * =============================================================================
+ * CODES — Individual concept codes referenced directly in expressions
+ * =============================================================================
+ */
+
+// Observation answer codes
+code &quot;Positive&quot;: '703' from &quot;CIEL&quot; display 'Positive'
+code &quot;Negative&quot;: '664' from &quot;CIEL&quot; display 'Negative'
+
+// Condition clinical status
+code &quot;active&quot;: 'active' from &quot;ConditionClinicalStatusCodes&quot;
+
+/*
+ * =============================================================================
+ * VALUE SETS — Inline definitions using CIEL codes
+ * =============================================================================
+ *
+ * Note: These are defined inline rather than as external FHIR ValueSet resources.
+ * When we package as an IG (Phase 4), these will be promoted to proper ValueSets
+ * authored in FSH.
+ */
+
+// --- Screening Tests ---
+
+/*
+ * @description HPV DNA / NAT test observation codes
+ *   CIEL 170145: Human papillomavirus (HPV) DNA detection (SNOMED 35904009)
+ *   CIEL 159859: PCR, human papilloma virus, qualitative (legacy, SNOMED 9718006)
+ */
+valueset &quot;HPV DNA Test Codes&quot;: 'urn:oid:cervical-cds:vs:hpv-dna-test'
+// Expanded inline as concept list since we don't have a terminology server:
+// 170145, 159859
+
+/*
+ * @description VIA / cervical screening observation codes
+ *   CIEL 151185: Screening for malignant neoplasm of cervix (SNOMED 243877001)
+ */
+valueset &quot;VIA Test Codes&quot;: 'urn:oid:cervical-cds:vs:via-test'
+// Expanded inline: 151185
+
+// --- Diagnoses ---
+
+/*
+ * @description HIV diagnosis codes for identifying WLHIV
+ *   CIEL 138405: Human immunodeficiency virus (HIV) disease (SNOMED 86406008)
+ */
+valueset &quot;HIV Diagnosis Codes&quot;: 'urn:oid:cervical-cds:vs:hiv-diagnosis'
+// Expanded inline: 138405
+
+/*
+ * @description CIN diagnosis codes (all grades)
+ *   CIEL 145809: CIN grade 1 (SNOMED 285836003)
+ *   CIEL 145807: CIN grade 2 (SNOMED 285838002)
+ *   CIEL 145806: CIN grade 3 (SNOMED 285636001)
+ *   CIEL 120780: CIN general (SNOMED 285636001)
+ */
+valueset &quot;CIN Diagnosis Codes&quot;: 'urn:oid:cervical-cds:vs:cin-diagnosis'
+// Expanded inline: 145809, 145807, 145806, 120780
+
+/*
+ * @description Cervical cancer diagnosis
+ *   CIEL 116023: Malignant neoplasm of cervix uteri (SNOMED 363354003)
+ */
+valueset &quot;Cervical Cancer Diagnosis Codes&quot;: 'urn:oid:cervical-cds:vs:cervical-cancer'
+// Expanded inline: 116023
+
+// --- Treatments (recorded as Observations, since OpenMRS lacks Procedure resource) ---
+
+/*
+ * @description Treatment procedure codes (thermal ablation, cryotherapy, LEEP)
+ *   CIEL 166706: Thermocauterization of cervix (SNOMED 1287592000)
+ *   CIEL 162812: Cryosurgery of lesion of cervix (SNOMED 78203001)
+ *   CIEL 165084: LEEP of cervix (SNOMED 23140002)
+ *   CIEL 162810: Loop electrosurgical excision procedure (SNOMED 36899001)
+ */
+valueset &quot;Cervical Treatment Codes&quot;: 'urn:oid:cervical-cds:vs:cervical-treatment'
+// Expanded inline: 166706, 162812, 165084, 162810
+
+/*
+ * =============================================================================
+ * CONCEPT DEFINITIONS — For direct code matching in retrieves
+ * =============================================================================
+ *
+ * Since we're using inline value sets that aren't backed by a terminology
+ * server, we define individual codes and use them in expressions with
+ * explicit code matching.
+ */
+
+// Screening test codes
+code &quot;HPV DNA Detection Code&quot;: '170145' from &quot;CIEL&quot; display 'HPV DNA detection'
+code &quot;HPV PCR Qualitative Code&quot;: '159859' from &quot;CIEL&quot; display 'HPV PCR qualitative'
+code &quot;Cervical Screening Code&quot;: '151185' from &quot;CIEL&quot; display 'Screening for malignant neoplasm of cervix'
+
+// Diagnosis codes
+code &quot;HIV Disease Code&quot;: '138405' from &quot;CIEL&quot; display 'HIV disease'
+code &quot;Cervical Cancer Code&quot;: '116023' from &quot;CIEL&quot; display 'Malignant neoplasm of cervix uteri'
+code &quot;CIN1 Code&quot;: '145809' from &quot;CIEL&quot; display 'CIN grade 1'
+code &quot;CIN2 Code&quot;: '145807' from &quot;CIEL&quot; display 'CIN grade 2'
+code &quot;CIN3 Code&quot;: '145806' from &quot;CIEL&quot; display 'CIN grade 3'
+
+// Treatment codes
+code &quot;Thermal Ablation Code&quot;: '166706' from &quot;CIEL&quot; display 'Thermocauterization of cervix'
+code &quot;Cryotherapy Code&quot;: '162812' from &quot;CIEL&quot; display 'Cryosurgery of lesion of cervix'
+code &quot;LEEP Code&quot;: '165084' from &quot;CIEL&quot; display 'LEEP of cervix'
+code &quot;LEEP Generic Code&quot;: '162810' from &quot;CIEL&quot; display 'Loop electrosurgical excision procedure'
+
+/*
+ * =============================================================================
+ * PATIENT DEMOGRAPHICS
+ * =============================================================================
+ */
+
+context Patient
+
+/*
+ * @input Patient.gender
+ * @pseudocode Patient is female
+ */
+define &quot;Is Female&quot;:
+  Patient.gender = 'female'
+
+/*
+ * @input Patient.birthDate
+ * @pseudocode Patient age in years at time of evaluation
+ */
+define &quot;Age In Years&quot;:
+  AgeInYears()
+
+/*
+ * =============================================================================
+ * HIV STATUS
+ * =============================================================================
+ *
+ * @guidance WHO Recommendations 21-34 apply to WLHIV. HIV status determines:
+ *   - Screening start age (25 vs 30)
+ *   - Screening interval (3-5 years vs 5-10 years)
+ *   - Triage recommendation (screen-triage-treat preferred for WLHIV)
+ *   - Follow-up intervals (12 months vs 24 months post-triage-negative)
+ *   - Post-treatment follow-up (double follow-up for WLHIV)
+ */
+
+/*
+ * @input Condition where code in HIV Diagnosis Codes and clinicalStatus = active
+ * @pseudocode Active HIV conditions for this patient
+ */
+define &quot;Active HIV Conditions&quot;:
+  [Condition] C
+    where C.code.coding.code contains '138405'
+      and C.clinicalStatus.coding.code contains 'active'
+
+/*
+ * @output Boolean — true if patient has active HIV diagnosis
+ * @pseudocode Patient is a woman living with HIV
+ */
+define &quot;Is WLHIV&quot;:
+  exists(&quot;Active HIV Conditions&quot;)
+
+/*
+ * =============================================================================
+ * SCREENING PARAMETERS — Population-specific thresholds
+ * =============================================================================
+ */
+
+/*
+ * @guidance WHO Recommendation 5 (general): start at age 30
+ *           WHO Recommendation 25 (WLHIV): start at age 25
+ */
+define &quot;Minimum Screening Age&quot;:
+  if &quot;Is WLHIV&quot; then 25 else 30
+
+/*
+ * @guidance WHO Recommendation 6/26: stop after age 50 with 2 consecutive negatives
+ */
+define &quot;Maximum Screening Age&quot;:
+  49
+
+/*
+ * @guidance WHO Recommendation 8 (general): every 5-10 years
+ *           WHO Recommendation 28 (WLHIV): every 3-5 years
+ *           Using lower bound for &quot;due&quot; calculation (most conservative)
+ */
+define &quot;Screening Interval Years&quot;:
+  if &quot;Is WLHIV&quot; then 3 else 5
+
+/*
+ * @guidance WHO Recommendation 11 (general): retest at 24 months post-triage-negative
+ *           WHO Recommendation 31 (WLHIV): retest at 12 months post-triage-negative
+ */
+define &quot;Post Triage Negative Retest Months&quot;:
+  if &quot;Is WLHIV&quot; then 12 else 24
+
+/*
+ * @guidance WHO Recommendation 13/33: retest at 12 months post-treatment (both populations)
+ */
+define &quot;Post Treatment Retest Months&quot;:
+  12
+
+/*
+ * =============================================================================
+ * SCREENING HISTORY
+ * =============================================================================
+ */
+
+/*
+ * @input Observation where code matches HPV DNA test codes
+ * @pseudocode All HPV DNA test results for this patient, any time
+ */
+define &quot;HPV DNA Test Results&quot;:
+  [Observation] O
+    where O.code.coding.code contains '170145'
+       or O.code.coding.code contains '159859'
+
+/*
+ * @pseudocode Most recent HPV DNA test result, by effective date
+ */
+define &quot;Most Recent HPV DNA Test&quot;:
+  Last(
+    &quot;HPV DNA Test Results&quot; O
+      sort by Coalesce(
+        (effective as FHIR.dateTime).value,
+        (effective as FHIR.Period).&quot;start&quot;.value
+      )
+  )
+
+/*
+ * @output Boolean — true if most recent HPV DNA test was positive
+ */
+define &quot;Most Recent HPV Test Is Positive&quot;:
+  &quot;Most Recent HPV DNA Test&quot;.value.coding.code contains '703'
+
+/*
+ * @output Date of most recent HPV DNA test
+ */
+define &quot;Date Of Most Recent HPV Test&quot;:
+  date from (&quot;Most Recent HPV DNA Test&quot;.effective as FHIR.dateTime).value
+
+/*
+ * @pseudocode True if patient has ever had any HPV DNA test
+ */
+define &quot;Has Ever Been Screened With HPV&quot;:
+  exists(&quot;HPV DNA Test Results&quot;)
+
+/*
+ * =============================================================================
+ * VIA / TRIAGE HISTORY
+ * =============================================================================
+ */
+
+/*
+ * @input Observation where code matches VIA/cervical screening codes
+ * @pseudocode All VIA screening results for this patient
+ */
+define &quot;VIA Screening Results&quot;:
+  [Observation] O
+    where O.code.coding.code contains '151185'
+
+/*
+ * @pseudocode Most recent VIA screening result
+ */
+define &quot;Most Recent VIA Result&quot;:
+  Last(
+    &quot;VIA Screening Results&quot; O
+      sort by Coalesce(
+        (effective as FHIR.dateTime).value,
+        (effective as FHIR.Period).&quot;start&quot;.value
+      )
+  )
+
+/*
+ * @output Boolean — true if most recent VIA was positive
+ */
+define &quot;Most Recent VIA Is Positive&quot;:
+  &quot;Most Recent VIA Result&quot;.value.coding.code contains '703'
+
+/*
+ * @output Date of most recent VIA
+ */
+define &quot;Date Of Most Recent VIA&quot;:
+  date from (&quot;Most Recent VIA Result&quot;.effective as FHIR.dateTime).value
+
+/*
+ * =============================================================================
+ * TREATMENT HISTORY
+ * =============================================================================
+ *
+ * Treatments are stored as Observations (OpenMRS FHIR2 has no Procedure resource).
+ * The Observation.code is the treatment SNOMED/CIEL code.
+ */
+
+/*
+ * @input Observation where code matches cervical treatment codes
+ * @pseudocode All cervical treatment events for this patient
+ */
+define &quot;Cervical Treatments&quot;:
+  [Observation] O
+    where O.code.coding.code contains '166706'   // Thermal ablation
+       or O.code.coding.code contains '162812'   // Cryotherapy
+       or O.code.coding.code contains '165084'   // LEEP (cervix)
+       or O.code.coding.code contains '162810'   // LEEP (generic)
+
+/*
+ * @pseudocode Most recent cervical treatment event
+ */
+define &quot;Most Recent Treatment&quot;:
+  Last(
+    &quot;Cervical Treatments&quot; O
+      sort by Coalesce(
+        (effective as FHIR.dateTime).value,
+        (effective as FHIR.Period).&quot;start&quot;.value
+      )
+  )
+
+/*
+ * @output Boolean — true if patient has ever received cervical treatment
+ */
+define &quot;Has Been Treated&quot;:
+  exists(&quot;Cervical Treatments&quot;)
+
+/*
+ * @output Date of most recent treatment
+ */
+define &quot;Date Of Most Recent Treatment&quot;:
+  date from (&quot;Most Recent Treatment&quot;.effective as FHIR.dateTime).value
+
+/*
+ * @output Number of months since most recent treatment
+ */
+define &quot;Months Since Treatment&quot;:
+  if &quot;Has Been Treated&quot;
+  then months between &quot;Date Of Most Recent Treatment&quot; and Today()
+  else null
+
+/*
+ * =============================================================================
+ * CERVICAL CANCER DIAGNOSIS
+ * =============================================================================
+ */
+
+/*
+ * @input Condition where code matches cervical cancer codes
+ * @pseudocode True if patient has a cervical cancer diagnosis
+ * @guidance Patients with known cervical cancer should be referred for
+ *           oncology management, not managed through screening pathway
+ */
+define &quot;Has Cervical Cancer Diagnosis&quot;:
+  exists(
+    [Condition] C
+      where C.code.coding.code contains '116023'
+        and C.clinicalStatus.coding.code contains 'active'
+  )
+
+/*
+ * =============================================================================
+ * HELPER FUNCTIONS
+ * =============================================================================
+ */
+
+/*
+ * @pseudocode True if a coded value contains CIEL code 703 (Positive)
+ */
+define function IsPositive(value FHIR.CodeableConcept):
+  value.coding.code contains '703'
+
+/*
+ * @pseudocode True if a coded value contains CIEL code 664 (Negative)
+ */
+define function IsNegative(value FHIR.CodeableConcept):
+  value.coding.code contains '664'
+</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><b>Content: </b> application/elm+json</th></tr>
+              <tr><td><pre><code>Encoded data (169676 characters)</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+    </table>
+</div>
+</div>
+
+  <!-- insert notes if present -->
+  
+
+
+
+  
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+
