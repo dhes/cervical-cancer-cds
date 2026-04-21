@@ -29,3 +29,6 @@ target/
 .idea/
 .vscode/
 *.swp
+
+# Community outreach drafts (contain names/emails)
+community/
