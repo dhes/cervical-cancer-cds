@@ -1,64 +1,62 @@
-This implementation guide provides computable clinical decision support (CDS)
-for cervical cancer screening and treatment, implementing the
-[WHO guideline for screening and treatment of cervical pre-cancer lesions for
-cervical cancer prevention, 2nd edition (2021)](https://www.who.int/publications/i/item/9789240030824).
+<div>
+<p><strong>UNOFFICIAL — NOT WHO-ENDORSED.</strong> This Digital Adaptation Kit is a methodology demonstration authored independently by Hopena Health. It is structured using the WHO <code>smart-dak-empty</code> template (CC BY 4.0) but is <strong>not</strong> a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program. As of this writing, no publicly available WHO cervical cancer SMART DAK has been published; this work fills that gap as a non-official methodology demonstration. Discussion ongoing within the WHO SMART community of practice.</p>
+</div>{:.stu-note}
 
-### Scope
+<div>
+<p>This DAK is under active development as a methodology demonstration; content is provisional and for demonstration purposes only.</p>
+</div>{:.stu-note}
 
-This IG implements **Algorithm 5: HPV DNA primary screening with VIA triage**
-for both the general population of women and women living with HIV (WLHIV).
-It covers the full screening cascade:
 
-- **Screening eligibility and scheduling** -- age, sex, HIV status, screening interval
-- **Triage** -- VIA assessment of HPV-positive women
-- **Treatment** -- ablation eligibility checklist, modality selection
-- **Follow-up** -- post-treatment and post-triage-negative retesting, WLHIV double follow-up
+### Summary 
+<mark>[Add content here. You could use as reference the previously published DAKs]</mark>
 
-### Target Platform
+### L1 Narrative guidelines
+<mark>[Add content here. You could use as reference the previously published DAKs]</mark>
 
-[OpenMRS](https://openmrs.org/) O3 Reference Application with the FHIR2 module,
-deployed in low- and middle-income countries (LMICs). The CDS artifacts are
-platform-agnostic FHIR R4 and CQL, usable with any FHIR-enabled system.
+### L2 Operational guidelines
+The DAK for <mark>[insert health domain here]</mark> and the associated implementations tools can be found here:
 
-### Artifacts
+<!-- insert the IRIS link inside the parentheses below. The link is available only after the PDF is published on WHO IRIS. --->
+- [Published DAK Document]()
 
-This IG contains:
+<!-- insert the link to each implementation tool inside the corresponding parentheses below. Replace "<mark>[health domain abbreviation]</mark>" with the appropriate health domain abbreviation. --->
 
-- **5 CQL libraries** implementing the clinical logic
-- **4 PlanDefinition resources** defining ECA (Event-Condition-Action) rules
-- **5 FHIR Library resources** wrapping the CQL for FHIR-based evaluation
+- Implementation tools:
 
-See the [Artifacts](artifacts.html) page for the complete list.
+   - [Link to the editable files of business processes, in .bpmn format](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/business-processes.html)
+   
+   - [Link to core data dictionary](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/dictionary.html)
+ 
+   - [Link to decision support logic](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/decision-logic.html) 
 
-### Technical Approach
+   - [Link to scheduling logic](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/scheduling-logic.html)
 
-Clinical logic is authored in [CQL (Clinical Quality Language)](https://cql.hl7.org/)
-and compiled to ELM for runtime evaluation. The CQL uses
-[CIEL](https://openconceptlab.org/orgs/CIEL/) terminology codes mapped to
-SNOMED CT, LOINC, and ICD-10, matching the OpenMRS concept dictionary.
+   - [Link to indicators table](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/indicators.html)
+ 
+   - [Link to functional and non functional requirements](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/system-requirements.html)
 
-The CDS follows [WHO SMART Guidelines L3](https://smart.who.int/) conventions:
-one CQL library per decision table, shared definitions in a common library,
-PlanDefinition resources for each decision rule.
+   
 
-### Decision Modeling and Traceability
+### L3 Machine readable guidelines
+The L3 FHIR Implementation Guide for the <mark>[insert health domain here]</mark> SMART Guidelines is yet to be published. Links will be published here as soon as they're available.
 
-This IG includes formal [OMG DMN](https://www.omg.org/spec/DMN/) decision model
-artifacts that document the relationship between the WHO guideline text and
-the CQL implementation. Two L2 decision models are provided:
+### L4 Executable guidelines
+Reference implementations representing the L4 layer for the <mark>[insert health domain here]</mark> SMART Guidelines are not yet available. Links will be published here as soon as they're available.
 
-- A **textualist** model that mirrors the WHO guideline language without interpretation
-- A **purposive** model that reflects the CQL's concrete, operationalized choices
+### L5 Dynamic guidelines
+Content representing the L5 layer for the <mark>[insert health domain here]</mark> SMART Guidelines are not yet available. Links will be published here as soon as they're available.
 
-An [Interpretation Register](interpretation-register.html) documents every
-divergence between the two, categorized as Specification, Disambiguation,
-Inference, or Correction. See the [Decision Modeling](methodology.html)
-page for the full methodology.
+### Contact Us
+<p>This is an unofficial work by Hopena Health. For questions or feedback, see <a href="https://hopenahealth.com">hopenahealth.com</a> or open an issue at the <a href="https://github.com/dhes/cervical-cancer-cds/issues">GitHub repository</a>. For questions about the WHO SMART Guidelines program itself, contact <a href="mailto:SMART@who.int">SMART@who.int</a> directly.</p>
 
-### Dependencies
+### License
+This Implementation Guide is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). The underlying smart-dak-empty template from WHO is licensed under CC BY 4.0; attribution to that template is retained.
 
-{% include dependency-table-short.xhtml %}
+For more license details please see the [license page](license.html).
 
-### IP Statements
+### Providing Feedback
+{% include feedback.md %}
 
-{% include ip-statements.xhtml %}
+<!---Note: Please keep the dsiclaimer note below in the main branch and when publishing the pre-release version of the DAK (v0.9.9). For official published versions, please delete the note from the file.-->
+### Disclaimer
+The specification herewith documented is a demo working specification and may not be used for any implementation purposes. This draft is provided without warranty of completeness or consistency and the official publication supersedes this draft. No liability can be inferred from the use or misuse of this specification or its consequences.

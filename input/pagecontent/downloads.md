@@ -1,25 +1,7 @@
-### Downloads
+**This content is not yet available. The page will be updated as soon as the content is ready to be shared.**
 
-The following sections list the downloads available from this implementation guide.
+### Package
 
-### Full Implementation Guide
+This is the technical package containing the artifacts in this Implementation Guide:
 
-The full implementation guide is available as a downloadable package from
-the [Downloads](downloads.html) section.
-
-### Package File
-
-{% include cross-version-analysis.xhtml %}
-
-### Decision Model Artifacts (DMN)
-
-The following OMG DMN 1.3 files document the decision logic for Algorithm 5.
-See [Decision Modeling](methodology.html) for methodology and
-[Interpretation Register](interpretation-register.html) for divergence analysis.
-
-- [Textualist L2](images/algorithm-5-hpv-via-textualist.dmn) -- mirrors WHO guideline language ([rendered view](images/algorithm-5-hpv-via-textualist.html))
-- [Purposive L2](images/algorithm-5-hpv-via-purposive.dmn) -- reflects CQL implementation choices ([rendered view](images/algorithm-5-hpv-via-purposive.html))
-
-### Definitions
-
-{% include globals-table.xhtml %}
+* [IG Package](package.tgz)
