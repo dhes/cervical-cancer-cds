@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="CervicalCancerFollowUp"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b style="color: maroon">Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55</b></p></div>
+  </text>
+  <url value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp"/>
+  <version value="0.1.0"/>
+  <name value="CervicalCancerFollowUp"/>
+  <title value="Cervical Cancer Follow-Up — Post-Treatment and Post-Triage Scheduling"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+      <display value="ECA Rule"/>
+    </coding>
+  </type>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2026-03-08"/>
+  <publisher value="Hopena Health"/>
+  <contact>
+    <name value="Hopena Health"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://hopenahealth.com"/>
+    </telecom>
+  </contact>
+  <contact>
+    <name value="Dan Heslinga"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://hopenahealth.com"/>
+    </telecom>
+  </contact>
+  <description value="Clinical decision support rule for follow-up scheduling after cervical cancer treatment or triage-negative result. Manages post-treatment HPV DNA retest timing (12 months for both populations), post-triage-negative retest timing (12 months WLHIV, 24 months general), WLHIV double follow-up tracking (two consecutive negative HPV retests), return-to-routine-screening criteria, and re-entry to triage/treatment when follow-up HPV retest is positive."/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="focus"/>
+      <display value="Clinical Focus"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="243877001"/>
+        <display value="Cancer cervix screening"/>
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+    </coding>
+  </jurisdiction>
+  <purpose value="To ensure timely follow-up after cervical cancer treatment or triage-negative results, preventing loss to follow-up in the screening cascade. Manages population-specific follow-up intervals and tracks WLHIV double follow-up requirements."/>
+  <copyright value="Copyright 2026 Hopena Health. License: Apache 2.0"/>
+  <relatedArtifact>
+    <type value="derived-from"/>
+    <label value="WHO Guideline"/>
+    <display value="WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)"/>
+    <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    <document>
+      <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    </document>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="citation"/>
+    <label value="WHO Recommendations"/>
+    <display value="General: Recs 11 (post-triage-neg 24mo), 12 (post-colp-normal), 13 (post-treatment 12mo). WLHIV: Recs 31 (post-triage-neg 12mo), 32 (post-colp-normal), 33 (post-treatment double follow-up)."/>
+    <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    <document>
+      <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    </document>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="composed-of"/>
+    <display value="Upstream: Treated patients enter post-treatment follow-up"/>
+    <resource value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment|0.1.0"/>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="composed-of"/>
+    <display value="Upstream: Triage-negative patients enter post-triage follow-up"/>
+    <resource value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage|0.1.0"/>
+  </relatedArtifact>
+  <library value="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision|0.1.0"/>
+  <action>
+    <title value="Follow-Up Assessment"/>
+    <description value="Evaluate follow-up status for women with active post-treatment or post-triage-negative follow-up"/>
+    <trigger>
+      <type value="named-event"/>
+      <name value="patient-view"/>
+    </trigger>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="Has Active Follow Up"/>
+        <reference value="Library/CervicalCancerFollowUpDecision"/>
+      </expression>
+    </condition>
+    <action id="retest-positive-reenter">
+      <title value="Follow-Up HPV Retest Positive — Re-enter Cascade"/>
+      <description value="Post-treatment or post-triage HPV retest is positive — patient must re-enter the triage/treatment pathway"/>
+      <priority value="urgent"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Post Treatment Retest Is Positive"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="post-treatment-retest-due">
+      <title value="Post-Treatment HPV Retest Due"/>
+      <description value="12 months have elapsed since treatment — HPV DNA retest is now due"/>
+      <priority value="routine"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Post Treatment Retest Is Due"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="post-treatment-retest-approaching">
+      <title value="Post-Treatment HPV Retest Approaching"/>
+      <description value="Post-treatment retest is approaching (within 2 months) — schedule the follow-up visit"/>
+      <priority value="routine"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Post Treatment Retest Is Approaching"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="wlhiv-second-retest">
+      <title value="WLHIV Double Follow-Up — Second Retest Needed"/>
+      <description value="WLHIV patient had first negative post-treatment HPV retest — second retest at 12 months required before return to routine screening (WHO Rec 33)"/>
+      <priority value="routine"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="WLHIV Needs Second Follow Up Test"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="post-triage-negative-retest-due">
+      <title value="Post-Triage-Negative HPV Retest Due"/>
+      <description value="HPV+/VIA- patient's follow-up interval has elapsed — HPV DNA retest is due (12 months WLHIV, 24 months general)"/>
+      <priority value="routine"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Post Triage Negative Retest Is Due"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="post-triage-negative-waiting">
+      <title value="Post-Triage-Negative — Awaiting Retest Interval"/>
+      <description value="HPV+/VIA- patient is in the waiting period before follow-up HPV retest is due"/>
+      <priority value="routine"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Is Post Triage Negative"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="return-to-routine">
+      <title value="Return to Routine Screening"/>
+      <description value="Follow-up complete — patient can return to routine screening interval"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Can Return To Routine Screening"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Follow Up Recommended Action"/>
+          <reference value="Library/CervicalCancerFollowUpDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+  </action>
+</PlanDefinition>

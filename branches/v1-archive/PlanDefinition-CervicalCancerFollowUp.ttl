@@ -1,0 +1,405 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CervicalCancerFollowUp"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b style=\"color: maroon\">Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55</b></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "CervicalCancerFollowUp"] ; # 
+  fhir:title [ fhir:v "Cervical Cancer Follow-Up — Post-Treatment and Post-Triage Scheduling"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ] ;
+       fhir:display [ fhir:v "ECA Rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v true] ; # 
+  fhir:date [ fhir:v "2026-03-08"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Hopena Health"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Hopena Health" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] [
+     fhir:name [ fhir:v "Dan Heslinga" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Clinical decision support rule for follow-up scheduling after cervical cancer treatment or triage-negative result. Manages post-treatment HPV DNA retest timing (12 months for both populations), post-triage-negative retest timing (12 months WLHIV, 24 months general), WLHIV double follow-up tracking (two consecutive negative HPV retests), return-to-routine-screening criteria, and re-entry to triage/treatment when follow-up HPV retest is positive."] ; # 
+  fhir:useContext ( [
+     fhir:code [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/usage-context-type>
+       ] ;
+       fhir:code [ fhir:v "focus" ] ;
+       fhir:display [ fhir:v "Clinical Focus" ]
+     ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         a sct:243877001 ;
+         fhir:system [
+           fhir:v "http://snomed.info/sct"^^xsd:anyURI ;
+           fhir:l <http://snomed.info/sct>
+         ] ;
+         fhir:code [ fhir:v "243877001" ] ;
+         fhir:display [ fhir:v "Cancer cervix screening" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://unstats.un.org/unsd/methods/m49/m49.htm"^^xsd:anyURI ;
+         fhir:l <http://unstats.un.org/unsd/methods/m49/m49.htm>
+       ] ;
+       fhir:code [ fhir:v "001" ]
+     ] )
+  ] ) ; # 
+  fhir:purpose [ fhir:v "To ensure timely follow-up after cervical cancer treatment or triage-negative results, preventing loss to follow-up in the screening cascade. Manages population-specific follow-up intervals and tracks WLHIV double follow-up requirements."] ; # 
+  fhir:copyright [ fhir:v "Copyright 2026 Hopena Health. License: Apache 2.0"] ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "derived-from" ] ;
+     fhir:label [ fhir:v "WHO Guideline" ] ;
+     fhir:display [ fhir:v "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)" ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:label [ fhir:v "WHO Recommendations" ] ;
+     fhir:display [ fhir:v "General: Recs 11 (post-triage-neg 24mo), 12 (post-colp-normal), 13 (post-treatment 12mo). WLHIV: Recs 31 (post-triage-neg 12mo), 32 (post-colp-normal), 33 (post-treatment double follow-up)." ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "composed-of" ] ;
+     fhir:display [ fhir:v "Upstream: Treated patients enter post-treatment follow-up" ] ;
+     fhir:resource [
+       fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment|0.1.0"^^xsd:anyURI ;
+       fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment?version=0.1.0>
+     ]
+  ] [
+     fhir:type [ fhir:v "composed-of" ] ;
+     fhir:display [ fhir:v "Upstream: Triage-negative patients enter post-triage follow-up" ] ;
+     fhir:resource [
+       fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage|0.1.0"^^xsd:anyURI ;
+       fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage?version=0.1.0>
+     ]
+  ] ) ; # 
+  fhir:library ( [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision|0.1.0"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision?version=0.1.0>
+  ] ) ; # 
+  fhir:action ( [
+     fhir:title [ fhir:v "Follow-Up Assessment" ] ;
+     fhir:description [ fhir:v "Evaluate follow-up status for women with active post-treatment or post-triage-negative follow-up" ] ;
+     fhir:trigger ( [
+       fhir:type [ fhir:v "named-event" ] ;
+       fhir:name [ fhir:v "patient-view" ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Has Active Follow Up" ] ;
+         fhir:reference [
+           fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+           fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+         ]
+       ]
+     ] ) ;
+     fhir:action ( [
+       fhir:id [ fhir:v "retest-positive-reenter" ] ;
+       fhir:title [ fhir:v "Follow-Up HPV Retest Positive — Re-enter Cascade" ] ;
+       fhir:description [ fhir:v "Post-treatment or post-triage HPV retest is positive — patient must re-enter the triage/treatment pathway" ] ;
+       fhir:priority [ fhir:v "urgent" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Post Treatment Retest Is Positive" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "post-treatment-retest-due" ] ;
+       fhir:title [ fhir:v "Post-Treatment HPV Retest Due" ] ;
+       fhir:description [ fhir:v "12 months have elapsed since treatment — HPV DNA retest is now due" ] ;
+       fhir:priority [ fhir:v "routine" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Post Treatment Retest Is Due" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "post-treatment-retest-approaching" ] ;
+       fhir:title [ fhir:v "Post-Treatment HPV Retest Approaching" ] ;
+       fhir:description [ fhir:v "Post-treatment retest is approaching (within 2 months) — schedule the follow-up visit" ] ;
+       fhir:priority [ fhir:v "routine" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Post Treatment Retest Is Approaching" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "wlhiv-second-retest" ] ;
+       fhir:title [ fhir:v "WLHIV Double Follow-Up — Second Retest Needed" ] ;
+       fhir:description [ fhir:v "WLHIV patient had first negative post-treatment HPV retest — second retest at 12 months required before return to routine screening (WHO Rec 33)" ] ;
+       fhir:priority [ fhir:v "routine" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "WLHIV Needs Second Follow Up Test" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "post-triage-negative-retest-due" ] ;
+       fhir:title [ fhir:v "Post-Triage-Negative HPV Retest Due" ] ;
+       fhir:description [ fhir:v "HPV+/VIA- patient's follow-up interval has elapsed — HPV DNA retest is due (12 months WLHIV, 24 months general)" ] ;
+       fhir:priority [ fhir:v "routine" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Post Triage Negative Retest Is Due" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "post-triage-negative-waiting" ] ;
+       fhir:title [ fhir:v "Post-Triage-Negative — Awaiting Retest Interval" ] ;
+       fhir:description [ fhir:v "HPV+/VIA- patient is in the waiting period before follow-up HPV retest is due" ] ;
+       fhir:priority [ fhir:v "routine" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Is Post Triage Negative" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "return-to-routine" ] ;
+       fhir:title [ fhir:v "Return to Routine Screening" ] ;
+       fhir:description [ fhir:v "Follow-up complete — patient can return to routine screening interval" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Can Return To Routine Screening" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Follow Up Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerFollowUpDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision>
+           ]
+         ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

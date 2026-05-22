@@ -1,0 +1,306 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CervicalCancerTreatment"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b style=\"color: maroon\">Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55</b></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "CervicalCancerTreatment"] ; # 
+  fhir:title [ fhir:v "Cervical Cancer Treatment — Ablation Eligibility and Modality Selection"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ] ;
+       fhir:display [ fhir:v "ECA Rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v true] ; # 
+  fhir:date [ fhir:v "2026-03-08"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Hopena Health"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Hopena Health" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] [
+     fhir:name [ fhir:v "Dan Heslinga" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Clinical decision support rule for treatment of cervical pre-cancer lesions. Implements WHO ablation eligibility criteria and treatment modality selection. Presents the clinician with a point-of-care ablation eligibility checklist (transformation zone type, lesion extent, suspicion of cancer) and recommends thermal ablation, cryotherapy, or excision (LEEP/LLETZ) based on eligibility and available data."] ; # 
+  fhir:useContext ( [
+     fhir:code [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/usage-context-type>
+       ] ;
+       fhir:code [ fhir:v "focus" ] ;
+       fhir:display [ fhir:v "Clinical Focus" ]
+     ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         a sct:1287592000 ;
+         fhir:system [
+           fhir:v "http://snomed.info/sct"^^xsd:anyURI ;
+           fhir:l <http://snomed.info/sct>
+         ] ;
+         fhir:code [ fhir:v "1287592000" ] ;
+         fhir:display [ fhir:v "Thermocauterization of cervix" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://unstats.un.org/unsd/methods/m49/m49.htm"^^xsd:anyURI ;
+         fhir:l <http://unstats.un.org/unsd/methods/m49/m49.htm>
+       ] ;
+       fhir:code [ fhir:v "001" ]
+     ] )
+  ] ) ; # 
+  fhir:purpose [ fhir:v "To guide treatment modality selection for women with HPV-positive, VIA-positive cervical pre-cancer, ensuring appropriate assessment of ablation eligibility and selection of the most suitable treatment method for the clinical setting."] ; # 
+  fhir:copyright [ fhir:v "Copyright 2026 Hopena Health. License: Apache 2.0"] ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "derived-from" ] ;
+     fhir:label [ fhir:v "WHO Guideline" ] ;
+     fhir:display [ fhir:v "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)" ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:label [ fhir:v "WHO Guidance" ] ;
+     fhir:display [ fhir:v "Ablation eligibility criteria: TZ type assessment, lesion extent, suspicion of cancer. Treatment preference: thermal ablation > cryotherapy > LEEP/LLETZ." ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "composed-of" ] ;
+     fhir:display [ fhir:v "Upstream: Triage routes VIA+ patients to treatment assessment" ] ;
+     fhir:resource [
+       fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage|0.1.0"^^xsd:anyURI ;
+       fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage?version=0.1.0>
+     ]
+  ] [
+     fhir:type [ fhir:v "composed-of" ] ;
+     fhir:display [ fhir:v "Downstream: Treated patients enter post-treatment follow-up" ] ;
+     fhir:resource [
+       fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp|0.1.0"^^xsd:anyURI ;
+       fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp?version=0.1.0>
+     ]
+  ] ) ; # 
+  fhir:library ( [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision|0.1.0"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision?version=0.1.0>
+  ] ) ; # 
+  fhir:action ( [
+     fhir:title [ fhir:v "Treatment Assessment" ] ;
+     fhir:description [ fhir:v "Evaluate treatment indication and determine appropriate modality for cervical pre-cancer" ] ;
+     fhir:trigger ( [
+       fhir:type [ fhir:v "named-event" ] ;
+       fhir:name [ fhir:v "patient-view" ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Treatment Is Indicated" ] ;
+         fhir:reference [
+           fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+           fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+         ]
+       ]
+     ] ) ;
+     fhir:action ( [
+       fhir:id [ fhir:v "ablation-assessment" ] ;
+       fhir:title [ fhir:v "Assess Ablation Eligibility" ] ;
+       fhir:description [ fhir:v "Present ablation eligibility checklist for point-of-care clinical assessment. Ablation eligibility requires: (1) no suspicion of invasive/glandular disease, (2) TZ fully visible (Type 1 or 2), (3) lesion within probe reach." ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Treatment Is Indicated" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Ablation Eligibility Checklist" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] [
+         fhir:path [ fhir:v "payload[1].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Treatment Recommendation" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "contraindication-alert" ] ;
+       fhir:title [ fhir:v "Ablation Contraindicated" ] ;
+       fhir:description [ fhir:v "Known contraindication to ablation — recommend excision (LEEP/LLETZ)" ] ;
+       fhir:priority [ fhir:v "urgent" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Has Known Contraindication To Ablation" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Treatment Recommendation" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "cin2-consideration" ] ;
+       fhir:title [ fhir:v "CIN2+ Diagnosed — Consider Excision" ] ;
+       fhir:description [ fhir:v "Patient has CIN2 or higher diagnosis — excision may be preferred even if TZ is ablation-eligible" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Has CIN2 Or Higher Diagnosis" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Treatment Recommendation" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "refer-oncology" ] ;
+       fhir:title [ fhir:v "Cervical Cancer — Refer to Oncology" ] ;
+       fhir:description [ fhir:v "Patient has cervical cancer diagnosis — refer for oncology management, not screening pathway treatment" ] ;
+       fhir:priority [ fhir:v "urgent" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Has Known Contraindication To Ablation" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Treatment Recommendation" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTreatmentDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision>
+           ]
+         ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

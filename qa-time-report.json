@@ -1,0 +1,573 @@
+{
+  "date" : "Tue, 21 Apr, 2026 19:55:49 +0000",
+  "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
+  "files" : [{
+    "name" : "/fsh-generated/resources/ImplementationGuide-hopena.cervical-cancer-cds.json",
+    "size" : 6743,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 51,
+      "length" : 20
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 13
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 52,
+      "length" : 91
+    },
+    {
+      "activity" : "validate",
+      "start" : 55,
+      "length" : 3084
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 81
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 66
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 4
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 75,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "input/resources/PlanDefinition-CervicalCancerFollowUp.json",
+    "size" : 12311,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 7
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 28
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 52,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 52,
+      "length" : 54
+    },
+    {
+      "activity" : "validate",
+      "start" : 59,
+      "length" : 549
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 28
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 26
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "input/resources/PlanDefinition-CervicalCancerScreening.json",
+    "size" : 10218,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 11
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 52,
+      "length" : 418
+    },
+    {
+      "activity" : "validate",
+      "start" : 60,
+      "length" : 24
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 23
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 17
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "input/resources/PlanDefinition-CervicalCancerTreatment.json",
+    "size" : 8999,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 6
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 52,
+      "length" : 17
+    },
+    {
+      "activity" : "validate",
+      "start" : 60,
+      "length" : 183
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 60,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 18
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 14
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "input/resources/PlanDefinition-CervicalCancerTriage.json",
+    "size" : 8307,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 4
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 5
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 52,
+      "length" : 16
+    },
+    {
+      "activity" : "validate",
+      "start" : 60,
+      "length" : 174
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 19
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 13
+    }]
+  },
+  {
+    "name" : "input/resources/library-CervicalCancerFollowUpDecision.unprocessed",
+    "size" : 591,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 51,
+      "length" : 48
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 52,
+      "length" : 737
+    },
+    {
+      "activity" : "validate",
+      "start" : 58,
+      "length" : 651
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 220
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 39
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 10
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 75,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "input/resources/library-CervicalCancerScreeningCommon.unprocessed",
+    "size" : 591,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 23
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 53,
+      "length" : 1757
+    },
+    {
+      "activity" : "validate",
+      "start" : 59,
+      "length" : 274
+    },
+    {
+      "activity" : "generate1",
+      "start" : 60,
+      "length" : 347
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 76
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 19
+    }]
+  },
+  {
+    "name" : "input/resources/library-CervicalCancerScreeningDecision.unprocessed",
+    "size" : 595,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 13
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 55,
+      "length" : 17
+    },
+    {
+      "activity" : "validate",
+      "start" : 59,
+      "length" : 30
+    },
+    {
+      "activity" : "generate1",
+      "start" : 61,
+      "length" : 150
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 25
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 9
+    }]
+  },
+  {
+    "name" : "input/resources/library-CervicalCancerTreatmentDecision.unprocessed",
+    "size" : 595,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 16
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 55,
+      "length" : 19
+    },
+    {
+      "activity" : "validate",
+      "start" : 55,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 59,
+      "length" : 30
+    },
+    {
+      "activity" : "generate1",
+      "start" : 61,
+      "length" : 296
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 29
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 13
+    }]
+  },
+  {
+    "name" : "input/resources/library-CervicalCancerTriageDecision.unprocessed",
+    "size" : 580,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 51,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 52,
+      "length" : 9
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 52,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 55,
+      "length" : 12
+    },
+    {
+      "activity" : "validate",
+      "start" : 59,
+      "length" : 18
+    },
+    {
+      "activity" : "generate1",
+      "start" : 61,
+      "length" : 94
+    },
+    {
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 18
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 71,
+      "length" : 3
+    }]
+  },
+  {
+    "name" : "/fsh-generated/includes/fsh-link-references.md",
+    "size" : 275,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/fsh-generated/includes/menu.xml",
+    "size" : 1845
+  },
+  {
+    "name" : "/input/pagecontent/testing.md",
+    "size" : 2214
+  },
+  {
+    "name" : "/input/pagecontent/methodology.md",
+    "size" : 4079,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/deployment.md",
+    "size" : 2560
+  },
+  {
+    "name" : "/input/pagecontent/index.md",
+    "size" : 2701
+  },
+  {
+    "name" : "/input/pagecontent/architecture.md",
+    "size" : 2617
+  },
+  {
+    "name" : "/input/pagecontent/license.md",
+    "size" : 593
+  },
+  {
+    "name" : "/input/pagecontent/algorithm.md",
+    "size" : 2937,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/decision-tables.md",
+    "size" : 8839
+  },
+  {
+    "name" : "/input/pagecontent/changes.md",
+    "size" : 1065
+  },
+  {
+    "name" : "/input/pagecontent/interpretation-register.md",
+    "size" : 13183,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/downloads.md",
+    "size" : 934
+  },
+  {
+    "name" : "/template/config",
+    "size" : 0
+  },
+  {
+    "name" : "/template/config/_config.yml",
+    "size" : 140
+  },
+  {
+    "name" : "/input/images",
+    "size" : 0,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/images/algorithm-5-hpv-via-textualist.dmn",
+    "size" : 39667
+  },
+  {
+    "name" : "/input/images/algorithm-5-hpv-via-purposive.html",
+    "size" : 33675,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/images/algorithm-5-hpv-via-textualist.html",
+    "size" : 34836,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 63,
+      "length" : 2
+    }]
+  },
+  {
+    "name" : "/input/images/algorithm-5-hpv-via-purposive.dmn",
+    "size" : 39424
+  },
+  {
+    "name" : "/temp/pages/_includes/artifacts.xml",
+    "size" : 5914
+  }]
+}

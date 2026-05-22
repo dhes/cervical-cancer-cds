@@ -1,0 +1,1721 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "translatorOptions" : "EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "None",
+         "type" : "CqlToElmInfo"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "CervicalCancerFollowUpDecision",
+         "system" : "https://hopenahealth.com/fhir/cervical-cancer-cds",
+         "version" : "0.1.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1",
+            "version" : "1.0.0",
+            "annotation" : [ ]
+         }, {
+            "locator" : "41:1-41:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "locator" : "43:1-43:35",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://hl7.org/fhir/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         }, {
+            "locator" : "44:1-44:67",
+            "localIdentifier" : "Common",
+            "path" : "https://hopenahealth.com/fhir/cervical-cancer-cds/CervicalCancerScreeningCommon",
+            "version" : "0.1.0",
+            "annotation" : [ ]
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "locator" : "46:1-46:15",
+            "name" : "Patient",
+            "annotation" : [ ]
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "46:1-46:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "annotation" : [ ],
+            "expression" : {
+               "type" : "SingletonFrom",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : {
+                  "locator" : "46:1-46:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "annotation" : [ ],
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "locator" : "61:1-64:44",
+            "name" : "Is In Post Treatment Follow Up Window",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "62:3-64:44",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "62:3-63:51",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "62:3-62:27",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "63:9-63:51",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "63:9-63:51",
+                        "type" : "IsNull",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "63:9-63:39",
+                           "name" : "Months Since Treatment",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     }
+                  } ]
+               }, {
+                  "locator" : "64:9-64:44",
+                  "type" : "Less",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "64:9-64:39",
+                     "name" : "Months Since Treatment",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "64:43-64:44",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "24",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "69:1-70:33",
+            "name" : "Months Since Treatment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "70:3-70:33",
+               "name" : "Months Since Treatment",
+               "libraryName" : "Common",
+               "type" : "ExpressionRef",
+               "annotation" : [ ]
+            }
+         }, {
+            "locator" : "95:1-98:90",
+            "name" : "Has HPV Test After Treatment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "96:3-98:90",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "96:3-97:48",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "96:3-96:27",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "97:9-97:48",
+                     "name" : "Has Ever Been Screened With HPV",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               }, {
+                  "locator" : "98:9-98:90",
+                  "type" : "After",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "98:9-98:45",
+                     "name" : "Date Of Most Recent HPV Test",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "98:53-98:90",
+                     "name" : "Date Of Most Recent Treatment",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "76:1-79:42",
+            "name" : "Post Treatment Retest Is Due",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "77:3-79:42",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "77:3-78:80",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "77:3-77:27",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "78:9-78:80",
+                     "type" : "GreaterOrEqual",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "78:9-78:39",
+                        "name" : "Months Since Treatment",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "78:44-78:80",
+                        "name" : "Post Treatment Retest Months",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               }, {
+                  "locator" : "79:9-79:42",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "79:13-79:42",
+                     "name" : "Has HPV Test After Treatment",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "86:1-90:42",
+            "name" : "Post Treatment Retest Is Approaching",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "87:3-90:42",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "87:3-89:79",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "87:3-88:86",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "87:3-87:27",
+                        "name" : "Has Been Treated",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "88:9-88:86",
+                        "type" : "GreaterOrEqual",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "88:9-88:39",
+                           "name" : "Months Since Treatment",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "88:44-88:86",
+                           "type" : "Subtract",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : [ {
+                              "locator" : "88:45-88:81",
+                              "name" : "Post Treatment Retest Months",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }, {
+                              "locator" : "88:85",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                              "value" : "2",
+                              "type" : "Literal",
+                              "annotation" : [ ]
+                           } ]
+                        } ]
+                     } ]
+                  }, {
+                     "locator" : "89:9-89:79",
+                     "type" : "Less",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "89:9-89:39",
+                        "name" : "Months Since Treatment",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "89:43-89:79",
+                        "name" : "Post Treatment Retest Months",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               }, {
+                  "locator" : "90:9-90:42",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "90:13-90:42",
+                     "name" : "Has HPV Test After Treatment",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "103:1-105:53",
+            "name" : "Post Treatment Retest Is Negative",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "104:3-105:53",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "104:3-104:32",
+                  "name" : "Has HPV Test After Treatment",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "105:9-105:53",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "105:13-105:53",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "111:1-113:49",
+            "name" : "Post Treatment Retest Is Positive",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "112:3-113:49",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "112:3-112:32",
+                  "name" : "Has HPV Test After Treatment",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "113:9-113:49",
+                  "name" : "Most Recent HPV Test Is Positive",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         }, {
+            "locator" : "136:1-138:33",
+            "name" : "Requires Double Follow Up",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "137:3-138:33",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "137:3-137:19",
+                  "name" : "Is WLHIV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "138:9-138:33",
+                  "name" : "Has Been Treated",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         }, {
+            "locator" : "144:1-150:3",
+            "name" : "HPV Tests Since Treatment Count",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "145:3-150:3",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "145:6-145:34",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "145:10-145:34",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               },
+               "then" : {
+                  "locator" : "146:8",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               },
+               "else" : {
+                  "locator" : "147:8-150:3",
+                  "type" : "Count",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "source" : {
+                     "locator" : "148:5-149:93",
+                     "type" : "Query",
+                     "annotation" : [ ],
+                     "source" : [ {
+                        "locator" : "148:5-148:35",
+                        "alias" : "O",
+                        "annotation" : [ ],
+                        "expression" : {
+                           "locator" : "148:5-148:33",
+                           "name" : "HPV DNA Test Results",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ],
+                     "let" : [ ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "locator" : "149:7-149:93",
+                        "type" : "After",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "149:13-149:48",
+                           "path" : "value",
+                           "type" : "Property",
+                           "annotation" : [ ],
+                           "source" : {
+                              "locator" : "149:13-149:42",
+                              "strict" : false,
+                              "type" : "As",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : {
+                                 "locator" : "149:14-149:24",
+                                 "path" : "effective",
+                                 "scope" : "O",
+                                 "type" : "Property",
+                                 "annotation" : [ ]
+                              },
+                              "asTypeSpecifier" : {
+                                 "locator" : "149:29-149:41",
+                                 "name" : "{http://hl7.org/fhir}dateTime",
+                                 "type" : "NamedTypeSpecifier",
+                                 "annotation" : [ ]
+                              }
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "149:56-149:93",
+                              "name" : "Date Of Most Recent Treatment",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        } ]
+                     }
+                  }
+               }
+            }
+         }, {
+            "locator" : "157:1-160:53",
+            "name" : "WLHIV Needs Second Follow Up Test",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "158:3-160:53",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "158:3-159:45",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "158:3-158:29",
+                     "name" : "Requires Double Follow Up",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "159:9-159:45",
+                     "type" : "Equal",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "159:9-159:41",
+                        "name" : "HPV Tests Since Treatment Count",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "159:45",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "1",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               }, {
+                  "locator" : "160:9-160:53",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "160:13-160:53",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "166:1-168:78",
+            "name" : "WLHIV Second Follow Up Test Is Due",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "167:3-168:78",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "167:3-167:37",
+                  "name" : "WLHIV Needs Second Follow Up Test",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "168:9-168:78",
+                  "type" : "GreaterOrEqual",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "168:9-168:72",
+                     "precision" : "Month",
+                     "type" : "DurationBetween",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "168:24-168:60",
+                        "name" : "Date Of Most Recent HPV Test",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "168:66-168:72",
+                        "type" : "Today",
+                        "annotation" : [ ],
+                        "signature" : [ ]
+                     } ]
+                  }, {
+                     "locator" : "168:77-168:78",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "12",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "174:1-177:53",
+            "name" : "WLHIV Double Follow Up Complete",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "175:3-177:53",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "175:3-176:46",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "175:3-175:29",
+                     "name" : "Requires Double Follow Up",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "176:9-176:46",
+                     "type" : "GreaterOrEqual",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "176:9-176:41",
+                        "name" : "HPV Tests Since Treatment Count",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "176:46",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "2",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               }, {
+                  "locator" : "177:9-177:53",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "177:13-177:53",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "192:1-197:37",
+            "name" : "Is Post Triage Negative",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "193:3-197:37",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "193:3-196:90",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "193:3-195:46",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "193:3-194:48",
+                        "type" : "And",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "193:3-193:43",
+                           "name" : "Most Recent HPV Test Is Positive",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "194:9-194:48",
+                           "type" : "Not",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "194:13-194:48",
+                              "name" : "Most Recent VIA Is Positive",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "195:9-195:46",
+                        "type" : "Exists",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "195:15-195:46",
+                           "name" : "VIA Screening Results",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ]
+                  }, {
+                     "locator" : "196:9-196:90",
+                     "type" : "SameOrAfter",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "196:9-196:40",
+                        "name" : "Date Of Most Recent VIA",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "196:54-196:90",
+                        "name" : "Date Of Most Recent HPV Test",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               }, {
+                  "locator" : "197:9-197:37",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "197:13-197:37",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "202:1-205:11",
+            "name" : "Months Since Triage Negative VIA",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "203:3-205:11",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "203:6-203:30",
+                  "name" : "Is Post Triage Negative",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               },
+               "then" : {
+                  "locator" : "204:8-204:66",
+                  "precision" : "Month",
+                  "type" : "DurationBetween",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "204:23-204:54",
+                     "name" : "Date Of Most Recent VIA",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "204:60-204:66",
+                     "type" : "Today",
+                     "annotation" : [ ],
+                     "signature" : [ ]
+                  } ]
+               },
+               "else" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "type" : "As",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "205:8-205:11",
+                     "type" : "Null",
+                     "annotation" : [ ]
+                  }
+               }
+            }
+         }, {
+            "locator" : "211:1-213:89",
+            "name" : "Post Triage Negative Retest Is Due",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "212:3-213:89",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "212:3-212:27",
+                  "name" : "Is Post Triage Negative",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "213:9-213:89",
+                  "type" : "GreaterOrEqual",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "213:9-213:42",
+                     "name" : "Months Since Triage Negative VIA",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "213:47-213:89",
+                     "name" : "Post Triage Negative Retest Months",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "218:1-221:88",
+            "name" : "Post Triage Negative Retest Is Approaching",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "219:3-221:88",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "219:3-220:95",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "219:3-219:27",
+                     "name" : "Is Post Triage Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "220:9-220:95",
+                     "type" : "GreaterOrEqual",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "220:9-220:42",
+                        "name" : "Months Since Triage Negative VIA",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "220:47-220:95",
+                        "type" : "Subtract",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "220:48-220:90",
+                           "name" : "Post Triage Negative Retest Months",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "220:94",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "2",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        } ]
+                     } ]
+                  } ]
+               }, {
+                  "locator" : "221:9-221:88",
+                  "type" : "Less",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "221:9-221:42",
+                     "name" : "Months Since Triage Negative VIA",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "221:46-221:88",
+                     "name" : "Post Triage Negative Retest Months",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "241:1-248:35",
+            "name" : "Can Return To Routine Screening",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "243:3-248:35",
+               "type" : "Or",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "243:3-245:44",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "243:4-244:29",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "243:4-243:28",
+                        "name" : "Has Been Treated",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "244:9-244:29",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "244:13-244:29",
+                           "name" : "Is WLHIV",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ]
+                  }, {
+                     "locator" : "245:9-245:43",
+                     "name" : "Post Treatment Retest Is Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               }, {
+                  "locator" : "248:3-248:35",
+                  "name" : "WLHIV Double Follow Up Complete",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         }, {
+            "locator" : "259:1-318:5",
+            "name" : "Follow Up Recommended Action",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "260:3-318:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "262:5-263:86",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "262:10-262:44",
+                     "name" : "Post Treatment Retest Is Positive",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "263:12-263:86",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Post-treatment HPV retest is POSITIVE — re-enter triage/treatment pathway",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "266:5-268:67",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "266:10-266:42",
+                     "name" : "WLHIV Double Follow Up Complete",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "267:12-268:67",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "267:12-268:56",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "267:12-267:100",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Two consecutive negative HPV tests after treatment — return to routine screening every ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "268:14-268:56",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "268:23-268:55",
+                              "name" : "Screening Interval Years",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "268:60-268:67",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " years",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "271:5-273:67",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "271:10-271:70",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "271:10-271:44",
+                        "name" : "Post Treatment Retest Is Negative",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "271:50-271:70",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "271:54-271:70",
+                           "name" : "Is WLHIV",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "272:12-273:67",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "272:12-273:56",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "272:12-272:87",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Post-treatment HPV retest is negative — return to routine screening every ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "273:14-273:56",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "273:23-273:55",
+                              "name" : "Screening Interval Years",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "273:60-273:67",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " years",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "276:5-277:106",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "276:10-276:45",
+                     "name" : "WLHIV Second Follow Up Test Is Due",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "277:12-277:106",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "First post-treatment HPV retest was negative — second retest now due (WLHIV double follow-up)",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "280:5-283:47",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "280:10-280:44",
+                     "name" : "WLHIV Needs Second Follow Up Test",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "281:12-283:47",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "281:12-282:94",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "281:12-281:86",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "First post-treatment HPV retest was negative — schedule second retest in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "282:14-282:94",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "282:23-282:93",
+                              "type" : "Subtract",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "282:23-282:24",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "12",
+                                 "type" : "Literal",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "282:28-282:93",
+                                 "precision" : "Month",
+                                 "type" : "DurationBetween",
+                                 "annotation" : [ ],
+                                 "signature" : [ ],
+                                 "operand" : [ {
+                                    "locator" : "282:44-282:80",
+                                    "name" : "Date Of Most Recent HPV Test",
+                                    "libraryName" : "Common",
+                                    "type" : "ExpressionRef",
+                                    "annotation" : [ ]
+                                 }, {
+                                    "locator" : "282:86-282:92",
+                                    "type" : "Today",
+                                    "annotation" : [ ],
+                                    "signature" : [ ]
+                                 } ]
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "283:14-283:47",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months (WLHIV double follow-up)",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "286:5-287:76",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "286:10-286:39",
+                     "name" : "Post Treatment Retest Is Due",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "287:12-287:76",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Post-treatment HPV DNA retest is due (12 months post-treatment)",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "290:5-293:22",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "290:10-290:47",
+                     "name" : "Post Treatment Retest Is Approaching",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "291:12-293:22",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "291:12-292:94",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "291:12-291:64",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Post-treatment HPV DNA retest approaching — due in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "292:14-292:94",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "292:23-292:93",
+                              "type" : "Subtract",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "292:23-292:59",
+                                 "name" : "Post Treatment Retest Months",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "292:63-292:93",
+                                 "name" : "Months Since Treatment",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "293:14-293:22",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "296:5-299:32",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "296:10-296:87",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "296:10-296:48",
+                        "name" : "Is In Post Treatment Follow Up Window",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "296:54-296:87",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "296:58-296:87",
+                           "name" : "Has HPV Test After Treatment",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "297:12-299:32",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "297:12-298:94",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "297:12-297:69",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Post-treatment — HPV DNA retest scheduled at 12 months. ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "298:14-298:94",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "298:23-298:93",
+                              "type" : "Subtract",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "298:23-298:59",
+                                 "name" : "Post Treatment Retest Months",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "298:63-298:93",
+                                 "name" : "Months Since Treatment",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "299:14-299:32",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months remaining",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "302:5-303:55",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "302:10-302:45",
+                     "name" : "Post Triage Negative Retest Is Due",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "303:12-303:55",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Post-triage-negative HPV DNA retest is due",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "306:5-309:22",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "306:10-306:53",
+                     "name" : "Post Triage Negative Retest Is Approaching",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "307:12-309:22",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "307:12-308:103",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "307:12-307:70",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Post-triage-negative HPV DNA retest approaching — due in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "308:14-308:103",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "308:23-308:102",
+                              "type" : "Subtract",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "308:23-308:65",
+                                 "name" : "Post Triage Negative Retest Months",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "308:69-308:102",
+                                 "name" : "Months Since Triage Negative VIA",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "309:14-309:22",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "312:5-315:22",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "312:10-312:34",
+                     "name" : "Is Post Triage Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "313:12-315:22",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "313:12-314:103",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "313:12-313:63",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "HPV-positive but VIA-negative — HPV DNA retest in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "314:14-314:103",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "314:23-314:102",
+                              "type" : "Subtract",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "314:23-314:65",
+                                 "name" : "Post Triage Negative Retest Months",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "314:69-314:102",
+                                 "name" : "Months Since Triage Negative VIA",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "315:14-315:22",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "317:10-317:40",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "No follow-up action indicated",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "323:1-336:5",
+            "name" : "Follow Up Status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "324:3-336:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "325:5-325:75",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "325:10-325:44",
+                     "name" : "Post Treatment Retest Is Positive",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "325:51-325:75",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "retest-positive-reenter",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "326:5-326:67",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "326:10-326:42",
+                     "name" : "Can Return To Routine Screening",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "326:49-326:67",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "return-to-routine",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "327:5-327:76",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "327:10-327:45",
+                     "name" : "WLHIV Second Follow Up Test Is Due",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "327:52-327:76",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "wlhiv-second-retest-due",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "328:5-328:80",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "328:10-328:44",
+                     "name" : "WLHIV Needs Second Follow Up Test",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "328:51-328:80",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "wlhiv-awaiting-second-retest",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "329:5-329:72",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "329:10-329:39",
+                     "name" : "Post Treatment Retest Is Due",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "329:46-329:72",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-treatment-retest-due",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "330:5-330:88",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "330:10-330:47",
+                     "name" : "Post Treatment Retest Is Approaching",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "330:54-330:88",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-treatment-retest-approaching",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "331:5-331:78",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "331:10-331:48",
+                     "name" : "Is In Post Treatment Follow Up Window",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "331:55-331:78",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-treatment-waiting",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "332:5-332:84",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "332:10-332:45",
+                     "name" : "Post Triage Negative Retest Is Due",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "332:52-332:84",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-triage-negative-retest-due",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "333:5-333:100",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "333:10-333:53",
+                     "name" : "Post Triage Negative Retest Is Approaching",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "333:60-333:100",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-triage-negative-retest-approaching",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "334:5-334:70",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "334:10-334:34",
+                     "name" : "Is Post Triage Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "334:41-334:70",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-triage-negative-waiting",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "335:10-335:23",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "no-follow-up",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "341:1-344:42",
+            "name" : "Has Active Follow Up",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "342:3-344:42",
+               "type" : "Or",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "342:3-343:32",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "342:3-342:41",
+                     "name" : "Is In Post Treatment Follow Up Window",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "343:8-343:32",
+                     "name" : "Is Post Triage Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               }, {
+                  "locator" : "344:8-344:42",
+                  "name" : "WLHIV Needs Second Follow Up Test",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         } ]
+      }
+   }
+}

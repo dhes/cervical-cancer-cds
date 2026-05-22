@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0u0u9to" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.41.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0">
+  <decision id="Decision_0tamrsd" name="Eligible For Screening">
+    <variable id="Variable_ScreeningDecision" name="ScreeningDecision" typeRef="Any" />
+    <informationRequirement id="InformationRequirement_1vzu5r0">
+      <requiredInput href="#InputData_02fg14t" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0wkm6vz">
+      <requiredInput href="#InputData_1sk33ns" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0nkyla6">
+      <requiredInput href="#InputData_0lguiok" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_0ndkumy">
+      <requiredAuthority href="#KnowledgeSource_1mbjkyq" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1h3ywkp" hitPolicy="UNIQUE">
+      <input id="Input_1" label="Client Is Woman" biodi:width="159">
+        <inputExpression id="InputExpression_1" typeRef="boolean">
+          <text>ClientIsWoman</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_02m5z7x" label="Age In Years">
+        <inputExpression id="LiteralExpression_0gsgr7g" typeRef="number">
+          <text>AgeInYears</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1q1mgjo" label="Living With HIV">
+        <inputExpression id="LiteralExpression_0ibuwaj" typeRef="boolean">
+          <text>LivingWithHIV</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Eligible for Screening" name="EligibleForScreening" typeRef="boolean" />
+      <output id="OutputClause_0hq9puu" label="Screening Interval" name="ScreeningInterval" typeRef="string" />
+      <rule id="DecisionRule_1yry35i">
+        <description>Rec 1; GPS 7 prioritizes age 30–49</description>
+        <inputEntry id="UnaryTests_06y1alu">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17w14zn">
+          <text>[30..49]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pia218">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nqvuqs">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t64403">
+          <text>"every 5 to 10 years"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17r1uyq">
+        <description>Below general population screening age</description>
+        <inputEntry id="UnaryTests_1vhdlne">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0937r67">
+          <text>&lt;30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1obzyz6">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cm9kab">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b7yjfr">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l3rrvn">
+        <description>Above screening age range (both populations)</description>
+        <inputEntry id="UnaryTests_1makmp4">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17fkd6l">
+          <text>&gt;49</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0orbcmr">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wiayor">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o2z5ok">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1925hkc">
+        <description>Rec 21; WLHIV screening starts at age 25</description>
+        <inputEntry id="UnaryTests_1vi22f4">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cuj145">
+          <text>[25..49]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qm0gll">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ssm3hb">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ajt3ys">
+          <text>"every 3 to 5 years"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gyepae">
+        <description>Below WLHIV screening age</description>
+        <inputEntry id="UnaryTests_0ry7mru">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pbzs81">
+          <text>&lt;25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01wl6gb">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gmysjc">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k9ln5m">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05t3z2o">
+        <description>Per L1 terminology; see Interpretation Register</description>
+        <inputEntry id="UnaryTests_1l1u1kn">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s7r5km">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k2yk07">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16azkeb">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t4p279">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_catchall_s_nullage">
+        <description>Catch-all: woman with null age</description>
+        <inputEntry id="UnaryTests_catchall_s_na1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_catchall_s_na2">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_catchall_s_na3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_catchall_s_na1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_catchall_s_na2">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_catchall_s_nullhiv">
+        <description>Catch-all: woman with valid age but null HIV status</description>
+        <inputEntry id="UnaryTests_catchall_s_nh1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_catchall_s_nh2">
+          <text>not(null)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_catchall_s_nh3">
+          <text>null</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_catchall_s_nh1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_catchall_s_nh2">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_catchall_s_nullwoman">
+        <description>Catch-all: null Client Is Woman</description>
+        <inputEntry id="UnaryTests_catchall_s_nw1">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_catchall_s_nw2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_catchall_s_nw3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_catchall_s_nw1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_catchall_s_nw2">
+          <text>null</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_02fg14t" name="Client Is Woman" />
+  <inputData id="InputData_1sk33ns" name="Age In Years" />
+  <inputData id="InputData_0lguiok" name="Living With HIV" />
+  <knowledgeSource id="KnowledgeSource_1mbjkyq" name="WHO Cervical Cancer Screening Guidelines, July 2021" />
+  <inputData id="InputData_1j6wfhx" name="Years Since Last Screen" />
+  <inputData id="InputData_0sltltj" name="Prior Screen Result" />
+  <decision id="Decision_157nb6m" name="Due for Screening">
+    <informationRequirement id="InformationRequirement_1xfw83b">
+      <requiredInput href="#InputData_1j6wfhx" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_156cfzw">
+      <requiredInput href="#InputData_0sltltj" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0qktxth">
+      <requiredDecision href="#Decision_0tamrsd" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1jr7lzl" hitPolicy="UNIQUE">
+      <input id="InputClause_0gwq2vr" label="Eligible For Screening">
+        <inputExpression id="LiteralExpression_1rxhq8j" typeRef="boolean">
+          <text>ScreeningDecision.EligibleForScreening</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0n2h6g6" label="Screening Interval">
+        <inputExpression id="LiteralExpression_1x4oe4t" typeRef="string">
+          <text>ScreeningDecision.ScreeningInterval</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_043n6vv" label="Years Since Last Screen" biodi:width="192">
+        <inputExpression id="LiteralExpression_00u5cs9" typeRef="number">
+          <text>YearsSinceLastScreen</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0f57j2r" label="Prior Result">
+        <inputExpression id="LiteralExpression_19kxe91" typeRef="string">
+          <text>PriorResult</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1ij1iar" label="Screening Status" name="ScreeningStatus" typeRef="string">
+        <outputValues id="UnaryTests_1h5h3n3">
+          <text>"never screened — screen now","not yet due","within screening window","past screening window","prior positive — enter triage pathway","not eligible"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0hrknh0">
+        <inputEntry id="UnaryTests_04zppza">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hmrzog">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06qib6s">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18olhja">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02bjnk8">
+          <text>"never screened — screen now"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kowjor">
+        <inputEntry id="UnaryTests_1aqowrs">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jfvzb4">
+          <text>"every 5 to 10 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05y5kmc">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00moxyz">
+          <text>"negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1027a4y">
+          <text>"not yet due"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1623wc6">
+        <inputEntry id="UnaryTests_1tp0715">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sjaw6k">
+          <text>"every 5 to 10 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wlnt85">
+          <text>[5..10]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hzecyw">
+          <text>"negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u6jvno">
+          <text>"within screening window"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d7mryk">
+        <inputEntry id="UnaryTests_191qtal">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0odoq5l">
+          <text>"every 5 to 10 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_068ydxa">
+          <text>&gt;10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lmvn8h">
+          <text>"negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nis0rx">
+          <text>"past screening window"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0v20651">
+        <inputEntry id="UnaryTests_1dcdrz3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17zaw3k">
+          <text>"every 3 to 5 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mqdyzv">
+          <text>&lt;3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15940j8">
+          <text>"negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q5o8iu">
+          <text>"not yet due"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0esotny">
+        <inputEntry id="UnaryTests_0j86ajs">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02732l5">
+          <text>"every 3 to 5 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17jdzki">
+          <text>[3..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ks34zt">
+          <text>"negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xaboal">
+          <text>"within screening window"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_018yt1f">
+        <inputEntry id="UnaryTests_1w0akbk">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hzicpu">
+          <text>"every 3 to 5 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z8d9w1">
+          <text>&gt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07o9o98">
+          <text>"negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_065bg2z">
+          <text>"past screening window"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cti1wm">
+        <inputEntry id="UnaryTests_15md3ak">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ltivu4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z959n4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ttecw5">
+          <text>"positive"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sf9i0v">
+          <text>"prior positive — enter triage pathway"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ldirb0">
+        <inputEntry id="UnaryTests_0ew65bw">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ionudt">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gwakwf">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xnafoy">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15icyrs">
+          <text>"not eligible"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_via" name="VIA Result" />
+  <inputData id="InputData_suspicion" name="Suspicion of Cancer" />
+  <inputData id="InputData_tztype" name="TZ Type" />
+  <inputData id="InputData_histology" name="Histology Result" />
+  <decision id="Decision_triage" name="Triage Decision">
+    <variable id="Variable_triage" name="TriageDecision" typeRef="Any" />
+    <informationRequirement id="InformationRequirement_triage_via">
+      <requiredInput href="#InputData_via" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_triage_hiv">
+      <requiredInput href="#InputData_0lguiok" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_triage" hitPolicy="UNIQUE">
+      <input id="InputClause_triage_via" label="VIA Result">
+        <inputExpression id="LiteralExpression_triage_via" typeRef="string">
+          <text>VIAResult</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_triage_hiv" label="Living With HIV">
+        <inputExpression id="LiteralExpression_triage_hiv" typeRef="boolean">
+          <text>LivingWithHIV</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_triage" label="Triage Status" name="TriageStatus" typeRef="string" />
+      <rule id="DecisionRule_triage_pos">
+        <description>VIA positive — proceed to treatment eligibility assessment</description>
+        <inputEntry id="UnaryTests_triage_pos1">
+          <text>"positive"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_triage_pos2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_triage_pos">
+          <text>"VIA positive — eligible for treatment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_triage_neg_gen">
+        <description>VIA negative, general population — repeat HPV in 2 years</description>
+        <inputEntry id="UnaryTests_triage_neg_gen1">
+          <text>"negative"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_triage_neg_gen2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_triage_neg_gen">
+          <text>"VIA negative — repeat HPV test in 2 years"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_triage_neg_hiv">
+        <description>VIA negative, WLHIV — repeat HPV in 1 year</description>
+        <inputEntry id="UnaryTests_triage_neg_hiv1">
+          <text>"negative"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_triage_neg_hiv2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_triage_neg_hiv">
+          <text>"VIA negative — repeat HPV test in 1 year"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_triage_cancer">
+        <description>Suspected cancer — refer for evaluation and biopsy</description>
+        <inputEntry id="UnaryTests_triage_cancer1">
+          <text>"suspected cancer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_triage_cancer2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_triage_cancer">
+          <text>"suspected cancer — refer for evaluation and biopsy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_triage_catchall">
+        <description>Catch-all: unrecognized VIA result</description>
+        <inputEntry id="UnaryTests_triage_ca1">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_triage_ca2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_triage_ca">
+          <text>"unknown VIA result"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_ablation" name="Ablation Eligibility">
+    <variable id="Variable_ablation" name="AblationDecision" typeRef="Any" />
+    <informationRequirement id="InformationRequirement_ablation_suspicion">
+      <requiredInput href="#InputData_suspicion" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_ablation_tz">
+      <requiredInput href="#InputData_tztype" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_ablation" hitPolicy="UNIQUE">
+      <input id="InputClause_ablation_suspicion" label="Suspicion of Cancer">
+        <inputExpression id="LiteralExpression_ablation_suspicion" typeRef="boolean">
+          <text>SuspicionOfCancer</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_ablation_tz" label="TZ Type">
+        <inputExpression id="LiteralExpression_ablation_tz" typeRef="string">
+          <text>TZType</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_ablation" label="Ablation Eligible" name="AblationEligible" typeRef="boolean" />
+      <rule id="DecisionRule_ablation_cancer">
+        <description>Suspected cancer — not eligible for ablation</description>
+        <inputEntry id="UnaryTests_ablation_cancer1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_ablation_cancer2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_ablation_cancer">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_ablation_tz1">
+        <description>TZ Type 1 — eligible for ablation</description>
+        <inputEntry id="UnaryTests_ablation_tz1_1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_ablation_tz1_2">
+          <text>"Type 1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_ablation_tz1">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_ablation_tz2">
+        <description>TZ Type 2 — eligible for ablation</description>
+        <inputEntry id="UnaryTests_ablation_tz2_1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_ablation_tz2_2">
+          <text>"Type 2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_ablation_tz2">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_ablation_tz3">
+        <description>TZ Type 3 — not eligible for ablation, requires excision</description>
+        <inputEntry id="UnaryTests_ablation_tz3_1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_ablation_tz3_2">
+          <text>"Type 3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_ablation_tz3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_ablation_ca_nullsusp">
+        <description>Catch-all: null suspicion of cancer</description>
+        <inputEntry id="UnaryTests_ablation_ca_ns1">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_ablation_ca_ns2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_ablation_ca_ns">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_ablation_ca_nulltz">
+        <description>Catch-all: null TZ type</description>
+        <inputEntry id="UnaryTests_ablation_ca_nt1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_ablation_ca_nt2">
+          <text>null</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_ablation_ca_nt">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_treatment" name="Treatment Decision">
+    <variable id="Variable_treatment" name="TreatmentDecision" typeRef="Any" />
+    <informationRequirement id="InformationRequirement_treatment_triage">
+      <requiredDecision href="#Decision_triage" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_treatment_ablation">
+      <requiredDecision href="#Decision_ablation" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_treatment" hitPolicy="UNIQUE">
+      <input id="InputClause_treatment_triage" label="Triage Status">
+        <inputExpression id="LiteralExpression_treatment_triage" typeRef="string">
+          <text>TriageDecision</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_treatment_ablation" label="Ablation Eligible">
+        <inputExpression id="LiteralExpression_treatment_ablation" typeRef="boolean">
+          <text>AblationDecision</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_treatment" label="Treatment Plan" name="TreatmentPlan" typeRef="string" />
+      <rule id="DecisionRule_treatment_ablate">
+        <description>VIA positive, eligible for ablation — ablative treatment</description>
+        <inputEntry id="UnaryTests_treatment_ablate1">
+          <text>"VIA positive — eligible for treatment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_treatment_ablate2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_treatment_ablate">
+          <text>"ablative treatment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_treatment_lletz">
+        <description>VIA positive, not eligible for ablation — LLETZ</description>
+        <inputEntry id="UnaryTests_treatment_lletz1">
+          <text>"VIA positive — eligible for treatment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_treatment_lletz2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_treatment_lletz">
+          <text>"LLETZ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_treatment_repeat_gen">
+        <description>VIA negative, general population — no treatment, repeat HPV</description>
+        <inputEntry id="UnaryTests_treatment_rg1">
+          <text>"VIA negative — repeat HPV test in 2 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_treatment_rg2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_treatment_rg">
+          <text>"no treatment — repeat HPV in 2 years"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_treatment_repeat_hiv">
+        <description>VIA negative, WLHIV — no treatment, repeat HPV</description>
+        <inputEntry id="UnaryTests_treatment_rh1">
+          <text>"VIA negative — repeat HPV test in 1 year"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_treatment_rh2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_treatment_rh">
+          <text>"no treatment — repeat HPV in 1 year"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_treatment_refer">
+        <description>Suspected cancer — refer for evaluation</description>
+        <inputEntry id="UnaryTests_treatment_refer1">
+          <text>"suspected cancer — refer for evaluation and biopsy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_treatment_refer2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_treatment_refer">
+          <text>"refer for evaluation, biopsy and further management"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_treatment_catchall">
+        <description>Catch-all: unrecognized triage status</description>
+        <inputEntry id="UnaryTests_treatment_ca1">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_treatment_ca2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_treatment_ca">
+          <text>"unknown triage status"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_followup" name="Follow-up Decision">
+    <variable id="Variable_followup" name="FollowUpDecision" typeRef="Any" />
+    <informationRequirement id="InformationRequirement_followup_treatment">
+      <requiredDecision href="#Decision_treatment" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_followup_histology">
+      <requiredInput href="#InputData_histology" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_followup" hitPolicy="UNIQUE">
+      <input id="InputClause_followup_treatment" label="Treatment Plan">
+        <inputExpression id="LiteralExpression_followup_treatment" typeRef="string">
+          <text>TreatmentDecision</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_followup_histology" label="Histology Result">
+        <inputExpression id="LiteralExpression_followup_histology" typeRef="string">
+          <text>HistologyResult</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_followup" label="Follow-up Plan" name="FollowUpPlan" typeRef="string" />
+      <rule id="DecisionRule_followup_ablation_cin">
+        <description>Ablative treatment, histology CIN3 or less — follow-up after 1 year</description>
+        <inputEntry id="UnaryTests_followup_ac1">
+          <text>"ablative treatment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_ac2">
+          <text>"CIN3 or less"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_ac">
+          <text>"post-treatment follow-up after 1 year"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_ablation_cancer">
+        <description>Ablative treatment, histology shows cancer</description>
+        <inputEntry id="UnaryTests_followup_acan1">
+          <text>"ablative treatment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_acan2">
+          <text>"cancer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_acan">
+          <text>"cancer — further management"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_lletz_cin">
+        <description>LLETZ, histology CIN3 or less — follow-up after 1 year</description>
+        <inputEntry id="UnaryTests_followup_lc1">
+          <text>"LLETZ"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_lc2">
+          <text>"CIN3 or less"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_lc">
+          <text>"post-treatment follow-up after 1 year"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_lletz_cancer">
+        <description>LLETZ, histology shows cancer</description>
+        <inputEntry id="UnaryTests_followup_lcan1">
+          <text>"LLETZ"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_lcan2">
+          <text>"cancer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_lcan">
+          <text>"cancer — further management"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_repeat_gen">
+        <description>No treatment, repeat HPV in 2 years (general population)</description>
+        <inputEntry id="UnaryTests_followup_rg1">
+          <text>"no treatment — repeat HPV in 2 years"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_rg2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_rg">
+          <text>"repeat HPV test after 2 years"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_repeat_hiv">
+        <description>No treatment, repeat HPV in 1 year (WLHIV)</description>
+        <inputEntry id="UnaryTests_followup_rh1">
+          <text>"no treatment — repeat HPV in 1 year"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_rh2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_rh">
+          <text>"repeat HPV test after 1 year"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_refer">
+        <description>Referred for evaluation — follow management pathway</description>
+        <inputEntry id="UnaryTests_followup_ref1">
+          <text>"refer for evaluation, biopsy and further management"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_ref2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_ref">
+          <text>"evaluation, biopsy and further management"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_followup_catchall">
+        <description>Catch-all: unrecognized treatment plan</description>
+        <inputEntry id="UnaryTests_followup_ca1">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_followup_ca2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_followup_ca">
+          <text>"unknown treatment plan"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <textAnnotation id="TextAnnotation_1e54xb6">
+    <text>L2 textualist representation. Interpretive decisions documented in Interpretation Register and resolved at L3.</text>
+  </textAnnotation>
+  <association id="Association_0s55ib7">
+    <sourceRef href="#TextAnnotation_1e54xb6" />
+    <targetRef href="#Decision_0tamrsd" />
+  </association>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0tamrsd">
+        <dc:Bounds height="80" width="180" x="365" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_073d14p" dmnElementRef="InputData_02fg14t">
+        <dc:Bounds height="45" width="125" x="217" y="78" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1b0zks5" dmnElementRef="InputData_1sk33ns">
+        <dc:Bounds height="45" width="125" x="392" y="78" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_02b5gjf" dmnElementRef="InputData_0lguiok">
+        <dc:Bounds height="45" width="125" x="567" y="78" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_12n646a" dmnElementRef="InformationRequirement_1vzu5r0">
+        <di:waypoint x="280" y="123" />
+        <di:waypoint x="410" y="220" />
+        <di:waypoint x="410" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0uoxbrl" dmnElementRef="InformationRequirement_0wkm6vz">
+        <di:waypoint x="455" y="123" />
+        <di:waypoint x="455" y="220" />
+        <di:waypoint x="455" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0sg1a59" dmnElementRef="InformationRequirement_0nkyla6">
+        <di:waypoint x="630" y="123" />
+        <di:waypoint x="500" y="220" />
+        <di:waypoint x="500" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0fgh88a" dmnElementRef="TextAnnotation_1e54xb6">
+        <dc:Bounds height="80" width="100" x="670" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0xzwee9" dmnElementRef="Association_0s55ib7">
+        <di:waypoint x="670" y="281" />
+        <di:waypoint x="545" y="282" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0fecm7e" dmnElementRef="KnowledgeSource_1mbjkyq">
+        <dc:Bounds height="63" width="100" x="140" y="249" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18askd5" dmnElementRef="AuthorityRequirement_0ndkumy">
+        <di:waypoint x="240" y="281" />
+        <di:waypoint x="365" y="280" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0fb5rbo" dmnElementRef="InputData_1j6wfhx">
+        <dc:Bounds height="45" width="125" x="287" y="637" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0ehsh45" dmnElementRef="InformationRequirement_1xfw83b">
+        <di:waypoint x="350" y="637" />
+        <di:waypoint x="425" y="560" />
+        <di:waypoint x="425" y="540" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0qcwv0q" dmnElementRef="InputData_0sltltj">
+        <dc:Bounds height="45" width="125" x="527" y="637" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ghaq9p" dmnElementRef="InformationRequirement_156cfzw">
+        <di:waypoint x="590" y="637" />
+        <di:waypoint x="485" y="560" />
+        <di:waypoint x="485" y="540" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0dx7rh1" dmnElementRef="InformationRequirement_0qktxth">
+        <di:waypoint x="455" y="320" />
+        <di:waypoint x="455" y="440" />
+        <di:waypoint x="455" y="460" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0isqtw1" dmnElementRef="Decision_157nb6m">
+        <dc:Bounds height="80" width="180" x="365" y="460" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_via" dmnElementRef="InputData_via">
+        <dc:Bounds height="45" width="125" x="100" y="800" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_triage" dmnElementRef="Decision_triage">
+        <dc:Bounds height="80" width="180" x="200" y="700" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_triage_via" dmnElementRef="InformationRequirement_triage_via">
+        <di:waypoint x="163" y="800" />
+        <di:waypoint x="245" y="780" />
+        <di:waypoint x="245" y="780" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_triage_hiv" dmnElementRef="InformationRequirement_triage_hiv">
+        <di:waypoint x="630" y="123" />
+        <di:waypoint x="335" y="700" />
+        <di:waypoint x="335" y="700" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_suspicion" dmnElementRef="InputData_suspicion">
+        <dc:Bounds height="45" width="125" x="570" y="800" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_tztype" dmnElementRef="InputData_tztype">
+        <dc:Bounds height="45" width="125" x="720" y="800" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_ablation" dmnElementRef="Decision_ablation">
+        <dc:Bounds height="80" width="180" x="600" y="700" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_ablation_suspicion" dmnElementRef="InformationRequirement_ablation_suspicion">
+        <di:waypoint x="633" y="800" />
+        <di:waypoint x="655" y="780" />
+        <di:waypoint x="655" y="780" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_ablation_tz" dmnElementRef="InformationRequirement_ablation_tz">
+        <di:waypoint x="783" y="800" />
+        <di:waypoint x="735" y="780" />
+        <di:waypoint x="735" y="780" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_treatment" dmnElementRef="Decision_treatment">
+        <dc:Bounds height="80" width="180" x="365" y="900" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_treatment_triage" dmnElementRef="InformationRequirement_treatment_triage">
+        <di:waypoint x="290" y="780" />
+        <di:waypoint x="410" y="900" />
+        <di:waypoint x="410" y="900" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_treatment_ablation" dmnElementRef="InformationRequirement_treatment_ablation">
+        <di:waypoint x="690" y="780" />
+        <di:waypoint x="500" y="900" />
+        <di:waypoint x="500" y="900" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_histology" dmnElementRef="InputData_histology">
+        <dc:Bounds height="45" width="125" x="570" y="1050" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_followup" dmnElementRef="Decision_followup">
+        <dc:Bounds height="80" width="180" x="365" y="1100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_followup_treatment" dmnElementRef="InformationRequirement_followup_treatment">
+        <di:waypoint x="455" y="980" />
+        <di:waypoint x="455" y="1100" />
+        <di:waypoint x="455" y="1100" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_followup_histology" dmnElementRef="InformationRequirement_followup_histology">
+        <di:waypoint x="633" y="1095" />
+        <di:waypoint x="545" y="1130" />
+        <di:waypoint x="545" y="1130" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

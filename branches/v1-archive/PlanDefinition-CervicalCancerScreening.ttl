@@ -1,0 +1,380 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CervicalCancerScreening"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b style=\"color: maroon\">Exception generating Narrative: unexpected non-end of element null::a  at line 176 column 55</b></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "CervicalCancerScreening"] ; # 
+  fhir:title [ fhir:v "Cervical Cancer Screening Eligibility and Cascade Routing"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ] ;
+       fhir:display [ fhir:v "ECA Rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v true] ; # 
+  fhir:date [ fhir:v "2026-03-08"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Hopena Health"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Hopena Health" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] [
+     fhir:name [ fhir:v "Dan Heslinga" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Clinical decision support rule for cervical cancer screening eligibility, scheduling, and cascade routing. Implements WHO Algorithm 5 (HPV DNA + VIA triage) screening entry point for both general population and women living with HIV (WLHIV). Evaluates patient demographics, HIV status, and screening history to determine eligibility, due status, and the patient's current position in the screening cascade."] ; # 
+  fhir:useContext ( [
+     fhir:code [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/usage-context-type>
+       ] ;
+       fhir:code [ fhir:v "focus" ] ;
+       fhir:display [ fhir:v "Clinical Focus" ]
+     ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         a sct:243877001 ;
+         fhir:system [
+           fhir:v "http://snomed.info/sct"^^xsd:anyURI ;
+           fhir:l <http://snomed.info/sct>
+         ] ;
+         fhir:code [ fhir:v "243877001" ] ;
+         fhir:display [ fhir:v "Cancer cervix screening" ]
+       ] )
+     ]
+  ] [
+     fhir:code [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/usage-context-type>
+       ] ;
+       fhir:code [ fhir:v "gender" ] ;
+       fhir:display [ fhir:v "Gender" ]
+     ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [
+           fhir:v "http://hl7.org/fhir/administrative-gender"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/administrative-gender>
+         ] ;
+         fhir:code [ fhir:v "female" ] ;
+         fhir:display [ fhir:v "Female" ]
+       ] )
+     ]
+  ] [
+     fhir:code [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/usage-context-type>
+       ] ;
+       fhir:code [ fhir:v "age" ] ;
+       fhir:display [ fhir:v "Age Range" ]
+     ] ;
+     fhir:value [
+       a fhir:Range ;
+       fhir:low [
+         fhir:value [ fhir:v "25"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "years" ]
+       ] ;
+       fhir:high [
+         fhir:value [ fhir:v "50"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "years" ]
+       ]
+     ]
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://unstats.un.org/unsd/methods/m49/m49.htm"^^xsd:anyURI ;
+         fhir:l <http://unstats.un.org/unsd/methods/m49/m49.htm>
+       ] ;
+       fhir:code [ fhir:v "001" ]
+     ] )
+  ] ) ; # 
+  fhir:purpose [ fhir:v "To identify women eligible for cervical cancer screening and determine their current position in the WHO screening cascade, enabling timely initiation and continuity of screening services."] ; # 
+  fhir:copyright [ fhir:v "Copyright 2026 Hopena Health. License: Apache 2.0"] ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "derived-from" ] ;
+     fhir:label [ fhir:v "WHO Guideline" ] ;
+     fhir:display [ fhir:v "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)" ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:label [ fhir:v "WHO Recommendations" ] ;
+     fhir:display [ fhir:v "General population: Recs 1, 2, 5, 6, 7, 8, 14. WLHIV: Recs 21, 22, 25, 26, 27, 28, 34." ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] ) ; # 
+  fhir:library ( [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision|0.1.0"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision?version=0.1.0>
+  ] ) ; # 
+  fhir:action ( [
+     fhir:title [ fhir:v "Cervical Cancer Screening Assessment" ] ;
+     fhir:description [ fhir:v "Evaluate screening eligibility and cascade position for women presenting for care" ] ;
+     fhir:trigger ( [
+       fhir:type [ fhir:v "named-event" ] ;
+       fhir:name [ fhir:v "patient-view" ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Is Eligible For Screening" ] ;
+         fhir:reference [
+           fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+           fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+         ]
+       ]
+     ] ) ;
+     fhir:action ( [
+       fhir:id [ fhir:v "screening-due" ] ;
+       fhir:title [ fhir:v "Screen with HPV DNA Test" ] ;
+       fhir:description [ fhir:v "Patient is eligible and due for cervical cancer screening with HPV DNA test" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Is Due For Screening" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:definition [
+         a fhir:Canonical ;
+         fhir:v "#screening-communication"^^xsd:anyURI ;
+         fhir:l <#screening-communication>
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] [
+         fhir:path [ fhir:v "payload[1].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Population Classification" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] [
+         fhir:path [ fhir:v "payload[2].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Screening Interval Display" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "needs-triage" ] ;
+       fhir:title [ fhir:v "HPV-Positive — Needs VIA Triage" ] ;
+       fhir:description [ fhir:v "Patient has a positive HPV DNA test and needs VIA triage assessment" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Needs Triage After Positive HPV" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "needs-treatment" ] ;
+       fhir:title [ fhir:v "HPV+ and VIA+ — Needs Treatment" ] ;
+       fhir:description [ fhir:v "Patient has positive HPV DNA and positive VIA triage — treatment assessment needed" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Has Positive Triage Result" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "post-treatment-followup" ] ;
+       fhir:title [ fhir:v "Post-Treatment Follow-Up" ] ;
+       fhir:description [ fhir:v "Patient has been treated and is in the post-treatment follow-up window" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Is In Post Treatment Follow Up" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "routine-recall" ] ;
+       fhir:title [ fhir:v "Routine Recall" ] ;
+       fhir:description [ fhir:v "Patient's last HPV test was negative — next screening not yet due" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Most Recent HPV Test Is Negative" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerScreeningDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision>
+           ]
+         ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

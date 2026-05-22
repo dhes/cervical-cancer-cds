@@ -1,0 +1,70 @@
+[{
+  "id" : "hopena.cervical-cancer-cds",
+  "type" : "ImplementationGuide",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/ImplementationGuide/hopena.cervical-cancer-cds",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerCDS"
+},
+{
+  "id" : "CervicalCancerFollowUpDecision",
+  "type" : "Library",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerFollowUpDecision",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerFollowUpDecision"
+},
+{
+  "id" : "CervicalCancerScreeningCommon",
+  "type" : "Library",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningCommon",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerScreeningCommon"
+},
+{
+  "id" : "CervicalCancerScreeningDecision",
+  "type" : "Library",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerScreeningDecision"
+},
+{
+  "id" : "CervicalCancerTreatmentDecision",
+  "type" : "Library",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTreatmentDecision",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerTreatmentDecision"
+},
+{
+  "id" : "CervicalCancerTriageDecision",
+  "type" : "Library",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerTriageDecision"
+},
+{
+  "id" : "CervicalCancerFollowUp",
+  "type" : "PlanDefinition",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerFollowUp",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerFollowUp"
+},
+{
+  "id" : "CervicalCancerScreening",
+  "type" : "PlanDefinition",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerScreening"
+},
+{
+  "id" : "CervicalCancerTreatment",
+  "type" : "PlanDefinition",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerTreatment"
+},
+{
+  "id" : "CervicalCancerTriage",
+  "type" : "PlanDefinition",
+  "url" : "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage",
+  "version" : "0.1.0",
+  "name" : "CervicalCancerTriage"
+}]

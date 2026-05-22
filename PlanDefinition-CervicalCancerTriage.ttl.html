@@ -1,0 +1,542 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Triage — HPV-Positive VIA Assessment - TTL Representation - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"12.4"}
+    h3,h4,h5,h6{--heading-prefix:"12.4"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Triage — HPV-Positive VIA Assessment</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div style="counter-reset: section 9" class="col-12">
+<!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li>
+    <a href="PlanDefinition-CervicalCancerTriage.html">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="PlanDefinition-CervicalCancerTriage.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="PlanDefinition-CervicalCancerTriage.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li class="active">
+      <a href="#">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+
+<a name="root"> </a>
+
+
+<h2 id="root">: Cervical Cancer Triage — HPV-Positive VIA Assessment - TTL Representation</h2>
+
+  <table class="colsd">
+    <tr>
+
+      <td colspan="2">
+        
+          Draft
+          
+            as of 2026-03-08
+          
+        
+      </td>
+
+    </tr>
+  </table>
+
+
+<p><a href="PlanDefinition-CervicalCancerTriage.ttl" no-download="true">Raw ttl</a> | <a href="PlanDefinition-CervicalCancerTriage.ttl" download>Download</a></p>
+
+  <!-- insert intro if present -->
+  
+
+
+
+  <pre class="rdf" data-fhir="generated" style="white-space: pre; overflow: hidden"><code class="language-turtle">
+@prefix fhir: &lt;http://hl7.org/fhir/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix sct: &lt;http://snomed.info/id/&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# - resource -------------------------------------------------------------------
+
+ a fhir:PlanDefinition ;
+  <a href="http://hl7.org/fhir/R4/rdf.html#tree-root">fhir:nodeRole</a> fhir:treeRoot ;
+  <a href="http://hl7.org/fhir/R4/resource.html#PlanDefinition.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CervicalCancerTriage&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/domainresource.html#PlanDefinition.text">fhir:text</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;extensions&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">fhir:div</a> [ <a href="http://hl7.org/fhir/R4/narrative.html#xhtml">fhir:v</a> &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b style=\&quot;color: maroon\&quot;&gt;Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;^^rdf:XMLLiteral ]
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage&gt;
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.version">fhir:version</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;0.1.0&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CervicalCancerTriage&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Cervical Cancer Triage — HPV-Positive VIA Assessment&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.type">fhir:type</a> [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/plan-definition-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/plan-definition-type&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;eca-rule&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;ECA Rule&quot; ]     ] )
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;draft&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.experimental">fhir:experimental</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> true] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.date">fhir:date</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">fhir:v</a> &quot;2026-03-08&quot;^^xsd:date] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">fhir:publisher</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Hopena Health&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">fhir:contact</a> ( [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Hopena Health&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">fhir:telecom</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;url&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;https://hopenahealth.com&quot; ]     ] )
+  ] [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Dan Heslinga&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">fhir:telecom</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;url&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;https://hopenahealth.com&quot; ]     ] )
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;Clinical decision support rule for triage of HPV-positive women using VIA (visual inspection with acetic acid). Implements WHO Algorithm 5 triage pathway: HPV+ -&gt; VIA triage -&gt; route to treatment (VIA+), follow-up retest (VIA-), or oncology referral (suspicious for cancer). Applies to both general population and WLHIV with population-specific follow-up intervals.&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.useContext">fhir:useContext</a> ( [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.code">fhir:code</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/usage-context-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/usage-context-type&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;focus&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Clinical Focus&quot; ]     ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#UsageContext#UsageContext.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">a</a> fhir:CodeableConcept ;
+      ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+a sct:35904009 ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;         ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;35904009&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;HPV DNA detection&quot; ]       ] )     ]
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.jurisdiction">fhir:jurisdiction</a> ( [
+    ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://unstats.un.org/unsd/methods/m49/m49.htm&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://unstats.un.org/unsd/methods/m49/m49.htm&gt;       ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;001&quot; ]     ] )
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.purpose">fhir:purpose</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;To guide clinical decision-making for women with positive HPV DNA test results, ensuring appropriate triage with VIA and correct routing to treatment, follow-up, or referral based on triage outcome.&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.copyright">fhir:copyright</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;Copyright 2026 Hopena Health. License: Apache 2.0&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.relatedArtifact">fhir:relatedArtifact</a> ( [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;derived-from&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.label">fhir:label</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;WHO Guideline&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:v</a> &quot;https://www.who.int/publications/i/item/9789240030824&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:l</a> &lt;https://www.who.int/publications/i/item/9789240030824&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">fhir:document</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Attachment#Attachment.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:v</a> &quot;https://www.who.int/publications/i/item/9789240030824&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:l</a> &lt;https://www.who.int/publications/i/item/9789240030824&gt;       ]     ]
+  ] [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;citation&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.label">fhir:label</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;WHO Recommendations&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;General population: Recs 3b, 11. WLHIV: Recs 22, 23, 31. Algorithm 5: HPV DNA + VIA Triage.&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:v</a> &quot;https://www.who.int/publications/i/item/9789240030824&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:l</a> &lt;https://www.who.int/publications/i/item/9789240030824&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.document">fhir:document</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Attachment#Attachment.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:v</a> &quot;https://www.who.int/publications/i/item/9789240030824&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#url">fhir:l</a> &lt;https://www.who.int/publications/i/item/9789240030824&gt;       ]     ]
+  ] [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;composed-of&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Upstream: Screening determines cascade position and routes HPV+ patients to triage&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.resource">fhir:resource</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening|0.1.0&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening?version=0.1.0&gt;     ]
+  ] [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;composed-of&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Downstream: VIA+ patients are routed to treatment assessment&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#RelatedArtifact#RelatedArtifact.resource">fhir:resource</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment|0.1.0&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment?version=0.1.0&gt;     ]
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.library">fhir:library</a> ( [
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision|0.1.0&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision?version=0.1.0&gt;
+  ] ) ; # 
+  <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action">fhir:action</a> ( [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;HPV-Positive Triage Assessment&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Evaluate triage status for women with positive HPV DNA test results&quot; ] ;
+    ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.trigger">fhir:trigger</a> [
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#TriggerDefinition#TriggerDefinition.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;named-event&quot; ] ;
+<a href="http://hl7.org/fhir/R4/metadatatypes.html#TriggerDefinition#TriggerDefinition.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;patient-view&quot; ]     ] ) ;
+    ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">fhir:condition</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">fhir:kind</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;applicability&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Triage Is Indicated&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision         ]       ]     ] ) ;
+    ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.action">fhir:action</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;perform-via&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Perform VIA Triage&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;HPV DNA test is positive — perform VIA (visual inspection with acetic acid) to determine treatment pathway&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">fhir:condition</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">fhir:kind</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;applicability&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Triage Is Indicated&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] ) ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">fhir:type</a> [
+        ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/action-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/action-type&gt;           ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ]         ] )       ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">fhir:dynamicValue</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">fhir:path</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;payload[0].contentString&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Triage Recommended Action&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] )     ] [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;via-positive-treat&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;VIA Positive — Proceed to Treatment&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;VIA triage is positive — assess ablation eligibility and treat&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">fhir:condition</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">fhir:kind</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;applicability&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Proceed To Treatment&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] ) ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">fhir:type</a> [
+        ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/action-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/action-type&gt;           ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ]         ] )       ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">fhir:dynamicValue</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">fhir:path</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;payload[0].contentString&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Triage Recommended Action&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] )     ] [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;via-negative-followup&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;VIA Negative — Schedule Follow-Up HPV Retest&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;VIA triage is negative — schedule HPV DNA retest at 12 months (WLHIV) or 24 months (general population)&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">fhir:condition</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">fhir:kind</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;applicability&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Proceed To Follow Up Retest&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] ) ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">fhir:type</a> [
+        ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/action-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/action-type&gt;           ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ]         ] )       ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">fhir:dynamicValue</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">fhir:path</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;payload[0].contentString&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Triage Recommended Action&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] )     ] [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Element#PlanDefinition.action.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;suspicious-refer&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Suspicious for Cancer — Refer to Oncology&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.description">fhir:description</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Findings are suspicious for invasive cancer — refer for definitive diagnosis and staging&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.priority">fhir:priority</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;urgent&quot; ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition">fhir:condition</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.kind">fhir:kind</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;applicability&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.condition.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Needs Referral&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] ) ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.type">fhir:type</a> [
+        ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/action-type&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/action-type&gt;           ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;create&quot; ]         ] )       ] ;
+      ( <a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue">fhir:dynamicValue</a> [
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.path">fhir:path</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;payload[0].contentString&quot; ] ;
+<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.action.dynamicValue.expression">fhir:expression</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;text/cql-identifier&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.expression">fhir:expression</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Triage Recommended Action&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Expression#Expression.reference">fhir:reference</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;Library/CervicalCancerTriageDecision&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> fhir:Library/CervicalCancerTriageDecision           ]         ]       ] )     ] )
+  ] ) . # 
+
+</code></pre>
+
+
+
+  <!-- insert notes if present -->
+  
+
+
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+

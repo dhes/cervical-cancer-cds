@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="CervicalCancerTriage"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b style="color: maroon">Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55</b></p></div>
+  </text>
+  <url value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage"/>
+  <version value="0.1.0"/>
+  <name value="CervicalCancerTriage"/>
+  <title value="Cervical Cancer Triage — HPV-Positive VIA Assessment"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+      <display value="ECA Rule"/>
+    </coding>
+  </type>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2026-03-08"/>
+  <publisher value="Hopena Health"/>
+  <contact>
+    <name value="Hopena Health"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://hopenahealth.com"/>
+    </telecom>
+  </contact>
+  <contact>
+    <name value="Dan Heslinga"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://hopenahealth.com"/>
+    </telecom>
+  </contact>
+  <description value="Clinical decision support rule for triage of HPV-positive women using VIA (visual inspection with acetic acid). Implements WHO Algorithm 5 triage pathway: HPV+ -&gt; VIA triage -&gt; route to treatment (VIA+), follow-up retest (VIA-), or oncology referral (suspicious for cancer). Applies to both general population and WLHIV with population-specific follow-up intervals."/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="focus"/>
+      <display value="Clinical Focus"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="35904009"/>
+        <display value="HPV DNA detection"/>
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+    </coding>
+  </jurisdiction>
+  <purpose value="To guide clinical decision-making for women with positive HPV DNA test results, ensuring appropriate triage with VIA and correct routing to treatment, follow-up, or referral based on triage outcome."/>
+  <copyright value="Copyright 2026 Hopena Health. License: Apache 2.0"/>
+  <relatedArtifact>
+    <type value="derived-from"/>
+    <label value="WHO Guideline"/>
+    <display value="WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)"/>
+    <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    <document>
+      <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    </document>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="citation"/>
+    <label value="WHO Recommendations"/>
+    <display value="General population: Recs 3b, 11. WLHIV: Recs 22, 23, 31. Algorithm 5: HPV DNA + VIA Triage."/>
+    <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    <document>
+      <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    </document>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="composed-of"/>
+    <display value="Upstream: Screening determines cascade position and routes HPV+ patients to triage"/>
+    <resource value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening|0.1.0"/>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="composed-of"/>
+    <display value="Downstream: VIA+ patients are routed to treatment assessment"/>
+    <resource value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment|0.1.0"/>
+  </relatedArtifact>
+  <library value="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision|0.1.0"/>
+  <action>
+    <title value="HPV-Positive Triage Assessment"/>
+    <description value="Evaluate triage status for women with positive HPV DNA test results"/>
+    <trigger>
+      <type value="named-event"/>
+      <name value="patient-view"/>
+    </trigger>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="Triage Is Indicated"/>
+        <reference value="Library/CervicalCancerTriageDecision"/>
+      </expression>
+    </condition>
+    <action id="perform-via">
+      <title value="Perform VIA Triage"/>
+      <description value="HPV DNA test is positive — perform VIA (visual inspection with acetic acid) to determine treatment pathway"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Triage Is Indicated"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Triage Recommended Action"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="via-positive-treat">
+      <title value="VIA Positive — Proceed to Treatment"/>
+      <description value="VIA triage is positive — assess ablation eligibility and treat"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Proceed To Treatment"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Triage Recommended Action"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="via-negative-followup">
+      <title value="VIA Negative — Schedule Follow-Up HPV Retest"/>
+      <description value="VIA triage is negative — schedule HPV DNA retest at 12 months (WLHIV) or 24 months (general population)"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Proceed To Follow Up Retest"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Triage Recommended Action"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="suspicious-refer">
+      <title value="Suspicious for Cancer — Refer to Oncology"/>
+      <description value="Findings are suspicious for invasive cancer — refer for definitive diagnosis and staging"/>
+      <priority value="urgent"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Needs Referral"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Triage Recommended Action"/>
+          <reference value="Library/CervicalCancerTriageDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+  </action>
+</PlanDefinition>

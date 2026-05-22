@@ -1,0 +1,1240 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "translatorOptions" : "EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "None",
+         "type" : "CqlToElmInfo"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "The function FHIRHelpers.ToInterval has multiple overloads and due to the SignatureLevel setting (None), the overload signature is not being included in the output. This may result in ambiguous function resolution at runtime, consider setting the SignatureLevel to Overloads or All to ensure that the output includes sufficient information to support correct overload selection at runtime.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "message" : "An operand identifier reference is hiding another identifier of the same name.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "CervicalCancerScreeningDecision",
+         "system" : "https://hopenahealth.com/fhir/cervical-cancer-cds",
+         "version" : "0.1.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1",
+            "version" : "1.0.0",
+            "annotation" : [ ]
+         }, {
+            "locator" : "24:1-24:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "locator" : "26:1-26:35",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://hl7.org/fhir/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ ]
+         }, {
+            "locator" : "27:1-27:67",
+            "localIdentifier" : "Common",
+            "path" : "https://hopenahealth.com/fhir/cervical-cancer-cds/CervicalCancerScreeningCommon",
+            "version" : "0.1.0",
+            "annotation" : [ ]
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "locator" : "40:1-40:15",
+            "name" : "Patient",
+            "annotation" : [ ]
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "40:1-40:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "annotation" : [ ],
+            "expression" : {
+               "type" : "SingletonFrom",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : {
+                  "locator" : "40:1-40:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "annotation" : [ ],
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "locator" : "46:1-48:63",
+            "name" : "Meets Age Criteria",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "47:3-48:63",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "47:3-47:20",
+                  "name" : "Is Female",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "48:9-48:63",
+                  "type" : "GreaterOrEqual",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "48:9-48:29",
+                     "name" : "Age In Years",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "48:34-48:63",
+                     "name" : "Minimum Screening Age",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "54:1-55:57",
+            "name" : "Is Within Screening Age Range",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "55:3-55:57",
+               "type" : "LessOrEqual",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "55:3-55:23",
+                  "name" : "Age In Years",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "55:28-55:57",
+                  "name" : "Maximum Screening Age",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         }, {
+            "locator" : "63:1-65:50",
+            "name" : "Is Eligible For Screening",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "64:3-65:50",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "64:3-64:22",
+                  "name" : "Meets Age Criteria",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "65:9-65:50",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "65:13-65:50",
+                     "name" : "Has Cervical Cancer Diagnosis",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "80:1-83:11",
+            "name" : "Years Since Last HPV Test",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "81:3-83:11",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "81:6-81:45",
+                  "name" : "Has Ever Been Screened With HPV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               },
+               "then" : {
+                  "locator" : "82:8-82:70",
+                  "precision" : "Year",
+                  "type" : "DurationBetween",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "82:22-82:58",
+                     "name" : "Date Of Most Recent HPV Test",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "82:64-82:70",
+                     "type" : "Today",
+                     "annotation" : [ ],
+                     "signature" : [ ]
+                  } ]
+               },
+               "else" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "type" : "As",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "83:8-83:11",
+                     "type" : "Null",
+                     "annotation" : [ ]
+                  }
+               }
+            }
+         }, {
+            "locator" : "88:1-89:46",
+            "name" : "Has Never Been Screened",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "89:3-89:46",
+               "type" : "Not",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : {
+                  "locator" : "89:7-89:46",
+                  "name" : "Has Ever Been Screened With HPV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "95:1-97:72",
+            "name" : "Screening Interval Has Elapsed",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "96:3-97:72",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "96:3-96:42",
+                  "name" : "Has Ever Been Screened With HPV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "97:9-97:72",
+                  "type" : "GreaterOrEqual",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "97:9-97:35",
+                     "name" : "Years Since Last HPV Test",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "97:40-97:72",
+                     "name" : "Screening Interval Years",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "103:1-105:71",
+            "name" : "Is Due For Screening",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "104:3-105:71",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "104:3-104:29",
+                  "name" : "Is Eligible For Screening",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "105:9-105:71",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "105:10-105:34",
+                     "name" : "Has Never Been Screened",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "105:39-105:70",
+                     "name" : "Screening Interval Has Elapsed",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "130:1-132:53",
+            "name" : "Most Recent HPV Test Is Negative",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "131:3-132:53",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "131:3-131:42",
+                  "name" : "Has Ever Been Screened With HPV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "132:9-132:53",
+                  "type" : "Not",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : {
+                     "locator" : "132:13-132:53",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }
+               } ]
+            }
+         }, {
+            "locator" : "139:1-144:5",
+            "name" : "Needs Triage After Positive HPV",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "140:3-144:5",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "140:3-140:43",
+                  "name" : "Most Recent HPV Test Is Positive",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               }, {
+                  "locator" : "141:9-144:5",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "142:7-142:48",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "142:11-142:48",
+                        "type" : "Exists",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "142:17-142:48",
+                           "name" : "VIA Screening Results",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     }
+                  }, {
+                     "locator" : "143:10-143:86",
+                     "type" : "Before",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "143:10-143:41",
+                        "name" : "Date Of Most Recent VIA",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "143:50-143:86",
+                        "name" : "Date Of Most Recent HPV Test",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "150:1-153:90",
+            "name" : "Has Positive Triage Result",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "151:3-153:90",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "151:3-152:44",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "151:3-151:43",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "152:9-152:44",
+                     "name" : "Most Recent VIA Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               }, {
+                  "locator" : "153:9-153:90",
+                  "type" : "SameOrAfter",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "153:9-153:40",
+                     "name" : "Date Of Most Recent VIA",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "153:54-153:90",
+                     "name" : "Date Of Most Recent HPV Test",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "159:1-162:90",
+            "name" : "Triage Was Negative",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "160:3-162:90",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "160:3-161:48",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "160:3-160:43",
+                     "name" : "Most Recent HPV Test Is Positive",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "161:9-161:48",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "161:13-161:48",
+                        "name" : "Most Recent VIA Is Positive",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  } ]
+               }, {
+                  "locator" : "162:9-162:90",
+                  "type" : "SameOrAfter",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "162:9-162:40",
+                     "name" : "Date Of Most Recent VIA",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "162:54-162:90",
+                     "name" : "Date Of Most Recent HPV Test",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "169:1-172:44",
+            "name" : "Is In Post Treatment Follow Up",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "170:3-172:44",
+               "type" : "And",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "170:3-171:51",
+                  "type" : "And",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "170:3-170:27",
+                     "name" : "Has Been Treated",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "171:9-171:51",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "171:9-171:51",
+                        "type" : "IsNull",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "171:9-171:39",
+                           "name" : "Months Since Treatment",
+                           "libraryName" : "Common",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     }
+                  } ]
+               }, {
+                  "locator" : "172:9-172:44",
+                  "type" : "Less",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "172:9-172:39",
+                     "name" : "Months Since Treatment",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  }, {
+                     "locator" : "172:43-172:44",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "24",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  } ]
+               } ]
+            }
+         }, {
+            "locator" : "187:1-234:5",
+            "name" : "Recommended Action",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "188:3-234:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "190:5-191:61",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "190:10-190:47",
+                     "name" : "Has Cervical Cancer Diagnosis",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "191:12-191:61",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Refer to oncology for cervical cancer management",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "194:5-195:59",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "194:10-194:33",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "194:14-194:33",
+                        "name" : "Meets Age Criteria",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  },
+                  "then" : {
+                     "locator" : "195:12-195:59",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Not yet eligible for cervical cancer screening",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "198:5-199:86",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "198:10-198:41",
+                     "name" : "Is In Post Treatment Follow Up",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "199:12-199:86",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Post-treatment follow-up: retest with HPV DNA at 12 months post-treatment",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "202:5-203:54",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "202:10-202:42",
+                     "name" : "Needs Triage After Positive HPV",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "203:12-203:54",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "HPV test is positive — perform VIA triage",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "206:5-207:82",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "206:10-206:37",
+                     "name" : "Has Positive Triage Result",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "207:12-207:82",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "HPV-positive and VIA-positive — assess ablation eligibility and treat",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "210:5-213:22",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "210:10-210:30",
+                     "name" : "Triage Was Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "211:12-213:22",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "211:12-212:66",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "211:12-211:68",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "HPV-positive but VIA-negative — retest with HPV DNA in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "212:14-212:66",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "212:23-212:65",
+                              "name" : "Post Triage Negative Retest Months",
+                              "libraryName" : "Common",
+                              "type" : "ExpressionRef",
+                              "annotation" : [ ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "213:14-213:22",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " months",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "216:5-217:37",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "216:10-216:66",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "216:10-216:34",
+                        "name" : "Has Never Been Screened",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "216:40-216:66",
+                        "name" : "Is Eligible For Screening",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "217:12-217:37",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Screen with HPV DNA test",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "220:5-221:64",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "220:10-220:73",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "220:10-220:41",
+                        "name" : "Screening Interval Has Elapsed",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "220:47-220:73",
+                        "name" : "Is Eligible For Screening",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "221:12-221:64",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Routine re-screening due — screen with HPV DNA test",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "224:5-227:21",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "224:10-224:84",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "224:10-224:43",
+                        "name" : "Most Recent HPV Test Is Negative",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "224:49-224:84",
+                        "type" : "Not",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : {
+                           "locator" : "224:53-224:84",
+                           "name" : "Screening Interval Has Elapsed",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "225:12-227:21",
+                     "type" : "Concatenate",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "225:12-226:86",
+                        "type" : "Concatenate",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "225:12-225:64",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "Last HPV test was negative — next screening due in ",
+                           "type" : "Literal",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "226:14-226:86",
+                           "type" : "ToString",
+                           "annotation" : [ ],
+                           "signature" : [ ],
+                           "operand" : {
+                              "locator" : "226:23-226:85",
+                              "type" : "Subtract",
+                              "annotation" : [ ],
+                              "signature" : [ ],
+                              "operand" : [ {
+                                 "locator" : "226:23-226:55",
+                                 "name" : "Screening Interval Years",
+                                 "libraryName" : "Common",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              }, {
+                                 "locator" : "226:59-226:85",
+                                 "name" : "Years Since Last HPV Test",
+                                 "type" : "ExpressionRef",
+                                 "annotation" : [ ]
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "locator" : "227:14-227:21",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : " years",
+                        "type" : "Literal",
+                        "annotation" : [ ]
+                     } ]
+                  }
+               }, {
+                  "locator" : "230:5-231:101",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "230:10-230:63",
+                     "type" : "Greater",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "230:10-230:30",
+                        "name" : "Age In Years",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "230:34-230:63",
+                        "name" : "Maximum Screening Age",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "231:12-231:101",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Age over 50 — assess for screening cessation (requires 2 consecutive negative HPV tests)",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "233:10-233:67",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Unable to determine recommendation — review patient data",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "240:1-253:5",
+            "name" : "Cascade Status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "241:3-253:5",
+               "type" : "Case",
+               "annotation" : [ ],
+               "caseItem" : [ {
+                  "locator" : "242:5-242:70",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "242:10-242:47",
+                     "name" : "Has Cervical Cancer Diagnosis",
+                     "libraryName" : "Common",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "242:54-242:70",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "cervical-cancer",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "243:5-243:53",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "243:10-243:33",
+                     "type" : "Not",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : {
+                        "locator" : "243:14-243:33",
+                        "name" : "Meets Age Criteria",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }
+                  },
+                  "then" : {
+                     "locator" : "243:40-243:53",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "not-eligible",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "244:5-244:73",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "244:10-244:41",
+                     "name" : "Is In Post Treatment Follow Up",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "244:48-244:73",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "post-treatment-follow-up",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "245:5-245:62",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "245:10-245:42",
+                     "name" : "Needs Triage After Positive HPV",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "245:49-245:62",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "needs-triage",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "246:5-246:60",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "246:10-246:37",
+                     "name" : "Has Positive Triage Result",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "246:44-246:60",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "needs-treatment",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "247:5-247:63",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "247:10-247:30",
+                     "name" : "Triage Was Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "247:37-247:63",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "triage-negative-follow-up",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "248:5-248:91",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "248:10-248:66",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "248:10-248:34",
+                        "name" : "Has Never Been Screened",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "248:40-248:66",
+                        "name" : "Is Eligible For Screening",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "248:73-248:91",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "due-for-screening",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "249:5-249:98",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "249:10-249:73",
+                     "type" : "And",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "249:10-249:41",
+                        "name" : "Screening Interval Has Elapsed",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "249:47-249:73",
+                        "name" : "Is Eligible For Screening",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "249:80-249:98",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "due-for-screening",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "250:5-250:65",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "250:10-250:43",
+                     "name" : "Most Recent HPV Test Is Negative",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  },
+                  "then" : {
+                     "locator" : "250:50-250:65",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "routine-recall",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               }, {
+                  "locator" : "251:5-251:87",
+                  "annotation" : [ ],
+                  "when" : {
+                     "locator" : "251:10-251:63",
+                     "type" : "Greater",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "251:10-251:30",
+                        "name" : "Age In Years",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     }, {
+                        "locator" : "251:34-251:63",
+                        "name" : "Maximum Screening Age",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  },
+                  "then" : {
+                     "locator" : "251:70-251:87",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "assess-cessation",
+                     "type" : "Literal",
+                     "annotation" : [ ]
+                  }
+               } ],
+               "else" : {
+                  "locator" : "252:10-252:18",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "unknown",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "264:1-267:40",
+            "name" : "Screening Interval Display",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "265:3-267:40",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "265:6-265:22",
+                  "name" : "Is WLHIV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               },
+               "then" : {
+                  "locator" : "266:8-266:26",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "3-5 years (WLHIV)",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               },
+               "else" : {
+                  "locator" : "267:8-267:40",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "5-10 years (general population)",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "272:1-275:54",
+            "name" : "Population Classification",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "273:3-275:54",
+               "type" : "If",
+               "annotation" : [ ],
+               "condition" : {
+                  "locator" : "273:6-273:22",
+                  "name" : "Is WLHIV",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               },
+               "then" : {
+                  "locator" : "274:8-274:66",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "Woman living with HIV (WLHIV) — WHO Recommendations 21-34",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               },
+               "else" : {
+                  "locator" : "275:8-275:54",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "General population — WHO Recommendations 1-14",
+                  "type" : "Literal",
+                  "annotation" : [ ]
+               }
+            }
+         }, {
+            "locator" : "287:1-292:45",
+            "name" : "Needs Attention",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ ],
+            "expression" : {
+               "locator" : "288:3-292:45",
+               "type" : "Or",
+               "annotation" : [ ],
+               "signature" : [ ],
+               "operand" : [ {
+                  "locator" : "288:3-291:39",
+                  "type" : "Or",
+                  "annotation" : [ ],
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "locator" : "288:3-290:35",
+                     "type" : "Or",
+                     "annotation" : [ ],
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "locator" : "288:3-289:40",
+                        "type" : "Or",
+                        "annotation" : [ ],
+                        "signature" : [ ],
+                        "operand" : [ {
+                           "locator" : "288:3-288:24",
+                           "name" : "Is Due For Screening",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        }, {
+                           "locator" : "289:8-289:40",
+                           "name" : "Needs Triage After Positive HPV",
+                           "type" : "ExpressionRef",
+                           "annotation" : [ ]
+                        } ]
+                     }, {
+                        "locator" : "290:8-290:35",
+                        "name" : "Has Positive Triage Result",
+                        "type" : "ExpressionRef",
+                        "annotation" : [ ]
+                     } ]
+                  }, {
+                     "locator" : "291:8-291:39",
+                     "name" : "Is In Post Treatment Follow Up",
+                     "type" : "ExpressionRef",
+                     "annotation" : [ ]
+                  } ]
+               }, {
+                  "locator" : "292:8-292:45",
+                  "name" : "Has Cervical Cancer Diagnosis",
+                  "libraryName" : "Common",
+                  "type" : "ExpressionRef",
+                  "annotation" : [ ]
+               } ]
+            }
+         } ]
+      }
+   }
+}

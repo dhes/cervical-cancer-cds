@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="CervicalCancerScreening"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b style="color: maroon">Exception generating Narrative: unexpected non-end of element null::a  at line 176 column 55</b></p></div>
+  </text>
+  <url value="https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening"/>
+  <version value="0.1.0"/>
+  <name value="CervicalCancerScreening"/>
+  <title value="Cervical Cancer Screening Eligibility and Cascade Routing"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+      <display value="ECA Rule"/>
+    </coding>
+  </type>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2026-03-08"/>
+  <publisher value="Hopena Health"/>
+  <contact>
+    <name value="Hopena Health"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://hopenahealth.com"/>
+    </telecom>
+  </contact>
+  <contact>
+    <name value="Dan Heslinga"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://hopenahealth.com"/>
+    </telecom>
+  </contact>
+  <description value="Clinical decision support rule for cervical cancer screening eligibility, scheduling, and cascade routing. Implements WHO Algorithm 5 (HPV DNA + VIA triage) screening entry point for both general population and women living with HIV (WLHIV). Evaluates patient demographics, HIV status, and screening history to determine eligibility, due status, and the patient's current position in the screening cascade."/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="focus"/>
+      <display value="Clinical Focus"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="243877001"/>
+        <display value="Cancer cervix screening"/>
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="gender"/>
+      <display value="Gender"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://hl7.org/fhir/administrative-gender"/>
+        <code value="female"/>
+        <display value="Female"/>
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="age"/>
+      <display value="Age Range"/>
+    </code>
+    <valueRange>
+      <low>
+        <value value="25"/>
+        <unit value="years"/>
+      </low>
+      <high>
+        <value value="50"/>
+        <unit value="years"/>
+      </high>
+    </valueRange>
+  </useContext>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+    </coding>
+  </jurisdiction>
+  <purpose value="To identify women eligible for cervical cancer screening and determine their current position in the WHO screening cascade, enabling timely initiation and continuity of screening services."/>
+  <copyright value="Copyright 2026 Hopena Health. License: Apache 2.0"/>
+  <relatedArtifact>
+    <type value="derived-from"/>
+    <label value="WHO Guideline"/>
+    <display value="WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)"/>
+    <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    <document>
+      <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    </document>
+  </relatedArtifact>
+  <relatedArtifact>
+    <type value="citation"/>
+    <label value="WHO Recommendations"/>
+    <display value="General population: Recs 1, 2, 5, 6, 7, 8, 14. WLHIV: Recs 21, 22, 25, 26, 27, 28, 34."/>
+    <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    <document>
+      <url value="https://www.who.int/publications/i/item/9789240030824"/>
+    </document>
+  </relatedArtifact>
+  <library value="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerScreeningDecision|0.1.0"/>
+  <action>
+    <title value="Cervical Cancer Screening Assessment"/>
+    <description value="Evaluate screening eligibility and cascade position for women presenting for care"/>
+    <trigger>
+      <type value="named-event"/>
+      <name value="patient-view"/>
+    </trigger>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="Is Eligible For Screening"/>
+        <reference value="Library/CervicalCancerScreeningDecision"/>
+      </expression>
+    </condition>
+    <action id="screening-due">
+      <title value="Screen with HPV DNA Test"/>
+      <description value="Patient is eligible and due for cervical cancer screening with HPV DNA test"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Is Due For Screening"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <definitionCanonical value="#screening-communication"/>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Recommended Action"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+      <dynamicValue>
+        <path value="payload[1].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Population Classification"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+      <dynamicValue>
+        <path value="payload[2].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Screening Interval Display"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="needs-triage">
+      <title value="HPV-Positive — Needs VIA Triage"/>
+      <description value="Patient has a positive HPV DNA test and needs VIA triage assessment"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Needs Triage After Positive HPV"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Recommended Action"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="needs-treatment">
+      <title value="HPV+ and VIA+ — Needs Treatment"/>
+      <description value="Patient has positive HPV DNA and positive VIA triage — treatment assessment needed"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Has Positive Triage Result"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Recommended Action"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="post-treatment-followup">
+      <title value="Post-Treatment Follow-Up"/>
+      <description value="Patient has been treated and is in the post-treatment follow-up window"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Is In Post Treatment Follow Up"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Recommended Action"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+    <action id="routine-recall">
+      <title value="Routine Recall"/>
+      <description value="Patient's last HPV test was negative — next screening not yet due"/>
+      <condition>
+        <kind value="applicability"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Most Recent HPV Test Is Negative"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </condition>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/action-type"/>
+          <code value="create"/>
+        </coding>
+      </type>
+      <dynamicValue>
+        <path value="payload[0].contentString"/>
+        <expression>
+          <language value="text/cql-identifier"/>
+          <expression value="Recommended Action"/>
+          <reference value="Library/CervicalCancerScreeningDecision"/>
+        </expression>
+      </dynamicValue>
+    </action>
+  </action>
+</PlanDefinition>

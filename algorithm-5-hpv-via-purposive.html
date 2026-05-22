@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm 5: Purposive L2 — DMN Viewer</title>
+  <style>
+    :root {
+      --blue: #2c5aa0;
+      --blue-light: #e8f0fe;
+      --green: #1a7742;
+      --green-light: #e6f4ea;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-500: #adb5bd;
+      --gray-700: #495057;
+      --gray-900: #212529;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      color: var(--gray-900);
+      background: white;
+      line-height: 1.5;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    /* DRD SVG */
+    .drd-container {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .drd-container svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Decision Table */
+    .decision-table-container {
+      margin-bottom: 2.5rem;
+    }
+
+    .table-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .table-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .hit-policy {
+      font-size: 0.8rem;
+      color: var(--gray-700);
+      background: var(--gray-200);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .decision-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .decision-table th {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      padding: 8px 12px;
+      text-align: left;
+      vertical-align: bottom;
+    }
+
+    .decision-table td {
+      border: 1px solid var(--gray-300);
+      padding: 6px 12px;
+      vertical-align: top;
+    }
+
+    .decision-table .rule-num {
+      width: 36px;
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.8rem;
+    }
+
+    .col-label {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .col-type {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      font-family: var(--mono);
+    }
+
+    .input-col {
+      border-bottom: 3px solid var(--blue);
+    }
+
+    .output-col {
+      border-bottom: 3px solid var(--green);
+    }
+
+    .annotation-col {
+      border-bottom: 3px solid var(--gray-500);
+      font-style: italic;
+    }
+
+    .input-cell {
+      background: white;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .output-cell {
+      background: var(--green-light);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .annotation-cell {
+      font-size: 0.8rem;
+      color: var(--gray-700);
+      font-style: italic;
+    }
+
+    .any-value {
+      color: var(--gray-500);
+      text-align: center;
+    }
+
+    .null-value {
+      color: var(--gray-500);
+      font-style: italic;
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--gray-700);
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-100);
+      border-radius: 6px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 24px;
+      height: 3px;
+      display: inline-block;
+    }
+
+    .legend-swatch.solid { background: #333; }
+    .legend-swatch.dashed {
+      background: repeating-linear-gradient(
+        90deg, #555 0px, #555 8px, transparent 8px, transparent 12px
+      );
+    }
+    .legend-swatch.dotted {
+      background: repeating-linear-gradient(
+        90deg, #888 0px, #888 3px, transparent 3px, transparent 6px
+      );
+    }
+
+    .no-table {
+      color: var(--gray-500);
+      font-style: italic;
+      padding: 1rem;
+      background: var(--gray-100);
+      border-radius: 6px;
+    }
+
+    /* Print styles */
+    @media print {
+      body { padding: 0.5rem; }
+      .drd-container { break-inside: avoid; }
+      .decision-table-container { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Algorithm 5: Purposive L2</h1>
+  <div class="subtitle">Rendered from algorithm-5-hpv-via-purposive.dmn</div>
+
+  <h2>Decision Requirements Diagram</h2>
+  <div class="drd-container">
+    
+  </div>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch solid"></span> Information Requirement</div>
+    <div class="legend-item"><span class="legend-swatch dashed"></span> Authority Requirement</div>
+    <div class="legend-item"><span class="legend-swatch dotted"></span> Association</div>
+  </div>
+
+  <h2>Decision Tables</h2>
+  <div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Screening Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Is Female</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Age In Years</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Is WLHIV</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Has Cervical Cancer</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Eligible For Screening</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Screening Interval Years</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">[30,49]</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">true</td>
+        <td class="output-cell ">5</td>
+        <td class="annotation-cell">CQL: Common.&quot;Is Female&quot;, Common.&quot;Minimum Screening Age&quot; = 30, Common.&quot;Maximum Screening Age&quot; = 49, Common.&quot;Screening Interval Years&quot; = 5. WHO Rec 5/6/7/8. Interval resolved to lower bound (most conservative).</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">[25,49]</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">true</td>
+        <td class="output-cell ">3</td>
+        <td class="annotation-cell">CQL: Common.&quot;Minimum Screening Age&quot; = 25 for WLHIV, Common.&quot;Screening Interval Years&quot; = 3. WHO Rec 25/26/28. Interval resolved to lower bound.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&lt;30</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: AgeInYears &lt; 30 for non-WLHIV</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&lt;25</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: AgeInYears &lt; 25 for WLHIV</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&gt;49</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: AgeInYears &gt; Common.&quot;Maximum Screening Age&quot; (49). WHO Rec 6/7/26/27.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: Common.&quot;Has Cervical Cancer Diagnosis&quot;. Not in textualist (which has no cancer input). Purposive adds exclusion.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">7</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: Patient.gender = &#x27;female&#x27;. Textualist uses &quot;Client Is Woman&quot;. See Interpretation Register #2.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">8</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Catch-all for null inputs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Due for Screening</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Eligible For Screening</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Screening Interval Years</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Years Since Last HPV Test</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Has Ever Been Screened</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Screening Status</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">due for screening</td>
+        <td class="annotation-cell">CQL: &quot;Has Never Been Screened&quot; and &quot;Is Eligible For Screening&quot;. Same as textualist.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">not(null)</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">due for screening</td>
+        <td class="annotation-cell">CQL: &quot;Years Since Last HPV Test&quot; &gt;= Common.&quot;Screening Interval Years&quot;. Textualist uses a window (5-10 or 3-5); purposive uses single lower-bound threshold. See Interpretation Register #3.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">not(null)</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">not yet due</td>
+        <td class="annotation-cell">CQL: not &quot;Screening Interval Has Elapsed&quot;. Single threshold: &lt; interval.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">not eligible</td>
+        <td class="annotation-cell">Same as textualist.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Triage Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">VIA Result</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Is WLHIV</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">VIA After HPV</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Has Cervical Cancer</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Triage Status</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Retest Months</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">refer to oncology</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: &quot;Suspicious For Cancer&quot; uses Common.&quot;Has Cervical Cancer Diagnosis&quot; as proxy. See Interpretation Register #19. Not in textualist (which uses &quot;suspected cancer&quot; VIA finding).</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">positive</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">VIA positive — proceed to treatment</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: &quot;VIA Triage Is Positive&quot; requires VIA on or after HPV test date. See Interpretation Register #14.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">negative</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">VIA negative — repeat HPV test in 24 months</td>
+        <td class="output-cell ">24</td>
+        <td class="annotation-cell">CQL: Common.&quot;Post Triage Negative Retest Months&quot; = 24 for non-WLHIV. WHO Rec 11. Resolved from &quot;2 years&quot; to 24 months.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">negative</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">VIA negative — repeat HPV test in 12 months</td>
+        <td class="output-cell ">12</td>
+        <td class="annotation-cell">CQL: Common.&quot;Post Triage Negative Retest Months&quot; = 12 for WLHIV. WHO Rec 31. Resolved from &quot;1 year&quot; to 12 months.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">awaiting VIA triage</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">CQL: &quot;Triage Is Indicated&quot; — HPV+ but no VIA after HPV test. Not in textualist (which assumes VIA has been performed).</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">unknown VIA result</td>
+        <td class="output-cell null-value">—</td>
+        <td class="annotation-cell">Catch-all for null VIA result</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Ablation Eligibility</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Has Cervical Cancer</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Has CIN2+</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Known Contraindication</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Modality Recommendation</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">true</td>
+        <td class="output-cell ">excision (LEEP/LLETZ) — ablation contraindicated</td>
+        <td class="annotation-cell">CQL: &quot;Has Known Contraindication To Ablation&quot; = Common.&quot;Has Cervical Cancer Diagnosis&quot;. Only checks cancer; TZ assessment deferred to clinician. See Interpretation Register #24.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell ">consider excision — CIN2+ diagnosed; ablation may be acceptable if TZ fully visible</td>
+        <td class="annotation-cell">CQL: &quot;Has CIN2 Or Higher Diagnosis&quot; — CQL infers excision preference for higher-grade lesions. Not in WHO Algorithm 5 diagram. See Interpretation Register #22.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell ">assess TZ at point of care — if TZ Type 1 or 2: ablation; if Type 3: excision</td>
+        <td class="annotation-cell">CQL: &quot;Ablation Eligibility Checklist&quot; — presents criteria for point-of-care assessment rather than automating. TZ Type 1/2 eligible, Type 3 not. See Interpretation Register #23.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">false</td>
+        <td class="output-cell ">insufficient data for ablation assessment</td>
+        <td class="annotation-cell">Catch-all for null inputs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Treatment Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Triage Status</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Modality Recommendation</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Has Been Treated</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Treatment Plan</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">already treated — see follow-up</td>
+        <td class="annotation-cell">CQL: &quot;Treatment Is Indicated&quot; requires not Common.&quot;Has Been Treated&quot;. Not in textualist. See Interpretation Register #21.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell ">refer to oncology</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">refer to oncology</td>
+        <td class="annotation-cell">CQL: cancer exclusion handled by Triage Decision routing to oncology.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell ">VIA positive — proceed to treatment</td>
+        <td class="input-cell ">assess TZ at point of care — if TZ Type 1 or 2: ablation; if Type 3: excision</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">assess TZ — ablation (thermal preferred) or excision per eligibility</td>
+        <td class="annotation-cell">CQL: ablation-eligible → &quot;thermal ablation (preferred) or cryotherapy&quot;. WHO preference: thermal ablation over cryotherapy.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell ">VIA positive — proceed to treatment</td>
+        <td class="input-cell ">consider excision — CIN2+ diagnosed; ablation may be acceptable if TZ fully visible</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">consider excision (LEEP/LLETZ) — CIN2+ diagnosed</td>
+        <td class="annotation-cell">CQL: &quot;Has CIN2 Or Higher Diagnosis&quot; shifts preference toward excision.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell ">VIA positive — proceed to treatment</td>
+        <td class="input-cell ">excision (LEEP/LLETZ) — ablation contraindicated</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">excision (LEEP/LLETZ)</td>
+        <td class="annotation-cell">CQL: Known contraindication → excision (LEEP/LLETZ).</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell ">VIA negative — repeat HPV test in 24 months</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">no treatment — repeat HPV in 24 months</td>
+        <td class="annotation-cell">CQL: &quot;Proceed To Follow Up Retest&quot;. VIA negative routes to follow-up, not treatment.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">7</td>
+        <td class="input-cell ">VIA negative — repeat HPV test in 12 months</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">no treatment — repeat HPV in 12 months</td>
+        <td class="annotation-cell">CQL: VIA negative WLHIV path.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">8</td>
+        <td class="input-cell ">awaiting VIA triage</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">awaiting VIA triage — no treatment decision</td>
+        <td class="annotation-cell">VIA not yet performed — no treatment decision.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">9</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">unknown triage status</td>
+        <td class="annotation-cell">Catch-all</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="decision-table-container">
+  <div class="table-header">
+    <span class="table-name">Follow-up Decision</span>
+    <span class="hit-policy">Hit policy: U (Unique)</span>
+  </div>
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th class="rule-num">#</th>
+        <th class="input-col">
+          <div class="col-label">Treatment Plan</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Is WLHIV</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Months Since Treatment</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">HPV Test After Treatment</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">HPV Tests Since Treatment</div>
+          <div class="col-type">number</div>
+        </th>
+        <th class="input-col">
+          <div class="col-label">Retest Positive</div>
+          <div class="col-type">boolean</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Follow-up Plan</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="output-col">
+          <div class="col-label">Follow-up Status</div>
+          <div class="col-type">string</div>
+        </th>
+        <th class="annotation-col">Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rule-num">1</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="output-cell ">re-enter triage/treatment pathway</td>
+        <td class="output-cell ">retest-positive-reenter</td>
+        <td class="annotation-cell">CQL: &quot;Post Treatment Retest Is Positive&quot;. WHO Rec 13/33.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">2</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&gt;=2</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">return to routine screening every 3-5 years</td>
+        <td class="output-cell ">return-to-routine</td>
+        <td class="annotation-cell">CQL: &quot;WLHIV Double Follow Up Complete&quot; — 2+ post-treatment tests, most recent negative. WHO Rec 33.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">3</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">&gt;=1</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">return to routine screening every 5-10 years</td>
+        <td class="output-cell ">return-to-routine</td>
+        <td class="annotation-cell">CQL: &quot;Post Treatment Retest Is Negative&quot; and not &quot;Is WLHIV&quot;. WHO Rec 13.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">4</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell ">1</td>
+        <td class="input-cell ">false</td>
+        <td class="output-cell ">WLHIV double follow-up — second HPV retest at 12 months after first</td>
+        <td class="output-cell ">wlhiv-awaiting-second-retest</td>
+        <td class="annotation-cell">CQL: &quot;WLHIV Needs Second Follow Up Test&quot; — 1 post-treatment test, negative. WHO Rec 33. Not in textualist.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">5</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">&gt;=12</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">0</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">post-treatment HPV retest due (12 months)</td>
+        <td class="output-cell ">post-treatment-retest-due</td>
+        <td class="annotation-cell">CQL: &quot;Post Treatment Retest Is Due&quot; — Months Since Treatment &gt;= 12. WHO Rec 13/33.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">6</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">[10,12)</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">0</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">post-treatment HPV retest approaching</td>
+        <td class="output-cell ">post-treatment-retest-approaching</td>
+        <td class="annotation-cell">CQL: &quot;Post Treatment Retest Is Approaching&quot; — 10-12 months. 2-month advance window is CQL addition. See Interpretation Register #26.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">7</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell ">[0,10)</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell ">0</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">post-treatment — HPV retest at 12 months</td>
+        <td class="output-cell ">post-treatment-waiting</td>
+        <td class="annotation-cell">CQL: &quot;Is In Post Treatment Follow Up Window&quot; and not &quot;Has HPV Test After Treatment&quot;.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">8</td>
+        <td class="input-cell ">no treatment — repeat HPV in 24 months</td>
+        <td class="input-cell ">false</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">repeat HPV test after 24 months</td>
+        <td class="output-cell ">post-triage-negative-waiting</td>
+        <td class="annotation-cell">CQL: &quot;Is Post Triage Negative&quot;. WHO Rec 11.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">9</td>
+        <td class="input-cell ">no treatment — repeat HPV in 12 months</td>
+        <td class="input-cell ">true</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">repeat HPV test after 12 months</td>
+        <td class="output-cell ">post-triage-negative-waiting</td>
+        <td class="annotation-cell">CQL: &quot;Is Post Triage Negative&quot; WLHIV. WHO Rec 31.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">10</td>
+        <td class="input-cell ">refer to oncology</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">oncology management</td>
+        <td class="output-cell ">refer-oncology</td>
+        <td class="annotation-cell">CQL: Cervical cancer diagnosis → oncology management.</td>
+      </tr>
+      <tr>
+        <td class="rule-num">11</td>
+        <td class="input-cell any-value">—</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="input-cell any-value">-</td>
+        <td class="output-cell ">no follow-up action indicated</td>
+        <td class="output-cell ">no-follow-up</td>
+        <td class="annotation-cell">Catch-all</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

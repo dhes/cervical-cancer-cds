@@ -1,0 +1,295 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CervicalCancerTriage"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b style=\"color: maroon\">Exception generating Narrative: unexpected non-end of element null::a  at line 166 column 55</b></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTriage>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "CervicalCancerTriage"] ; # 
+  fhir:title [ fhir:v "Cervical Cancer Triage — HPV-Positive VIA Assessment"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/plan-definition-type>
+       ] ;
+       fhir:code [ fhir:v "eca-rule" ] ;
+       fhir:display [ fhir:v "ECA Rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v true] ; # 
+  fhir:date [ fhir:v "2026-03-08"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Hopena Health"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Hopena Health" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] [
+     fhir:name [ fhir:v "Dan Heslinga" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://hopenahealth.com" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Clinical decision support rule for triage of HPV-positive women using VIA (visual inspection with acetic acid). Implements WHO Algorithm 5 triage pathway: HPV+ -> VIA triage -> route to treatment (VIA+), follow-up retest (VIA-), or oncology referral (suspicious for cancer). Applies to both general population and WLHIV with population-specific follow-up intervals."] ; # 
+  fhir:useContext ( [
+     fhir:code [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/usage-context-type>
+       ] ;
+       fhir:code [ fhir:v "focus" ] ;
+       fhir:display [ fhir:v "Clinical Focus" ]
+     ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         a sct:35904009 ;
+         fhir:system [
+           fhir:v "http://snomed.info/sct"^^xsd:anyURI ;
+           fhir:l <http://snomed.info/sct>
+         ] ;
+         fhir:code [ fhir:v "35904009" ] ;
+         fhir:display [ fhir:v "HPV DNA detection" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://unstats.un.org/unsd/methods/m49/m49.htm"^^xsd:anyURI ;
+         fhir:l <http://unstats.un.org/unsd/methods/m49/m49.htm>
+       ] ;
+       fhir:code [ fhir:v "001" ]
+     ] )
+  ] ) ; # 
+  fhir:purpose [ fhir:v "To guide clinical decision-making for women with positive HPV DNA test results, ensuring appropriate triage with VIA and correct routing to treatment, follow-up, or referral based on triage outcome."] ; # 
+  fhir:copyright [ fhir:v "Copyright 2026 Hopena Health. License: Apache 2.0"] ; # 
+  fhir:relatedArtifact ( [
+     fhir:type [ fhir:v "derived-from" ] ;
+     fhir:label [ fhir:v "WHO Guideline" ] ;
+     fhir:display [ fhir:v "WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention, 2nd edition (2021)" ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "citation" ] ;
+     fhir:label [ fhir:v "WHO Recommendations" ] ;
+     fhir:display [ fhir:v "General population: Recs 3b, 11. WLHIV: Recs 22, 23, 31. Algorithm 5: HPV DNA + VIA Triage." ] ;
+     fhir:url [
+       fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+       fhir:l <https://www.who.int/publications/i/item/9789240030824>
+     ] ;
+     fhir:document [
+       fhir:url [
+         fhir:v "https://www.who.int/publications/i/item/9789240030824"^^xsd:anyURI ;
+         fhir:l <https://www.who.int/publications/i/item/9789240030824>
+       ]
+     ]
+  ] [
+     fhir:type [ fhir:v "composed-of" ] ;
+     fhir:display [ fhir:v "Upstream: Screening determines cascade position and routes HPV+ patients to triage" ] ;
+     fhir:resource [
+       fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening|0.1.0"^^xsd:anyURI ;
+       fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerScreening?version=0.1.0>
+     ]
+  ] [
+     fhir:type [ fhir:v "composed-of" ] ;
+     fhir:display [ fhir:v "Downstream: VIA+ patients are routed to treatment assessment" ] ;
+     fhir:resource [
+       fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment|0.1.0"^^xsd:anyURI ;
+       fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/PlanDefinition/CervicalCancerTreatment?version=0.1.0>
+     ]
+  ] ) ; # 
+  fhir:library ( [
+     fhir:v "https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision|0.1.0"^^xsd:anyURI ;
+     fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision?version=0.1.0>
+  ] ) ; # 
+  fhir:action ( [
+     fhir:title [ fhir:v "HPV-Positive Triage Assessment" ] ;
+     fhir:description [ fhir:v "Evaluate triage status for women with positive HPV DNA test results" ] ;
+     fhir:trigger ( [
+       fhir:type [ fhir:v "named-event" ] ;
+       fhir:name [ fhir:v "patient-view" ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Triage Is Indicated" ] ;
+         fhir:reference [
+           fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+           fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+         ]
+       ]
+     ] ) ;
+     fhir:action ( [
+       fhir:id [ fhir:v "perform-via" ] ;
+       fhir:title [ fhir:v "Perform VIA Triage" ] ;
+       fhir:description [ fhir:v "HPV DNA test is positive — perform VIA (visual inspection with acetic acid) to determine treatment pathway" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Triage Is Indicated" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Triage Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "via-positive-treat" ] ;
+       fhir:title [ fhir:v "VIA Positive — Proceed to Treatment" ] ;
+       fhir:description [ fhir:v "VIA triage is positive — assess ablation eligibility and treat" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Proceed To Treatment" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Triage Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "via-negative-followup" ] ;
+       fhir:title [ fhir:v "VIA Negative — Schedule Follow-Up HPV Retest" ] ;
+       fhir:description [ fhir:v "VIA triage is negative — schedule HPV DNA retest at 12 months (WLHIV) or 24 months (general population)" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Proceed To Follow Up Retest" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Triage Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "suspicious-refer" ] ;
+       fhir:title [ fhir:v "Suspicious for Cancer — Refer to Oncology" ] ;
+       fhir:description [ fhir:v "Findings are suspicious for invasive cancer — refer for definitive diagnosis and staging" ] ;
+       fhir:priority [ fhir:v "urgent" ] ;
+       fhir:condition ( [
+         fhir:kind [ fhir:v "applicability" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Needs Referral" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] ) ;
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [
+             fhir:v "http://terminology.hl7.org/CodeSystem/action-type"^^xsd:anyURI ;
+             fhir:l <http://terminology.hl7.org/CodeSystem/action-type>
+           ] ;
+           fhir:code [ fhir:v "create" ]
+         ] )
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "payload[0].contentString" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "Triage Recommended Action" ] ;
+           fhir:reference [
+             fhir:v "Library/CervicalCancerTriageDecision"^^xsd:anyURI ;
+             fhir:l <https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision>
+           ]
+         ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

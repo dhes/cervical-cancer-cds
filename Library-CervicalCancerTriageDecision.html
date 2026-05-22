@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cervical Cancer Triage Decision Logic - Cervical Cancer Screening CDS for OpenMRS v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+    <link href="assets/css/fa-all.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/who.css" rel="stylesheet"/>
+    <link href="assets/css/lforms.min.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"12.9"}
+    h3,h4,h5,h6{--heading-prefix:"12.9"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+
+      <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+        <div id="stripe"> </div>
+        <div class="container">  <!-- container -->
+          <!-- HEADER CONTENT -->
+  
+          <nav class="navbar navbar-inverse">
+            <!--status-bar-->
+            <div class="container">
+              <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+              </button>
+              <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+              <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="algorithm.html">Clinical Algorithm</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Decision Modeling
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="methodology.html">Methodology</a>
+      </li>
+      <li>
+        <a href="decision-tables.html">Decision Tables</a>
+      </li>
+      <li>
+        <a href="interpretation-register.html">Interpretation Register</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="architecture.html">Architecture</a>
+  </li>
+  <li>
+    <a href="deployment.html">Deployment</a>
+  </li>
+  <li>
+    <a href="testing.html">Testing</a>
+  </li>
+  <li>
+    <a href="downloads.html">Downloads</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+  <li>
+    <a href="license.html">License</a>
+  </li>
+</ul>
+              </div>  <!-- /.nav-collapse -->
+
+              <div class="sf_colsIn col-md-8  navbar-right-container" data-sf-element="LanguageSelectorSearch" data-placeholder-label="Language Selector and Search" style="display: flex; justify-content: flex-end; align-items: center;">
+                <!-- This div will be pushed to the right -->
+                <div class="language-selector" style="margin-left: auto; background-color: #00477d; color: white;">
+                  <i class="fa fa-language fa-lg"></i>
+                  <label for="language-selector"> </label>
+                  <select onChange="openLink(value)" id="language-selector" name="language-selector">
+                    <option disabled selected>Select language</option>
+                    <option value="en" class="selected">English</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <!-- Search Content -->
+              </div>
+            </div>  <!-- /.container -->
+          </nav>  <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+        </div>  <!-- /container -->
+      </div>  <!-- /segment-navbar -->
+      
+
+      <div class="container" style=" justify-content: space-between; align-items: left;">
+
+        <!-- Placeholder for child template header declarations -->
+<div id="project-nav">
+    <a id="who-logo" no-external="true" href="index.html">
+        
+    </a>
+</div>
+
+ <div id="family-nav">
+  <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">  </a>
+</div> 
+
+
+        <div id="ig-status" class="ig-status-draft">
+          <p><span style="font-size:12pt;font-weight:bold">Cervical Cancer Screening CDS for OpenMRS</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Cervical Cancer Triage Decision Logic</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Cervical Cancer Screening CDS for OpenMRS, published by Hopena Health. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/dhes/cervical-cancer-cds/tree/main'>https://github.com/dhes/cervical-cancer-cds/tree/main</a> and changes regularly. See the <a href='https://hopenahealth.com/fhir/cervical-cancer-cds/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li class="active">
+    <a href="#">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerTriageDecision.xml.html">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerTriageDecision.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="Library-CervicalCancerTriageDecision.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+  <a name="root"> </a>
+
+  <h2 id="root">Library: Cervical Cancer Triage Decision Logic
+(Experimental)
+  </h2>
+
+  <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision<button title="Click to copy URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://hopenahealth.com/fhir/cervical-cancer-cds/Library/CervicalCancerTriageDecision|0.1.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="4">
+        
+          Draft
+          
+            as of 2026-04-21
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">CervicalCancerTriageDecision</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+  <!-- insert intro if present -->
+  
+
+
+
+<!--  <p>
+  Formats: <a href="Library-CervicalCancerTriageDecision.xml.html">XML</a>, <a href="Library-CervicalCancerTriageDecision.json.html">JSON</a>, <a href="Library-CervicalCancerTriageDecision.ttl.html">Turtle</a>
+  </p>-->
+
+  
+
+
+  <div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Cervical Cancer Triage Decision Logic</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">CervicalCancerTriageDecision</td>
+        </tr>
+        
+
+        
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">0.1.0</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="Library-CervicalCancerTriageDecision.html">Cervical Cancer Triage Decision Logic</a></td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/7.1.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>logic-library</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2026-04-21 19:55:49+0000</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">Hopena Health</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Jurisdiction: </b></th>
+            <td style="padding-left: 4px;">001</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                
+                
+                
+                <p><b>Dependencies</b></p>
+                <ul>
+                  
+                    <li><a href="Library-CervicalCancerScreeningCommon.html">Cervical Cancer Screening Common Definitions</a> version: 0.1.0</li>
+                  
+                </ul>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+          <th scope="row"><b>Parameters: </b></th>
+          <td style="padding-left: 4px;">
+            <table class="grid-dict">
+              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Min</b></th><th><b>Max</b></th><th><b>In/Out</b></th></tr>
+              
+                <tr><th>Patient</th><th>Patient</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Triage Is Indicated</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Triage Has Been Performed</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>VIA Triage Is Positive</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>VIA Triage Is Negative</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Suspicious For Cancer</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Proceed To Treatment</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Proceed To Follow Up Retest</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Needs Referral</th><th>boolean</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Triage Recommended Action</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Triage Status</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+                <tr><th>Active Triage Algorithm</th><th>string</th><th>0</th><th>1</th><th>Out</th></tr>
+              
+            </table>
+          </td>
+        </tr>
+        
+
+        
+
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><a id="cql-content"><b>Content: </b></a> text/cql</th></tr>
+              <tr><td><pre><code class="language-cql">/*
+ * CervicalCancerTriageDecision
+ *
+ * Triage pathway logic for HPV-positive women, implementing
+ * WHO guideline Algorithm 5 (HPV DNA + VIA triage) with
+ * extension points for Algorithms 3, 4, 6, 7.
+ *
+ * This library determines:
+ *   - Whether triage is indicated
+ *   - The appropriate triage method for the active algorithm
+ *   - Interpretation of triage results
+ *   - Routing to treatment vs follow-up vs referral
+ *
+ * Algorithm 5 cascade after HPV+:
+ *   HPV positive → VIA triage
+ *     ├── VIA positive → Treat (→ TreatmentDecision)
+ *     ├── VIA negative → Retest at 12/24 months (→ FollowUpDecision)
+ *     └── Suspicious for cancer → Refer to oncology
+ *
+ * WHO Recommendations covered:
+ *   General population: 3b (screen-triage-treat), 11 (post-triage-negative retest)
+ *   WLHIV: 22 (triage recommended), 23 (screen-triage-treat), 31 (retest timing)
+ *
+ * @author  Dan Heslinga / Hopena Health
+ * @version 0.1.0
+ * @date    2026-03-08
+ */
+
+library CervicalCancerTriageDecision version '0.1.0'
+
+using FHIR version '4.0.1'
+
+include FHIRHelpers version '4.0.1'
+include CervicalCancerScreeningCommon version '0.1.0' called Common
+
+context Patient
+
+/*
+ * =============================================================================
+ * TRIAGE INDICATION
+ * =============================================================================
+ *
+ * @guidance Triage is indicated when the primary HPV DNA test is positive.
+ *           In Algorithm 5, VIA is the triage method.
+ *           In screen-and-treat approaches (Algorithm 2), VIA is still done
+ *           but for treatment modality selection rather than triage.
+ */
+
+/*
+ * @output Boolean — true if triage is indicated (HPV+ without subsequent triage)
+ * @pseudocode HPV test positive AND no VIA result after the HPV test
+ */
+define &quot;Triage Is Indicated&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and (
+      not exists(Common.&quot;VIA Screening Results&quot;)
+      or Common.&quot;Date Of Most Recent VIA&quot; before Common.&quot;Date Of Most Recent HPV Test&quot;
+    )
+
+/*
+ * @output Boolean — true if triage has been performed (VIA done after HPV+ result)
+ */
+define &quot;Triage Has Been Performed&quot;:
+  Common.&quot;Most Recent HPV Test Is Positive&quot;
+    and exists(Common.&quot;VIA Screening Results&quot;)
+    and Common.&quot;Date Of Most Recent VIA&quot; on or after Common.&quot;Date Of Most Recent HPV Test&quot;
+
+/*
+ * =============================================================================
+ * TRIAGE RESULT INTERPRETATION
+ * =============================================================================
+ */
+
+/*
+ * @output Boolean — true if VIA triage was positive
+ * @guidance VIA positive → proceed to treatment assessment
+ */
+define &quot;VIA Triage Is Positive&quot;:
+  &quot;Triage Has Been Performed&quot;
+    and Common.&quot;Most Recent VIA Is Positive&quot;
+
+/*
+ * @output Boolean — true if VIA triage was negative
+ * @guidance VIA negative → schedule follow-up HPV retest
+ *           General: 24 months (WHO Rec 11)
+ *           WLHIV: 12 months (WHO Rec 31)
+ */
+define &quot;VIA Triage Is Negative&quot;:
+  &quot;Triage Has Been Performed&quot;
+    and not Common.&quot;Most Recent VIA Is Positive&quot;
+
+/*
+ * =============================================================================
+ * SUSPICIOUS FOR CANCER — Referral pathway
+ * =============================================================================
+ *
+ * @guidance In all algorithms, if VIA or colposcopy reveals findings
+ *           suspicious for invasive cancer, the patient must be referred
+ *           for definitive diagnosis and staging. This bypasses triage/treatment.
+ *
+ * Note: &quot;Suspicious for cancer&quot; is a clinical judgment during VIA. In OpenMRS,
+ * this would be recorded as a separate observation or as a specific coded value
+ * on the VIA result. We model it as a distinct observation concept.
+ *
+ * CIEL concept needed (not yet loaded):
+ *   - CIEL 159393: Cervical cancer screening outcome
+ *     or a custom concept for &quot;suspicious for cancer&quot; finding
+ *
+ * For now, we check for an active cervical cancer condition as a proxy.
+ * When the concept is loaded, this definition will be updated to check
+ * the VIA observation value directly.
+ */
+
+/*
+ * @output Boolean — true if findings are suspicious for cancer
+ * @pseudocode Currently uses cervical cancer diagnosis as proxy;
+ *             will be refined when suspicious-for-cancer observation concept is loaded
+ */
+define &quot;Suspicious For Cancer&quot;:
+  Common.&quot;Has Cervical Cancer Diagnosis&quot;
+
+/*
+ * =============================================================================
+ * TRIAGE ROUTING — Where does the patient go next?
+ * =============================================================================
+ */
+
+/*
+ * @output Boolean — true if patient should proceed to treatment assessment
+ * @pseudocode VIA triage positive AND not suspicious for cancer
+ */
+define &quot;Proceed To Treatment&quot;:
+  &quot;VIA Triage Is Positive&quot;
+    and not &quot;Suspicious For Cancer&quot;
+
+/*
+ * @output Boolean — true if patient should be scheduled for follow-up retest
+ * @pseudocode VIA triage negative AND not suspicious for cancer
+ */
+define &quot;Proceed To Follow Up Retest&quot;:
+  &quot;VIA Triage Is Negative&quot;
+    and not &quot;Suspicious For Cancer&quot;
+
+/*
+ * @output Boolean — true if patient needs oncology referral
+ */
+define &quot;Needs Referral&quot;:
+  &quot;Suspicious For Cancer&quot;
+
+/*
+ * =============================================================================
+ * RECOMMENDED ACTION — Triage-specific guidance
+ * =============================================================================
+ */
+
+/*
+ * @output String — the recommended triage action
+ */
+define &quot;Triage Recommended Action&quot;:
+  case
+    when &quot;Suspicious For Cancer&quot;
+      then 'Findings suspicious for invasive cancer — refer for diagnosis and staging'
+
+    when &quot;Triage Is Indicated&quot;
+      then 'Perform VIA triage assessment'
+
+    when &quot;Proceed To Treatment&quot;
+      then 'VIA positive — proceed to treatment eligibility assessment (see TreatmentDecision)'
+
+    when &quot;Proceed To Follow Up Retest&quot;
+      then 'VIA negative — schedule HPV DNA retest in '
+           + ToString(Common.&quot;Post Triage Negative Retest Months&quot;)
+           + ' months'
+
+    when not Common.&quot;Most Recent HPV Test Is Positive&quot;
+      then 'No triage indicated — HPV test is not positive'
+
+    else 'Unable to determine triage recommendation'
+  end
+
+/*
+ * @output String — triage status for downstream routing
+ */
+define &quot;Triage Status&quot;:
+  case
+    when &quot;Suspicious For Cancer&quot; then 'refer-oncology'
+    when &quot;Triage Is Indicated&quot; then 'awaiting-triage'
+    when &quot;Proceed To Treatment&quot; then 'triage-positive'
+    when &quot;Proceed To Follow Up Retest&quot; then 'triage-negative'
+    when not Common.&quot;Most Recent HPV Test Is Positive&quot; then 'not-indicated'
+    else 'unknown'
+  end
+
+/*
+ * =============================================================================
+ * ALGORITHM EXTENSION POINTS
+ * =============================================================================
+ *
+ * The following definitions are stubs for future multi-algorithm support.
+ * Currently only Algorithm 5 (VIA triage) is implemented.
+ *
+ * Algorithm 4: HPV16/18 genotyping triage
+ *   - Requires: HPV genotyping observation concepts
+ *   - Logic: HPV16/18+ → treat directly; other HPV+ → VIA triage
+ *
+ * Algorithm 6: Colposcopy triage
+ *   - Requires: Colposcopy finding observation concepts
+ *   - Logic: CIN1+ → treat; normal colposcopy → retest at 12 months
+ *
+ * Algorithm 7: Cytology + colposcopy triage
+ *   - Requires: Cytology result concepts (ASCUS, LSIL, HSIL+)
+ *   - Logic: HSIL+ → colposcopy → CIN1+ → treat
+ */
+
+/*
+ * @output String — which triage algorithm is active
+ * @guidance Currently hardcoded to Algorithm 5; will be parameterized
+ *           when multi-algorithm support is added
+ */
+define &quot;Active Triage Algorithm&quot;:
+  'Algorithm 5 — HPV DNA + VIA Triage'
+</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr><th><b>Content: </b> application/elm+json</th></tr>
+              <tr><td><pre><code>Encoded data (32196 characters)</code></pre></td></tr>
+            </table>
+          </td>
+        </tr>
+        
+        
+    </table>
+</div>
+</div>
+
+  <!-- insert notes if present -->
+  
+
+
+
+  
+
+</div>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /row -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-content -->
+
+<script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+<script type="text/javascript" src="assets/js/window-hash.js"> </script>
+<a name="bottom"> </a>
+<div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+<div class="container">  <!-- container -->
+
+<div class="inner-wrapper">
+  <p>
+    IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://hopenahealth.com">Hopena Health</a>.  Package hopena.cervical-cancer-cds#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 21, 2026 19:55+0000">2026-04-21</span>
+    <br/>
+    <span style="color: var(--footer-highlight-text-color)">
+                Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://hopenahealth.com/fhir/cervical-cancer-cds/history.html">Version History</a> | <a style="color: #81BEF7" rel="license" href="license.html">License</a>
+    </span>
+  </p>
+</div>  <!-- /inner-wrapper -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-footer -->
+
+<div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+<div class="container">  <!-- container -->
+</div>  <!-- /container -->
+</div>  <!-- /segment-post-footer -->
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+<script type="text/javascript" src="assets/js/respond.min.js"> </script>
+<script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+<script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+<script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+<!-- Analytics Below
+================================================== -->
+
+
+
+
