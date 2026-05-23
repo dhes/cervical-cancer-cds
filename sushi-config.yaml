@@ -1,16 +1,17 @@
 id: hopena.cervical-cancer-dak
 canonical: https://hopenahealth.com/fhir/cervical-cancer-dak
 name: CervicalCancerDAK
-title: "Cervical Cancer Screening DAK (Methodology Demonstration)"
+title: "Cervical Cancer Screening DAK (Working Draft)"
 description: >-
-  Methodology demonstration: a cervical cancer screening Digital Adaptation Kit
-  (DAK) authored externally to fill the gap of no publicly available WHO
+  Early, in-progress work toward a cervical cancer screening Digital Adaptation
+  Kit (DAK), authored independently in the absence of a publicly available WHO
   cervical cancer SMART DAK. v1 narrows to WHO Algorithm 5 (HPV DNA + VIA
   triage), Eligibility Decision and Needs Screening Decision only, targeting
   the Open Health Stack (OHS) / OpenSRP Android FHIR SDK as the L4 deployment
   platform. This Implementation Guide is NOT WHO-endorsed; it is structured
   per smart-dak-empty conventions but published under a non-WHO publisher and
-  canonical.
+  canonical. Shared publicly to invite feedback from the WHO SMART community
+  of practice.
 status: draft
 version: 0.1.0
 fhirVersion: 4.0.1

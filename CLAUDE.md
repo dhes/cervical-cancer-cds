@@ -1,10 +1,10 @@
-# Cervical Cancer Screening DAK (Methodology Demonstration)
+# Cervical Cancer Screening DAK (Working Draft)
 
 ## Status
 
 **v2 scaffold-restart, in progress (2026-05).** v1 work — an OpenMRS-targeted CDS implementation with 5 CQL libraries, 4 PlanDefinitions, and 82/82 passing assertions — is preserved on the `v1-archive` branch (`git checkout v1-archive`). The `main` branch has been rescaffolded against the WHO `smart-dak-empty` template (CC BY 4.0) with Hopena Health identity and a non-endorsement disclaimer; v2 content authoring is the next phase.
 
-This is an **unofficial** methodology demonstration. Not WHO-endorsed.
+This is an **unofficial**, in-progress draft. Not WHO-endorsed.
 
 ## Where the project context lives
 

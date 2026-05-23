@@ -1,9 +1,9 @@
 <div>
-<p><strong>UNOFFICIAL — NOT WHO-ENDORSED.</strong> This Digital Adaptation Kit is a methodology demonstration authored independently by Hopena Health. It is structured using the WHO <code>smart-dak-empty</code> template (CC BY 4.0) but is <strong>not</strong> a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program. As of this writing, no publicly available WHO cervical cancer SMART DAK has been published; this work fills that gap as a non-official methodology demonstration. Discussion ongoing within the WHO SMART community of practice.</p>
+<p><strong>UNOFFICIAL — NOT WHO-ENDORSED.</strong> This Digital Adaptation Kit is early, in-progress work authored independently by Hopena Health. It is structured using the WHO <code>smart-dak-empty</code> template (CC BY 4.0) but is <strong>not</strong> a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program. As of this writing, no publicly available WHO cervical cancer SMART DAK has been published; this work is shared publicly so the WHO SMART community of practice — in which the author participates — can shape its direction through feedback.</p>
 </div>{:.stu-note}
 
 <div>
-<p>This DAK is under active development as a methodology demonstration; content is provisional and for demonstration purposes only.</p>
+<p>This DAK is in active development; content is provisional and subject to change.</p>
 </div>{:.stu-note}
 
 

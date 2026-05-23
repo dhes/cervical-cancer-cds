@@ -1,10 +1,10 @@
-# Cervical Cancer Screening DAK (Methodology Demonstration)
+# Cervical Cancer Screening DAK (Working Draft)
 
-> **UNOFFICIAL — NOT WHO-ENDORSED.** This repository contains a Digital Adaptation Kit (DAK) authored independently by [Hopena Health](https://hopenahealth.com) as a **methodology demonstration**. It is structured using the WHO [`smart-dak-empty`](https://github.com/WorldHealthOrganization/smart-dak-empty) template (CC BY 4.0) but is **not** a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program.
+> **UNOFFICIAL — NOT WHO-ENDORSED.** This repository contains early, in-progress work toward a Digital Adaptation Kit (DAK), authored independently by [Hopena Health](https://hopenahealth.com). It is structured using the WHO [`smart-dak-empty`](https://github.com/WorldHealthOrganization/smart-dak-empty) template (CC BY 4.0) but is **not** a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program.
 
 ## Why this exists
 
-As of this writing, no publicly available WHO cervical cancer SMART DAK has been published, although the underlying L1 narrative guideline ([2021](https://www.who.int/publications/i/item/9789240030824) plus subsequent updates) exists. This work fills that gap as a non-official methodology demonstration. Discussion is ongoing within the WHO SMART community of practice.
+As of this writing, no publicly available WHO cervical cancer SMART DAK has been published, although the underlying L1 narrative guideline ([2021](https://www.who.int/publications/i/item/9789240030824) plus subsequent updates) exists. This repository is the author's early, in-progress work toward such a DAK, targeting the Open Health Stack (OHS) / OpenSRP Android FHIR SDK as the L4 deployment platform. It is shared publicly so the WHO SMART community of practice — in which the author participates — can shape its direction through feedback.
 
 ## Scope (v1, in progress)
 
