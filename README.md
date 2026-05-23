@@ -4,7 +4,7 @@
 
 ## Why this exists
 
-As of this writing, no publicly available WHO cervical cancer SMART DAK has been published, although the underlying L1 narrative guideline ([2021](https://www.who.int/publications/i/item/9789240030824) plus subsequent updates) exists. This repository is the author's early, in-progress work toward such a DAK, targeting the Open Health Stack (OHS) / OpenSRP Android FHIR SDK as the L4 deployment platform. It is shared publicly so the WHO SMART community of practice — in which the author participates — can shape its direction through feedback.
+As of this writing, WHO has been updating its cervical cancer screening and treatment guidance in phases. Phase 1 (the second edition of the *WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention*, [July 2021](https://www.who.int/publications/i/item/9789240030824)) and phase 2 (the addendum on use of HPV mRNA tests, December 2021, and the addendum on use of dual-stain cytology to triage women after a positive HPV test, 2024) are published. Phase 3 will address implementation; phase 4 will produce a consolidated "living guideline." This repository is the author's in-progress work in the implementation space — an L1↔L4 deployment (from the narrative WHO L1 guidelines through to an executable application) using the Open Health Stack (OHS) / OpenSRP Android FHIR SDK as the L4 platform. Shared publicly so the WHO SMART community of practice, in which the author participates, can shape its direction through feedback.
 
 ## Scope (v1, in progress)
 
