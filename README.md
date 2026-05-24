@@ -1,6 +1,6 @@
 # Cervical Cancer Screening DAK (Working Draft)
 
-> **UNOFFICIAL — NOT WHO-ENDORSED.** This repository contains early, in-progress work toward a Digital Adaptation Kit (DAK), authored independently by [Hopena Health](https://hopenahealth.com). It is structured using the WHO [`smart-dak-empty`](https://github.com/WorldHealthOrganization/smart-dak-empty) template (CC BY 4.0) but is **not** a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program.
+> **UNOFFICIAL — NOT WHO-ENDORSED.** This repository contains early, in-progress work toward a Digital Adaptation Kit (DAK), authored independently by [Hopena Health](https://hopena.info). It is structured using the WHO [`smart-dak-empty`](https://github.com/WorldHealthOrganization/smart-dak-empty) template (CC BY 4.0) but is **not** a WHO publication, not endorsed by WHO, and not part of the official WHO SMART Guidelines program.
 
 ## Why this exists
 

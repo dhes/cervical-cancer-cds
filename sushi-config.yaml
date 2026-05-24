@@ -1,5 +1,5 @@
 id: hopena.cervical-cancer-dak
-canonical: https://hopenahealth.com/fhir/cervical-cancer-dak
+canonical: https://hopena.info/fhir/cervical-cancer-dak
 name: CervicalCancerDAK
 title: "Cervical Cancer Screening DAK (Working Draft)"
 description: >-
@@ -21,12 +21,12 @@ license: Apache-2.0
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 publisher:
   name: Hopena Health
-  url: https://hopenahealth.com
+  url: https://hopena.info
 contact:
   - name: Dan Heslinga
     telecom:
       - system: url
-        value: https://hopenahealth.com
+        value: https://hopena.info
 
 
 meta:

@@ -47,6 +47,6 @@ Output: `output/index.html`.
 ## Important context for Claude sessions
 
 - **GitHub Pages is intentionally unpublished** (Settings → Pages, Source = None). Do not propose re-enabling without explicit user direction; rendered IG output appearing on the public web is what creates WHO-endorsement-confusion risk. Re-enable only after v2 content is properly disclaimed and branded.
-- **`publisher` is Hopena Health, not WHO**, and `canonical` is `hopenahealth.com`, not `smart.who.int`. These identity changes are deliberate (structural-vs-identity separation). Do not "fix" them back to WHO defaults.
+- **`publisher` is Hopena Health, not WHO**, and `canonical` is `hopena.info`, not `smart.who.int`. These identity changes are deliberate (structural-vs-identity separation). Do not "fix" them back to WHO defaults.
 - **v1 work is on `v1-archive` branch** — when prior CQL or PlanDefinition logic would be useful as reference, `git show v1-archive:path/to/file` retrieves it without merging. Do not propose merging v1-archive into main.
 - See `~/.claude/projects/-Users-danheslinga-projects/memory/` for full project context, scope discipline, WHO contacts, and methodology decisions.

@@ -47,7 +47,7 @@ Reference implementations representing the L4 layer for the <mark>[insert health
 Content representing the L5 layer for the <mark>[insert health domain here]</mark> SMART Guidelines are not yet available. Links will be published here as soon as they're available.
 
 ### Contact Us
-<p>This is an unofficial work by Hopena Health. For questions or feedback, see <a href="https://hopenahealth.com">hopenahealth.com</a> or open an issue at the <a href="https://github.com/dhes/cervical-cancer-cds/issues">GitHub repository</a>. For questions about the WHO SMART Guidelines program itself, contact <a href="mailto:SMART@who.int">SMART@who.int</a> directly.</p>
+<p>This is an unofficial work by Hopena Health. For questions or feedback, see <a href="https://hopena.info">hopena.info</a> or open an issue at the <a href="https://github.com/dhes/cervical-cancer-cds/issues">GitHub repository</a>. For questions about the WHO SMART Guidelines program itself, contact <a href="mailto:SMART@who.int">SMART@who.int</a> directly.</p>
 
 ### License
 This Implementation Guide is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). The underlying smart-dak-empty template from WHO is licensed under CC BY 4.0; attribution to that template is retained.
