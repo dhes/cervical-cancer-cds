@@ -35,6 +35,7 @@ Build prerequisites: Java 17+, Node.js 18+, Jekyll.
 
 - WHO cervical cancer screening guideline (2021): https://www.who.int/publications/i/item/9789240030824
 - WHO SMART Guidelines: https://smart.who.int/
+- Mehl G et al., *Lancet Digital Health* (2021): https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00038-8/fulltext
 - WHO smart-dak-empty template: https://github.com/WorldHealthOrganization/smart-dak-empty
 - Open Health Stack: https://developers.google.com/open-health-stack
 - Android FHIR SDK: https://github.com/google/android-fhir
