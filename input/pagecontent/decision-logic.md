@@ -16,7 +16,18 @@ The tables use Markdown rather than the WHO-standard `.xlsx` decision-logic form
 - **First-hit semantics.** Within each table, rules are evaluated top-to-bottom; the first rule whose condition matches determines the output. This is equivalent to the "first hit" hit-policy in DMN.
 - **WHO L1 source column.** Each rule cites the WHO recommendation number(s) that motivate it, for traceability between L1 narrative and L2 logic.
 - **MoH-configurable? column.** Each rule indicates whether any of its parameters are intended to be configurable by the local Public Health Authority (PHA). v1 hard-codes WHO defaults but flags the configurable seams.
+- **Pseudocode column.** Each rule's condition is also expressed as a semi-formal logical expression, following the conventions documented in [adapting.html](adapting.html) (Pseudocode conventions section). This is the *verification surface* between the L1 narrative and L3 CQL — clinical reviewers can verify pseudocode without reading CQL; CQL authors can translate pseudocode mechanically. Rule pseudocode references **named states** defined either in [dictionary.html](dictionary.html) (for retained data elements) or in the Internal calculated states section below (for intermediate values that are not dictionary-eligible).
 - **Preconditions.** The Needs Screening table assumes Eligibility has returned *eligible* for the same encounter. If Eligibility returns *ineligible*, Needs Screening is not evaluated.
+
+### Internal calculated states
+
+The decision tables below reference several intermediate states that are calculated from data dictionary inputs but are not themselves data-dictionary-eligible (per WHO HIV DAK README Note 1: only persisted, reported, aggregated, or exchanged data belongs in the data dictionary). These states are documented inline here with their pseudocode definitions. In v2+ work, they should be promoted to a `CCSDAK` CodeSystem analogous to IMMZ's pattern, with the pseudocode becoming the CodeSystem concept's `definition` field.
+
+| Name | Type | Pseudocode | Used in |
+|---|---|---|---|
+| `"Time since most recent screening"` | Duration (decimal years) | `Today − "Most recent screening date"` (defined only if `"Ever screened"` is true) | `CCS.A.DT2` rules 5, 6 |
+| `"Two most recent screening results both negative"` | Boolean | `Count of "Prior cervical cancer screening events" ≥ 2 and (the two most recent events, ordered by date descending, both have result = "negative")` | `CCS.A.DT2` rule 4 |
+| `"Applicable population pathway"` | Code (`"WLHIV"` or `"general population"`) | `if "HIV status" = "HIV-positive" then "WLHIV" else "general population"` | Implicit in `CCS.A.DT1` rules 3, 4 and in `CCS.A.DT2` interval rules 5, 6 |
 
 ### Decision 1: Eligibility (`CCS.A.DT1`)
 
@@ -32,13 +43,13 @@ For a woman presenting at the screening encounter, determine whether she is elig
 - `CCS.A.DE8` Eligibility: *eligible* or *ineligible*
 - `CCS.A.DE9` Eligibility reason: coded value (*none* if eligible; otherwise indicating which rule fired)
 
-| # | Condition (first match wins) | Output | Reason | WHO L1 source | MoH-configurable? |
-|---|---|---|---|---|---|
-| 1 | Sex at birth ≠ female | ineligible | not at biological risk for cervical cancer | implicit in all WHO recs (the population of "women") | No (clinical basis) |
-| 2 | Active cervical cancer diagnosis present | ineligible | active cancer diagnosis; oncology surveillance pathway applies (out of scope of this DAK) | v1 scope decision (implicit in WHO L1) | Yes (definition of "active" cancer is configurable; v1 default = any non-resolved cervical cancer Condition) |
-| 3 | HIV status = positive AND age < 25 | ineligible | under the WHO recommendation 25 lower age bound for women living with HIV | WHO 25 | Yes (lower age bound; v1 default = 25) |
-| 4 | HIV status ≠ positive AND age < 30 | ineligible | under the WHO recommendation 5 lower age bound for the general population | WHO 5 | Yes (lower age bound; v1 default = 30) |
-| 5 | (else) | eligible | meets age criterion for applicable population | WHO 5 and 25 (satisfied) | — |
+| # | Condition (first match wins) | Pseudocode | Output | Reason | WHO L1 source | MoH-configurable? |
+|---|---|---|---|---|---|---|
+| 1 | Sex at birth ≠ female | `"Sex at birth" ≠ "female"` | ineligible | not at biological risk for cervical cancer | implicit in all WHO recs (the population of "women") | No (clinical basis) |
+| 2 | Active cervical cancer diagnosis present | `"Active cervical cancer diagnosis" = true` | ineligible | active cancer diagnosis; oncology surveillance pathway applies (out of scope of this DAK) | v1 scope decision (implicit in WHO L1) | Yes (definition of "active" cancer is configurable; v1 default = any non-resolved cervical cancer Condition) |
+| 3 | HIV status = positive AND age < 25 | `"HIV status" = "HIV-positive" and "Age" < 25` | ineligible | under the WHO recommendation 25 lower age bound for women living with HIV | WHO 25 | Yes (lower age bound; v1 default = 25) |
+| 4 | HIV status ≠ positive AND age < 30 | `"HIV status" ≠ "HIV-positive" and "Age" < 30` | ineligible | under the WHO recommendation 5 lower age bound for the general population | WHO 5 | Yes (lower age bound; v1 default = 30) |
+| 5 | (else) | (no earlier rule matches) | eligible | meets age criterion for applicable population | WHO 5 and 25 (satisfied) | — |
 
 **Notes on Eligibility rules:**
 
@@ -65,15 +76,15 @@ For an eligible woman, determine whether she is currently due for a cervical can
 - `CCS.A.DE10` Needs Screening: *yes* or *no*
 - `CCS.A.DE11` Needs Screening reason: coded value indicating which rule fired
 
-| # | Condition (first match wins) | Output | Reason | WHO L1 source | MoH-configurable? |
-|---|---|---|---|---|---|
-| 1 | Never screened AND age ≤ 49 | yes | tier-1 priority — never screened, within priority age range | WHO 7 (general) / 27 (WLHIV) tier 1 | Yes (priority upper age; v1 default = 49) |
-| 2 | Never screened AND age 50–65 | yes | tier-2 priority — 50–65 never screened, included under v1 PHA policy (Option II) | WHO 7 / 27 tier 2; PHA policy Option II | **Yes** — *this is the central PHA-policy seam.* Under Option I, this rule changes to *no, out-of-program-scope per resource constraints*. See [adapting.html](adapting.html). |
-| 3 | Never screened AND age > 65 | no | over 65 never screened — WHO L1 is silent on this cohort; v1 default = not in scope | (silence in WHO L1) | Yes (default behavior for > 65; PHAs choosing to extend coverage should add a rule) |
-| 4 | Age ≥ 50 AND two most recent screening results both negative | no | WHO 6 / 26 stop rule — after age 50 with two consecutive negatives, screening is stopped | WHO 6 (general) / 26 (WLHIV) | Yes (definition of "consecutive at recommended interval"; v1 default = any two most recent screens) |
-| 5 | HIV status = positive AND time since most recent screening ≥ 3 years | yes | due per the 3–5 year interval for women living with HIV | WHO 28 | Yes (interval threshold; v1 default = 3 years, the lower bound of the 3–5 year range) |
-| 6 | HIV status ≠ positive AND time since most recent screening ≥ 5 years | yes | due per the 5–10 year interval for the general population | WHO 8 | Yes (interval threshold; v1 default = 5 years, the lower bound of the 5–10 year range) |
-| 7 | (else) | no | within the recommended interval; not yet due | WHO 8 / 28 | — |
+| # | Condition (first match wins) | Pseudocode | Output | Reason | WHO L1 source | MoH-configurable? |
+|---|---|---|---|---|---|---|
+| 1 | Never screened AND age ≤ 49 | `not "Ever screened" and "Age" ≤ 49` | yes | tier-1 priority — never screened, within priority age range | WHO 7 (general) / 27 (WLHIV) tier 1 | Yes (priority upper age; v1 default = 49) |
+| 2 | Never screened AND age 50–65 | `not "Ever screened" and "Age" ≥ 50 and "Age" ≤ 65` | yes | tier-2 priority — 50–65 never screened, included under v1 PHA policy (Option II) | WHO 7 / 27 tier 2; PHA policy Option II | **Yes** — *this is the central PHA-policy seam.* Under Option I, this rule changes to *no, out-of-program-scope per resource constraints*. See [adapting.html](adapting.html). |
+| 3 | Never screened AND age > 65 | `not "Ever screened" and "Age" > 65` | no | over 65 never screened — WHO L1 is silent on this cohort; v1 default = not in scope | (silence in WHO L1) | Yes (default behavior for > 65; PHAs choosing to extend coverage should add a rule) |
+| 4 | Age ≥ 50 AND two most recent screening results both negative | `"Age" ≥ 50 and "Two most recent screening results both negative"` | no | WHO 6 / 26 stop rule — after age 50 with two consecutive negatives, screening is stopped | WHO 6 (general) / 26 (WLHIV) | Yes (definition of "consecutive at recommended interval"; v1 default = any two most recent screens) |
+| 5 | HIV status = positive AND time since most recent screening ≥ 3 years | `"HIV status" = "HIV-positive" and "Time since most recent screening" ≥ 3 years` | yes | due per the 3–5 year interval for women living with HIV | WHO 28 | Yes (interval threshold; v1 default = 3 years, the lower bound of the 3–5 year range) |
+| 6 | HIV status ≠ positive AND time since most recent screening ≥ 5 years | `"HIV status" ≠ "HIV-positive" and "Time since most recent screening" ≥ 5 years` | yes | due per the 5–10 year interval for the general population | WHO 8 | Yes (interval threshold; v1 default = 5 years, the lower bound of the 5–10 year range) |
+| 7 | (else) | (no earlier rule matches) | no | within the recommended interval; not yet due | WHO 8 / 28 | — |
 
 **Notes on Needs Screening rules:**
 

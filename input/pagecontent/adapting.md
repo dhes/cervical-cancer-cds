@@ -55,6 +55,33 @@ v1 reads sex at birth from a layered source chain (see [dictionary.html](diction
 
 For target OpenSRP / LMIC deployments, layers 1 and 2 are rarely populated in current practice, and `Patient.gender` is the de facto sex-at-birth field. v1's default chain accommodates both contexts.
 
+### Pseudocode conventions
+
+v1 decision tables include a Pseudocode column expressing each rule's condition as a semi-formal logical expression. The intent is to provide a *verification surface* between the L1 narrative guideline (English) and the L3 CQL implementation (executable code) — a clinical reviewer can verify the pseudocode without reading CQL, and a CQL author can translate the pseudocode mechanically rather than re-interpreting the L1 narrative.
+
+The conventions are FEEL-shaped (resembling the OMG DMN Friendly Enough Expression Language) but deliberately informal — they are not parsed by any tool; they are read by humans. Pattern source: WHO IMMZ DAK 2023 (as observed in the smart-immunizations repository); no published WHO style guide exists.
+
+**Adopted conventions:**
+
+- Quoted concept and field names: `"Sex at birth"`, `"HIV status"`, `"Age"`
+- Lowercase logical operators: `and`, `or`, `not`
+- Unicode comparison operators where they read more cleanly: `≥`, `≤`, `≠`
+- Quoted literal values: `"female"`, `"HIV-positive"`, `"negative"`
+- Count expressions: `Count of X (where Y) ≥ N`
+- Existence checks: `exists X (where Y)`
+- Date arithmetic in natural units: `"Time since most recent screening" ≥ 5 years`
+- Named state references rather than re-stating conditions: `"Ever screened"`, `"Two most recent screening results both negative"`. These states are defined in [decision-logic.html](decision-logic.html) (Internal calculated states section) or [dictionary.html](dictionary.html) (Calculation column for retained derived elements)
+
+**Deliberate deviations from WHO IMMZ DAK patterns:**
+
+- v1 does not have a separate `CCSDAK` CodeSystem. Internal calculated states are documented inline in `decision-logic.md` rather than in a CodeSystem. v2+ work may promote these to a CodeSystem (with the pseudocode becoming the CodeSystem concept's `definition` field, following IMMZ's pattern).
+- Some IMMZ pseudocode idioms are immunization-specific (e.g., "Doses Administered to Patient", "Primary series", "Booster dose") and do not apply to cervical cancer screening's cascade-shaped domain. We use idioms native to the screening workflow (screening events, time since last screening, screening result history).
+
+**Notes for v2+ work:**
+
+- When we build a `CCSDAK` CodeSystem, the internal calculated states should move there. The CodeSystem concept's `definition` field carries the pseudocode (matching IMMZ's pattern).
+- Pseudocode conventions may evolve as we encounter cases that need new idioms (e.g., for triage, treatment, or follow-up decisions in later DAK cycles).
+
 ### Terminology adaptation
 
 WHO L1 recommendations reference HPV DNA testing, VIA, cytology, cervical pre-cancer (CIN1/2/3), and cervical cancer using clinical concepts. v1 inherits terminology bindings only where they exist in widely-adopted FHIR base profiles and standards (ICD-11, LOINC, SNOMED CT). Programs operating under specific national or regional terminology systems (e.g., CIEL in OpenMRS-derived deployments, or national variants of ICD) will need to map between local codes and the v1-bound codes.
