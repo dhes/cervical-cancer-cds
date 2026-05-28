@@ -1,5 +1,3 @@
-**This content is not yet available. The page will be updated as soon as the content is ready to be shared.**
+**Not in v0.1.0 scope.** System transactions at the atomic message-semantics level (trigger events, expected actions, CapabilityStatements, request/response shapes) are deferred to L3 work.
 
-This page will describe transactions with trigger events, message semantics, and expected actions, as well as sequence diagrams. 
-
-See the [Digital Documentation of COVID-19 Certificates (DDCC) Transactions](https://worldhealthorganization.github.io/ddcc/transactions.html) for additional transactions that may be relevant. 
+See [adapting.html](adapting.html) for v1 scope rationale.

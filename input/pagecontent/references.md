@@ -1,36 +1,25 @@
-This implementation guide is meant to facilitate operationalization of the World Health Organization (WHO) Digital Adaptation Kit (DAK) for <mark>[insert health domain here]</mark>. 
+### WHO cervical cancer guideline corpus
 
-The DAK for <mark>[insert health domain here]</mark> and the associated implementations tools can be found here:
+- *WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention*, second edition (July 2021): [https://www.who.int/publications/i/item/9789240030824](https://www.who.int/publications/i/item/9789240030824)
+- *WHO guideline... second edition: use of mRNA tests for human papillomavirus (HPV)* (December 2021)
+- *WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention: use of dual-stain cytology to triage women after a positive test for human papillomavirus (HPV)* (2024)
+- *WHO guideline for screening and treatment of cervical pre-cancer lesions for cervical cancer prevention: use of human papillomavirus (HPV) DNA genotyping* (2026)
 
-<!-- insert the IRIS link inside the parentheses below. The link is available only after the PDF is published on WHO IRIS. --->
-- [Published DAK Document]()
+### WHO SMART Guidelines program
 
-<!-- insert the link to each implementation tool inside the corresponding parentheses below. Replace "<mark>[health domain abbreviation]</mark>" with the appropriate health domain abbreviation. --->
+- [WHO SMART Guidelines](https://smart.who.int/) — program overview
+- WHO `smart-dak-empty` template: [https://github.com/WorldHealthOrganization/smart-dak-empty](https://github.com/WorldHealthOrganization/smart-dak-empty) — scaffold source for this Implementation Guide
+- WHO `smart.who.int.base` IG — base dependency
+- Mehl G et al., "WHO SMART guidelines: optimising country-level use of guideline recommendations in the digital age," *Lancet Digital Health* (2021): [https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00038-8/fulltext](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00038-8/fulltext) — foundational methodology paper
 
-- Implementation tools:
+### L4 deployment target
 
-   - [Link to the editable files of business processes, in .bpmn format](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/business-processes.html)
-   
-   - [Link to core data dictionary](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/dictionary.html)
- 
-   - [Link to decision support logic](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/decision-logic.html) 
+- Open Health Stack (OHS): [https://developers.google.com/open-health-stack](https://developers.google.com/open-health-stack)
+- Android FHIR SDK: [https://github.com/google/android-fhir](https://github.com/google/android-fhir)
 
-   - [Link to scheduling logic](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/scheduling-logic.html)
+### Standards referenced
 
-   - [Link to indicators table](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/indicators.html)
- 
-   - [Link to functional and non functional requirements](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/system-requirements.html)
-
-For additional resources, see the <a href="dependencies.html">Dependencies</a> page, which includes the standards referenced in this implementation guide and the references section in the published DAK for <mark>[insert health domain here]</mark>.
-
-
-### WHO guideline development
-    
--   [WHO SMART Guidelines](https://www.who.int/teams/digital-health-and-innovation/smart-guidelines) - provides an overview of the SMART Guidelines approach
-
--   [WHO Handbook for guideline development](https://www.who.int/publications/i/item/9789241548960)- provides an overview of the WHO guideline development and publication process
-
-### Tutorials and reference materials for developers
-- [References section of the SMART IG starter kit](https://worldhealthorganization.github.io/smart-ig-starter-kit/references.html#2)
-
--   [Open Health Information Exchange (OpenHIE) Specification and Architecture](https://guides.ohie.org/arch-spec/architecture-specification/overview-of-the-architecture)
+- HL7 FHIR R4 specification: [http://hl7.org/fhir/R4/](http://hl7.org/fhir/R4/)
+- HL7 FHIR Shorthand (FSH): [https://hl7.org/fhir/uv/shorthand/](https://hl7.org/fhir/uv/shorthand/)
+- SUSHI (FSH compiler): [https://github.com/FHIR/sushi](https://github.com/FHIR/sushi)
+- FHIR IG Publisher: [https://github.com/HL7/fhir-ig-publisher](https://github.com/HL7/fhir-ig-publisher)

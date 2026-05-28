@@ -1,3 +1,3 @@
-This page will contain security and privacy considerations related to SMART Guidelines for <mark>[insert health domain here]</mark>. 
+**Not in v0.1.0 scope.** Security and privacy considerations specific to cervical cancer screening deployments (data handling, consent, sensitive-condition disclosure protections, etc.) are deferred to a later DAK cycle. Cervical cancer screening data is clinically sensitive; a fuller version of this page would address consent, audit, data minimization, and jurisdiction-specific requirements.
 
-For an illustrative, starting set of non-functional requirements, which includes security and privacy-related requirements from the Digital Adaptation Kit for <mark>[insert health domain here]</mark>, see the [Non-functional Requirements](non-functional-requirements.html). 
+See [adapting.html](adapting.html) for v1 scope rationale.

@@ -1,9 +1,20 @@
-- [**Concepts**](concepts.html) - A glossary of terms and key concepts introduced in the L2 or in the Implementation Guide
-- [**Generic Personas**](personas.html) - Depiction of end-users and related stakeholders as introduced in the L2
-- [**Use Cases**](scenarios.html) - User scenarios depicting how different personas will interact in a typical workflow along with use cases listed as introduced in the L2
-- [**Business Processes**](business-processes.html) - Depiction of business processes as visual workflows as introduced in the L2
-- [**Data Dictionary**](dictionary.html) - Data dictionary with detailed data specifications as introduced in the L2
-- [**Decision-support Logic**](decision-logic.html) - Decision-support logic and algorithms as introduced in the L2
-- [**Indicator and Performance Metrics**](indicators.html) - Core set of indicators and performance metrics as introduced in the L2
-- [**Functional Requirements**](functional-requirements.html) - List of core functions and capabilities the system must have to meet the end-users’ needs and achieve tasks within the business process.
-- [**Non-functional Requirements**](non-functional-requirements.html) - List of capabilities the system must have as introduced in the L2
+This section presents the operational (L2) requirements of the DAK — personas, scenarios, business processes, data dictionary, decision logic, and related artifacts.
+
+**Authored in v0.1.0:**
+
+- [Generic Personas](personas.html) — single CHW/facility-nurse persona at the screening-cascade entry point
+- [User Scenarios](scenarios.html) — three scenarios exercising the v1 decision boundaries
+- [Business Processes](business-processes.html) — 9-step workflow for the screening encounter (`CCS.A1`–`CCS.A9`)
+- [Data Dictionary](dictionary.html) — 11 data elements with WHO HIV DAK-aligned column structure
+- [Decision-support Logic](decision-logic.html) — Eligibility (`CCS.A.DT1`) and Needs Screening (`CCS.A.DT2`) decision tables with pseudocode
+
+**Deferred to later cycles:**
+
+- [Concepts](concepts.html) — glossary of clinical and technical concepts
+- [Scheduling Logic](scheduling-logic.html) — scheduling rules for screening recall and follow-up
+- [Indicator and Performance Metrics](indicators.html) — aggregate indicators
+- [Functional Requirements](functional-requirements.html) — system functional requirements
+- [Non-functional Requirements](non-functional-requirements.html) — security, performance, usability requirements
+- [System Requirements](system-requirements.html) — consolidated system requirements
+
+See [adapting.html](adapting.html) for v1 scope rationale.

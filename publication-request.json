@@ -1,14 +1,14 @@
 {
-    "package-id" : "smart.who.int.dak-[health domain abbreviation]",
-    "title" : "SMART DAK [health domain abbreviation]", 
+    "package-id" : "hopena.cervical-cancer-dak",
+    "title" : "Cervical Cancer Screening DAK (Working Draft)",
     "category" : "base",
-    "introduction" : "SMART DAK [health domain abbreviation]",
-    "version" : "0.9.9",
-    "desc" : "0.9.9 pre-release",
-    "mode" : "milestone",    
-    "path" : "http://smart.who.int/dak-[health domain abbreviation]/v0.9.9",
-    "ci-build": "http://worldhealthorganization.github.io/smart-dak-[health domain abbreviation]", 
-    "first": true, /*Note: this tag is set to “true” only for the first release, including the pre-release version. The subsequent releases will use “first”: false */
+    "introduction" : "Unofficial methodology demonstration: cervical cancer screening DAK authored independently by Hopena Health; structured per WHO smart-dak-empty conventions but not WHO-endorsed.",
+    "version" : "0.1.0",
+    "desc" : "Initial working draft",
+    "mode" : "milestone",
+    "path" : "https://hopena.info/fhir/cervical-cancer-dak/0.1.0",
+    "ci-build" : "https://github.com/dhes/cervical-cancer-cds",
+    "first" : true,
     "status" : "draft",
     "sequence" : "Releases"
-  }
+}

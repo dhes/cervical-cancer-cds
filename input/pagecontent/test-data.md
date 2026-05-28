@@ -1,5 +1,5 @@
-**This content is not yet available. The page will be updated as soon as the content is ready to be shared.**
+**Not in v0.1.0 scope.** Synthetic test patient data (FHIR Bundle JSON or YAML examples) for exercising the decision rules is deferred to L3 work.
 
-This page will include test data developed for the test scenarios and actors included in this implementation guide. See [Testing](testing.html) for additional testing artifacts.
+v0.1.0 includes narrative scenarios in [scenarios.html](scenarios.html) describing the patient situations that future test data would represent.
 
-The testing artifacts in this implementation guide are not intended to be used to determine formal conformance, nor are they intended to be authoritative or comprehensive.
+See [testing.html](testing.html) for related deferred testing infrastructure and [adapting.html](adapting.html) for v1 scope rationale.

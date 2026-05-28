@@ -29,10 +29,6 @@ contact:
         value: https://hopena.info
 
 
-meta:
-  profile:
-    - SMARTImplementationGuide
-
 pages:
   index.md:
     title: Home

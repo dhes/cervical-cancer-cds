@@ -1,12 +1,5 @@
-This page lists and describes the human users and digital services that interact with the system, derived from the business requirements defined at the operational level (L2). For more details about end-users and related stakeholders, see the [Generic Personas](personas.html) and the WHO Digital Adaptation Kit for <mark>[insert health domain here]</mark>.
+**Not in v0.1.0 scope.** System actor definitions (software entities + human roles) interacting with the DAK in deployment are deferred to L3 work.
 
-Systems managing clinical and patient information are expected to interact with a shared health record, laboratory information system or a longitudinal health record, as appropriate, and to synchronize with data collected in a clinical encounter.
+v0.1.0 has a single human persona — Community Health Worker or Facility Nurse — documented as prose in [personas.html](personas.html). L3 work would formalize this as an `SGActor` instance (a profile of FHIR R5 ActorDefinition defined in `smart.who.int.base`) and add system actors such as the OHS / OpenSRP Android application, a backing FHIR server, and terminology services.
 
-For additional actor definitions, see the [Digital Documentation of COVID-19 Certificates (DDCC) Implementation Guide](https://worldhealthorganization.github.io/ddcc/actors.html). Additionally, Integrating the Healthcare Enterprise (IHE) maintains a [repository with common actors](https://profiles.ihe.net/GeneralIntro/ch-A.html) used in IHE profiles.
-
-### Key generic personas interacting with the system 
-In the clinical flows, generic personas are represented using profiles of the various entity resources in HL7 FHIR, such as [Patient](http://hl7.org/fhir/patient), [Practitioner](http://hl7.org/fhir/practitioner), [PractitionerRole](http://hl7.org/fhir/practitionerrole), and [RelatedPerson](http://hl7.org/fhir/relatedperson).
-
-
-
-  
+See [adapting.html](adapting.html) for v1 scope rationale.

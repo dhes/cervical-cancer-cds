@@ -1,19 +1,10 @@
-The following standards and profiles are referenced in this implementation guide:
+This Implementation Guide depends on the following FHIR Implementation Guides:
 
-* Integrating the Healthcare Enterprise (IHE):
+- **WHO SMART base IG** (`smart.who.int.base`) version 0.2.0 — provides the foundational WHO SMART Guidelines profiles, extensions, and rulesets that this IG builds on. This is the only declared dependency in v0.1.0.
 
-  * [Audit Trail and Node Authentication (ATNA) Profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html)
+Future dependencies (anticipated in later cycles):
 
-  * [Sharing Valuesets and Concept Maps (SVCM) Profile](https://profiles.ihe.net/ITI/SVCM/index.html)
+- **Clinical Quality Language (CQL) IG** (`hl7.fhir.uv.cql`) — when L3 CQL libraries are added.
+- **Canonical Resource Management Infrastructure IG** (`hl7.fhir.uv.crmi`) — when L3 PlanDefinitions and Library resources reference shared canonicals.
 
-  * [Mobile Care Services Discovery (mCSD) Profile](https://profiles.ihe.net/ITI/mCSD/index.html)
-
-* The International Patient Summary (IPS):
-
-  * [Health Level 7 (HL7) Fast Healthcare Interoperability Resources (FHIR) IPS Implementation Guide, published by HL7 International - Patient Care Work Group](http://hl7.org/fhir/uv/ips/index.html)
-
-* World Health Organization (WHO):
-
-  * [WHO International Classification of Diseases 11th Revision (ICD-11)](https://icd.who.int/en)
-
-  * [WHO Family of International Classifications](https://www.who.int/standards/classifications)
+The full dependency tree (transitive) is visible in the build artifacts and on the FHIR package registry.
