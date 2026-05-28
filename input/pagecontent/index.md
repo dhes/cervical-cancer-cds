@@ -6,57 +6,61 @@
 <p>This DAK is in active development; content is provisional and subject to change.</p>
 </div>{:.stu-note}
 
+### Summary
 
-### Summary 
-<mark>[Add content here. You could use as reference the previously published DAKs]</mark>
+This Implementation Guide presents v0.1.0 of a methodology-demonstration Digital Adaptation Kit (DAK) for cervical cancer screening. It is authored independently by Hopena Health, structured per WHO `smart-dak-empty` conventions, and not endorsed by WHO.
 
-### L1 Narrative guidelines
-<mark>[Add content here. You could use as reference the previously published DAKs]</mark>
+**v0.1.0 scope:** WHO Algorithm 5 (HPV DNA + VIA triage), narrowed to the **Eligibility** and **Needs Screening** decisions at the screening-cascade entry point. The target L4 deployment platform is the Open Health Stack (OHS) / OpenSRP Android FHIR SDK. Cascade activities downstream of the entry-point (triage, treatment, follow-up) and L3 machine-readable artifacts (CQL libraries, ValueSets, profiles) are deferred to later DAK cycles.
 
-### L2 Operational guidelines
-The DAK for <mark>[insert health domain here]</mark> and the associated implementations tools can be found here:
+### v0.1.0 contents
 
-<!-- insert the IRIS link inside the parentheses below. The link is available only after the PDF is published on WHO IRIS. --->
-- [Published DAK Document]()
+**Authored L2 content:**
 
-<!-- insert the link to each implementation tool inside the corresponding parentheses below. Replace "<mark>[health domain abbreviation]</mark>" with the appropriate health domain abbreviation. --->
+- [Generic Personas](personas.html) — single Community Health Worker or Facility Nurse persona at the screening-cascade entry point
+- [User Scenarios](scenarios.html) — three illustrative scenarios exercising the v1 decision boundaries
+- [Business Processes](business-processes.html) — 9-step workflow narrative with Activity IDs `CCS.A1`–`CCS.A9`
+- [Data Dictionary](dictionary.html) — 11 data elements with WHO HIV DAK-aligned column structure
+- [Decision-support Logic](decision-logic.html) — Eligibility (`CCS.A.DT1`) and Needs Screening (`CCS.A.DT2`) decision tables with FEEL-shaped pseudocode
+- [Adapting Guidelines for Country Use](adapting.html) — PHA-policy commitments (Option II tier-2 included), sex-at-birth resolution chain, pseudocode conventions, structural adaptation notes
 
-- Implementation tools:
+**Reference pages:**
 
-   - [Link to the editable files of business processes, in .bpmn format](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/business-processes.html)
-   
-   - [Link to core data dictionary](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/dictionary.html)
- 
-   - [Link to decision support logic](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/decision-logic.html) 
+- [Changes](changes.html) — version history
+- [References](references.html) — WHO cervical cancer guideline corpus, SMART program resources, methodology paper, standards
+- [Dependencies](dependencies.html) — `smart.who.int.base` v0.2.0
+- [License](license.html) — Apache 2.0
 
-   - [Link to scheduling logic](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/scheduling-logic.html)
+**Section landings with deferred sub-pages:**
 
-   - [Link to indicators table](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/indicators.html)
- 
-   - [Link to functional and non functional requirements](https://smart.who.int/dak-<mark>[health domain abbreviation]</mark>/system-requirements.html)
+- [Business Requirements](business-requirements.html) — L2 sub-pages (some authored, some deferred)
+- [Data Models and Exchange](data-models-and-exchange.html) — L3 sub-pages, all deferred
+- [Deployment](deployment.html) — L4 sub-pages, all deferred
+- [Indices](indices.html) — artifact and mapping indices
 
-   
+### WHO SMART Guidelines layer model — where v0.1.0 sits
 
-### L3 Machine readable guidelines
-The L3 FHIR Implementation Guide for the <mark>[insert health domain here]</mark> SMART Guidelines is yet to be published. Links will be published here as soon as they're available.
+The WHO SMART Guidelines approach distinguishes five layers of knowledge representation:
 
-### L4 Executable guidelines
-Reference implementations representing the L4 layer for the <mark>[insert health domain here]</mark> SMART Guidelines are not yet available. Links will be published here as soon as they're available.
+- **L1** — narrative guideline (WHO published recommendations)
+- **L2** — operational requirements / DAK (personas, scenarios, business processes, data dictionary, decision-support logic)
+- **L3** — machine-readable representation (FHIR profiles, ValueSets, CodeSystems, CQL libraries, PlanDefinitions)
+- **L4** — executable applications and services (reference implementations on specific platforms)
+- **L5** — dynamic guidelines that update as evidence emerges
 
-### L5 Dynamic guidelines
-Content representing the L5 layer for the <mark>[insert health domain here]</mark> SMART Guidelines are not yet available. Links will be published here as soon as they're available.
+This Implementation Guide is positioned at **L2** — it includes operational content as narrative pages, decision tables, data dictionary, and pseudocode. **L3** is deferred to a later DAK cycle (see [adapting.html](adapting.html) for the documented L3 first-pass discipline). **L4** target is Open Health Stack / OpenSRP Android FHIR SDK, but L4 deliverables are not part of this IG. **L5** is the longer-term WHO vision; this work is positioned to inform L1↔L4 traceability that L5 will eventually depend on.
 
-### Contact Us
+For more on the SMART Guidelines layer model see [WHO's SMART Guidelines](https://smart.who.int/) and the [Mehl et al. *Lancet Digital Health* article (2021)](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00038-8/fulltext).
+
+### Contact
+
 <p>This is an unofficial work by Hopena Health. For questions or feedback, see <a href="https://hopena.info">hopena.info</a> or open an issue at the <a href="https://github.com/dhes/cervical-cancer-cds/issues">GitHub repository</a>. For questions about the WHO SMART Guidelines program itself, contact <a href="mailto:SMART@who.int">SMART@who.int</a> directly.</p>
 
 ### License
-This Implementation Guide is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). The underlying smart-dak-empty template from WHO is licensed under CC BY 4.0; attribution to that template is retained.
+
+This Implementation Guide is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). The underlying `smart-dak-empty` template from WHO is licensed under CC BY 4.0; attribution to that template is retained.
 
 For more license details please see the [license page](license.html).
 
-### Providing Feedback
-{% include feedback.md %}
+### Feedback
 
-<!---Note: Please keep the dsiclaimer note below in the main branch and when publishing the pre-release version of the DAK (v0.9.9). For official published versions, please delete the note from the file.-->
-### Disclaimer
-The specification herewith documented is a demo working specification and may not be used for any implementation purposes. This draft is provided without warranty of completeness or consistency and the official publication supersedes this draft. No liability can be inferred from the use or misuse of this specification or its consequences.
+The most useful feedback for v0.1.0 comes via the WHO SMART community of practice (in which the author participates) or via [GitHub Issues](https://github.com/dhes/cervical-cancer-cds/issues) on this repository. Documentation gaps, methodological inconsistencies with established WHO DAK conventions, and clinical-correctness questions are particularly welcome.
